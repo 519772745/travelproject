@@ -3129,14 +3129,41 @@ _e(function (E, $) {
             title: '金星',
             size: 50,
             imgs: [
-                '../static/emotions/jinxing/1.gif',
-                '../static/emotions/jinxing/2.gif',
-                '../static/emotions/jinxing/3.gif',
-                '../static/emotions/jinxing/4.gif',
-                '../static/emotions/jinxing/5.gif',
-                '../static/emotions/jinxing/6.gif'
+                'editor/static/emotions/jinxing/1.gif',
+                'editor/static/emotions/jinxing/2.gif',
+                'editor/static/emotions/jinxing/3.gif',
+                'editor/static/emotions/jinxing/4.gif',
+            ]
+        },
+        'panda': {
+            title: '熊猫',
+            size: 50,
+            imgs: [
+                'editor/static/emotions/panda/1.png',
+                'editor/static/emotions/panda/2.png',
+                'editor/static/emotions/panda/3.png',
+                'editor/static/emotions/panda/4.png',
+                'editor/static/emotions/panda/5.png',
+                'editor/static/emotions/panda/6.png',
+                'editor/static/emotions/panda/7.png',
+            ]
+        },
+        'venom': {
+            title: '毒液',
+            size: 50,
+            imgs: [
+                'editor/static/emotions/venom/1.png',
+                'editor/static/emotions/venom/2.png',
+                'editor/static/emotions/venom/3.png',
+                'editor/static/emotions/venom/4.png',
+                'editor/static/emotions/venom/5.png',
+                'editor/static/emotions/venom/6.png',
+                'editor/static/emotions/venom/7.png',
+                'editor/static/emotions/venom/8.png',
+                'editor/static/emotions/venom/9.png',
             ]
         }
+
     };
 
     // 百度地图的key
