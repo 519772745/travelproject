@@ -2,8 +2,6 @@ package com.asay.wetrip.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,14 +13,15 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 @Entity
 @Table(name="wt_user")
-public class Users {
-	
+public class Users {	
 	private String email;
 	@Column(name="user_password")
 	private String password;
 	@Column(name="user_status")
 	private String status;
+	//用户表和用户详情表一对一
 	private UserDetail userDetail;
+	//用户表和登陆历史记录表 一对多
 	private Set<LoginHistory> loginHistory=new HashSet<LoginHistory>(0);
 	@Id
 	@GeneratedValue(generator="foreign")
@@ -61,5 +60,6 @@ public class Users {
 	public void setLoginHistory(Set<LoginHistory> loginHistory) {
 		this.loginHistory = loginHistory;
 	}
+	
 	
 }

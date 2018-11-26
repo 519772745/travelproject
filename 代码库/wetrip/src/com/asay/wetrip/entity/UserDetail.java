@@ -1,5 +1,6 @@
 package com.asay.wetrip.entity;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,9 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -30,15 +28,21 @@ public class UserDetail {
 	private String userhead;
 	@Column(name="collect_id")
 	private int collectId;
+	@Column(name="register_time")
+	private Timestamp registerTime;
+	//用户详情表和用户表一对一
 	private Users user;
+	//用户详情表和游记表 一对多
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
-	private Set<CollectTravel> collectNotes=new HashSet<CollectTravel>(0);
+	//用户详情表和收藏表一对多
+	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
+	//用户详情表和订单表一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);
+	//用户详情表和管理员表一对一
 	private Manager manager;
 	@Id
 	@GeneratedValue(generator="assigned")
-	@GenericGenerator(name="assigned",strategy="assigned")
-	
+	@GenericGenerator(name="assigned",strategy="assigned")	
 	public String getUsername() {
 		return username;
 	}
@@ -97,15 +101,8 @@ public class UserDetail {
 	public void setTravelNotes(Set<TravelNote> travelNotes) {
 		this.travelNotes = travelNotes;
 	}
-	@ManyToMany
-	@JoinTable(name="wt_collect_travel",joinColumns=@JoinColumn(name="email"),inverseJoinColumns=@JoinColumn(name="travel_id"))
-	public Set<CollectTravel> getCollectNotes() {
-		return collectNotes;
-	}
-	public void setCollectNotes(Set<CollectTravel> collectnotes) {
-		this.collectNotes = collectnotes;
-	}
-	@OneToMany(mappedBy="userDetail",targetEntity=UserDetail.class)
+	
+	@OneToMany(mappedBy="userDetail",targetEntity=Orders.class)
 	public Set<Orders> getOrders() {
 		return orders;
 	}
@@ -118,6 +115,19 @@ public class UserDetail {
 	}
 	public void setManager(Manager manager) {
 		this.manager = manager;
+	}
+	@OneToMany(mappedBy="userDetail",targetEntity=CollectTravel.class)
+	public Set<CollectTravel> getCollectTravels() {
+		return collectTravels;
+	}
+	public void setCollectTravels(Set<CollectTravel> collectTravels) {
+		this.collectTravels = collectTravels;
+	}
+	public Timestamp getRegistTime() {
+		return registerTime;
+	}
+	public void setRegistTime(Timestamp registerTime) {
+		this.registerTime = registerTime;
 	}
 	
 	

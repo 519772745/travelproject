@@ -26,7 +26,9 @@ public class Topic {
 
 	@Column(name="user_ip")
 	private String ip;
+	//话题表和游记表 一对多
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
+	//话题表和管理员表 多对一
 	private Manager manager;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

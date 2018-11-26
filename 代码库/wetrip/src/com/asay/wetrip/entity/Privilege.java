@@ -1,14 +1,12 @@
 package com.asay.wetrip.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +16,8 @@ public class Privilege {
 	private int id;
 	@Column(name=" privilege_name")
 	private String privilegeName;
-	private Set<Identity> identities=new HashSet<Identity>(0);
+	//权限表和管理员表  一对一
+	private Manager manager;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -33,12 +32,13 @@ public class Privilege {
 	public void setPrivilegeName(String privilegeName) {
 		this.privilegeName = privilegeName;
 	}
-	@ManyToMany(mappedBy="privileges")
-	public Set<Identity> getIdentities() {
-		return identities;
+	@ManyToOne
+	@JoinColumn(name="m_privilege")
+	public Manager getManager() {
+		return manager;
 	}
-	public void setIdentities(Set<Identity> identities) {
-		this.identities = identities;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 	
 }
