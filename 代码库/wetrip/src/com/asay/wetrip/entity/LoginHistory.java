@@ -21,6 +21,7 @@ public class LoginHistory {
 	private String loginIp;
 	@Column(name="login_time")
 	private Timestamp loginTime;
+	//登陆记录表和 用户表 多对一
 	private Users user;
 	
 	@Id

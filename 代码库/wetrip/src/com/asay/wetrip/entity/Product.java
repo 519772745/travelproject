@@ -24,6 +24,7 @@ public class Product {
 	private String description;
 	private double price;
 	private double discount;
+	//产品表和订单表 一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -5,14 +5,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.persistence.Table;
+@Entity
+@Table(name="wt_travelnote")
 public class TravelNote {
 	@Column(name="travel_id")
 	private int id;	
@@ -29,12 +31,20 @@ public class TravelNote {
 	@Column(name="travel_status")
 	private int status;
 	private int commentNum;
+	//游记表和用户详情表 多对一
 	private UserDetail userDetail;
-	private Set<UserDetail> userDetails=new HashSet<UserDetail>(0);
-	private Set<Tags> tags=new HashSet<Tags>(0);
+	//游记表和收藏表 一对多
+	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
+	//游记表和标签表  一对多
+	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
+	//游记表和评论表 一对多
 	private Set<Comment> comments=new HashSet<Comment>(0);
+	//游记表和话题表 多对一
 	private Topic topic;
+	//游记表和图片表 一对多
 	private Set<Imgs> imgs=new HashSet<Imgs>(0);
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -106,21 +116,15 @@ public class TravelNote {
 	}
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
-	}
-	@ManyToMany(mappedBy="collectNotes")
-	public Set<UserDetail> getUserDetails() {
-		return userDetails;
-	}
-	public void setUserDetails(Set<UserDetail> userDetails) {
-		this.userDetails = userDetails;
-	}
-	@OneToMany(mappedBy="travelNotes",targetEntity=Tags.class)
-	public Set<Tags> getTags() {
-		return tags;
-	}
-	public void setTags(Set<Tags> tags) {
-		this.tags = tags;
-	}
+	}	
+//	@OneToMany(mappedBy="travelNotes",targetEntity=Tags.class)
+//	@ManyToOne
+//	public Set<Tags> getTags() {
+//		return tags;
+//	}
+//	public void setTags(Set<Tags> tags) {
+//		this.tags = tags;
+//	}
 	@OneToMany(mappedBy="travelNote",targetEntity=Comment.class)
 	public Set<Comment> getComments() {
 		return comments;
@@ -142,6 +146,21 @@ public class TravelNote {
 	}
 	public void setImgs(Set<Imgs> imgs) {
 		this.imgs = imgs;
+	}
+	@OneToMany(mappedBy="travelNote",targetEntity=CollectTravel.class)
+	public Set<CollectTravel> getCollectTravels() {
+		return collectTravels;
+	}
+	public void setCollectTravels(Set<CollectTravel> collectTravels) {
+		this.collectTravels = collectTravels;
+	}
+	
+	@OneToMany(mappedBy="travelNote",targetEntity=TagTravelNote.class)
+	public Set<TagTravelNote> getTagTravelNote() {
+		return tagTravelNote;
+	}
+	public void setTagTravelNote(Set<TagTravelNote> tagTravelNote) {
+		this.tagTravelNote = tagTravelNote;
 	}
 	
 }
