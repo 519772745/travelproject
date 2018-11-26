@@ -18,6 +18,7 @@ public class OrderDetail {
 	private int productId;
 	@Column(name="order_count")
 	private int productCount;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {

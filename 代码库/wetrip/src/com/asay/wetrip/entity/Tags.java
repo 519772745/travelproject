@@ -2,7 +2,6 @@ package com.asay.wetrip.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,11 +22,12 @@ public class Tags {
 	
 	@Column(name="tag_count")
 	private int tagCount;
-	
+	//父标签和子标签 一对多
 	private Set<Tags> childTags=new HashSet<Tags>(0);	
-	
+	//子标签和父标签 一对一
 	private Tags parentTag;
-	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);	
+	//标签表和连接表 一对多
+	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -65,12 +65,14 @@ public class Tags {
 	public void setParentTag(Tags parentTag) {
 		this.parentTag = parentTag;
 	}
-	@ManyToOne	
-	public Set<TravelNote> getTravelNotes() {
-		return travelNotes;
+	@OneToMany(mappedBy="tags",targetEntity=TagTravelNote.class)
+	public Set<TagTravelNote> getTagTravelNote() {
+		return tagTravelNote;
 	}
-	public void setTravelNotes(Set<TravelNote> travelNotes) {
-		this.travelNotes = travelNotes;
+	public void setTagTravelNote(Set<TagTravelNote> tagTravelNote) {
+		this.tagTravelNote = tagTravelNote;
 	}
+
+	
 	
 }

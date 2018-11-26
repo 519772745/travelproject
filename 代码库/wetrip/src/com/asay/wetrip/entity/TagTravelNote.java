@@ -8,14 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="wt_tag")
-public class Imgs {
-	@Column(name="image_id")
+@Table(name="wt_tag_travelnote")
+public class TagTravelNote {
+	
 	private int id;
-	private String path;
-	//图片表和游记表  多对一
+	@Column(name="tag_id")
+	private int tagId;
+	@Column(name="travelnote_id")
+	private int travelNoteId;
+	//游记表和连接表 多对一
 	private TravelNote travelNote;
+	//标签表和连接表 多对一
+	private Tags tags;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -24,19 +30,35 @@ public class Imgs {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getPath() {
-		return path;
+	public int getTagId() {
+		return tagId;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setTagId(int tagId) {
+		this.tagId = tagId;
 	}
+	public int getTravelNoteId() {
+		return travelNoteId;
+	}
+	public void setTravelNoteId(int travelNoteId) {
+		this.travelNoteId = travelNoteId;
+	}
+	
 	@ManyToOne
-	@JoinColumn(name="travel_id")
+	@JoinColumn(name="travelnote_id")
 	public TravelNote getTravelNote() {
 		return travelNote;
 	}
 	public void setTravelNote(TravelNote travelNote) {
 		this.travelNote = travelNote;
 	}
+	@ManyToOne
+	@JoinColumn(name="tag_id")
+	public Tags getTags() {
+		return tags;
+	}
+	public void setTags(Tags tags) {
+		this.tags = tags;
+	}
+	
 	
 }

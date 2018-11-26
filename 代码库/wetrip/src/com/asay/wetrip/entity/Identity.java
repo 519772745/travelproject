@@ -1,15 +1,13 @@
 package com.asay.wetrip.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -20,7 +18,8 @@ public class Identity {
 	private int id;
 	@Column(name="identity_name")
 	private String identityName;
-	private Set<Privilege> privileges=new HashSet<Privilege>(0);
+	//身份表和管理员表 多对一
+	private Manager manager;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,19 +29,20 @@ public class Identity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@ManyToMany
-	@JoinTable(name="wt_manager",joinColumns=@JoinColumn(name="m_identity"),inverseJoinColumns=@JoinColumn(name="m_privilege"))
+	
 	public String getIdentityName() {
 		return identityName;
 	}
 	public void setIdentityName(String identityName) {
 		this.identityName = identityName;
 	}
-	public Set<Privilege> getPrivileges() {
-		return privileges;
+	@ManyToOne
+	@JoinColumn(name="m_identity")
+	public Manager getManager() {
+		return manager;
 	}
-	public void setPrivileges(Set<Privilege> privileges) {
-		this.privileges = privileges;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 	
 	

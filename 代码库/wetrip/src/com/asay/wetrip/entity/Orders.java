@@ -19,13 +19,14 @@ import javax.persistence.Table;
 public class Orders {
 	@Column(name="order_id")
 	private int id;
-	
 	private Timestamp ordertime;
 	@Column(name="order_address")
 	private String address;
 	@Column(name="order_status")
 	private String status;
+	//订单表和用户详情表  多对一
 	private UserDetail userDetail;
+	//订单表和产品表 一对多
 	private Set<Product> products=new HashSet<Product>(0);	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
