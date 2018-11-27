@@ -160,9 +160,9 @@ h2 i {
 	/*float: right;*/
    /* margin-top: 150px;
     margin-right: 320px;*/
-    position:relative;
+    position:absolute;
     top:400px;
-    left:-284%;
+    left:26%;
 	width:330px;
 	height:40px;
     z-index: 100;
