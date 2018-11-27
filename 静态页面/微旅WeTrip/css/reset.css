@@ -160,16 +160,16 @@ h2 i {
 	/*float: right;*/
    /* margin-top: 150px;
     margin-right: 320px;*/
-    position:absolute;
+    position:relative;
     top:400px;
-    left:26%;
-	width:24%;
+    right:740px;
+	width:330px;
 	height:40px;
     z-index: 100;
 }
 .banner .search input{outline: none;}
 .banner .search .search_box{
-	width:102%;
+	width:330px;
 	height:50px;
 	background:url(../img/search_left.png) no-repeat;
 	border:none;
@@ -183,7 +183,7 @@ h2 i {
 .banner .search .search_btn{
 	background:url(../img/search_right.png) no-repeat;
 	border:none;
-	width:8%;
+	width:27px;
 	height:27px;
 	position:relative;
     top: -43px;
