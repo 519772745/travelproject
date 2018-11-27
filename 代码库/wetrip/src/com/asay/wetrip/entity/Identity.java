@@ -18,7 +18,7 @@ public class Identity {
 	private int id;
 	@Column(name="identity_name")
 	private String identityName;
-	//身份表和管理员表 多对一
+	//韬唤琛ㄥ拰绠＄悊鍛樿〃 澶氬涓�
 	private Manager manager;
 	
 	@Id
@@ -43,8 +43,5 @@ public class Identity {
 	}
 	public void setManager(Manager manager) {
 		this.manager = manager;
-	}
-	
-	
-	
+	}	
 }

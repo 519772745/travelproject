@@ -24,9 +24,9 @@ public class Orders {
 	private String address;
 	@Column(name="order_status")
 	private String status;
-	//¶©µ¥±íºÍÓÃ»§ÏêÇé±í  ¶à¶ÔÒ»
+	//è®¢å•è¡¨å’Œç”¨æˆ·è¯¦æƒ…è¡¨  å¤šå¯¹ä¸€
 	private UserDetail userDetail;
-	//¶©µ¥±íºÍ²úÆ·±í Ò»¶Ô¶à
+	//è®¢å•è¡¨å’Œäº§å“è¡¨ ä¸€å¯¹å¤š
 	private Set<Product> products=new HashSet<Product>(0);	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

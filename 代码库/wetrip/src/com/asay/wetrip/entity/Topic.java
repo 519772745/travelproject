@@ -26,9 +26,9 @@ public class Topic {
 
 	@Column(name="user_ip")
 	private String ip;
-	//»°Ìâ±íºÍÓÎ¼Ç±í Ò»¶Ô¶à
+	//è¯é¢˜è¡¨å’Œæ¸¸è®°è¡¨ ä¸€å¯¹å¤š
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
-	//»°Ìâ±íºÍ¹ÜÀíÔ±±í ¶à¶ÔÒ»
+	//è¯é¢˜è¡¨å’Œç®¡ç†å‘˜è¡¨ å¤šå¯¹ä¸€
 	private Manager manager;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

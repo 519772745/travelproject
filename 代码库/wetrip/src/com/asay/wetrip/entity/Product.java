@@ -24,7 +24,7 @@ public class Product {
 	private String description;
 	private double price;
 	private double discount;
-	//²úÆ·±íºÍ¶©µ¥±í Ò»¶Ô¶à
+	//äº§å“è¡¨å’Œè®¢å•è¡¨ ä¸€å¯¹å¤š
 	private Set<Orders> orders=new HashSet<Orders>(0);	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

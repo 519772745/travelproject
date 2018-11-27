@@ -19,9 +19,9 @@ public class Users {
 	private String password;
 	@Column(name="user_status")
 	private String status;
-	//ÓÃ»§±íºÍÓÃ»§ÏêÇé±íÒ»¶ÔÒ»
+	//ç”¨æˆ·è¡¨å’Œç”¨æˆ·è¯¦æƒ…è¡¨ä¸€å¯¹ä¸€
 	private UserDetail userDetail;
-	//ÓÃ»§±íºÍµÇÂ½ÀúÊ·¼ÇÂ¼±í Ò»¶Ô¶à
+	//ç”¨æˆ·è¡¨å’Œç™»é™†å†å²è®°å½•è¡¨ ä¸€å¯¹å¤š
 	private Set<LoginHistory> loginHistory=new HashSet<LoginHistory>(0);
 	@Id
 	@GeneratedValue(generator="foreign")

@@ -18,9 +18,9 @@ public class TagTravelNote {
 	private int tagId;
 	@Column(name="travelnote_id")
 	private int travelNoteId;
-	//ÓÎ¼Ç±íºÍÁ¬½Ó±í ¶à¶ÔÒ»
+	//æ¸¸è®°è¡¨å’Œè¿žæŽ¥è¡¨ å¤šå¯¹ä¸€
 	private TravelNote travelNote;
-	//±êÇ©±íºÍÁ¬½Ó±í ¶à¶ÔÒ»
+	//æ ‡ç­¾è¡¨å’Œè¿žæŽ¥è¡¨ å¤šå¯¹ä¸€
 	private Tags tags;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

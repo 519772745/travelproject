@@ -30,15 +30,15 @@ public class UserDetail {
 	private int collectId;
 	@Column(name="register_time")
 	private Timestamp registerTime;
-	//ÓÃ»§ÏêÇé±íºÍÓÃ»§±íÒ»¶ÔÒ»
+	//ç”¨æˆ·è¯¦æƒ…è¡¨å’Œç”¨æˆ·è¡¨ä¸€å¯¹ä¸€
 	private Users user;
-	//ÓÃ»§ÏêÇé±íºÍÓÎ¼Ç±í Ò»¶Ô¶à
+	//ç”¨æˆ·è¯¦æƒ…è¡¨å’Œæ¸¸è®°è¡¨ ä¸€å¯¹å¤š
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
-	//ÓÃ»§ÏêÇé±íºÍÊÕ²Ø±íÒ»¶Ô¶à
+	//ç”¨æˆ·è¯¦æƒ…è¡¨å’Œæ”¶è—è¡¨ä¸€å¯¹å¤š
 	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
-	//ÓÃ»§ÏêÇé±íºÍ¶©µ¥±íÒ»¶Ô¶à
+	//ç”¨æˆ·è¯¦æƒ…è¡¨å’Œè®¢å•è¡¨ä¸€å¯¹å¤š
 	private Set<Orders> orders=new HashSet<Orders>(0);
-	//ÓÃ»§ÏêÇé±íºÍ¹ÜÀíÔ±±íÒ»¶ÔÒ»
+	//ç”¨æˆ·è¯¦æƒ…è¡¨å’Œç®¡ç†å‘˜è¡¨ä¸€å¯¹ä¸€
 	private Manager manager;
 	@Id
 	@GeneratedValue(generator="assigned")
