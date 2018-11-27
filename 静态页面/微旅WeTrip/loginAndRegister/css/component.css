@@ -90,6 +90,14 @@
 	position: absolute;
 	margin: 10px 13px;
 }
+.us_uer2{
+	width: 25px;
+	height: 25px;
+	background-image: url(../img/verification2.png);
+	/*background-position: -2px -2px;*/
+	position: absolute;
+	margin: 10px 13px;
+}
 .yan{
 	width: 25px;
 	height: 25px;

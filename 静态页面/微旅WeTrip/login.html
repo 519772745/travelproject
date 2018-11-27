@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ch" class="no-js">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-<title>微旅Wetrip-登录</title>
-<link rel="stylesheet" type="text/css" href="loginAndRegister/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="loginAndRegister/css/demo.css" />
-<!--必要样式-->
-<link rel="stylesheet" type="text/css" href="loginAndRegister/css/component.css" />
-<link rel="shortcut icon" href="loginAndRegister/img/icon.ico" type="image/x-icon">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>微旅Wetrip-登录</title>
+	<link rel="stylesheet" type="text/css" href="loginAndRegister/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="loginAndRegister/css/demo.css" />
+	<!--必要样式-->
+	<link rel="stylesheet" type="text/css" href="loginAndRegister/css/component.css" />
+	<link rel="shortcut icon" href="loginAndRegister/img/icon.ico" type="image/x-icon">
 </head>
 <!-- onload="createCode()"一开始加载的时候就生成验证码的方法-->
 <body>
@@ -34,12 +34,13 @@
 						</div>
 
 						<div class="input_outer1">
+							<span class="us_uer2"></span>
 							<div class="yan" id="searchMsg" style="display:none" ></div>
 							<input name="rand" id="text1" style="color: #FFFFFF !important; position:absolute; z-index:100;" type="text" placeholder="请输入验证码" onblur="but()" onfocus="xiaoshi3()">
 							<div id="img1">
 								<div id="yanzhengimg"></div>							
 								<a href="##" id="shuaxin" onclick="createCode()" style="font-size:14px; color:#eaeaea">刷新验证码</a>
-								</div>
+							</div>
 							<div id="yanzheng"></div>
 						</div>
 						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF"></div>
@@ -57,5 +58,5 @@
 	<script src="loginAndRegister/js/rAF.js"></script>
 	<script src="loginAndRegister/js/demo-1.js"></script>
 	<script src="loginAndRegister/js/LoginAndRegister.js"></script>
-	</body>
+</body>
 </html>
