@@ -31,36 +31,35 @@
 	<link href="editor/css/bootstrap.min.css" rel="stylesheet">
 	<link href="editor/css/banner-style.css" rel="stylesheet">
 	<link href="editor/css/vendors.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="editor/css/webuploader.css">
-
+	<link rel="stylesheet" type="text/css" href="editor/css/upload-style.css" />
 	<!--editor CSS-->
 	<link rel="stylesheet" type="text/css" href="editor/css/wangEditor.min.css">
-    <style type="text/css">
-        #editor-trigger {
-            height: 300px;
-            max-height: 500px;
-        }
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-        }
-        #zidingyi{
-        	width: 60px;
-        	height: 26px;
-        }
-        #xiaotuisong{
-        	height: 70px;
-        }
-        .si{
-        	height: 20px;
-        	width: 200px;
-        	margin-top: 25px;
-        }
-    </style>
+	<style type="text/css">
+	#editor-trigger {
+		height: 300px;
+		max-height: 500px;
+	}
+	.container {
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	#zidingyi{
+		width: 60px;
+		height: 26px;
+	}
+	#xiaotuisong{
+		height: 70px;
+	}
+	.si{
+		height: 20px;
+		width: 200px;
+		margin-top: 25px;
+	}
+</style>
 
 
-	<!-- Fix Internet Explorer ______________________________________-->
+<!-- Fix Internet Explorer ______________________________________-->
 
 <!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -150,64 +149,82 @@
 	<div class="row">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
 			<div id="xiaotuisong" style=" text-align:center;">微旅小推送</div>
-				<!--富文本框的展示-->
-				<!--编辑框的id为editor-trigger，下一级就是编辑的内容标签P和H，通过这两个可以获得编辑的内容-->
-				<div class="single-blog-post" style="margin-bottom: 15px;">
-					<div class="container">
-				        <div id="editor-trigger">
-				        	<!--input框-->
-				        </div>
-				        <!-- 上传图片 -->
-						<div id="uploader-demo">
-							<!--用来存放item-->
-							<div id="fileList" class="uploader-list"></div>
-							<div id="filePicker">选择图片</div>
-						</div>
-						<!-- 上传图片 -->
-						<!-- 详细地址 -->
-						<div>
-							<select id="cmbProvince" name="cmbProvince"></select>  
-							<select id="cmbCity" name="cmbCity"></select>  
-							<select id="cmbArea" name="cmbArea"></select>  
-							<input type="text" value="详细地址" onblur="if(this.value=''){this.value='详细地址'}" onfocus="if(this.value='详细地址'){this.value='';this.style.color='#ff0000'}">
-						</div>
-						<!-- 详细地址 -->
-						<!-- 标签 -->
-				        <div class="si">				        	
-				        	<h7 id="h7">标签:&nbsp&nbsp&nbsp&nbsp</h7>
-							<select id="city" class="select">
-							    <option value="贵阳">风景</option>
-							    <option value="六盘水">美食</option>
-							    <option value="都匀">玩耍</option>
-							    <option value="福泉">周边</option>	
-							</select>
-				        </div>
-				        <!-- 标签 -->
-				        <!-- 自定义标签 -->
-				        <div class="si">				        	
-							<h7 id="h7">自定义标签:&nbsp&nbsp&nbsp&nbsp</h7>
-							<input type="text" name="" id="zidingyi">
-						</div>
-						<!-- 自定义标签 -->
-						<!-- 权限 -->
-						<div class="si">							
-							<h7 id="quanxian">权限:&nbsp&nbsp&nbsp&nbsp</h7>
-							<select id="city" class="select">
-							    <option value="1">自己看</option>
-							    <option value="2">仅同城</option>
-							    <option value="3">全世界</option>
-							</select>
-						</div>
-						<!-- 权限 -->
+			<!--富文本框的展示-->
+			<!--编辑框的id为editor-trigger，下一级就是编辑的内容标签P和H，通过这两个可以获得编辑的内容-->
+			<div class="single-blog-post" style="margin-bottom: 15px;">
+				<div class="container">
+					<div id="editor-trigger">
+						<!--input框-->
+					</div>
+					<!-- 上传图片 -->
+					<div id="wrapper">
+						<div id="container">
+							<!--头部，相册选择和格式选择-->
 
-						<div class="si">
-							<!-- 参与话题及发表 -->
-							<input id="shi" type="checkbox" name="是" value="" checked>参加每日话题推送
-							<!--提交按钮-->
-							<input type="button" name="" value="发表">
-					    </div>					    
-					</div> <!-- /.post-meta-box -->
-				</div> <!--富文本框的展示-->			
+							<div id="uploader">
+								<div class="queueList">
+									<div id="dndArea" class="placeholder">
+										<div id="filePicker"></div>
+										<p>或将文件拖到这里</p>
+									</div>
+								</div>
+								<div class="statusBar" style="display:none;">
+									<div class="progress">
+										<span class="text">0%</span>
+										<span class="percentage"></span>
+									</div><div class="info"></div>
+									<div class="btns">
+										<div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 上传图片 -->
+					<!-- 详细地址 -->
+					<div>
+						<select id="cmbProvince" name="cmbProvince"></select>  
+						<select id="cmbCity" name="cmbCity"></select>  
+						<select id="cmbArea" name="cmbArea"></select>  
+						<input type="text" value="详细地址" onblur="if(this.value=''){this.value='详细地址'}" onfocus="if(this.value='详细地址'){this.value='';this.style.color='#ff0000'}">
+					</div>
+					<!-- 详细地址 -->
+					<!-- 标签 -->
+					<div class="si">				        	
+						<h7 id="h7">标签:&nbsp&nbsp&nbsp&nbsp</h7>
+						<select id="city" class="select">
+							<option value="贵阳">风景</option>
+							<option value="六盘水">美食</option>
+							<option value="都匀">玩耍</option>
+							<option value="福泉">周边</option>	
+						</select>
+					</div>
+					<!-- 标签 -->
+					<!-- 自定义标签 -->
+					<div class="si">				        	
+						<h7 id="h7">自定义标签:&nbsp&nbsp&nbsp&nbsp</h7>
+						<input type="text" name="" id="zidingyi">
+					</div>
+					<!-- 自定义标签 -->
+					<!-- 权限 -->
+					<div class="si">							
+						<h7 id="quanxian">权限:&nbsp&nbsp&nbsp&nbsp</h7>
+						<select id="city" class="select">
+							<option value="1">自己看</option>
+							<option value="2">仅同城</option>
+							<option value="3">全世界</option>
+						</select>
+					</div>
+					<!-- 权限 -->
+
+					<div class="si">
+						<!-- 参与话题及发表 -->
+						<input id="shi" type="checkbox" name="是" value="" checked>参加每日话题推送
+						<!--提交按钮-->
+						<input type="button" name="" value="发表">
+					</div>					    
+				</div> <!-- /.post-meta-box -->
+			</div> <!--富文本框的展示-->			
 		</div> <!-- /.col- -->
 
 		<!-- ======================== Theme Sidebar =============================== -->
@@ -262,7 +279,6 @@
 <!-- COMMON SCRIPTS -->
 <script src="editor/js/jquery-2.2.4.min.js"></script>
 <script src="editor/js/common_scripts.js"></script>
-<script type="text/javascript" src="editor/js/webuploader.js"></script>
 <script src="editor/js/main.js"></script>
 
 
@@ -282,9 +298,9 @@
 </script>
 
 <!--editor script-->
-    <script type="text/javascript" src="editor/js/wangEditor.js"></script>
-    <!--<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>-->
-    <script type="text/javascript">
+<script type="text/javascript" src="editor/js/wangEditor.js"></script>
+<!--<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>-->
+<script type="text/javascript">
         // 阻止输出log
         // wangEditor.config.printLog = false;
         
@@ -329,7 +345,7 @@
 	        'undo',//撤销
 	        // 'redo',//重复
 	        // 'fullscreen'//全屏
-         ];
+	        ];
 
         // onchange 事件
         // editor.onchange = function () {
@@ -359,22 +375,22 @@
         // };
         editor.create();
     </script>
-<!--收藏js-->
+    <!--收藏js-->
 
-<!-- 详细地址js -->
-<script type="text/javascript" src="editor/js/address.js"></script>
-<script type="text/javascript">  
-addressInit('cmbProvince', 'cmbCity', 'cmbArea');  
-</script> 
-  
-
+    <!-- 详细地址js -->
+    <script type="text/javascript" src="editor/js/address.js"></script>
+    <script type="text/javascript">  
+    	addressInit('cmbProvince', 'cmbCity', 'cmbArea');  
+    </script> 
 
 
-<!-- INPUT QUANTITY  -->
 
 
-<!-- INSTAGRAM FEED  -->
-<!-- 这个地方报错我就给注释掉了 -->
+    <!-- INPUT QUANTITY  -->
+
+
+    <!-- INSTAGRAM FEED  -->
+    <!-- 这个地方报错我就给注释掉了 -->
 <!-- <script>
 	$(window).on('load', function() {
 		"use strict";
@@ -394,119 +410,10 @@ addressInit('cmbProvince', 'cmbCity', 'cmbArea');
 	});
 </script> -->
 
-	  <!--这个是图片上传的JS-->
-	 <script type="text/javascript">
-	 var uploader = WebUploader.create({
-
-    // 选完文件后，是否自动上传。
-    auto: true,
-
-    // swf文件路径
-    swf: 'editor/js/Uploader.swf',
-
-    // 文件接收服务端。
-    server: 'http://webuploader.duapp.com/server/fileupload.php',
-
-    // 选择文件的按钮。可选。
-    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-    pick: '#filePicker',
-
-    //最大上传数量
-    fileNumLimit:9,
-    //最大上传的大小
-    fileSingleSizeLimit: 1024*1024,
-    //不压缩
-    resize: false,
-
-    // 只允许选择图片文件。
-    accept: {
-    	title: 'Images',
-    	extensions: 'gif,jpg,jpeg,bmp,png',
-    	mimeTypes: 'image/*'
-   	 }
-	});
-	uploader.on( 'fileQueued', function( file ) {
-	    var $li = $(
-	    	'<div id="' + file.id + '" class="file-item thumbnail">' +
-	    	'<img class="upload-img">' +
-	    	'<div class="info">' + file.name + '</div>' +
-	    	'</div>'
-	    	),
-	    $img = $li.find('img');
-
-
-   			 // $list为容器jQuery实例
-    		var  $list =$("#fileList");
-    		$list.append( $li );
-
-		    // 创建缩略图
-		    // 如果为非图片文件，可以不用调用此方法。
-		    // thumbnailWidth x thumbnailHeight 为 100 x 100 （默认上传的大小
-		    var thumbnailWidth=100;
-   			var thumbnailHeight=100;
-
-    	uploader.makeThumb( file, function( error, src ) {
-    	if ( error ) {
-    		$img.replaceWith('<span>不能预览</span>');
-    		return;
-    	}
-
-    		$img.attr( 'src', src );
-    	}, thumbnailWidth, thumbnailHeight );
-	});
-
-	uploader.on( 'uploadProgress', function( file, percentage ) {
-	    var $li = $( '#'+file.id ),
-	    $percent = $li.find('.progress span');
-
-    	// 避免重复创建
-    	if ( !$percent.length ) {
-    		$percent = $('<p class="progress"><span></span></p>')
-    		.appendTo( $li )
-    		.find('span');
-   		}
-
-    	$percent.css( 'width', percentage * 100 + '%' );
-	});
-
-	// 文件上传成功，给item添加成功class, 用样式标记上传成功。
-	uploader.on( 'uploadSuccess', function( file ) {
-		$( '#'+file.id ).addClass('upload-state-done');
-	});
-
-	// 文件上传失败，显示上传出错。
-	uploader.on( 'uploadError', function( file ) {
-		var $li = $( '#'+file.id ),
-		$error = $li.find('div.error');
-
-	    // 避免重复创建
-	    if ( !$error.length ) {
-	    	$error = $('<div class="error"></div>').appendTo( $li );
-	    }
-	    $error.text('上传失败');
-	});
-
-	// 完成上传完了，成功或者失败，先删除进度条。
-	uploader.on( 'uploadComplete', function( file ) {
-		$( '#'+file.id ).find('.progress').remove();
-	});
-
-	//上传出问题时候的报错
-	uploader.on("error",function (type){ 
-         if(type == "F_DUPLICATE"){
-              alert("请不要重复选择文件！");
-         }
-         else if(type=="F_EXCEED_SIZE"){
-         	alert("图片大小不能超过1M！");
-         }
-         else if(type=="Q_EXCEED_NUM_LIMIT"){
-         	alert("图片不能超过9张！");
-         }
-         else{
-         	alert("所传文件格式必须为 .gif,jpg,jpeg,bmp,png 格式！");
-         }
-     });
-</script>
+<!--这个是图片上传的JS-->
+<script type="text/javascript" src="editor/js/webuploader.js"></script>
+<script type="text/javascript" src="editor/js/md5.js"></script>
+<script type="text/javascript" src="editor/js/upload.js"></script>
 <!-- 这是上传图片的JS-->
 
 <!-- Theme js -->
