@@ -224,8 +224,9 @@
                     webkit = ua.match( /WebKit\/([\d.]+)/ ),
                     chrome = ua.match( /Chrome\/([\d.]+)/ ) ||
                         ua.match( /CriOS\/([\d.]+)/ ),
-    
-                    ie = ua.match( /MSIE\s([\d.]+)/ ),
+                    
+                    ie = ua.match( /MSIE\s([\d.]+)/ )||
+                        ua.match( /(?:trident)(?:.*rv:([\w.]+))?/i ),
                     firefox = ua.match( /Firefox\/([\d.]+)/ ),
                     safari = ua.match( /Safari\/([\d.]+)/ ),
                     opera = ua.match( /OPR\/([\d.]+)/ );
@@ -428,6 +429,7 @@
     });
 
     /**
+    * 事件处理类，可以独立使用，也可以扩展给对象使用。
      * @fileOverview Mediator
      */
     define( 'mediator', [
@@ -682,19 +684,24 @@
             stop: 'stop-upload',
             getFile: 'get-file',
             getFiles: 'get-files',
-            // addFile: 'add-file',
-            // addFiles: 'add-file',
+            addFile: 'add-file',
+            addFiles: 'add-file',
+            sort: 'sort-files',
             removeFile: 'remove-file',
+            cancelFile: 'cancel-file',
             skipFile: 'skip-file',
             retry: 'retry',
             isInProgress: 'is-in-progress',
             makeThumb: 'make-thumb',
+            md5File: 'md5-file',
             getDimension: 'get-dimension',
             addButton: 'add-btn',
+            predictRuntimeType: 'predict-runtime-type',
             getRuntimeType: 'get-runtime-type',
             refresh: 'refresh',
             disable: 'disable',
-            enable: 'enable'
+            enable: 'enable',
+            reset: 'reset'
         }, function( fn, command ) {
             Uploader.prototype[ fn ] = function() {
                 return this.request( command, arguments );
@@ -5370,6 +5377,8 @@
             uploader.on( 'fileQueued', function( file ) {
                 if ( file.size > max ) {
                     file.setStatus( WUFile.Status.INVALID, 'exceed_size' );
+                    this.trigger( 'error', 'F_EXCEED_SIZE', max );
+                    return false;
                 }
             });
         });
@@ -5409,6 +5418,7 @@
     
                 // 已经重复了
                 if ( mapping[ hash ] ) {
+                    this.trigger( 'error', 'F_DUPLICATE', file );
                     return false;
                 }
             });
@@ -5481,3 +5491,5 @@
     })( internalAmd.modules );
     
 })( this );
+
+//这是自己加的部分
