@@ -21,7 +21,7 @@ public class LoginHistory {
 	private String loginIp;
 	@Column(name="login_time")
 	private Timestamp loginTime;
-	//µÇÂ½¼ÇÂ¼±íºÍ ÓÃ»§±í ¶à¶ÔÒ»
+	//ç™»é™†è®°å½•è¡¨å’Œ ç”¨æˆ·è¡¨ å¤šå¯¹ä¸€
 	private Users user;
 	
 	@Id

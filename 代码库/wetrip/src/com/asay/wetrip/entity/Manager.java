@@ -23,13 +23,13 @@ public class Manager {
 	private int identity;
 	@Column(name="m_privilege")
 	private int privilege;
-	//����Ա�����û������ һ��һ
+	//管理员表和用户详情表 一对一
 	private UserDetail userDetail;
-	//����Ա���ͻ���� һ�Զ�
+	//管理员表和话题表 一对多
 	private Set<Topic> topics=new HashSet<Topic>(0);
-	//����Ա�������ݱ�  һ�Զ�
+	//管理员表和身份表  一对多
 	private Set<Identity> identities=new HashSet<Identity>(0);
-	//����Ա����Ȩ���� һ�Զ�
+	//管理员表和权利表 一对多
 	private Set<Privilege> privileges=new HashSet<Privilege>(0);
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -14,7 +14,7 @@ public class Imgs {
 	@Column(name="image_id")
 	private int id;
 	private String path;
-	//Í¼Æ¬±íºÍÓÎ¼Ç±í  ¶à¶ÔÒ»
+	//å›¾ç‰‡è¡¨å’Œæ¸¸è®°è¡¨ å¤šå¯¹ä¸€
 	private TravelNote travelNote;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

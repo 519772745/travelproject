@@ -23,11 +23,11 @@ public class Comment {
 	private Timestamp commentTime;
 	@Column(name="comment_content")
 	private String commentContent;	
-	//ÆÀÂÛ±íºÍÓÎ¼Ç±í ¶à¶ÔÒ»
+	//è¯„è®ºè¡¨å’Œæ¸¸è®°è¡¨ å¤šå¯¹ä¸€
 	private TravelNote travelNote;
-	//¸¸ÆÀÂÛºÍ×ÓÆÀÂÛ Ò»¶Ô¶à
+	//çˆ¶è¯„è®ºå’Œå­è¯„è®º ä¸€å¯¹å¤š
 	private Set<Comment> childComments=new HashSet<Comment>(0);	
-	//×ÓÆÀÂÛºÍ¸¸ÆÀÂÛ ¶à¶ÔÒ»
+	//å­è¯„è®ºå’Œçˆ¶è¯„è®º å¤šå¯¹ä¸€
 	private Comment parentComment;
 	
 	@Id

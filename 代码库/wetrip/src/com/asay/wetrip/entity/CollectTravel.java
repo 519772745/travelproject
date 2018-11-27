@@ -19,9 +19,9 @@ public class CollectTravel {
 	private String status;
 	@Column(name="collect_time")
 	private Timestamp collectTime;
-	//ÊÕ²Ø±íºÍÓÎ¼Ç±í ¶à¶ÔÒ»
+	//æ”¶è—è¡¨å’Œæ¸¸è®°è¡¨ å¤šå¯¹ä¸€
 	private TravelNote travelNote;
-	//ÊÕ²Ø±íºÍÓÃ»§ÏêÇé±í ¶à¶ÔÒ»
+	//æ”¶è—è¡¨å’Œç”¨æˆ·è¯¦æƒ…è¡¨ å¤šå¯¹ä¸€
 	private UserDetail userDetail;
 	
 	@Id

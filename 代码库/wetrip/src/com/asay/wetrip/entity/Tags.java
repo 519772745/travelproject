@@ -22,11 +22,11 @@ public class Tags {
 	
 	@Column(name="tag_count")
 	private int tagCount;
-	//¸¸±êÇ©ºÍ×Ó±êÇ© Ò»¶Ô¶à
+	//çˆ¶æ ‡ç­¾å’Œå­æ ‡ç­¾ ä¸€å¯¹å¤š
 	private Set<Tags> childTags=new HashSet<Tags>(0);	
-	//×Ó±êÇ©ºÍ¸¸±êÇ© Ò»¶ÔÒ»
+	//å­æ ‡ç­¾å’Œçˆ¶æ ‡ç­¾ ä¸€å¯¹ä¸€
 	private Tags parentTag;
-	//±êÇ©±íºÍÁ¬½Ó±í Ò»¶Ô¶à
+	//æ ‡ç­¾è¡¨å’Œè¿æ¥è¡¨ ä¸€å¯¹å¤š
 	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
 	
 	@Id

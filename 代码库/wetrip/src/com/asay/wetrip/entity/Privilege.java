@@ -16,7 +16,7 @@ public class Privilege {
 	private int id;
 	@Column(name=" privilege_name")
 	private String privilegeName;
-	//权限表和管理员表  一对一
+	//鏉冮檺琛ㄥ拰绠＄悊鍛樿〃  涓�瀵逛竴
 	private Manager manager;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

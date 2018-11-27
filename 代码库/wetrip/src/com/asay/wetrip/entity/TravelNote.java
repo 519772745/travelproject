@@ -31,17 +31,17 @@ public class TravelNote {
 	@Column(name="travel_status")
 	private int status;
 	private int commentNum;
-	//ÓÎ¼Ç±íºÍÓÃ»§ÏêÇé±í ¶à¶ÔÒ»
+	//æ¸¸è®°è¡¨å’Œç”¨æˆ·è¯¦æƒ…è¡¨ å¤šå¯¹ä¸€
 	private UserDetail userDetail;
-	//ÓÎ¼Ç±íºÍÊÕ²Ø±í Ò»¶Ô¶à
+	//æ¸¸è®°è¡¨å’Œæ”¶è—è¡¨ ä¸€å¯¹å¤š
 	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
-	//ÓÎ¼Ç±íºÍ±êÇ©±í  Ò»¶Ô¶à
+	//æ¸¸è®°è¡¨å’Œæ ‡ç­¾è¡¨  ä¸€å¯¹å¤š
 	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
-	//ÓÎ¼Ç±íºÍÆÀÂÛ±í Ò»¶Ô¶à
+	//æ¸¸è®°è¡¨å’Œè¯„è®ºè¡¨ ä¸€å¯¹å¤š
 	private Set<Comment> comments=new HashSet<Comment>(0);
-	//ÓÎ¼Ç±íºÍ»°Ìâ±í ¶à¶ÔÒ»
+	//æ¸¸è®°è¡¨å’Œè¯é¢˜è¡¨ å¤šå¯¹ä¸€
 	private Topic topic;
-	//ÓÎ¼Ç±íºÍÍ¼Æ¬±í Ò»¶Ô¶à
+	//æ¸¸è®°è¡¨å’Œå›¾ç‰‡è¡¨ ä¸€å¯¹å¤š
 	private Set<Imgs> imgs=new HashSet<Imgs>(0);
 	
 	
