@@ -163,13 +163,13 @@ h2 i {
     position:absolute;
     top:400px;
     left:26%;
-	width:330px;
+	width:24%;
 	height:40px;
     z-index: 100;
 }
 .banner .search input{outline: none;}
 .banner .search .search_box{
-	width:330px;
+	width:102%;
 	height:50px;
 	background:url(../img/search_left.png) no-repeat;
 	border:none;
@@ -183,7 +183,7 @@ h2 i {
 .banner .search .search_btn{
 	background:url(../img/search_right.png) no-repeat;
 	border:none;
-	width:27px;
+	width:8%;
 	height:27px;
 	position:relative;
     top: -43px;
