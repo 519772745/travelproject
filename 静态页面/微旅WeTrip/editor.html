@@ -13,14 +13,9 @@
 	<meta name="msapplication-navbutton-color" content="#2c2c2c">
 	<!-- iOS Safari -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
-
 	<title>微旅WeTrip</title>
+	<link href="editor/css/main.css" rel="stylesheet">
 	<link rel="shortcut icon" href="editor/images/icon.ico" type="image/x-icon">
-
-
-
-
-
 	<!-- Main style sheet -->
 	<link rel="stylesheet" type="text/css" href="editor/css/style.css">
 	<!-- responsive style sheet -->
@@ -31,8 +26,7 @@
 	<link href="editor/css/bootstrap.min.css" rel="stylesheet">
 	<link href="editor/css/banner-style.css" rel="stylesheet">
 	<link href="editor/css/vendors.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="editor/css/webuploader.css">
-
+	<link rel="stylesheet" type="text/css" href="editor/css/upload-style.css" />
 	<!--editor CSS-->
 	<link rel="stylesheet" type="text/css" href="editor/css/wangEditor.min.css">
 	<style type="text/css">
@@ -57,22 +51,23 @@
 			width: 200px;
 			margin-top: 25px;
 		}
+		#show{
+			height: 200px;
+			width: 380px;
+			position: relative;
+			bottom: 10px;	
+			margin-bottom: 10px;
+		}
+		#prompt{
+			position: relative;
+			bottom: 27px;
+			left: 80px;
+			z-index: 1;
+		}
+
 	</style>
-
-
-	<!-- Fix Internet Explorer ______________________________________-->
-
-<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="vendor/html5shiv.js"></script>
-	<script src="vendor/respond.js"></script>
-	<![endif]-->
-
-
 </head>
-
 <body>
-
 	<div class="main-page-wrapper">
 	<!-- 
 	=============================================
@@ -80,7 +75,6 @@
 	============================================== 
 -->
 <header class="header menu_fixed">
-
 	<div id="logo">
 		<a href="index.html">
 			<img src="editor/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
@@ -102,7 +96,6 @@
 			
 
 		</ul>			
-		
 		<!-- /top_menu -->
 		<a href="#menu" class="btn_mobile">
 			<div class="hamburger hamburger--spin" id="hamburger">
@@ -134,26 +127,63 @@
 					文章展示页
 	============================================== 
 -->
-<div class="container" style="margin-top: 110px;">
+<div class="container" style="margin-top: 130px;">
 	<div class="row">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
-			<div id="xiaotuisong" style=" text-align:center;">微旅小推送</div>
+			<div id="xiaotuisong" style=" text-align:center;">微旅WeTrip</div>
 			<!--富文本框的展示-->
 			<!--编辑框的id为editor-trigger，下一级就是编辑的内容标签P和H，通过这两个可以获得编辑的内容-->
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
-					<div id="editor-trigger">
-						<!--input框-->
-					</div>
+					<div id="container3">
+						<img id="pic" src="editor/images/pic.png" onclick="openDialog(event)">
+						<div id="editor-trigger">
+							<!--input框-->
+							
+						</div>
+					</div>					
 					<!-- 上传图片 -->
-					<div id="uploader-demo">
-						<!--用来存放item-->
-						<div id="fileList" class="uploader-list"></div>
-						<div id="filePicker">选择图片</div>
+					<div id="dialog" style="display:none">	
+						<div id="wrapper">
+							<div id="container">
+								<!--头部，相册选择和格式选择-->
+
+								<div id="uploader">
+									<div class="queueList">
+										<div id="dndArea" class="placeholder">
+											<div id="filePicker"></div>
+											<p>或将文件拖到这里</p>
+										</div>
+									</div>
+									<div class="statusBar" style="display:none;">
+										<div class="progress">
+											<span class="text">0%</span>
+											<span class="percentage"></span>
+										</div><div class="info"></div>
+										<div class="btns">
+											<div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- 上传图片 -->
 					<!-- 详细地址 -->
-					<div>
+					<div id="map">
+						<!-- 地址的按钮 -->
+					</div>
+					<div id="prompt"><h6>请选择地址</h6></div>
+					<div id="show">
+						<img id="imgshow" src="">
+					</div>
+					<!-- <div class="si">
+						<input type="button" name="地图" onclick="getmap()">
+						<div id="mapshow" style="display: hidden">
+							
+						</div>
+					</div> -->
+					<div id="mar">
 						<select id="cmbProvince" name="cmbProvince"></select>  
 						<select id="cmbCity" name="cmbCity"></select>  
 						<select id="cmbArea" name="cmbArea"></select>  
@@ -226,20 +256,17 @@
 	=====================================================
 -->
 <!--footer-->
-	<footer class="theme-footer">
-		<div class="container">
-			<div class="logo"><a href="index.html"><img src="editor/images/footer130.png" alt=""></a></div>		
-			<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
-		</div> <!-- /.container -->
-	</footer> <!-- /.theme-footer -->
-	<!--/footer-->
+<footer class="theme-footer">
+	<div class="container">
+		<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
+		<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
+	</div> <!-- /.container -->
+</footer> <!-- /.theme-footer -->
+<!--/footer-->
 
 <!-- Scroll Top Button -->
-<!-- <button class="scroll-top tran3s">
-	
-</button>
+<div id="toTop"></div><!-- 返回到顶端 -->
 
- -->
 
 <!-- Optional JavaScript _____________________________  -->
 
@@ -249,7 +276,6 @@
 <!-- COMMON SCRIPTS -->
 <script src="editor/js/jquery-2.2.4.min.js"></script>
 <script src="editor/js/common_scripts.js"></script>
-<script type="text/javascript" src="editor/js/webuploader.js"></script>
 <script src="editor/js/main.js"></script>
 
 
@@ -266,6 +292,26 @@
 	}, function(start, end, label) {
 		console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 	});	
+	//点击出现div，移开消失
+	window.onload = function(){
+		document.onclick = function(e){
+			e = e || window.event;
+			var dom =  e.srcElement|| e.target;
+			if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+				document.getElementById("dialog").style.display = "none";
+			}
+		};
+	};
+	function openDialog(e) {
+		document.getElementById("dialog").style.display = "block";
+		e = e||window.event;
+		if(+'\v1') {
+			e.stopPropagation();
+		} else  {
+			e.cancelBubble = true;
+		}
+
+	}
 </script>
 
 <!--editor script-->
@@ -274,8 +320,9 @@
 <script type="text/javascript">
         // 阻止输出log
         // wangEditor.config.printLog = false;
-        
+        var map = new wangEditor('map');
         var editor = new wangEditor('editor-trigger');
+        
 
         // 上传图片
         editor.config.uploadImgUrl = '/upload';
@@ -285,6 +332,7 @@
 
         // 第三方上传
         // editor.config.customUpload = true;
+        map.config.menus=['location'];
         
         editor.config.menus = [
 	        'bold',//加粗
@@ -307,11 +355,11 @@
 	        // 'link',//链接
 	        // 'unlink',//取消链接
 	        // 'table',//插入表格
-	        'emotion',//表情
+	        // 'emotion',//表情
 	        // '|',
 	        // 'img',//图片
 	        // 'video',//视频
-	        'location',//地址
+	        // 'location',//地址
 	        // 'insertcode',//插入代码
 	        'undo',//撤销
 	        // 'redo',//重复
@@ -344,6 +392,7 @@
         //     normal: '<button style="font-size:20px; margin-top:5px;">I</button>',
         //     selected: '<button style="font-size:20px; margin-top:5px;"><i>I</i></button>'
         // };
+        map.create();
         editor.create();
     </script>
     <!--收藏js-->
@@ -382,119 +431,18 @@
 </script> -->
 
 <!--这个是图片上传的JS-->
-<script type="text/javascript">
-	var uploader = WebUploader.create({
-
-    // 选完文件后，是否自动上传。
-    auto: true,
-
-    // swf文件路径
-    swf: 'editor/js/Uploader.swf',
-
-    // 文件接收服务端。
-    server: 'http://webuploader.duapp.com/server/fileupload.php',
-
-    // 选择文件的按钮。可选。
-    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-    pick: '#filePicker',
-
-    //最大上传数量
-    fileNumLimit:9,
-    //最大上传的大小
-    fileSingleSizeLimit: 1024*1024,
-    //不压缩
-    resize: false,
-
-    // 只允许选择图片文件。
-    accept: {
-    	title: 'Images',
-    	extensions: 'gif,jpg,jpeg,bmp,png',
-    	mimeTypes: 'image/*'
-    }
-});
-	uploader.on( 'fileQueued', function( file ) {
-		var $li = $(
-			'<div id="' + file.id + '" class="file-item thumbnail">' +
-			'<img class="upload-img">' +
-			'<div class="info">' + file.name + '</div>' +
-			'</div>'
-			),
-		$img = $li.find('img');
-
-
-   			 // $list为容器jQuery实例
-   			 var  $list =$("#fileList");
-   			 $list.append( $li );
-
-		    // 创建缩略图
-		    // 如果为非图片文件，可以不用调用此方法。
-		    // thumbnailWidth x thumbnailHeight 为 100 x 100 （默认上传的大小
-		    var thumbnailWidth=100;
-		    var thumbnailHeight=100;
-
-		    uploader.makeThumb( file, function( error, src ) {
-		    	if ( error ) {
-		    		$img.replaceWith('<span>不能预览</span>');
-		    		return;
-		    	}
-
-		    	$img.attr( 'src', src );
-		    }, thumbnailWidth, thumbnailHeight );
-		});
-
-	uploader.on( 'uploadProgress', function( file, percentage ) {
-		var $li = $( '#'+file.id ),
-		$percent = $li.find('.progress span');
-
-    	// 避免重复创建
-    	if ( !$percent.length ) {
-    		$percent = $('<p class="progress"><span></span></p>')
-    		.appendTo( $li )
-    		.find('span');
-    	}
-
-    	$percent.css( 'width', percentage * 100 + '%' );
-    });
-
-	// 文件上传成功，给item添加成功class, 用样式标记上传成功。
-	uploader.on( 'uploadSuccess', function( file ) {
-		$( '#'+file.id ).addClass('upload-state-done');
-	});
-
-	// 文件上传失败，显示上传出错。
-	uploader.on( 'uploadError', function( file ) {
-		var $li = $( '#'+file.id ),
-		$error = $li.find('div.error');
-
-	    // 避免重复创建
-	    if ( !$error.length ) {
-	    	$error = $('<div class="error"></div>').appendTo( $li );
-	    }
-	    $error.text('上传失败');
-	});
-
-	// 完成上传完了，成功或者失败，先删除进度条。
-	uploader.on( 'uploadComplete', function( file ) {
-		$( '#'+file.id ).find('.progress').remove();
-	});
-
-	//上传出问题时候的报错
-	uploader.on("error",function (type){ 
-		if(type == "F_DUPLICATE"){
-			alert("请不要重复选择文件！");
-		}
-		else if(type=="F_EXCEED_SIZE"){
-			alert("图片大小不能超过1M！");
-		}
-		else if(type=="Q_EXCEED_NUM_LIMIT"){
-			alert("图片不能超过9张！");
-		}
-		else{
-			alert("所传文件格式必须为 .gif,jpg,jpeg,bmp,png 格式！");
-		}
-	});
-</script>
+<script type="text/javascript" src="editor/js/webuploader.js"></script>
+<script type="text/javascript" src="editor/js/md5.js"></script>
+<script type="text/javascript" src="editor/js/upload.js"></script>
 <!-- 这是上传图片的JS-->
+
+<!-- 地图编辑框隐藏的部分js -->
+<script type="text/javascript">
+// 一开始是都隐藏的，当点击提交时show模块变为black  img的src变为指定的路经
+	document.getElementById("map").style.display = "none"; 
+	document.getElementById("show").style.display = "none"; 
+	// document.getElementById("show").innerHTML=imgHtml;
+</script>
 
 <!-- Theme js -->
 <script src="editor/js/theme.js"></script>

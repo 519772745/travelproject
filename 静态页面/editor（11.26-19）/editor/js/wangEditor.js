@@ -5055,6 +5055,7 @@ _e(function (E, $) {
             }
 
             var imgHtml = '<img style="max-width:100%;" src="' + url + '"/>';
+            
             editor.command(e, 'insertHtml', imgHtml, callback);
         });
     }
@@ -5474,7 +5475,7 @@ _e(function (E, $) {
             menu.dropPanel.hide();
         });
 
-        // 『确定』按钮事件
+        // 『确定』按钮事件  提交地图
         $btnSubmit.click(function (e) {
             e.preventDefault();
             var map = mapData.map,
@@ -5497,7 +5498,7 @@ _e(function (E, $) {
 
             if(isDynamic){
                 //动态地址
-                src = 'http://ueditor.baidu.com/ueditor/dialogs/map/show.html#';
+                src = 'https://map.baidu.com/';
             }else{
                 //静态地址
                 src = 'http://api.map.baidu.com/staticimage?';
@@ -5532,10 +5533,14 @@ _e(function (E, $) {
                 //插入iframe
                 iframe = '<iframe class="ueditor_baidumap" src="{src}" frameborder="0" width="' + sizeWidth + '" height="' + sizeHeight + '"></iframe>';
                 iframe = iframe.replace('{src}', src);
+                document.getElementById("show").style.display = "block"; 
+                document.getElementById("imgshow").src=src;
                 editor.command(e, 'insertHtml', iframe, callback);
             }else{
                 //插入图片
-                editor.command(e, 'insertHtml', '<img style="max-width:100%;" src="' + src + '"/>', callback);
+                document.getElementById("show").style.display = "block"; 
+                document.getElementById("imgshow").src=src;
+                editor.command(e, 'insertHtml', '<img style="max-width:100%;max-height:200px;" src="' + src + '"/>', callback);
             }
         });
 
