@@ -59,6 +59,11 @@
 	#mar{
 		margin-top: 20px;
 	}
+	#show{
+		height: 200px;
+		width: 380px;	
+		margin-top: 10px;
+	}
 </style>
 
 
@@ -157,6 +162,7 @@
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
 					<div id="editor-trigger">
+						<blockquote><h4>请输入标题</h4></blockquote>
 						<!--input框-->
 					</div>					
 					<!-- 上传图片 -->
@@ -187,6 +193,10 @@
 					<!-- 详细地址 -->
 					<div id="map">
 						<!-- 地址的按钮 -->
+
+					</div>
+					<div id="show">
+						<img id="imgshow" src="">
 					</div>
 					<!-- <div class="si">
 						<input type="button" name="地图" onclick="getmap()">
@@ -328,6 +338,7 @@
         // 第三方上传
         // editor.config.customUpload = true;
         map.config.menus=['location'];
+
         
         editor.config.menus = [
 	        'bold',//加粗
@@ -433,6 +444,14 @@
 
 <!-- Theme js -->
 <script src="editor/js/theme.js"></script>
+
+<!-- 地图编辑框隐藏的部分js -->
+<script type="text/javascript">
+// 一开始是都隐藏的，当点击提交时show模块变为black  img的src变为指定的路经
+	document.getElementById("map").style.display = "none"; 
+	document.getElementById("show").style.display = "none"; 
+	// document.getElementById("show").innerHTML=imgHtml;
+</script>
 </div> <!-- /.main-page-wrapper -->
 </body>
 </html>
