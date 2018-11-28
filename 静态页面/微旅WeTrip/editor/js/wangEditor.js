@@ -3029,27 +3029,28 @@ _e(function (E, $) {
     // 颜色配置
     E.config.colors = {
         // 'value': 'title'
-        '#880000': '暗红色',
-        '#800080': '紫色',
-        '#ff0000': '红色',
-        '#ff00ff': '鲜粉色',
-        '#000080': '深蓝色',
-        '#0000ff': '蓝色',
-        '#00ffff': '湖蓝色',
-        '#008080': '蓝绿色',
-        '#008000': '绿色',
-        '#808000': '橄榄色',
-        '#00ff00': '浅绿色',
-        '#ffcc00': '橙黄色',
-        '#808080': '灰色',
-        '#c0c0c0': '银色',
+        '#76a68d': '微旅色',
         '#000000': '黑色',
-        '#ffffff': '白色'
+        '#808080': '灰色',
+        '#ffffff': '白色',
+        '#880000': '棕色',
+        '#ff0000': '红色',
+        '#ff6666': '粉红色',
+        '#841f84': '紫色',
+        '#1d1d88': '深蓝色',
+        '#4242eb': '蓝色',
+        '#48bdd2': '湖蓝色',
+        '#3d8989': '蓝绿色',
+        '#ea661d': '橙色',
+        '#808000': '橄榄色',
+        '#efcf1f': '橙黄色', 
+        '#c0c0c0': '银色'
+        
     };
 
     // 字体
     E.config.familys = [
-        '宋体', '黑体', '楷体', '微软雅黑',
+        '宋体', '黑体', '楷体', '微软雅黑','幼圆',
         'Arial', 'Verdana', 'Georgia',
         'Times New Roman', 'Microsoft JhengHei',
         'Trebuchet MS', 'Courier New', 'Impact', 'Comic Sans MS'
@@ -4904,6 +4905,7 @@ _e(function (E, $) {
 
 });
 // img 菜单
+
 _e(function (E, $) {
 
     E.createMenu(function (check) {
@@ -4928,23 +4930,22 @@ _e(function (E, $) {
         $panelContent.append($tabContainer).append($contentContainer);
 
         // tab
-        var $uploadTab = $('<a href="#">上传图片</a>');
-        var $linkTab = $('<a href="#">网络图片</a>');
-        $tabContainer.append($uploadTab).append($linkTab);
+        var $uploadTab = $('<a href="##" onclick="openDialog(event)">上传图片</a>');
+        $tabContainer.append($uploadTab);
 
-        // 上传图片 content
-        var $uploadContent = $('<div class="content"></div>');
-        $contentContainer.append($uploadContent);
+        // // 上传图片 content
+        // var $uploadContent = $('<div class="content"></div>');
+        // $contentContainer.append($uploadContent);
 
-        // 网络图片 content
-        var $linkContent = $('<div class="content"></div>');
-        $contentContainer.append($linkContent);
-        linkContentHandler(editor, menu, $linkContent);
+        // // 网络图片 content
+        // var $linkContent = $('<div class="content"></div>');
+        // $contentContainer.append($linkContent);
+        // linkContentHandler(editor, menu, $linkContent);
 
         // 添加panel
         menu.dropPanel = new E.DropPanel(editor, menu, {
             $content: $panelContent,
-            width: 400,
+            width: 100,
             onRender: function () {
                 // 渲染后的回调事件，用于执行自定义上传的init
                 // 因为渲染之后，上传面板的dom才会被渲染到页面，才能让第三方空间获取到
@@ -4957,109 +4958,133 @@ _e(function (E, $) {
         editor.menus[menuId] = menu;
 
         // tab 切换事件
-        function tabToggle() {
-            $uploadTab.click(function (e) {
-                $tabContainer.children().removeClass('selected');
-                $contentContainer.children().removeClass('selected');
-                $uploadContent.addClass('selected');
-                $uploadTab.addClass('selected');
-                e.preventDefault();
-            });
-            $linkTab.click(function (e) {
-                $tabContainer.children().removeClass('selected');
-                $contentContainer.children().removeClass('selected');
-                $linkContent.addClass('selected');
-                $linkTab.addClass('selected');
-                e.preventDefault();
+        // function tabToggle() {
+        //     $uploadTab.click(function (e) {
+        //         $tabContainer.children().removeClass('selected');
+        //         $contentContainer.children().removeClass('selected');
+        //         $uploadContent.addClass('selected');
+        //         $uploadTab.addClass('selected');
+        //         e.preventDefault();
+        //     });
+        //     $linkTab.click(function (e) {
+        //         $tabContainer.children().removeClass('selected');
+        //         $contentContainer.children().removeClass('selected');
+        //         $linkContent.addClass('selected');
+        //         $linkTab.addClass('selected');
+        //         e.preventDefault();
 
-                // focus input
-                if (E.placeholder) {
-                    $linkContent.find('input[type=text]').focus();
-                }
-            });
+        //         // focus input
+        //         if (E.placeholder) {
+        //             $linkContent.find('input[type=text]').focus();
+        //         }
+        //     });
 
-            // 默认情况
-            // $uploadTab.addClass('selected');
-            // $uploadContent.addClass('selected');
-            $uploadTab.click();
-        }
+        //     // 默认情况
+        //     // $uploadTab.addClass('selected');
+        //     // $uploadContent.addClass('selected');
+        //     $uploadTab.click();
+        // }
 
         // 隐藏上传图片
-        function hideUploadImg() {
-            $tabContainer.remove();
-            $uploadContent.remove();
-            $linkContent.addClass('selected');
-        }
+        // function hideUploadImg() {
+        //     $tabContainer.remove();
+        //     $uploadContent.remove();
+        //     $linkContent.addClass('selected');
+        // }
 
         // 判断用户是否配置了上传图片
-        editor.ready(function () {
-            var editor = this;
-            var config = editor.config;
-            var uploadImgUrl = config.uploadImgUrl;
-            var customUpload = config.customUpload;
-            var $uploadImgPanel;
+        // editor.ready(function () {
+        //     var editor = this;
+        //     var config = editor.config;
+        //     var uploadImgUrl = config.uploadImgUrl;
+        //     var customUpload = config.customUpload;
+        //     var $uploadImgPanel;
 
-            if (uploadImgUrl || customUpload) {
-                // 第一，暴露出 $uploadContent 以便用户自定义 ！！！重要
-                editor.$uploadContent = $uploadContent;
+        //     if (uploadImgUrl || customUpload) {
+        //         // 第一，暴露出 $uploadContent 以便用户自定义 ！！！重要
+        //         editor.$uploadContent = $uploadContent;
 
-                // 第二，绑定tab切换事件
-                tabToggle();
-            } else {
-                // 未配置上传图片功能
-                hideUploadImg();
-            }
+        //         // 第二，绑定tab切换事件
+        //         tabToggle();
+        //     } else {
+        //         // 未配置上传图片功能
+        //         hideUploadImg();
+        //     }
 
-            // 点击 $uploadContent 立即隐藏 dropPanel
-            // 为了兼容IE8、9的上传，因为IE8、9使用 modal 上传
-            // 这里使用异步，为了不妨碍高级浏览器通过点击 $uploadContent 选择文件
-            function hidePanel() {
-                menu.dropPanel.hide();
-            }
-            $uploadContent.click(function () {
-                setTimeout(hidePanel);
-            });
-        });
+        //     // 点击 $uploadContent 立即隐藏 dropPanel
+        //     // 为了兼容IE8、9的上传，因为IE8、9使用 modal 上传
+        //     // 这里使用异步，为了不妨碍高级浏览器通过点击 $uploadContent 选择文件
+        //     function hidePanel() {
+        //         menu.dropPanel.hide();
+        //     }
+        //     $uploadContent.click(function () {
+        //         setTimeout(hidePanel);
+        //     });
+        // });
     });
 
-    // --------------- 处理网络图片content ---------------
-    function linkContentHandler (editor, menu, $linkContent) {
-        var lang = editor.config.lang;
-        var $urlContainer = $('<div style="margin:20px 10px 10px 10px;"></div>');
-        var $urlInput = $('<input type="text" class="block" placeholder="http://"/>');
-        $urlContainer.append($urlInput);
-        var $btnSubmit = $('<button class="right">' + lang.submit + '</button>');
-        var $btnCancel = $('<button class="right gray">' + lang.cancel + '</button>');
+    // // --------------- 处理网络图片content ---------------
+    // function linkContentHandler (editor, menu, $linkContent) {
+    //     var lang = editor.config.lang;
+    //     var $urlContainer = $('<div style="margin:20px 10px 10px 10px;"></div>');
+    //     var $urlInput = $('<input type="text" class="block" placeholder="http://"/>');
+    //     $urlContainer.append($urlInput);
+    //     var $btnSubmit = $('<button class="right">' + lang.submit + '</button>');
+    //     var $btnCancel = $('<button class="right gray">' + lang.cancel + '</button>');
 
-        $linkContent.append($urlContainer).append($btnSubmit).append($btnCancel);
+    //     $linkContent.append($urlContainer).append($btnSubmit).append($btnCancel);
 
-        // 取消
-        $btnCancel.click(function (e) {
-            e.preventDefault();
-            menu.dropPanel.hide();
-        });
+    //     // 取消
+    //     $btnCancel.click(function (e) {
+    //         e.preventDefault();
+    //         menu.dropPanel.hide();
+    //     });
 
-        // callback 
-        function callback() {
-            $urlInput.val('');
-        }
+    //     // callback 
+    //     function callback() {
+    //         $urlInput.val('');
+    //     }
 
-        // 确定
-        $btnSubmit.click(function (e) {
-            e.preventDefault();
-            var url = $.trim($urlInput.val());
-            if (!url) {
-                // 无内容
-                $urlInput.focus();
-                return;
-            }
+    //     // 确定
+    //     $btnSubmit.click(function (e) {
+    //         e.preventDefault();
+    //         var url = $.trim($urlInput.val());
+    //         if (!url) {
+    //             // 无内容
+    //             $urlInput.focus();
+    //             return;
+    //         }
 
-            var imgHtml = '<img style="max-width:100%;" src="' + url + '"/>';
-            editor.command(e, 'insertHtml', imgHtml, callback);
-        });
-    }
+    //         var imgHtml = '<img style="max-width:100%;" src="' + url + '"/>';
+    //         editor.command(e, 'insertHtml', imgHtml, callback);
+    //     });
+    // }
 
 });
+//点击出现div，移开消失
+// window.onload = function(){
+//     document.onclick = function(e){
+//         e = e || window.event;
+//         var dom =  e.srcElement|| e.target;
+//         if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+//             document.getElementById("dialog").style.display = "none";
+//         }
+//     };
+// };
+// function openDialog(e) {
+//     document.getElementById("dialog").style.display = "block";
+//     e = e||window.event;
+//     if(+'\v1') {
+//         e.stopPropagation();
+//     } else  {
+//         e.cancelBubble = true;
+//     }
+    
+// }
+
+
+
+
 // video 菜单
 _e(function (E, $) {
 
