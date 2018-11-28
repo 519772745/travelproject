@@ -51,8 +51,18 @@
 			width: 200px;
 			margin-top: 25px;
 		}
-		#mar{
-			margin-top: 20px;
+		#show{
+			height: 200px;
+			width: 380px;
+			position: relative;
+			bottom: 10px;	
+			margin-bottom: 10px;
+		}
+		#prompt{
+			position: relative;
+			bottom: 27px;
+			left: 80px;
+			z-index: 1;
 		}
 
 	</style>
@@ -160,10 +170,12 @@
 					</div>
 					<!-- 上传图片 -->
 					<!-- 详细地址 -->
-					<div id="container2">
-						<div id="map">
-							<!-- 地址的按钮 -->
-						</div>
+					<div id="map">
+						<!-- 地址的按钮 -->
+					</div>
+					<div id="prompt"><h6>请选择地址</h6></div>
+					<div id="show">
+						<img id="imgshow" src="">
 					</div>
 					<!-- <div class="si">
 						<input type="button" name="地图" onclick="getmap()">
@@ -423,6 +435,14 @@
 <script type="text/javascript" src="editor/js/md5.js"></script>
 <script type="text/javascript" src="editor/js/upload.js"></script>
 <!-- 这是上传图片的JS-->
+
+<!-- 地图编辑框隐藏的部分js -->
+<script type="text/javascript">
+// 一开始是都隐藏的，当点击提交时show模块变为black  img的src变为指定的路经
+	document.getElementById("map").style.display = "none"; 
+	document.getElementById("show").style.display = "none"; 
+	// document.getElementById("show").innerHTML=imgHtml;
+</script>
 
 <!-- Theme js -->
 <script src="editor/js/theme.js"></script>

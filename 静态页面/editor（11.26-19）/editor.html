@@ -64,6 +64,12 @@
 		width: 380px;	
 		margin-top: 10px;
 	}
+	#prompt{
+		position: relative;
+		bottom: 27px;
+		left: 80px;
+		z-index: 1;
+	}
 </style>
 
 
@@ -193,17 +199,11 @@
 					<!-- 详细地址 -->
 					<div id="map">
 						<!-- 地址的按钮 -->
-
 					</div>
+					<div id="prompt"><h6>请选择地址</h6></div>
 					<div id="show">
 						<img id="imgshow" src="">
 					</div>
-					<!-- <div class="si">
-						<input type="button" name="地图" onclick="getmap()">
-						<div id="mapshow" style="display: hidden">
-							
-						</div>
-					</div> -->
 					<div id="mar">
 						<select id="cmbProvince" name="cmbProvince"></select>  
 						<select id="cmbCity" name="cmbCity"></select>  

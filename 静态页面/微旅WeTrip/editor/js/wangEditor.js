@@ -5557,9 +5557,13 @@ _e(function (E, $) {
                 //插入iframe
                 iframe = '<iframe class="ueditor_baidumap" src="{src}" frameborder="0" width="' + sizeWidth + '" height="' + sizeHeight + '"></iframe>';
                 iframe = iframe.replace('{src}', src);
+                document.getElementById("show").style.display = "block"; 
+                document.getElementById("imgshow").src=src;
                 editor.command(e, 'insertHtml', iframe, callback);
             }else{
                 //插入图片
+                document.getElementById("show").style.display = "block"; 
+                document.getElementById("imgshow").src=src;
                 editor.command(e, 'insertHtml', '<img style="max-width:100%;" src="' + src + '"/>', callback);
             }
         });
