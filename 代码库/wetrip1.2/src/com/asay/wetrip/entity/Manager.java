@@ -23,7 +23,7 @@ public class Manager {
 	//管理员表和话题表 一对多
 	private Set<Topic> topics=new HashSet<Topic>(0);
 	//管理员表和身份表  多对一
-	private Identity identity;
+	//private Identity identity;
 	
 	@Id
 	@Column(name="manager_id")
@@ -50,12 +50,12 @@ public class Manager {
 	public void setTopics(Set<Topic> topics) {
 		this.topics = topics;
 	}
-	@ManyToOne
-	@JoinColumn(name="identity_id")
-	public Identity getIdentity() {
-		return identity;
-	}
-	public void setIdentity(Identity identity) {
-		this.identity = identity;
-	}	
+//	@ManyToOne
+//	@JoinColumn(name="identity_id")
+//	public Identity getIdentity() {
+//		return identity;
+//	}
+//	public void setIdentity(Identity identity) {
+//		this.identity = identity;
+//	}	
 }

@@ -3,13 +3,11 @@ package com.asay.wetrip.test;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.asay.wetrip.entity.CollectTravel;
 import com.asay.wetrip.entity.UserDetail;
 

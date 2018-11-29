@@ -17,7 +17,7 @@ public class Privilege {
 	private int id;
 	private String privilegeName;
 	//权限表和身份表一对一的关系
-	private Set<Identity> identities =new HashSet<Identity>(0);
+	//private Set<Identity> identities =new HashSet<Identity>(0);
 
 	@Id
 	@Column(name=" privilege_id")
@@ -35,10 +35,10 @@ public class Privilege {
 	public void setPrivilegeName(String privilegeName) {
 		this.privilegeName = privilegeName;
 	}
-	public Set<Identity> getIdentities() {
-		return identities;
-	}
-	public void setIdentities(Set<Identity> identities) {
-		this.identities = identities;
-	}	
+//	public Set<Identity> getIdentities() {
+//		return identities;
+//	}
+//	public void setIdentities(Set<Identity> identities) {
+//		this.identities = identities;
+//	}	
 }

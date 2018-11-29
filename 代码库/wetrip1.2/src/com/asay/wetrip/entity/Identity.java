@@ -23,9 +23,9 @@ public class Identity {
 	
 	private String identityName;
 	//身份表和管理员表 一对多
-	private Set<Manager> managers =new HashSet<Manager>(0);
+	//private Set<Manager> managers =new HashSet<Manager>(0);
 	//身份表和权限表多对多
-	private Set<Privilege> privileges=new HashSet<Privilege>(0);
+	//private Set<Privilege> privileges=new HashSet<Privilege>(0);
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,11 +44,11 @@ public class Identity {
 	public void setIdentityName(String identityName) {
 		this.identityName = identityName;
 	}
-	@OneToMany(mappedBy="identity")
-	public Set<Manager> getManagers() {
-		return managers;
-	}
-	public void setManagers(Set<Manager> managers) {
-		this.managers = managers;
-	}
+//	@OneToMany(mappedBy="identity")
+//	public Set<Manager> getManagers() {
+//		return managers;
+//	}
+//	public void setManagers(Set<Manager> managers) {
+//		this.managers = managers;
+//	}
 }
