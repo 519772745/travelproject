@@ -30,40 +30,7 @@
 	<!--editor CSS-->
 	<link rel="stylesheet" type="text/css" href="editor/css/wangEditor.min.css">
 	<style type="text/css">
-		#editor-trigger {
-			height: 300px;
-			max-height: 500px;
-		}
-		.container {
-			width: 100%;
-			margin: 0 auto;
-			position: relative;
-		}
-		#zidingyi{
-			width: 60px;
-			height: 26px;
-		}
-		#xiaotuisong{
-			height: 70px;
-		}
-		.si{
-			height: 20px;
-			width: 200px;
-			margin-top: 25px;
-		}
-		#show{
-			height: 300px;
-			width: 500px;
-			position: relative;
-			bottom: 10px;	
-			margin-bottom: 10px;
-		}
-		#prompt{
-			position: relative;
-			bottom: 27px;
-			left: 80px;
-			z-index: 1;
-		}
+
 
 	</style>
 </head>
@@ -136,102 +103,111 @@
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
 					<div id="container3">
-						<img id="pic" src="editor/images/pic.png" onclick="openDialog(event)">
-						<div id="editor-trigger">
-							<!--input框-->
-							
-						</div>
-					</div>					
-					<!-- 上传图片 -->
-					<div id="dialog" style="display:none">	
-						<div id="wrapper">
-							<div id="container">
-								<!--头部，相册选择和格式选择-->
+					<!-- 	<div id="addpic"  onclick="openDialog(event)">请插入图片</div>
+					<img id="pic" src="editor/images/pic.png" onclick="openDialog(event)"> -->
+					<div id="editor-trigger">
+						<!--input框-->
 
-								<div id="uploader">
-									<div class="queueList">
-										<div id="dndArea" class="placeholder">
-											<div id="filePicker"></div>
-											<p>或将文件拖到这里</p>
-										</div>
+					</div>
+				</div>					
+				<!-- 上传图片 -->
+				<div>
+					<!-- <div id="dialog" style="display:none">	 -->
+					<div id="wrapper">
+						<div id="container">
+							<!--头部，相册选择和格式选择-->
+							<div id="uploader">
+								<div class="queueList">
+									<div id="dndArea" class="placeholder">
+										<div id="filePicker"></div>
+										<p>将文件拖到这里再选择其他文件</p>
 									</div>
-									<div class="statusBar" style="display:none;">
-										<div class="progress">
-											<span class="text">0%</span>
-											<span class="percentage"></span>
-										</div><div class="info"></div>
-										<div class="btns">
-											<div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
-										</div>
+								</div>
+								<div class="statusBar" style="display:none;">
+									<div class="progress">
+										<span class="text">0%</span>
+										<span class="percentage"></span>
+									</div><div class="info"></div>
+									<div class="btns">
+										<div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- 上传图片 -->
-					<!-- 详细地址 -->
-					<div id="map">
+				</div>
+				<!-- 上传图片 -->
+				<!-- 详细地址 -->
+				<div id="mapall">
+					<div id="map" >
 						<!-- 地址的按钮 -->
 					</div>
 					<div id="prompt"><h6>请选择地址</h6></div>
 					<div id="show">
 						<img id="imgshow" src="">
 					</div>
+				</div>
 					<!-- <div class="si">
 						<input type="button" name="地图" onclick="getmap()">
 						<div id="mapshow" style="display: hidden">
 							
 						</div>
 					</div> -->
-					<div id="mar">
+				<div id="detail">
+					<div id="mar" style="margin-top:10px;margin-left:10px;">
 						<select id="cmbProvince" name="cmbProvince"></select>  
 						<select id="cmbCity" name="cmbCity"></select>  
 						<select id="cmbArea" name="cmbArea"></select>  
-						<input type="text" value="详细地址" onblur="if(this.value=''){this.value='详细地址'}" onfocus="if(this.value='详细地址'){this.value='';this.style.color='#ff0000'}">
 					</div>
-					<!-- 详细地址 -->
-					<!-- 标签 -->
+						<!-- 详细地址 -->
+						<!-- 标签 -->
 					<div class="si">				        	
 						<h7 id="h7">标签:&nbsp&nbsp&nbsp&nbsp</h7>
-						<select id="city" class="select">
-							<option value="贵阳">风景</option>
-							<option value="六盘水">美食</option>
-							<option value="都匀">玩耍</option>
-							<option value="福泉">周边</option>	
-						</select>
+							<select id="city" class="select">
+								<option value="微旅club">风景</option>
+								<option value="微旅黑料">美食</option>
+								<option value="写bug">玩耍</option>
+								<option value="微旅手办">周边</option>	
+								<option value="黑洞">小贴士</option>	
+								<option value="吃啥？！">今日话题</option>	
+							</select>
 					</div>
-					<!-- 标签 -->
-					<!-- 自定义标签 -->
+						<!-- 标签 -->
+						<!-- 自定义标签 -->
 					<div class="si">				        	
 						<h7 id="h7">自定义标签:&nbsp&nbsp&nbsp&nbsp</h7>
-						<input type="text" name="" id="zidingyi">
+							<input type="text" name="" id="zidingyi">
 					</div>
-					<!-- 自定义标签 -->
-					<!-- 权限 -->
+						<!-- 自定义标签 -->
+						<!-- 权限 -->
 					<div class="si">							
 						<h7 id="quanxian">权限:&nbsp&nbsp&nbsp&nbsp</h7>
-						<select id="city" class="select">
-							<option value="1">自己看</option>
-							<option value="2">仅同城</option>
-							<option value="3">全世界</option>
-						</select>
+							<select id="city" class="select2">
+								<option value="1">自己看</option>
+								<option value="2">仅同城</option>
+								<option value="3">全世界</option>
+							</select>
 					</div>
-					<!-- 权限 -->
-
+						<!-- 权限 -->
 					<div class="si">
-						<!-- 参与话题及发表 -->
+							<!-- 参与话题及发表 -->
 						<input id="shi" type="checkbox" name="是" value="" checked>参加每日话题推送
-						<!--提交按钮-->
-						<input type="button" name="" value="发表">
-					</div>					    
-				</div> <!-- /.post-meta-box -->
+							<!--提交按钮-->
+						
+					</div>	
+					<div id="bg2">
+						<input id="push" type="button" name="" value="发表">
+						<img src="editor/images/bg4.png">
+					</div>	
+				</div>			    
+			</div> <!-- /.post-meta-box -->
 			</div> <!--富文本框的展示-->			
 		</div> <!-- /.col- -->
 
 		<!-- ======================== Theme Sidebar =============================== -->
 		<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
 			<div class="sidebar-box bg-box about-me">
-				<h6 class="sidebar-title">关于我</h6>
+				<h6 style="font-size:22px;margin-bottom:15px;font-family:幼圆;">关于我</h6>
 				<img src="editor/images/home/1.jpg" alt="">
 				<div class="userii">
 					<div  class="useri">
@@ -277,10 +253,7 @@
 <script src="editor/js/jquery-2.2.4.min.js"></script>
 <script src="editor/js/common_scripts.js"></script>
 <script src="editor/js/main.js"></script>
-
-
 <!-- Map -->
-
 <!-- DATEPICKER  -->
 <script>
 	$('input[name="dates"]').daterangepicker({
@@ -297,9 +270,10 @@
 		document.onclick = function(e){
 			e = e || window.event;
 			var dom =  e.srcElement|| e.target;
-			if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
-				document.getElementById("dialog").style.display = "none";
-			}
+			
+			// if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+			// 	document.getElementById("dialog").style.display = "none";
+			// }
 		};
 	};
 	function openDialog(e) {
@@ -310,10 +284,8 @@
 		} else  {
 			e.cancelBubble = true;
 		}
-
 	}
 </script>
-
 <!--editor script-->
 <script type="text/javascript" src="editor/js/wangEditor.js"></script>
 <!--<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>-->
@@ -322,18 +294,13 @@
         // wangEditor.config.printLog = false;
         var map = new wangEditor('map');
         var editor = new wangEditor('editor-trigger');
-        
-
         // 上传图片
         editor.config.uploadImgUrl = '/upload';
-
         // 跨域上传
         // editor.config.uploadImgUrl = 'http://localhost:8012/upload';
-
         // 第三方上传
         // editor.config.customUpload = true;
-        map.config.menus=['location'];
-        
+        map.config.menus=['location']; 
         editor.config.menus = [
 	        'bold',//加粗
 	        'underline',//下划线
@@ -439,8 +406,8 @@
 <!-- 地图编辑框隐藏的部分js -->
 <script type="text/javascript">
 // 一开始是都隐藏的，当点击提交时show模块变为black  img的src变为指定的路经
-	document.getElementById("map").style.display = "none"; 
-	document.getElementById("show").style.display = "none"; 
+document.getElementById("map").style.display = "none"; 
+document.getElementById("show").style.display = "none"; 
 	// document.getElementById("show").innerHTML=imgHtml;
 </script>
 
