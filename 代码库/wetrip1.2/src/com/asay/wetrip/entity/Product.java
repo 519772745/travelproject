@@ -16,17 +16,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name="wt_product")
 public class Product {
-	@Column(name="product_id")
+	
 	private int id;
-	@Column(name="product_name")
+	
 	private String name;
-	@Column(name="product_description")
+
 	private String description;
 	private double price;
 	private double discount;
-	//²úÆ·±íºÍ¶©µ¥±í Ò»¶Ô¶à
+	//ï¿½ï¿½Æ·ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ Ò»ï¿½Ô¶ï¿½
 	private Set<Orders> orders=new HashSet<Orders>(0);	
 	@Id
+	@Column(name="product_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -34,12 +35,14 @@ public class Product {
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Column(name="product_name")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Column(name="product_description")
 	public String getDescription() {
 		return description;
 	}
