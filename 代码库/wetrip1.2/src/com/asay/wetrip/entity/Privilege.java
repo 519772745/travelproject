@@ -8,10 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="wt_ privilege")
+@Table(name="wt_privilege")
 public class Privilege {
 	
 	private int id;
@@ -20,7 +21,7 @@ public class Privilege {
 	private Set<Identity> identities =new HashSet<Identity>(0);
 
 	@Id
-	@Column(name=" privilege_id")
+	@Column(name="privilege_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -28,13 +29,14 @@ public class Privilege {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Column(name=" privilege_name")
+	@Column(name="privilege_name")
 	public String getPrivilegeName() {
 		return privilegeName;
 	}
 	public void setPrivilegeName(String privilegeName) {
 		this.privilegeName = privilegeName;
 	}
+	@ManyToMany(mappedBy="privileges")
 	public Set<Identity> getIdentities() {
 		return identities;
 	}

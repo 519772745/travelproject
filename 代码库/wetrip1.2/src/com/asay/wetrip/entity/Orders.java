@@ -17,18 +17,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="wt_order")
 public class Orders {
-	@Column(name="order_id")
+
 	private int id;
 	private Timestamp ordertime;
-	@Column(name="order_address")
+	
 	private String address;
-	@Column(name="order_status")
+	
 	private String status;
-	//¶©µ¥±íºÍÓÃ»§ÏêÇé±í  ¶à¶ÔÒ»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½Ò»
 	private UserDetail userDetail;
-	//¶©µ¥±íºÍ²úÆ·±í Ò»¶Ô¶à
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½Æ·ï¿½ï¿½ Ò»ï¿½Ô¶ï¿½
 	private Set<Product> products=new HashSet<Product>(0);	
 	@Id
+	@Column(name="order_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -43,12 +44,14 @@ public class Orders {
 	public void setOrdertime(Timestamp ordertime) {
 		this.ordertime = ordertime;
 	}
+	@Column(name="order_address")
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	@Column(name="order_status")
 	public String getStatus() {
 		return status;
 	}
