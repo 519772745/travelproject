@@ -13,7 +13,7 @@ hello
 <a href="/wetrip1.0/tags">tags</a>
 <a href="/wetrip1.0/topic">topic</a>
 <a href="/wetrip1.0/mt">mt</a>
-<a href="pri">ct</a>
+
 
 </body>
 </html>

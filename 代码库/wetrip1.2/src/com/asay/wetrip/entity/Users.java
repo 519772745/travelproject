@@ -24,9 +24,9 @@ public class Users {
 	private String password;
 	@Column(name="user_status")
 	private String status;
-	//�û�����û������һ��һ
+	//用户表和用户详情表一对一
 	private UserDetail userDetail;
-	//�û���͵�½��ʷ��¼�� һ�Զ�
+	//用户表和登陆历史记录表 一对多
 	private Set<LoginHistory> loginHistory=new HashSet<LoginHistory>(0);
 	@Id
 	@GeneratedValue(generator="assigned")

@@ -19,9 +19,9 @@ public class CollectTravel {
 	private String status;
 	
 	private Timestamp collectTime;
-	//�ղر���μǱ� ���һ
+	//收藏表和游记表 多对一
 	private TravelNote travelNote;
-	//�ղر���û������ ���һ
+	//收藏表和用户详情表 多对一
 	private UserDetail userDetail;
 	
 	@Id

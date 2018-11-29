@@ -14,7 +14,7 @@ public class Imgs {
 	
 	private int id;
 	private String path;
-	//ͼƬ����μǱ�  ���һ
+	//图片表和游记表  多对一
 	private TravelNote travelNote;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

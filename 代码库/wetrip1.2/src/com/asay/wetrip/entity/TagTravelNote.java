@@ -14,9 +14,9 @@ import javax.persistence.Table;
 public class TagTravelNote {
 	
 	private int id;
-	// μǱ     ӱ     һ
+	//游记表和连接表 多对一
 	private TravelNote travelNote;
-	//  ǩ      ӱ     һ
+	//标签表和连接表 多对一
 	private Tags tags;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

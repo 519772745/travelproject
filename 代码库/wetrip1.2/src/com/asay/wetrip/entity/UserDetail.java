@@ -31,15 +31,15 @@ public class UserDetail {
 	private String userhead;
 	
 	private Timestamp registerTime;
-	//�û��������û���һ��һ
+	//用户详情表和用户表一对一
 	private Users user;
-	//�û��������μǱ� һ�Զ�
+	//用户详情表和游记表 一对多
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
-	//�û��������ղر�һ�Զ�
+	//用户详情表和收藏表一对多
 	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
-	//�û������Ͷ�����һ�Զ�
+	//用户详情表和订单表一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);
-	//�û������͹���Ա��һ��һ
+	//用户详情表和管理员表一对一
 	private Manager manager;
 	
 	@Id
