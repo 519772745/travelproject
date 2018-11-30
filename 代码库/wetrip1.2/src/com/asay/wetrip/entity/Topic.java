@@ -26,9 +26,9 @@ public class Topic {
 
 	
 	private String ip;
-	//�������μǱ� һ�Զ�
+	//话题表和游记表 一对多
 	private Set<TravelNote> travelNotes=new HashSet<TravelNote>(0);
-	//�����͹���Ա�� ���һ
+	//话题表和管理员表 多对一
 	private Manager manager;
 	
 	

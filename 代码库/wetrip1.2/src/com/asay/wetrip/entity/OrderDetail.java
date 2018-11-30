@@ -10,16 +10,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="wt_order_detail")
 public class OrderDetail {
-	@Column(name="orderdetail_id")
+
 	private int id;
-	@Column(name="order_id")
+	
 	private int orderId;
-	@Column(name="product_id")
+	
 	private int productId;
-	@Column(name="order_count")
+
 	private int productCount;
 	
 	@Id
+	@Column(name="orderdetail_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -27,18 +28,21 @@ public class OrderDetail {
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Column(name="order_id")
 	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
+	@Column(name="product_id")
 	public int getProductId() {
 		return productId;
 	}
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+	@Column(name="order_count")
 	public int getProductCount() {
 		return productCount;
 	}

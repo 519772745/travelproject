@@ -14,13 +14,9 @@ import javax.persistence.Table;
 public class TagTravelNote {
 	
 	private int id;
-	@Column(name="tag_id")
-	private int tagId;
-	@Column(name="travelnote_id")
-	private int travelNoteId;
-	//ÓÎ¼Ç±íºÍÁ¬½Ó±í ¶à¶ÔÒ»
+	//æ¸¸è®°è¡¨å’Œè¿žæŽ¥è¡¨ å¤šå¯¹ä¸€
 	private TravelNote travelNote;
-	//±êÇ©±íºÍÁ¬½Ó±í ¶à¶ÔÒ»
+	//æ ‡ç­¾è¡¨å’Œè¿žæŽ¥è¡¨ å¤šå¯¹ä¸€
 	private Tags tags;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,19 +26,7 @@ public class TagTravelNote {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getTagId() {
-		return tagId;
-	}
-	public void setTagId(int tagId) {
-		this.tagId = tagId;
-	}
-	public int getTravelNoteId() {
-		return travelNoteId;
-	}
-	public void setTravelNoteId(int travelNoteId) {
-		this.travelNoteId = travelNoteId;
-	}
-	
+
 	@ManyToOne
 	@JoinColumn(name="travelnote_id")
 	public TravelNote getTravelNote() {

@@ -23,11 +23,11 @@ public class Comment {
 	private Timestamp commentTime;
 	
 	private String commentContent;	
-	//���۱���μǱ� ���һ
+	//评论表和游记表 多对一
 	private TravelNote travelNote;
-	//�����ۺ������� һ�Զ�
+	//父评论和子评论 一对多
 	private Set<Comment> childComments=new HashSet<Comment>(0);	
-	//�����ۺ͸����� ���һ
+	//子评论和父评论 多对一
 	private Comment parentComment;
 	
 	@Id
