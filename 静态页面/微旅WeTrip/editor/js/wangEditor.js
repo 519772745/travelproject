@@ -5522,7 +5522,7 @@ _e(function (E, $) {
 
             if(isDynamic){
                 //动态地址
-                src = 'http://ueditor.baidu.com/ueditor/dialogs/map/show.html#';
+                src = 'http://api0.map.bdimg.com/images/openhand.cur';
             }else{
                 //静态地址
                 src = 'http://api.map.baidu.com/staticimage?';
