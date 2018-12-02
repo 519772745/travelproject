@@ -42,16 +42,29 @@
         <link  rel="stylesheet" href="good/css/style.css">
 
         <link  rel="stylesheet" href="good/css/responsive.css">
+        <style type="text/css">
+            /*-------------------------- Theme Footer ----------------------*/
+            .theme-footer {
+              height: 168px;
+              text-align: center;
+              background:#76a68d;
+              padding: 25px 0 1px 0;
 
-
+          }
+          .theme-footer .footer-text {
+              font-size: 11px;
+              letter-spacing: 0.4px;
+              text-transform: uppercase;
+              padding: 5px 0 5px 0;
+          }
+          .theme-footer .copyright {margin-top: 10px;font-family: 微软雅黑;font-size: 13px;color:#313131;}
+          .container {height: 100%;}
+      </style>
     </head>
     <body>
-
-
-
         <div class="wrapper">
             <section class="section-head">
-               <header class="header menu_fixed">
+             <header class="header menu_fixed">
 
                 <div id="logo">
                     <a href="index.html">
@@ -61,19 +74,22 @@
                 </div>
                 <ul id="top_menu">
                     <li><a href="editor.html"><img src="good/images/add_button1.png" width="24" height="24"></a></li>
-                    <li><a href="login.html"><img src="good/images/personal_button1.png" width="24" height="24"></a></li>
+                    <li><a href="login.html"><img src="good/images/personal_button1.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)"></a></li>
                     <li><a href="cart.html"><img src="good/images/shopping_button1.png" width="24" height="24"></a></li>
                     <li><a href="personalinfo.html"><img src="good/images/config_button1.png" width="24" height="24"></a></li>
 
                 </ul>
                 <ul id="top_menu2">
                     <li><a href="editor.html"><img src="good/images/add_button.png" width="24" height="24" ></a></li>
-                    <li><a href="login.html"><img src="good/images/personal_button.png" width="24" height="24" ></a></li>
+                    <li><a href="login.html"><img src="good/images/personal_button.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)" ></a></li>
                     <li><a href="cart.html"><img src="good/images/shopping_button.png" width="24" height="24" ></a></li>
                     <li><a href="personalinfo.html"><img src="good/images/config_button.png" width="24" height="24" ></a></li>
-
-
                 </ul>  
+                <div id="User">
+                <a href="##">用户状态</a><br>
+                <a href="zone.html" >个人空间页</a><br>
+                <a href="##">注销</a>
+                </div>
                 <!-- /top_menu -->
                 <a href="#menu" class="btn_mobile">
                     <div class="hamburger hamburger--spin" id="hamburger">
@@ -199,101 +215,101 @@
                             <div class="controls-holder nav-tabs">
                                 <ul class="inline">
                                     <li class="active"><a data-toggle="tab" href="#description">描述
-                                    <li><a data-toggle="tab" href="#how-to-use">如何使用</a></li>
-                                    <li><a data-toggle="tab" href="#reviews">评论(2)</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="tab-content">
-                                <div id="description" class=" active tab-pane ">
-                                    <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
-                                        这是一瓶驱蚊液。
-                                    </p>
-                                    <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
-                                        它真的真的真的真的真的真的非常好用。
-                                    </p>
-                                </div>
-
-                                <div id="how-to-use" class=" tab-pane ">
-                                    <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
-                                        小心使用。
-                                    </p>
-                                    <ul  style="text-align: justify;font-family:微软雅黑;font-size:16px">
-                                        <li>1、拧开瓶盖，将电蚊香液液瓶向上旋入加热器；</li>
-                                        <li>2、配合插座方向，转动加热器插头，确保工作时液瓶呈竖直向上状态；接通电源（220V)，指示灯亮即表示加热器开始工作；</li>
-                                        <li>3、使用完毕请将加热器拔离插座，无需旋下液瓶，但保持液瓶竖直向上；</li>
-                                        <li>4、当药液用完，请将加热器拔离插座，然后更换补充药液。</li>
+                                        <li><a data-toggle="tab" href="#how-to-use">如何使用</a></li>
+                                        <li><a data-toggle="tab" href="#reviews">评论(2)</a></li>
                                     </ul>
                                 </div>
 
-                                <div id="reviews" class=" tab-pane ">
-                                    <textarea placeholder="请在这写下你的评论" class="span12" id="write-review-text"></textarea>
-
-                                    <div class="review-info">
-                                        <div class="remaining-chars">
-                                            <span id="counter">210</span> characters left
-                                        </div>
-
-                                        <div class="star-holder">
-
-
-                                            <button type="submit" class="cusmo-btn">评论</button>
-                                        </div>
+                                <div class="tab-content">
+                                    <div id="description" class=" active tab-pane ">
+                                        <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
+                                            这是一瓶驱蚊液。
+                                        </p>
+                                        <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
+                                            它真的真的真的真的真的真的非常好用。
+                                        </p>
                                     </div>
-                                    <hr>
 
-                                    <div class="recent-reviews">
-                                        <div class="review-item">
-                                            <div class="row-fluid">
-                                                <div class="span2">
-                                                    <div class="thumb">
-                                                        <img alt="avatar" src="good/images/default-avatar.png" />
-                                                    </div>
-                                                </div>
-                                                <div class="span10">
-                                                    <div class="body">
-                                                        <h4>Angela</h4>
-                                                        <span class="date">2018.10.06</span>
-                                                        <p style="text-indent: 2em;text-align: justify;font-family:微软雅黑;font-size:16px">
-                                                            春眠不觉晓,处处蚊子咬。
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                    <div id="how-to-use" class=" tab-pane ">
+                                        <p style="text-align: justify;font-family:微软雅黑;font-size:16px">
+                                            小心使用。
+                                        </p>
+                                        <ul  style="text-align: justify;font-family:微软雅黑;font-size:16px">
+                                            <li>1、拧开瓶盖，将电蚊香液液瓶向上旋入加热器；</li>
+                                            <li>2、配合插座方向，转动加热器插头，确保工作时液瓶呈竖直向上状态；接通电源（220V)，指示灯亮即表示加热器开始工作；</li>
+                                            <li>3、使用完毕请将加热器拔离插座，无需旋下液瓶，但保持液瓶竖直向上；</li>
+                                            <li>4、当药液用完，请将加热器拔离插座，然后更换补充药液。</li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="reviews" class=" tab-pane ">
+                                        <textarea placeholder="请在这写下你的评论" class="span12" id="write-review-text"></textarea>
+
+                                        <div class="review-info">
+                                            <div class="remaining-chars">
+                                                <span id="counter">210</span> characters left
+                                            </div>
+
+                                            <div class="star-holder">
+
+
+                                                <button type="submit" class="cusmo-btn">评论</button>
                                             </div>
                                         </div>
-
-                                        <div class="review-item">
-                                            <div class="row-fluid">
-                                                <div class="span2">
-                                                    <div class="thumb">
-                                                        <img alt="avatar" src="good/images/default-avatar.png" />
-                                                    </div>
-                                                </div>
-                                                <div class="span10">
-                                                    <div class="body">
-                                                        <h4>Kate</h4>
-                                                        <span class="date">2018.06.06</span>
-                                                        <p style="text-indent: 2em;text-align: justify;font-family:微软雅黑;font-size:16px">
-                                                            春眠不觉晓,处处蚊子咬。
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <hr>
+
+                                        <div class="recent-reviews">
+                                            <div class="review-item">
+                                                <div class="row-fluid">
+                                                    <div class="span2">
+                                                        <div class="thumb">
+                                                            <img alt="avatar" src="good/images/default-avatar.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="span10">
+                                                        <div class="body">
+                                                            <h4>Angela</h4>
+                                                            <span class="date">2018.10.06</span>
+                                                            <p style="text-indent: 2em;text-align: justify;font-family:微软雅黑;font-size:16px">
+                                                                春眠不觉晓,处处蚊子咬。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-item">
+                                                <div class="row-fluid">
+                                                    <div class="span2">
+                                                        <div class="thumb">
+                                                            <img alt="avatar" src="good/images/default-avatar.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="span10">
+                                                        <div class="body">
+                                                            <h4>Kate</h4>
+                                                            <span class="date">2018.06.06</span>
+                                                            <p style="text-indent: 2em;text-align: justify;font-family:微软雅黑;font-size:16px">
+                                                                春眠不觉晓,处处蚊子咬。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+                                        </div>
+
                                     </div>
 
                                 </div>
-
                             </div>
-                        </div>
-                        <br><br>
+                            <br><br>
                        <!--  <div class="middle-header-holder">
                            <div class="middle-header"> 你还可能喜欢</div>
                        </div> -->
                        <!-- <div class="products-holder related-products">
-                        <div class="row-fluid"> -->
+                       <div class="row-fluid"> -->
                            <!--  <div class="span4">
                                 <div class="product-item">
                                     <img src="img/good1.jpg" width="200px" height="200px;">
@@ -310,11 +326,11 @@
                                 </div>
                             </div> -->
                     <!--     </div>
-                    </div> -->
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+</div>
 </section>
 
 <!-- <section class="section-homepage-subscribe">
@@ -369,6 +385,20 @@
             'margin': 1
         });
     });
+    //用户登录后的状态注销等
+function over(obj){        
+   document.getElementById("User").style.display = "block";
+
+            }
+window.onload = function(){
+            document.onclick = function(e){
+                e = e || window.event;
+                var dom =  e.srcElement|| e.target;
+                if(dom.id != "User" && document.getElementById("User").style.display == "block") {
+                    document.getElementById("User").style.display = "none";
+                }
+            };
+        };
 </script>       
 </body>
 

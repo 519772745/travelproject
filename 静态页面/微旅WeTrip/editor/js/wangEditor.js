@@ -5218,8 +5218,6 @@ _e(function (E, $) {
 
 });
 // location 菜单
-var lng;
-var lat;
 _e(function (E, $) {
 
     // 判断浏览器的 input 是否支持 keyup
@@ -5228,7 +5226,7 @@ _e(function (E, $) {
     })(document.createElement('input'));
 
     // 百度地图的key
-    E.baiduMapAk = 'IlyOnGGEfr47YYPWsUrHqijvDodjH9h6';
+    E.baiduMapAk = 'TVhjYjq1ICT2qqL5LdS8mwas';
 
     var index = 1;
 
@@ -5256,7 +5254,6 @@ _e(function (E, $) {
         mapData.markers = [];
         mapData.mapContainerId = 'map' + E.random();
 
-        // 这个是清除的功能
         mapData.clearLocations = function () {
             var map = mapData.map;
             if (!map) {
@@ -5268,7 +5265,6 @@ _e(function (E, $) {
             mapData.markers = [];
         };
 
-        // 通过输入框来切换地图的显示功能
         mapData.searchMap = function () {
             var map = mapData.map;
             if (!map) {
@@ -5307,7 +5303,6 @@ _e(function (E, $) {
 
         // load script 之后的 callback
         var hasCallback = false;
-
         window.baiduMapCallBack = function(){
             // 避免重复加载
             if (hasCallback) {
@@ -5387,31 +5382,15 @@ _e(function (E, $) {
             var myCity = new BMap.LocalCity();
             myCity.get(locationFun);
 
-            //鼠标点击，创建位置 为地图添加点击的事件
+            //鼠标点击，创建位置
             map.addEventListener("click", function(e){
-                //这是通过经纬度设置标记
                 var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat)); 
-
-                //利用全局变量保存经纬度
-                lng=e.point.lng;
-                lat=e.point.lat;
-                // 这是获得现在地图上的表红点的情况 删除功能
-                var map = mapData.map;
-                if (!map) {
-                    return;
-                }
-                map.clearOverlays();
-                //同时，清空marker数组
-                mapData.markers = [];
-
-                // 清空之后在加上新标的红点 也就是加上图层
                 map.addOverlay(marker);  
-                // marker.enableDragging(); //这是使红点能够拖拽
+                marker.enableDragging();
                 mapData.markers.push(marker);  //加入到数组中
             }, false);
         };
 
-        // 加载地图
         mapData.loadMapScript = function () {
             var script = document.createElement("script");
             script.type = "text/javascript";
@@ -5485,7 +5464,7 @@ _e(function (E, $) {
             'margin-top': '10px',
             border: '1px solid #f1f1f1'
         });
-        var $mapLoading = $('<span>' + lang.loading + '</span>');   
+        var $mapLoading = $('<span>' + lang.loading + '</span>');
         $mapLoading.css({
             position: 'absolute',
             width: '100px',
@@ -5540,8 +5519,7 @@ _e(function (E, $) {
                 position,
                 src,
                 iframe;
-            console.log(lng);
-            console.log(lat);
+
             if(isDynamic){
                 //动态地址
                 src = 'http://ueditor.baidu.com/ueditor/dialogs/map/show.html#';
@@ -5590,13 +5568,6 @@ _e(function (E, $) {
             }
         });
 
-        //点击地图实现传参的跳转  这一功能将会移植到详情页那里*************************
-        window.onload = function(){
-            var obj = document.getElementById('show');
-            obj.onclick=function(){  
-                window.location.href="mapshow.html?lng="+lng+"&lat="+lat;            
-             }
-         }
         // 根据 UI 创建菜单 panel
         menu.dropPanel = new E.DropPanel(editor, menu, {
             $content: $content,
