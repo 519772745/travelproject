@@ -24,9 +24,9 @@ public class Orders {
 	private String address;
 	
 	private String status;
-	//��������û������  ���һ
+	//订单表和用户详情表  多对一
 	private UserDetail userDetail;
-	//������Ͳ�Ʒ�� һ�Զ�
+	//订单表和产品表 一对多
 	private Set<Product> products=new HashSet<Product>(0);	
 	@Id
 	@Column(name="order_id")

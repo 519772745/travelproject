@@ -22,11 +22,11 @@ public class Tags {
 	
 	
 	private Integer tagCount;
-	//����ǩ���ӱ�ǩ һ�Զ�
+	//父标签和子标签 一对多
 	private Set<Tags> childTags=new HashSet<Tags>(0);	
-	//�ӱ�ǩ�͸���ǩ һ��һ
+	//子标签和父标签 一对一
 	private Tags parentTag;
-	//��ǩ������ӱ� һ�Զ�
+	//标签表和连接表 一对多
 	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
 	
 	@Id

@@ -31,17 +31,18 @@ public class TravelNote {
 	
 	private String status;
 	private int commentNum;
-	//�μǱ���û������ ���һ
+	private String address;
+	//游记表和用户详情表 多对一
 	private UserDetail userDetail;
-	//�μǱ���ղر� һ�Զ�
+	//游记表和收藏表 一对多
 	private Set<CollectTravel> collectTravels=new HashSet<CollectTravel>(0);
-	//�μǱ�ͱ�ǩ��  һ�Զ�
+	//游记表和标签表  一对多
 	private Set<TagTravelNote> tagTravelNote=new HashSet<TagTravelNote>(0);
-	//�μǱ�����۱� һ�Զ�
+	//游记表和评论表 一对多
 	private Set<Comment> comments=new HashSet<Comment>(0);
-	//�μǱ�ͻ���� ���һ
+	//游记表和话题表 多对一
 	private Topic topic;
-	//�μǱ��ͼƬ�� һ�Զ�
+	//游记表和图片表 一对多
 	private Set<Imgs> imgs=new HashSet<Imgs>(0);
 	
 	
@@ -117,6 +118,13 @@ public class TravelNote {
 	}
 	public void setCommentNum(int commentNum) {
 		this.commentNum = commentNum;
+	}
+	@Column(name="travel_address")
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	@ManyToOne
 	@JoinColumn(name="email")
