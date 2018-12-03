@@ -22,6 +22,7 @@ public class Product {
 	private String name;
 
 	private String description;
+	private String pic;
 	private double price;
 	private double discount;
 	//产品表和订单表 一对多
@@ -49,6 +50,7 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -69,5 +71,13 @@ public class Product {
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
 	}
+	@Column(name="product_pic")
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+	
 	
 }
