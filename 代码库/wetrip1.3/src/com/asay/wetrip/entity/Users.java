@@ -2,24 +2,27 @@ package com.asay.wetrip.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="wt_user")
 public class Users {	
+	@NotEmpty(message="邮箱不能为空！")
+	@Email(message="邮件格式不正确！")
 	private String email;
-	
+	@Pattern(regexp="[0-9a-zA-Z]{8,30}", message="密码是8-30个字符，必须是字母或数字组合！")
 	@Column(name="user_password")
 	private String password;
 	@Column(name="user_status")
