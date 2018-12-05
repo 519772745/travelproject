@@ -133,12 +133,21 @@
 						<img src="index/img/line3.png" height="250px">
 					</div>
 				</div>
+<<<<<<< HEAD
 			<c:forEach items="${travelMap}" var="t1">
 				<div class="topic_middle">
 					<!-- 话题 -->
 					<div class="topic_middle_title">
 						<a href="dailytopic.html"><div class="topic_middle_title_1"><h3>${t1.key.getTopic().name}</h3></div></a>
 						<div class="topic_middle_title_2"><p>@ ${ud.username}&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${t1.key.getTopic().topictime}" pattern="yyyy年MM月dd日  HH:mm"/></p></div>
+=======
+			<c:forEach items="${travelList}" var="t1">
+				<div class="topic_middle">
+					<!-- 话题 -->
+					<div class="topic_middle_title">
+						<a href="dailytopic.html"><div class="topic_middle_title_1"><h3>${t1.getTopic().name}</h3></div></a>
+						<div class="topic_middle_title_2"><p>@ ${ud.username}&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${t1.getTopic().topictime}" pattern="yyyy年MM月dd日  HH:mm"/></p></div>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 					</div>
 					<div class="topic_middle_content">
 						<!-- 头像 -->
@@ -149,10 +158,17 @@
 						</div>
 						<div class="topic_middle_content_2">
 							<ul class="author-meta clearfix">
+<<<<<<< HEAD
 								<li class="tag">${t1.key.getUserDetail().getUsername()} <a href="zone.html"></a></li>
 								<li class="date"><a href="##"><fmt:formatDate value="${t1.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 							</ul>
 							<p>${t1.key.content }</p>
+=======
+								<li class="tag">${t1.getUserDetail().getUsername()} <a href="zone.html"></a></li>
+								<li class="date"><a href="##"><fmt:formatDate value="${t1.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
+							</ul>
+							<p>${t1.content }</p>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
 							<c:forEach items="${topicImg }" var="i">
@@ -162,6 +178,7 @@
 							</div>
 							<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
+<<<<<<< HEAD
 								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${t1.key.commentNum})</a></li>
 								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (${t1.key.praiseCount})</a></li>
 							<c:if test="${t1.value==0}">	
@@ -171,6 +188,14 @@
 								<li><a href=""><img src="index/img/star1.png" id="star"   width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
 							</c:if>
 								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.key.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
+=======
+								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${t1.commentNum})</a></li>
+								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (${t1.praiseCount})</a></li>
+			
+								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.getCollectTravels().size()})</a></li>
+
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</ul>
 						</div>
 					</div>
@@ -224,25 +249,43 @@
 					
 					
 				</div>
+<<<<<<< HEAD
 				<c:forEach items="${shortMap}" var="shorti">
 				<div class="shuo_middle">
 					<!--用户名 -->
 					<div class="shuo_middle_title">
 						<div class="shuo_middle_title_1"><a href="zone.html"><h3>${shorti.key.getUserDetail().getUsername()}</h3></a></div>
+=======
+				<c:forEach items="${shortList}" var="shorti">
+				<div class="shuo_middle">
+					<!--用户名 -->
+					<div class="shuo_middle_title">
+						<div class="shuo_middle_title_1"><a href="zone.html"><h3>${shorti.getUserDetail().getUsername()}</h3></a></div>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 					</div>
 					<div class="shuo_middle_content">
 						<!--头像-->
 						<div class="shuo_middle_content_1">
 							<a href="zone.html">
+<<<<<<< HEAD
 								<img src="${shorti.key.getUserDetail().getUserhead()}" width="100px" height="100px"> 
+=======
+								<img src="${shorti.getUserDetail().getUserhead()}" width="100px" height="100px"> 
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</a>
 						</div>
 						<div class="shuo_middle_content_2">
 							<ul class="author-meta clearfix">
 								<li class="tag"><a href="part.html">${shortTag}</a></li>
+<<<<<<< HEAD
 								<li class="date"><a href="##"><fmt:formatDate value="${shorti.key.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 							</ul>
 							<p>${shorti.key.getContent() }</p>
+=======
+								<li class="date"><a href="##"><fmt:formatDate value="${shorti.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
+							</ul>
+							<p>${shorti.getContent() }</p>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
 							<c:forEach items="${shortImg}" var="imgi">
@@ -252,6 +295,7 @@
 				
 							<ul class="share-meta2 clearfix">
 								<!--标题下面的三个功能按键-->
+<<<<<<< HEAD
 								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${shorti.key.getCommentNum() })</a></li>
 								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.key.getPraiseCount() })</a></li>
 							<c:if test="${shorti.value==0}">	
@@ -261,6 +305,12 @@
 								<li><a href="collectindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.key.id}"><img src="index/img/star1.png" id="star" style="margin-left:-15px"  width="16" height="16" title="已收藏">&nbsp;&nbsp;已收藏(${shorti.key.getCollectTravels().size()})</a></li>
 							</c:if>
 								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.key.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+=======
+								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${shorti.getCommentNum() })</a></li>
+								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.getPraiseCount() })</a></li>
+								<li><a href="collectindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏(${shorti.getCollectTravels().size()})</a></li>
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</ul>
 						</ul>
 					</div>
@@ -289,7 +339,11 @@
 			</div>
 			<div id="reccomended" class="owl-carousel owl-theme">
 				<!--单个文章推荐-->
+<<<<<<< HEAD
 				<c:forEach items="${longMap}" var="longi" varStatus="status">
+=======
+				<c:forEach items="${longList}" var="longi" varStatus="status">
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 				<div class="item">
 					<div class="box_grid">
 						<figure>
@@ -299,6 +353,7 @@
 							<small>${longTag[status.index]}</small>
 						</figure>
 						<div class="wrapper">
+<<<<<<< HEAD
 							<h3><a href="detail.html">${longi.key.getTitle()}</a></h3>
 					
 			
@@ -309,6 +364,26 @@
 						<ul>
 							<li><i class="icon_clock_alt"></i><fmt:formatDate value="${longi.key.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></li>
 							<li><div class="score"><span>评论<em>${longi.key.getCommentNum()}</em></span></div></li>
+=======
+							<h3><a href="detail.html">${longi.getTitle()}</a></h3>
+						<!--  
+							<s:if test="${longi.getContent()}.length()>20">
+								<s:property value="${longi.getContent()}.substring(0,20)"/>......
+							</s:if>
+							<s:else>
+								<s:property value="${longi.getContent()}"/>......
+							</s:else>
+						-->
+						
+			
+							
+							
+							<span class="price">${longi.getUserDetail().getUsername()}</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i><fmt:formatDate value="${longi.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></li>
+							<li><div class="score"><span>评论<em>${longi.getCommentNum()}</em></span></div></li>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 						</ul>
 					</div>
 				</div>
@@ -386,7 +461,11 @@
 	<footer class="theme-footer">
 		<div class="container">
 			<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
+<<<<<<< HEAD
 			<p class="copyright">Copyright &copy; 2018. All rights reserved.</p>
+=======
+			<p class="copyright">Copyright &copy; 2018.å¬å¸åå­ All rights reserved.</p>
+>>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 		</div> <!-- /.container -->
 	</footer> <!-- /.theme-footer -->
 	<!--/footer-->

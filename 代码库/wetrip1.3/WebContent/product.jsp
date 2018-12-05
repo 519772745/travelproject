@@ -257,7 +257,7 @@ a {
 				<li><span><a href="part.jsp">风景</a></span></li>
 				<li><span><a href="part.jsp">美食</a></span></li>
 				<li><span><a href="part.jsp">玩耍</a></span></li>
-				<li><span><a href="product.jsp">周边</a></span></li>
+				<li><span><a href="productall">周边</a></span></li>
 				<li><span><a href="part.jsp">小贴士</a></span></li>
 				<li><span><a href="dailytopic.jsp">今日话题</a></span></li>
 			</ul>
@@ -299,6 +299,8 @@ a {
 					</div>
 				</div>
 				<!-- Sidebar Shopping Option End -->
+					
+				
 				<!-- Product Categorie List Start -->
 				<div class="col-lg-9 order-lg-2">
 					<!-- Grid & List View Start -->
@@ -307,10 +309,11 @@ a {
 						<div class="main-toolbar-sorter f-left">
 							<div class="toolbar-sorter">
 								<label>排序方式</label> 
-								<select class="sorter" name="sorter">
-									<option value="productall" selected="selected">热度</option>
-									<option value="productall2">价格</option>
+								<select id="select" class="sorter" name="select" onchange="window.location=this.value;">
+									<option value="producthot">热度</option>
+									<option value="productprice">价格</option>
 								</select>
+							
 							</div>
 						</div>
 						<!-- Toolbar Short Area End -->
@@ -323,10 +326,16 @@ a {
 							</ul>
 						</div>
 					</div>
+					
+					
+					
+					
+					
 					<!-- Grid & List View End -->
 					<div class="main-categorie product-area">
 						<!-- Grid & List Main Area End -->
 						<div class="tab-content fix">
+							<!-- 格子式展示商品 -->
 							<div id="grid-view" class="tab-pane active">
 								<div class="row">
 									<!-- 主体-->
@@ -349,7 +358,7 @@ a {
 														<div class="hide">
 															${p.description}
 															<div>
-																<a href="detail.jsp" style="color: #fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a>
+																<a href="good?id=${p.id}" style="color: #fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a>
 															</div>
 														</div>
 													</li>
@@ -364,7 +373,7 @@ a {
 							</div>
 							<!-- #grid view End -->
 
-
+							<!-- 列表式展示商品 -->
 							<div id="list-view" class="tab-pane">
 								<!-- Single Product Start -->
 								<c:forEach items="${page.list}" var="p">
@@ -387,7 +396,7 @@ a {
 												<span class="price">${p.discount}0%</span>
 											<p class="content2">
 												${p.description}
-												<a href="detail.jsp">更多>></a>
+												<a href="good.jsp">更多>></a>
 											</p>
 											<a href="##"><img id="like2" src="part/img/like.png"
 												onmouseover="this.src='part/img/like2.png'"
@@ -408,19 +417,35 @@ a {
 						</div>
 						<!-- tab-content -->
 					</div>
-					<!-- Grid & List View End -->
-					<!--Breadcrumb and Page Show Start -->
-					<div class="kiosk-pagination-box fix">
-						<ul class="blog-pagination ">
-							<li><a href="productall?pageNum=${page.prePageNum }">< </a></li>
-							<li><a href="##">1</a></li>
-							<li><a href="##">2</a></li>
-							<li><a href="productall?pageNum=${page.nextPageNum }"><i class="fa fa-angle-right"></i></a></li>
-						</ul>
-					</div>
-					<!--Breadcrumb and Page Show End -->
+					<!-- Grid & List View End -->			
+					
+					<!--通过判断选择页码跳转 -->
+					<!-- 按热度的上下页跳转 -->
+					<c:if test="${pagetype == 1}">
+						<div class="kiosk-pagination-box fix">
+							<ul class="blog-pagination ">
+								<li><a href="producthot?pageNum=${page.prePageNum }">首</a></li>
+								<li><a href="producthot?pageNum=${page.prePageNum }"><i class="fa fa-angle-left"></i></a></li>
+								<li><a href="producthot?pageNum=${page.nextPageNum }"><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="producthot?pageNum=${page.totalPageNum-1 }">末</a></li>
+							</ul>
+						</div>
+					</c:if>
+
+					<!-- 按价格的上下页跳转 -->
+					<c:if test="${pagetype == 2}">
+						<div class="kiosk-pagination-box fix">
+							<ul class="blog-pagination ">
+								<li><a href="productprice?pageNum=${page.prePageNum }">首</a></li>
+								<li><a href="productprice?pageNum=${page.prePageNum }"><i class="fa fa-angle-left"></i></a></li>
+								<li><a href="productprice?pageNum=${page.nextPageNum }"><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="productprice?pageNum=${page.totalPageNum -1}">末</a></li>
+							</ul>
+						</div>
+					</c:if>
 				</div>
-				<!-- product Categorie List End -->
+				<!-- product Categorie List End -->		
+				
 			</div>
 			<!-- Row End -->
 		</div>
@@ -447,8 +472,18 @@ a {
 	// list[0].removeAttribute('id');
 	// list[0].id = "";//把属性的值赋为空，和上面方法效果一样
 
-	// 修改文本节点
-	list[1].children[1].innerHTML = '小米手机'
+	
+        $(function() {
+        if (localStorage.getItem('select')) {
+            $("#select option").eq(localStorage.getItem('select')).prop('selected', true);
+        }
+
+       $("#select").on('change', function() {
+          localStorage.setItem('select', $('option:selected', this).index());
+            
+        });
+      });
+ 
 </script>
 
 </html>

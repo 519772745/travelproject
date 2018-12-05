@@ -28,4 +28,12 @@ public class ProductServiceImpl {
 	public int findCountByPage(){
 		return this.productDaoImpl.findCountByPage();
 	}
+	
+	
+	public List<Product> list2(){
+		return this.productDaoImpl.findAll2();
+	}
+	public List<Product> list2(int pageNum, int pageSize){
+		return this.productDaoImpl.findByPage2(pageNum,pageSize);
+	}
 }

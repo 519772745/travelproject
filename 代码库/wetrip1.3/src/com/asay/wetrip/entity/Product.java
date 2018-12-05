@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="wt_product")
 public class Product {
-	
+//	@Column(name="product_id")
 	private int id;
 	
 	private String name;
@@ -25,6 +25,7 @@ public class Product {
 	private String pic;
 	private double price;
 	private double discount;
+	private String how_use;
 	//产品表和订单表 一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);	
 	@Id
@@ -78,6 +79,12 @@ public class Product {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	
+	@Column(name="product_how_use")
+	public String getHow_use() {
+		return how_use;
+	}
+	public void setHow_use(String how_use) {
+		this.how_use = how_use;
+	}
 	
 }
