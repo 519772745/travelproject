@@ -168,7 +168,7 @@
 								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
 							</c:if>
 							<c:if test="${t1.value==1 }">
-								<li><a href="##"><img src="index/img/star1.png" id="star"   width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
+								<li><a href=""><img src="index/img/star1.png" id="star"   width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
 							</c:if>
 								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.key.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
 							</ul>
