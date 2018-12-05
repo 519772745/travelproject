@@ -114,6 +114,7 @@
 	position: absolute;
 	margin: 10px 13px;
 }
+
 .l-login{
 	position: absolute;
 	z-index: 1;
@@ -151,7 +152,7 @@
 }
 #shuaxin{
 	float: left;
-	margin-top: 7px;
+	margin-top:10px;
 }
 #img1{
 	width: 100px;
@@ -167,9 +168,18 @@ span{
 	font: 14px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei";
 }
 #yanzhengimg{
-	height: 20px;
-	width: 70px;
+	height: 40px;
+	width: 100px;
 	background-color: black;
+}
+#all{
+	float:left;
+}
+#yanzheng{
+	float:left;
+	margin-top:-10px;
+	margin-bottom:10px;
+	z-index:9999;
 }
 /*///*/
 .mb2{

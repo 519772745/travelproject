@@ -30,6 +30,7 @@ function but(){//验证验证码输入是否正确
   		document.getElementById("searchMsg").style.display = "block";  		  		   		
   	}
 }
+
 function xiaoshi3(){
 	document.getElementById("searchMsg").style.display = "none"; 
 }
@@ -54,6 +55,7 @@ function checkPassword(){
 //密码框再获得焦点的时候“请填写相关信息”的提示字样消失
 function xiaoshiPassword(){
 	document.getElementById("pas").innerHTML="";
+	document.getElementById("password").innerHTML="";
 }
 //按键事件看邮箱的字符串的个数是否超过了最大的
 function rangePassword(){
@@ -94,19 +96,54 @@ function rangeEmail(){
 //密码框再获得焦点的时候“请填写相关信息”的提示字样消失
 function xiaoshiEmail(){
 	document.getElementById("email").innerHTML="";
-}
+	document.getElementById("email2").innerHTML="";
 
+}
+function xiaoshiCode(){	
+	document.getElementById("yanzheng").innerHTML="";
+}
 
 //该功能检查前后密码填写是否一致
 function checkpassword(){
 	var password1=document.getElementById("logPass").value;//第一个输入框的密码
 	var password=document.getElementById("logPass2").value;
 		if(password!=password1){
-		    document.getElementById("pas2").innerHTML="密码不一致";
+		    document.getElementById("pas2").innerHTML="密码不一致";		    
 		}else{
 		    document.getElementById("pas2").innerHTML="";
 		}
 }
 function xiaoshi1(){
 	document.getElementById("pas2").innerHTML="";
+	document.getElementById("password").innerHTML="";
 }
+//改变验证码事件
+         function changeImg(){
+             var img = document.getElementById('yanzhengimg');
+             img.src = "${pageContext.request.contextPath }/createCode?x=" + Math.floor(Math.random()*100)
+         }
+         
+         //提交验证并验证验证码
+         function submit(){
+             var input = document.getElementById('text1');
+             
+         //ajax提交
+            var xhr = new XMLHttpRequest();
+             
+             xhr.onreadystatechange = function(){
+                 if(xhr.readyState == 4 && xhr.status == 200) { 
+                	 //alert(xhr.responseText);
+                	 if(xhr.responseText){
+                	 		document.getElementById("searchMsg").className="yan";
+                	 		document.getElementById("searchMsg").style.display = "block"; 
+                	  	}else{
+                	  		document.getElementById("searchMsg").className="yan1";
+                	  		document.getElementById("searchMsg").style.display = "block";  		  		   		
+                	  	}
+                 }  
+             }
+             
+             xhr.open('get','${pageContext.request.contextPath }/verifyCode?code=' + input.value);
+             xhr.send(null);             
+             
+         }

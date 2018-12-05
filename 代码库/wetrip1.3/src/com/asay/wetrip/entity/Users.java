@@ -19,10 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="wt_user")
 public class Users {	
-	@NotEmpty(message="邮箱不能为空！")
-	@Email(message="邮件格式不正确！")
 	private String email;
-	@Pattern(regexp="[0-9a-zA-Z]{8,30}", message="密码是8-30个字符，必须是字母或数字组合！")
 	@Column(name="user_password")
 	private String password;
 	@Column(name="user_status")

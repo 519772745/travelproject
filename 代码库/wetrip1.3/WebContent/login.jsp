@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/demo.css" />
 	<!--必要样式-->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/component.css" />
-	<link rel="shortcut icon" href="${pageContext.request.contextPath }/loginAndRegister/img/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/loginAndRegister/img/icon.ico" type="image/x-icon">	
 </head>
 <!-- onload="createCode()"一开始加载的时候就生成验证码的方法-->
 <body>
@@ -27,30 +27,33 @@
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()"/>							
+							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()"/>														
 							<div id="email" ></div>
-							
+							<c:if test="${userError}"><div id="email2" >用户名不存在！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="logPass" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()">
-							<div id="pas"></div>	
+							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()">
+							<div id="pas"></div>
+							<c:if test="${pwdError}"><div id="password" >密码不正确！</div></c:if>	
 						</div>
 
 						<div class="input_outer1">
+							<div id="all">
 							<span class="us_uer2"></span>
 							<div class="yan" id="searchMsg" style="display:none" ></div>
-							<input name="rand" id="text1" style="color: #FFFFFF !important; position:absolute; z-index:100;" type="text" placeholder="请输入验证码" onblur="but()" onfocus="xiaoshi3()">
+							<input name="codekey" id="text1" style="color: #FFFFFF !important; position:absolute; z-index:100;" type="text" placeholder="请输入验证码"  onfocus="xiaoshiCode()">
 							<div id="img1">
-								<div id="yanzhengimg"><img src="${pageContext.request.contextPath}/createcode"/></div>							
-								<a href="##" id="shuaxin" onclick="createCode()" style="font-size:14px; color:#eaeaea">刷新验证码</a>
+								<div id="yanzhengimg"  onclick="changeImg()"><img src="${pageContext.request.contextPath}/createCode" /></div>							
+								<a href="" id="shuaxin" onclick="changeImg()" style="font-size:14px; color:#eaeaea">刷新验证码</a>
 							</div>
-							<div id="yanzheng"></div>
+							</div>							
+							<c:if test="${codeError}"><div id="yanzheng" >验证码不正确！</div></c:if>
 						</div>
-						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF"></div>
+						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 						<div id="wei">
-							<a href="register.jsp" style="color: white">注册</a>
+							<a href="register" style="color: white">注册</a>
 							<a href="##" style="color: white">|忘记密码？</a>
 						</div>
 					</form>
