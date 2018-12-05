@@ -28,8 +28,9 @@ public class TravelNote {
 	private String content;	
 	
 	private int islong;
-	
+	private int reportcount;
 	private String status;
+	
 	private int commentNum;
 	private String address;
 	//游记表和用户详情表 多对一
@@ -178,6 +179,12 @@ public class TravelNote {
 	}
 	public void setTagTravelNote(Set<TagTravelNote> tagTravelNote) {
 		this.tagTravelNote = tagTravelNote;
+	}
+	public int getReportcount() {
+		return reportcount;
+	}
+	public void setReportcount(int reportcount) {
+		this.reportcount = reportcount;
 	}
 	
 }
