@@ -1,7 +1,15 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+ 
+ 
 <!DOCTYPE html>
 <html lang="ch">
 
 <head>
+<!--< taglib prefix="s" uri="/struts-tags" %>-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,15 +49,16 @@
 				<li><a href="login.html"><img src="index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				<li><a href="cart.html"><img src="index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
 				<li><a href="personalinfo.html"><img src="index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
-				<li><a href="editor.html"><img src="index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>				
-				<li><a href="user/login"><img src="index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>								
+
+				<li><a href="editor.html"><img src="index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="login.html"><img src="index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				<li><a href="cart.html"><img src="index/img/shopping_button1.png" width="24" height="24" class="logo_normal"></a></li>
 				<li><a href="personalinfo.html"><img src="index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
 			</ul>
 			<div id="User">
-				<a href="##">用户状态</a><br>
-				<a href="zone.html" >个人空间页</a><br>
-				<a href="##">注销</a>
+				<a href="##">用户状态</a><br>
+				<a href="zone.html" >我的空间</a><br>
+				<a href="##">注销</a>
 			</div>
 			<!-- /top_menu -->
 			<a href="#menu" class="btn_mobile">
@@ -61,12 +70,11 @@
 			</a>
 			<nav id="menu" class="main-menu">
 				<ul>
-					<li><span><a href="index.html">首页</a></span></li>
-					<li><span><a href="part.html">风景</a></span></li>
-					<li><span><a href="part.html">美食</a></span></li>
-					<li><span><a href="part.html">玩耍</a></span></li>
-					<li><span><a href="part.html">周边</a></span></li>
-					<li><span><a href="part.html">小贴士</a></span></li>
+						<li><span><a href="index.jsp">首页</a></span></li>
+					<c:forEach items="${tags }" var="t">
+					<li><span><a href="part.html">${t.tagName }</a></span></li>
+					</c:forEach>
+					<li><span><a href="part.html">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>
 				</ul>
 			</nav>
@@ -75,7 +83,7 @@
 		<!-- /header -->
 
 		<main>
-			<!--banner 开始-->
+			<!--banner å¼å§-->
 
 			<div class="banner">   
 				<div class="banner1">
@@ -109,9 +117,10 @@
 				</ul>
 			</div>
 
-			<!--banner 结束-->
-			<!-- 今日话题 -->
+			<!--banner ç»æ-->
+			<!--今日话题 -->
 			<div class="topic">
+		
 				<div class="main_title_2">
 					<span><em></em></span>
 				</div>
@@ -124,53 +133,76 @@
 						<img src="index/img/line3.png" height="250px">
 					</div>
 				</div>
+			<c:forEach items="${travelList}" var="t1">
 				<div class="topic_middle">
 					<!-- 话题 -->
 					<div class="topic_middle_title">
-						<a href="dailytopic.html"><div class="topic_middle_title_1"><h3>今天你吃了吗？</h3></div></a>
-						<div class="topic_middle_title_2"><p>@官方嘤&nbsp;&nbsp;&nbsp;今日&nbsp;19:00</p></div>
+						<a href="dailytopic.html"><div class="topic_middle_title_1"><h3>${t1.getTopic().name}</h3></div></a>
+						<div class="topic_middle_title_2"><p>@ ${ud.username}&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${t1.getTopic().topictime}" pattern="yyyy年MM月dd日  HH:mm"/></p></div>
 					</div>
 					<div class="topic_middle_content">
 						<!-- 头像 -->
 						<div class="topic_middle_content_1">
 							<a href="zone.html">
-								<img src="index/img/avatar2.png"> 
+								<img src="${ud.userhead }"> 
 							</a>
 						</div>
 						<div class="topic_middle_content_2">
 							<ul class="author-meta clearfix">
-								<li class="tag"><a href="zone.html">用户ID</a></li>
-								<li class="date"><a href="##">2018&nbsp;&nbsp;may 15&nbsp;&nbsp;23:33</a></li>
+								<li class="tag">${t1.getUserDetail().getUsername()} <a href="zone.html"></a></li>
+								<li class="date"><a href="##"><fmt:formatDate value="${t1.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 							</ul>
-							<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>
+							<p>${t1.content }</p>
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
-								<img src="index/img/img1.jpg">
-								<img src="index/img/img2.jpg">
-								<img src="index/img/img3.jpg">
-								<img src="index/img/img4.jpg">
+							<c:forEach items="${topicImg }" var="i">
+								<img src="${i.getPath()}">
+								</c:forEach>
+								
 							</div>
 							<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (04)</a></li>
-								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (02)</a></li>
-								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (12)</a></li>
-								<li><a href="##"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
+								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${t1.commentNum})</a></li>
+								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (${t1.praiseCount})</a></li>
+			
+								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.getCollectTravels().size()})</a></li>
+
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
+			</c:forEach>
+			
 				<div class="topic_right"> 
 					<div class="topic_right_img">
 						<a href="dailytopic.html">
 							<div class="topic_right_readmore"></div>
 						</a>
 					</div>
+				<!--分页 -->
 					<div class="page">
-						<a href="##" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>
-						<a href="##" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>
+						<c:if test="${TopicpageNum==null||TopicpageNum<=1 }">
+							<a href="indexs?TopicpageNum=1&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
+							<a href="indexs?TopicpageNum=${TopicpageNum+1 }&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+						</c:if>
 					</div>
+					
+					<div class="page">
+						<c:if test="${TopicpageNum<count&&TopicpageNum>1}">
+								<a href="indexs?TopicpageNum=${TopicpageNum-1}&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
+								<a href="indexs?TopicpageNum=${TopicpageNum+1}&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+						</c:if>
+					</div>
+					<div class="page">
+						<c:if test="${TopicpageNum==count}">
+								<a href="indexs?TopicpageNum=${TopicpageNum-1 }&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
+								<a href="indexs?TopicpageNum=${count}&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+						</c:if>
+					</div>
+						
 				</div>
+					
 			</div>
 			<!-- 今日话题结束 -->
 			<!-- 热门说说 -->
@@ -189,43 +221,44 @@
 					
 					
 				</div>
+				<c:forEach items="${shortList}" var="shorti">
 				<div class="shuo_middle">
-					<!-- 话题 -->
+					<!--用户名 -->
 					<div class="shuo_middle_title">
-						<div class="shuo_middle_title_1"><a href="zone.html"><h3>用户ID</h3></a></div>
-						<!-- <div class="shuo_middle_title_2"><p>@来自员工的哀嚎&nbsp;&nbsp;&nbsp;今日&nbsp;23:33</p></div> -->
+						<div class="shuo_middle_title_1"><a href="zone.html"><h3>${shorti.getUserDetail().getUsername()}</h3></a></div>
 					</div>
 					<div class="shuo_middle_content">
-						<!-- 头像 -->
+						<!--头像-->
 						<div class="shuo_middle_content_1">
 							<a href="zone.html">
-								<img src="index/img/avatar1.png" width="100px" height="100px"> 
+								<img src="${shorti.getUserDetail().getUserhead()}" width="100px" height="100px"> 
 							</a>
 						</div>
 						<div class="shuo_middle_content_2">
 							<ul class="author-meta clearfix">
-								<li class="tag"><a href="part.html">标签</a></li>
-								<li class="date"><a href="##">2018&nbsp;&nbsp;June 16&nbsp;&nbsp;23:33</a></li>
+								<li class="tag"><a href="part.html">${shortTag}</a></li>
+								<li class="date"><a href="##"><fmt:formatDate value="${shorti.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 							</ul>
-							<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>
-							<!--这是下面用来出现照片的部分-->
+							<p>${shorti.getContent() }</p>
+							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
-								<img src="index/img/img1.jpg">
-								<img src="index/img/img2.jpg">
-								<img src="index/img/img3.jpg">
-								<img src="index/img/img4.jpg">
+							<c:forEach items="${shortImg}" var="imgi">
+								<img src="${imgi.getPath()} ">
+							</c:forEach>	
 							</div>
+				
 							<ul class="share-meta2 clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (04)</a></li>
-								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (02)</a></li>
-								<li><a href="##"><img src="index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (12)</a></li>
-								<li><a href="##"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${shorti.getCommentNum() })</a></li>
+								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.getPraiseCount() })</a></li>
+								<li><a href="collectindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏(${shorti.getCollectTravels().size()})</a></li>
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
 							</ul>
 						</ul>
 					</div>
 				</div>
 			</div>
+			</c:forEach>
 			<div class="shuo_left">
 				<div class="shuo_left_img">
 					<a href="detail.html">
@@ -233,146 +266,60 @@
 					</a>
 				</div>
 				<div class="page2">
-					<a href="##" class="a1"><img src="index/img/right.png" onmouseover="this.src='index/img/right3.png'" onmouseout="this.src='index/img/right.png'"></a>
-					<a href="##" class="a2"><img src="index/img/left.png" onmouseover="this.src='index/img/left3.png'" onmouseout="this.src='index/img/left.png'"></a>
+					<a href="indexs?pageNumshort=${pageNumshort+1}&TopicpageNum=${TopicpageNum}" class="a1"><img src="index/img/right.png" onmouseover="this.src='index/img/right3.png'" onmouseout="this.src='index/img/right.png'"></a>
+					<a href="indexs?pageNumshort=${pageNumshort-1}&TopicpageNum=${TopicpageNum}" class="a2"><img src="index/img/left.png" onmouseover="this.src='index/img/left3.png'" onmouseout="this.src='index/img/left.png'"></a>
 				</div>
 			</div>
 			
 		</div>
-		<!-- 热门说说结束 -->
-		<!-- 热点文章 -->
+		<!--热门说说结束-->
+		<!-- 热点文章-->
 		<div class="container-fluid margin_80_0">
 			<div class="main_title_2">
 				<span><em></em></span>
 				<h2>热点文章</h2>
 			</div>
 			<div id="reccomended" class="owl-carousel owl-theme">
-				<!-- 单个文章推荐-->
+				<!--单个文章推荐-->
+				<c:forEach items="${longList}" var="longi" varStatus="status">
 				<div class="item">
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="star_bt"></a>
 							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
+							<a href="detail.html"><img src="${longImg[status.index].getPath()}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>${longTag[status.index]}</small>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
+							<h3><a href="detail.html">${longi.getTitle()}</a></h3>
+						<!--  
+							<s:if test="${longi.getContent()}.length()>20">
+								<s:property value="${longi.getContent()}.substring(0,20)"/>......
+							</s:if>
+							<s:else>
+								<s:property value="${longi.getContent()}"/>......
+							</s:else>
+						-->
+						
+			
+							
+							
+							<span class="price">${longi.getUserDetail().getUsername()}</span>
 						</div>
 						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+							<li><i class="icon_clock_alt"></i><fmt:formatDate value="${longi.getPublishtime()}" pattern="yyyy年MM月dd日  HH:mm"/></li>
+							<li><div class="score"><span>评论<em>${longi.getCommentNum()}</em></span></div></li>
 						</ul>
 					</div>
 				</div>
-				<!-- 单个文章推荐-->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="star_bt"></a>
-							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- 单个文章推荐-->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="star_bt"></a>
-							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- 单个文章推荐-->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="star_bt"></a>
-							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- 单个文章推荐-->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="star_bt"></a>
-							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- 单个文章推荐-->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="star_bt"></a>
-							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="index/img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
-							<small>标签</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="detail.html">文章标题</a></h3>
-							<p>文章部分段落</p>
-							<span class="price">作者</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 发表时间</li>
-							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
-						</ul>
-					</div>
-				</div>
+				</c:forEach>
+				
 			</div>
 			<!-- /carousel -->
 		</div>
 		<!-- 热点文章结束 -->
 		<br>
-		<!-- 商品推荐 -->
+		<!-- 商品推荐-->
 		<div class="container-fluid margin_30_95 pl-lg-5 pr-lg-5">
 			<section>
 				<div class="main_title_3">
@@ -439,15 +386,15 @@
 	<footer class="theme-footer">
 		<div class="container">
 			<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
-			<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
+			<p class="copyright">Copyright &copy; 2018.å¬å¸åå­ All rights reserved.</p>
 		</div> <!-- /.container -->
 	</footer> <!-- /.theme-footer -->
 	<!--/footer-->
 </div><!-- page -->
 
-<div id="toTop"></div><!-- 返回到顶端 -->
+<div id="toTop"></div><!-- è¿åå°é¡¶ç«¯ -->
 
-<!-- 通用js -->
+<!-- éç¨js -->
 <script src="index/js/jquery-2.2.4.min.js"></script>
 <script src="index/js/common_scripts.js"></script>
 <script src="index/js/main.js"></script>
@@ -472,7 +419,7 @@
 	});
 
 
-		//搜索
+		//æç´¢
 		function display(id){  
 			var traget=document.getElementById(id);  
 			if(traget.style.display=="none"){  
@@ -481,7 +428,7 @@
 				traget.style.display="none";  
 			}  
 		}
-		//点击出现div，移开消失
+		//ç¹å»åºç°divï¼ç§»å¼æ¶å¤±
 		window.onload = function(){
 			document.onclick = function(e){
 				e = e || window.event;
@@ -502,7 +449,7 @@
 			
 		}
 
-//用户登录后的状态注销等
+//ç¨æ·ç»å½åçç¶ææ³¨éç­
 function over(obj){        
    document.getElementById("User").style.display = "block";
 
