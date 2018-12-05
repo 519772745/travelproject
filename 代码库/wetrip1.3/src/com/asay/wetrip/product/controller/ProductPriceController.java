@@ -22,15 +22,16 @@ import com.asay.wetrip.product.service.ProductServiceImpl;
  * @date:   2018年12月3日 下午2:57:59
  */
 @Controller
-public class ProductAllController {
+public class ProductPriceController {
 	@Resource
 	private ProductServiceImpl productServiceImpl;
-	@RequestMapping("/productall")
-	public String productall(HttpServletRequest request,@RequestParam(value="pageNum",required=false) String pageNum) {
-		System.out.println("1");
+	@RequestMapping("/productprice")
+	public String productprice(HttpServletRequest request,@RequestParam(value="pageNum",required=false) String pageNum) {
+		int pageType=2;
+		request.setAttribute("pagetype", pageType);
 		List<Product> list = this.productServiceImpl.list();
 		request.getServletContext().setAttribute("product", list);
-		System.out.println(list);
+//		System.out.println(list);
 		// 1获取页码
 		int num = 0;
 		if (pageNum == null || pageNum.equals("")) {
@@ -40,14 +41,14 @@ public class ProductAllController {
 			num = Integer.parseInt(pageNum);
 		}
 		// 2根据页码查询相关数据
-		System.out.println("2");
+//		System.out.println("2");
 		int count2 = this.productServiceImpl.findCountByPage();
-		List<Product> list4 = this.productServiceImpl.list(num, 6);
+		List<Product> list3 = this.productServiceImpl.list(num, 6);
 		Page<Product> p = new Page<Product>(num,3);
-		p.setList(list4);
+		p.setList(list3);
 		p.setTotalCount(count2);
 		request.getServletContext().setAttribute("page", p);
-		System.out.println("3");
+//		System.out.println("3");
 //		System.out.println(p);
 		return "product";
 	}
