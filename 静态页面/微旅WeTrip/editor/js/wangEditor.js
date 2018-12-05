@@ -5256,7 +5256,7 @@ _e(function (E, $) {
 
         mapData.clearLocations = function () {
             var map = mapData.map;
-            if (!map) {
+            if (!map) {//这应该是为空的意思
                 return;
             }
             map.clearOverlays();
@@ -5267,7 +5267,7 @@ _e(function (E, $) {
 
         mapData.searchMap = function () {
             var map = mapData.map;
-            if (!map) {
+            if (!map) {  //这个应该是点击事件  点的不是地图这一块的div就会消失
                 return;
             }
 
@@ -5385,8 +5385,25 @@ _e(function (E, $) {
             //鼠标点击，创建位置
             map.addEventListener("click", function(e){
                 var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat)); 
+
+                //利用全局变量保存经纬度
+                lng=e.point.lng;
+                lat=e.point.lat;
+                // 这是获得现在地图上的表红点的情况 删除功能
+                var map = mapData.map;
+                //这个是点击到已存在的红点上的返回操作  就是不做任何操作
+                if (!map) {//这是不为空的操作
+                    return;
+                }
+                
+                // map.clearOverlays();
+                //同时，清空marker数组
+                mapData.markers = [];
+
+                // 清空之后在加上新标的红点 也就是加上图层
                 map.addOverlay(marker);  
-                marker.enableDragging();
+                marker.enableDragging(); //这是使红点能够拖拽
+
                 mapData.markers.push(marker);  //加入到数组中
             }, false);
         };
@@ -5532,7 +5549,10 @@ _e(function (E, $) {
             src = src +'center=' + centerLng + ',' + centerLat +
                 '&zoom=' + zoom +
                 '&width=' + sizeWidth +
-                '&height=' + sizeHeight;
+                '&height=' + sizeHeight+
+                //把经纬度的参数添加到src中   获取其src就相当于获取了静态的地图照片
+                '&lng=' + lng+
+                '&lat=' + lat;
             if(markers.length > 0){
                 src = src + '&markers=';
 

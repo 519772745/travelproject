@@ -2,24 +2,24 @@ package com.asay.wetrip.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="wt_user")
 public class Users {	
 	private String email;
-	
 	@Column(name="user_password")
 	private String password;
 	@Column(name="user_status")
