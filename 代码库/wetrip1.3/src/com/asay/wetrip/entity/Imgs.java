@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="wt_tag")
+@Table(name="wt_img")
 public class Imgs {
 	
 	private int id;
