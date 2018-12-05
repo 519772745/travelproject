@@ -63,6 +63,7 @@ public List<String> findLongTags(List<TravelNote> longList){
 	}
 	return longTag;	
 }
+//游记list查询首张图片
 public List<Imgs> findLongImgs(List<TravelNote> longList){
 	List<Imgs> longImg=new ArrayList<Imgs>();
 	for (TravelNote tn:longList) {
