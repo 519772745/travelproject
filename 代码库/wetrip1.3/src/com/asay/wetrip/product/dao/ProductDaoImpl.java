@@ -25,7 +25,7 @@ public class ProductDaoImpl {
 	/**
 	 * 
 	 * @Title: findAll   
-	 * @Description: 按照价格升序的方式查询商品
+	 * @Description: 按照价格升序的方式查询所有商品
 	 * @param: @return      
 	 * @return: List<Product>      
 	 * @throws
@@ -68,10 +68,18 @@ public class ProductDaoImpl {
 			return count.intValue();
 	}
 	
-//	public List<Product> findAll2(){
-//		Session session=this.sessionFactory.getCurrentSession();
-//		Query q1=session.createQuery("from Product order by price");
-//		return q1.list();
-//	}
 	
+	public List<Product> findAll2(){
+		Session session=this.sessionFactory.getCurrentSession();
+		Query q3=session.createQuery("select p from Product p,OrderDetail o where p.id=o.productId group by o.productId order by sum(order_Count) desc ");
+		return q3.list();
+	}
+	public List<Product> findByPage2(int pageNum, int pageSize){
+		Session session=this.sessionFactory.getCurrentSession();
+		Query q4=session.createQuery("select p from Product p,OrderDetail o where p.id=o.productId group by o.productId order by sum(order_Count) desc");
+		q4.setFirstResult((pageNum-1)*pageSize);
+		q4.setMaxResults(pageSize);
+		return q4.list();
+	}	
+
 }

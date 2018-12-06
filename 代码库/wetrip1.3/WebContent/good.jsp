@@ -95,8 +95,7 @@
 					<li><a href="editor.jsp"><img
 							src="good/images/add_button1.png" width="24" height="24"></a></li>
 					<li><a href="login.jsp"><img
-							src="good/images/personal_button1.png" width="24" height="24"
-							></a></li>
+							src="good/images/personal_button1.png" width="24" height="24"></a></li>
 					<li><a href="cart.jsp"><img
 							src="good/images/shopping_button1.png" width="24" height="24"></a></li>
 					<li><a href="personalinfo.jsp"><img
@@ -107,8 +106,7 @@
 					<li><a href="editor.jsp"><img
 							src="good/images/add_button.png" width="24" height="24"></a></li>
 					<li><a href="login.jsp"><img
-							src="good/images/personal_button.png" width="24" height="24"
-							></a></li>
+							src="good/images/personal_button.png" width="24" height="24"></a></li>
 					<li><a href="cart.jsp"><img
 							src="good/images/shopping_button.png" width="24" height="24"></a></li>
 					<li><a href="personalinfo.jsp"><img
@@ -128,7 +126,7 @@
 						<li><span><a href="part.jsp">风景</a></span></li>
 						<li><span><a href="part.jsp">美食</a></span></li>
 						<li><span><a href="part.jsp">玩耍</a></span></li>
-						<li><span><a href="part.jsp">周边</a></span></li>
+						<li><span><a href="productall">周边</a></span></li>
 						<li><span><a href="part.jsp">小贴士</a></span></li>
 						<li><span><a href="dailytopic.jsp">今日话题</a></span></li>
 					</ul>
@@ -152,14 +150,14 @@
 					<div class="page-content">
 						<div class="products-page-head">
 							<h1>WeTrip</h1>
-							<div class="tag-line">- 自由的蚊子</div>
+							<div class="tag-line">- ${good.get(0).name}</div>
 						</div>
 						<div class="row-fluid">
 							<div class="span7">
 								<div class="flexslider product-gallery">
 									<ul class="slides">
-										<li data-thumb="good/images/p1.jpg"><img alt=""
-											src="good/images/p1.jpg" /></li>
+										<li data-thumb="${good.get(0).pic}"><img alt=""
+											src="${good.get(0).pic}" /></li>
 										<li data-thumb="good/images/p2.jpg"><img alt=""
 											src="good/images/p2.jpg" /></li>
 										<li data-thumb="good/images/p3.jpg"><img alt=""
@@ -173,31 +171,36 @@
 							</div>
 							<div class="span5">
 								<div class="product-info-box">
-
-									<div class="info-holder">
-										<h4>微旅驱蚊液</h4>
-										<p>商品描述</p>
-									</div>
-									<hr>
-									<div class="drop-downs-holder">
-										<div class="drop-selector capacity-selector"></div>
-
-										<div class="drop-selector">
-											<span>数量</span> <input min="1" type="number" id="quantity"
-												name="quantity" value="1" class="quantity_one">
+									<form action="addcart">
+										<div class="info-holder">
+											<h4>${good.get(0).name}</h4>
+											 WeGoodID:<input type="text" name="id" value="${good.get(0).id}" style="width:30px;height:30px"/>
+											<p>描述：${good.get(0).description}</p>
 										</div>
-									</div>
-									<hr>
-									<div class="price-holder">
-										<div class="price">
-											<span>¥99.00</span> <span class="old"></span>
+										<hr>
+
+										<div class="drop-downs-holder">
+											<div class="drop-selector capacity-selector"></div>
+											<div class="drop-selector">
+												<span>数量</span> <input min="1" type="number" id="quantity"
+													name="num" value="1" class="quantity_one">
+											</div>
 										</div>
-									</div>
-									<div class="buttons-holder">
-										<a class="cusmo-btn add-button" href="cart.jsp">加入购物车</a> <a
-											class="add-to-wishlist-btn" href="##"><i
-											class="icon-plus"></i> 加入心愿单</a>
-									</div>
+										<hr>
+										<div class="price-holder">
+											<div class="price">
+												<span>¥${good.get(0).price}</span> <span class="old"></span>
+											</div>
+										</div>
+										<div class="buttons-holder">
+											<input type="submit" class="cusmo-btn add-button"
+												value="加入购物车" />
+											<!--  a class="cusmo-btn add-button" href="cart.jsp">加入购物车</a-->
+											<a class="add-to-wishlist-btn" href="##"> <i
+												class="icon-plus"></i> 加入心愿单
+											</a>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -215,23 +218,21 @@
 								<div id="description" class=" active tab-pane ">
 									<p
 										style="text-align: justify; font-family: 微软雅黑; font-size: 16px">
-										这是一瓶驱蚊液。</p>
-									<p
-										style="text-align: justify; font-family: 微软雅黑; font-size: 16px">
-										它真的真的真的真的真的真的非常好用。</p>
+										${good.get(0).description}</p>
+
 								</div>
 
 								<div id="how-to-use" class=" tab-pane ">
 									<p
 										style="text-align: justify; font-family: 微软雅黑; font-size: 16px">
-										小心使用。</p>
-									<ul
+										${good.get(0).how_use}</p>
+									<!-- 				<ul
 										style="text-align: justify; font-family: 微软雅黑; font-size: 16px">
 										<li>1、拧开瓶盖，将电蚊香液液瓶向上旋入加热器；</li>
 										<li>2、配合插座方向，转动加热器插头，确保工作时液瓶呈竖直向上状态；接通电源（220V)，指示灯亮即表示加热器开始工作；</li>
 										<li>3、使用完毕请将加热器拔离插座，无需旋下液瓶，但保持液瓶竖直向上；</li>
 										<li>4、当药液用完，请将加热器拔离插座，然后更换补充药液。</li>
-									</ul>
+									</ul> -->
 								</div>
 
 								<div id="reviews" class=" tab-pane ">
@@ -297,8 +298,7 @@
 
 							</div>
 						</div>
-						<br>
-						<br>
+						<br> <br>
 						<!--  <div class="middle-header-holder">
                            <div class="middle-header"> 你还可能喜欢</div>
                        </div> -->
