@@ -1,13 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- 
- 
 <!DOCTYPE html>
 <html lang="ch">
-
 <head>
 <!--< taglib prefix="s" uri="/struts-tags" %>-->
 	<meta charset="utf-8">
@@ -15,50 +11,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>微旅WeTrip</title>
 
-	<link href="index/css/reset.css" rel="stylesheet">
-	<link href="index/css/index.css" rel="stylesheet">
-	<link href="index/css/iconfont.css" rel="stylesheet">
-	<script src="index/js/jquery-1.9.1.min.js"></script>
-	<script src="index/js/common.js"></script>
-	<script src="index/js/index.js"></script>
+	<link href="${pageContext.request.contextPath }/index/css/reset.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/index/css/index.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/index/css/iconfont.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath }/index/js/jquery-1.9.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/index/js/common.js"></script>
+	<script src="${pageContext.request.contextPath }/index/js/index.js"></script>
 	<!-- Favicons-->
-	<link rel="shortcut icon" href="index/img/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath }/index/img/icon.ico" type="image/x-icon">
 	<!-- BASE CSS -->
-	<link href="index/css/bootstrap.min.css" rel="stylesheet">
-	<link href="index/css/style.css" rel="stylesheet">
-	<link href="index/css/vendors.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/index/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/index/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/index/css/vendors.css" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="index/css/custom.css" rel="stylesheet">
-
+	<link href="${pageContext.request.contextPath }/index/css/custom.css" rel="stylesheet">
+	<script type="text/javascript">
+		
+	</script>
 </head>
 
-<body>
+<body>	
+		
 	<div id="page" class="theia-exception">
 		
 		<header class="header menu_fixed">
 
 			<div id="logo">
-				<a href="index.html">
-					<img src="index/img/logo_white.png" width="163" height="36" data-retina="true" alt="" class="logo_normal">
-					<img src="index/img/logo_black.png" width="163" height="36" data-retina="true" alt="" class="logo_sticky">
+				<a href="main.jsp">
+					<img src="${pageContext.request.contextPath }/index/img/logo_white.png" width="163" height="36" data-retina="true" alt="" class="logo_normal">
+					<img src="${pageContext.request.contextPath }/index/img/logo_black.png" width="163" height="36" data-retina="true" alt="" class="logo_sticky">
 				</a>
 			</div>
 			<ul id="top_menu">
-				<li><a href="editor.html"><img src="index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
-				<li><a href="login.html"><img src="index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
-				<li><a href="cart.html"><img src="index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
-				<li><a href="personalinfo.html"><img src="index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<li><a href="editor.html"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<c:if test="${not empty userEmail}">
+				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				</c:if>
+				<c:if test="${empty userEmail}">
+				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
+				</c:if>
+				<li><a href="cart.html"><img src="${pageContext.request.contextPath }/index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<li><a href="personalinfo.html"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
 
-				<li><a href="editor.html"><img src="index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
-				<li><a href="login.html"><img src="index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
-				<li><a href="cart.html"><img src="index/img/shopping_button1.png" width="24" height="24" class="logo_normal"></a></li>
-				<li><a href="personalinfo.html"><img src="index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="editor.html"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<c:if test="${not empty userEmail}">				
+				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				</c:if>
+				<c:if test="${empty userEmail}">				
+				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				</c:if>
+				<li><a href="cart.html"><img src="${pageContext.request.contextPath }/index/img/shopping_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="personalinfo.html"><img src="${pageContext.request.contextPath }/index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
 			</ul>
 			<div id="User">
-				<a href="##">用户状态</a><br>
+				<a href="">${userEmail },已登录</a><br>
 				<a href="zone.html" >我的空间</a><br>
-				<a href="##">注销</a>
+				<a href="cancel">注销</a>
 			</div>
 			<!-- /top_menu -->
 			<a href="#menu" class="btn_mobile">
@@ -70,7 +79,7 @@
 			</a>
 			<nav id="menu" class="main-menu">
 				<ul>
-						<li><span><a href="index.jsp">首页</a></span></li>
+					<li><span><a href="index.jsp">首页</a></span></li>
 					<c:forEach items="${tags }" var="t">
 					<li><span><a href="part.html">${t.tagName }</a></span></li>
 					</c:forEach>
@@ -88,10 +97,10 @@
 			<div class="banner">   
 				<div class="banner1">
 					<ul>
-						<li><img src="index/img/banner6.jpg" alt=""></li>
-						<li><img src="index/img/banner8.jpg" alt=""></li>
-						<li><img src="index/img/banner5.jpg" alt=""></li>
-						<li><img src="index/img/banner6.jpg" alt=""></li>
+						<li><img src="${pageContext.request.contextPath }/index/img/banner6.jpg" alt=""></li>
+						<li><img src="${pageContext.request.contextPath }/index/img/banner8.jpg" alt=""></li>
+						<li><img src="${pageContext.request.contextPath }/index/img/banner5.jpg" alt=""></li>
+						<li><img src="${pageContext.request.contextPath }/index/img/banner6.jpg" alt=""></li>
 					</ul>    	
 				</div>
 				<div class="nav_right fr">
@@ -112,8 +121,8 @@
 					
 				</div>   
 				<ul class="arrows">
-					<li class="prev"><img src="index/img/prev.png" alt=""></li>
-					<li class="next"><img src="index/img/next.png" alt=""></li>
+					<li class="prev"><img src="${pageContext.request.contextPath }/index/img/prev.png" alt=""></li>
+					<li class="next"><img src="${pageContext.request.contextPath }/index/img/next.png" alt=""></li>
 				</ul>
 			</div>
 
@@ -130,7 +139,7 @@
 						<h1>话题</h1>
 					</div>
 					<div class="topic_left2">
-						<img src="index/img/line3.png" height="250px">
+						<img src="${pageContext.request.contextPath }/index/img/line3.png" height="250px">
 					</div>
 				</div>
 <<<<<<< HEAD
@@ -153,7 +162,7 @@
 						<!-- 头像 -->
 						<div class="topic_middle_content_1">
 							<a href="zone.html">
-								<img src="${ud.userhead }"> 
+								<img src="${pageContext.request.contextPath }/${ud.userhead }"> 
 							</a>
 						</div>
 						<div class="topic_middle_content_2">
@@ -172,29 +181,16 @@
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
 							<c:forEach items="${topicImg }" var="i">
-								<img src="${i.getPath()}">
+								<img src="${pageContext.request.contextPath }/${i.getPath()}">
 								</c:forEach>
 								
 							</div>
 							<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-<<<<<<< HEAD
-								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${t1.key.commentNum})</a></li>
-								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (${t1.key.praiseCount})</a></li>
-							<c:if test="${t1.value==0}">	
-								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
-							</c:if>
-							<c:if test="${t1.value==1 }">
-								<li><a href=""><img src="index/img/star1.png" id="star"   width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.key.getCollectTravels().size()})</a></li>
-							</c:if>
-								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.key.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
-=======
-								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${t1.commentNum})</a></li>
-								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (${t1.praiseCount})</a></li>
 			
-								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.getCollectTravels().size()})</a></li>
+								<li><a href="##"><img src="${pageContext.request.contextPath }/index/img/star.png" id="star" onmouseover="this.src='${pageContext.request.contextPath }/index/img/star1.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${t1.getCollectTravels().size()})</a></li>
 
-								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${t1.id}"><img src="${pageContext.request.contextPath }/index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
 >>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</ul>
 						</div>
@@ -211,21 +207,21 @@
 				<!--分页 -->
 					<div class="page">
 						<c:if test="${TopicpageNum==null||TopicpageNum<=1 }">
-							<a href="indexs?TopicpageNum=1&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
-							<a href="indexs?TopicpageNum=${TopicpageNum+1 }&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+							<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=1&pageNumshort=${pageNumshort}" class="a1"><img src="${pageContext.request.contextPath }/index/img/left.png" onmouseover="this.src='${pageContext.request.contextPath }/index/img/left2.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/left.png'"></a>	
+							<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=${TopicpageNum+1 }&pageNumshort=${pageNumshort}" class="a2"><img src="${pageContext.request.contextPath }/index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/right.png'"></a>	
 						</c:if>
 					</div>
 					
 					<div class="page">
 						<c:if test="${TopicpageNum<count&&TopicpageNum>1}">
-								<a href="indexs?TopicpageNum=${TopicpageNum-1}&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
-								<a href="indexs?TopicpageNum=${TopicpageNum+1}&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+								<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=${TopicpageNum-1}&pageNumshort=${pageNumshort}" class="a1"><img src="${pageContext.request.contextPath }/index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
+								<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=${TopicpageNum+1}&pageNumshort=${pageNumshort}" class="a2"><img src="${pageContext.request.contextPath }/index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
 						</c:if>
 					</div>
 					<div class="page">
 						<c:if test="${TopicpageNum==count}">
-								<a href="indexs?TopicpageNum=${TopicpageNum-1 }&pageNumshort=${pageNumshort}" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>	
-								<a href="indexs?TopicpageNum=${count}&pageNumshort=${pageNumshort}" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>	
+								<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=${TopicpageNum-1 }&pageNumshort=${pageNumshort}" class="a1"><img src="${pageContext.request.contextPath }/index/img/left.png" onmouseover="this.src='${pageContext.request.contextPath }/index/img/left2.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/left.png'"></a>	
+								<a href="${pageContext.request.contextPath }/indexs?TopicpageNum=${count}&pageNumshort=${pageNumshort}" class="a2"><img src="${pageContext.request.contextPath }/index/img/right.png" onmouseover="this.src='${pageContext.request.contextPath }/index/img/right2.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/right.png'"></a>	
 						</c:if>
 					</div>
 						
@@ -240,7 +236,7 @@
 				</div>
 				<div class="shuo_right">
 					<div class="shuo_right2">
-						<img src="index/img/line4.png" height="250px">
+						<img src="${pageContext.request.contextPath }/index/img/line4.png" height="250px">
 					</div>
 					<div class="shuo_right1">
 						<h1>热门</h1>
@@ -267,10 +263,17 @@
 						<!--头像-->
 						<div class="shuo_middle_content_1">
 							<a href="zone.html">
+<<<<<<< .mine
+								<img src="${pageContext.request.contextPath }/${shorti.getUserDetail().getUserhead()}" width="100px" height="100px"> 
+
+
+
+=======
 <<<<<<< HEAD
 								<img src="${shorti.key.getUserDetail().getUserhead()}" width="100px" height="100px"> 
 =======
 								<img src="${shorti.getUserDetail().getUserhead()}" width="100px" height="100px"> 
+>>>>>>> .theirs
 >>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</a>
 						</div>
@@ -289,12 +292,29 @@
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
 							<c:forEach items="${shortImg}" var="imgi">
-								<img src="${imgi.getPath()} ">
+								<img src="${pageContext.request.contextPath }/${imgi.getPath()} ">
 							</c:forEach>	
 							</div>
 				
 							<ul class="share-meta2 clearfix">
 								<!--标题下面的三个功能按键-->
+<<<<<<< .mine
+								<li><a href="detail.html"><img src="${pageContext.request.contextPath }/index/img/comment.png">&nbsp;&nbsp;评论 (${shorti.getCommentNum() })</a></li>
+								<li><a href="##"><img src="${pageContext.request.contextPath }/index/img/like.png" style="margin-left:-2px" onmouseover="this.src='${pageContext.request.contextPath }/index/img/like2.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.getPraiseCount() })</a></li>
+								<li><a href="collectindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="${pageContext.request.contextPath }/index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='${pageContext.request.contextPath }/index/img/star1.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏(${shorti.getCollectTravels().size()})</a></li>
+								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="${pageContext.request.contextPath }/index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+
+
+
+
+
+
+
+
+
+
+
+=======
 <<<<<<< HEAD
 								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (${shorti.key.getCommentNum() })</a></li>
 								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.key.getPraiseCount() })</a></li>
@@ -310,6 +330,7 @@
 								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞(${shorti.getPraiseCount() })</a></li>
 								<li><a href="collectindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏(${shorti.getCollectTravels().size()})</a></li>
 								<li><a href="reportindex?TopicpageNum=${TopicpageNum}&pageNumshort=${pageNumshort}&travelid=${shorti.id}"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+>>>>>>> .theirs
 >>>>>>> 2f055931c308b2556118a060a18a255aa01c0663
 							</ul>
 						</ul>
@@ -324,8 +345,8 @@
 					</a>
 				</div>
 				<div class="page2">
-					<a href="indexs?pageNumshort=${pageNumshort+1}&TopicpageNum=${TopicpageNum}" class="a1"><img src="index/img/right.png" onmouseover="this.src='index/img/right3.png'" onmouseout="this.src='index/img/right.png'"></a>
-					<a href="indexs?pageNumshort=${pageNumshort-1}&TopicpageNum=${TopicpageNum}" class="a2"><img src="index/img/left.png" onmouseover="this.src='index/img/left3.png'" onmouseout="this.src='index/img/left.png'"></a>
+					<a href="indexs?pageNumshort=${pageNumshort+1}&TopicpageNum=${TopicpageNum}" class="a1"><img src="${pageContext.request.contextPath }/index/img/right.png" onmouseover="this.src='${pageContext.request.contextPath }/index/img/right3.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/right.png'"></a>
+					<a href="indexs?pageNumshort=${pageNumshort-1}&TopicpageNum=${TopicpageNum}" class="a2"><img src="${pageContext.request.contextPath }/index/img/left.png" onmouseover="this.src='${pageContext.request.contextPath }/index/img/left3.png'" onmouseout="this.src='${pageContext.request.contextPath }/index/img/left.png'"></a>
 				</div>
 			</div>
 			
@@ -349,7 +370,7 @@
 						<figure>
 							<a href="#0" class="star_bt"></a>
 							<a href="#0" class="wish_bt"></a>
-							<a href="detail.html"><img src="${longImg[status.index].getPath()}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<a href="detail.html"><img src="${pageContext.request.contextPath }/${longImg[status.index].getPath()}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
 							<small>${longTag[status.index]}</small>
 						</figure>
 						<div class="wrapper">
@@ -405,7 +426,7 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="good.html" class="grid_item">
 							<figure>
-								<img src="index/img/restaurant_1.jpg" class="img-fluid" alt="">
+								<img src="${pageContext.request.contextPath }/index/img/restaurant_1.jpg" class="img-fluid" alt="">
 								<div class="info">
 									<h3>商品名称</h3>
 								</div>
@@ -416,7 +437,7 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="good.html" class="grid_item">
 							<figure>
-								<img src="index/img/restaurant_2.jpg" class="img-fluid" alt="">
+								<img src="${pageContext.request.contextPath }/index/img/restaurant_2.jpg" class="img-fluid" alt="">
 								<div class="info">
 									<h3>商品名称</h3>
 								</div>
@@ -427,7 +448,7 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="good.html" class="grid_item">
 							<figure>
-								<img src="index/img/restaurant_3.jpg" class="img-fluid" alt="">
+								<img src="${pageContext.request.contextPath }/index/img/restaurant_3.jpg" class="img-fluid" alt="">
 								<div class="info">
 									<h3>商品名称</h3>
 								</div>
@@ -438,7 +459,7 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="good.html" class="grid_item">
 							<figure>
-								<img src="index/img/restaurant_4.jpg" class="img-fluid" alt="">
+								<img src="${pageContext.request.contextPath }/index/img/restaurant_4.jpg" class="img-fluid" alt="">
 								<div class="info">
 									<h3>商品名称</h3>
 								</div>
@@ -460,7 +481,7 @@
 	<!--footer-->
 	<footer class="theme-footer">
 		<div class="container">
-			<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
+			<div class="logo"><a href="index.html"><img src="${pageContext.request.contextPath }/index/img/footer130.png" alt=""></a></div>		
 <<<<<<< HEAD
 			<p class="copyright">Copyright &copy; 2018. All rights reserved.</p>
 =======

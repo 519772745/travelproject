@@ -15,7 +15,7 @@ import com.asay.wetrip.user.service.UserServiceImpl;
 
 @Controller
 @Transactional
-@RequestMapping("/user")
+
 public class UserController {	
 	@Resource	
 	private UserServiceImpl userServiceImpl;
@@ -29,7 +29,7 @@ public class UserController {
 	 * @return: 返回到login.jsp页面      
 	 * @throws
 	 */
-	@RequestMapping(value="/login", method=RequestMethod.GET)
+	@RequestMapping(value="/user/login", method=RequestMethod.GET)
 	public String toLogin( HttpSession httpSession){
 		httpSession.removeAttribute("userError");
 		httpSession.removeAttribute("pwdError");
@@ -47,7 +47,7 @@ public class UserController {
 	 * @return: 登录成功跳转首页，不成功跳转登录页     
 	 * @throws
 	 */
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/user/login",method=RequestMethod.POST)
 	public String login(Users users, HttpSession httpSession,HttpServletRequest request) {
 		boolean userVerfiy =this.userServiceImpl.getUser(users);											
 		if (userVerfiy) { // 若用户存在	
@@ -62,8 +62,9 @@ public class UserController {
 					return "login";
 				} else {
 					// 通过
-					httpSession.setAttribute("user", users); // 保存用户账号信息
-					return "redirect:index";
+					httpSession.setAttribute("userEmail", users.getEmail()); // 保存用户账号信息
+					
+					return "main";
 				}
 			} else {//验证码不正确
 				httpSession.removeAttribute("userError");
@@ -130,15 +131,24 @@ public class UserController {
 			}
 		}
 		//注销用户
-		@RequestMapping("/cancel")
+		@RequestMapping("/user/cancel")
 		public String cancel(HttpServletRequest request) {
 			//根据session里面存取的用户的email判断，把该用户的session失效即可注销登录
 			HttpSession session=request.getSession();
-			if(request.getParameter("email")!=null) {
+			if(session.getAttribute("userEmail")!=null) {
 				session.invalidate();
 			}
 			//注销之后跳转到首页
-			return "redirect:index";
+			return "main";
 		}
-	
+		@RequestMapping("cancel")
+		public String cancel2(HttpServletRequest request) {
+			//根据session里面存取的用户的email判断，把该用户的session失效即可注销登录
+			HttpSession session=request.getSession();
+			if(session.getAttribute("userEmail")!=null) {
+				session.invalidate();
+			}
+			//注销之后跳转到首页
+			return "main";
+		}
 }
