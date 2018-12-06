@@ -83,7 +83,7 @@
 					<c:forEach items="${tags }" var="t">
 					<li><span><a href="part.html">${t.tagName }</a></span></li>
 					</c:forEach>
-					<li><span><a href="part.html">周边商城</a></span></li>
+					<li><span><a href="producthot">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>
 				</ul>
 			</nav>
@@ -384,7 +384,7 @@
 				<!-- /row -->
 				<div class="container">
 					<br>
-					<p class="btn_home_align"><a href="part.html" class="btn_1 rounded">查看所有商品</a></p>
+					<p class="btn_home_align"><a href="producthot" class="btn_1 rounded">查看所有商品</a></p>
 				</div>
 			</section>
 		</div>
