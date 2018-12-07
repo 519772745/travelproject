@@ -29,7 +29,7 @@ public class UserController {
 	 * @return: 返回到login.jsp页面      
 	 * @throws
 	 */
-	@RequestMapping(value="/user/login", method=RequestMethod.GET)
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String toLogin( HttpSession httpSession){
 		httpSession.removeAttribute("userError");
 		httpSession.removeAttribute("pwdError");
@@ -47,8 +47,9 @@ public class UserController {
 	 * @return: 登录成功跳转首页，不成功跳转登录页     
 	 * @throws
 	 */
-	@RequestMapping(value="/user/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(Users users, HttpSession httpSession,HttpServletRequest request) {
+		Users user=this.userServiceImpl.getUserDetailinfo(users);
 		boolean userVerfiy =this.userServiceImpl.getUser(users);											
 		if (userVerfiy) { // 若用户存在	
 			boolean codeVerfiy =this.userServiceImpl.verfiyCode(request);
@@ -62,8 +63,8 @@ public class UserController {
 					return "login";
 				} else {
 					// 通过
-					httpSession.setAttribute("userEmail", users.getEmail()); // 保存用户账号信息
-					
+					httpSession.setAttribute("userEmail", users.getEmail()); // 保存用户账号信息获取user的信息					
+					httpSession.setAttribute("user", user);					
 					return "main";
 				}
 			} else {//验证码不正确
@@ -76,6 +77,15 @@ public class UserController {
 			return "login";
 		}
 }
+	/**
+	 * 
+	 * @Title: toRegist   
+	 * @Description: 点击注册进入注册页面  
+	 * @param: @param httpSession
+	 * @param: @return      
+	 * @return: String      
+	 * @throws
+	 */
 		//跳转到注册界面
 		@RequestMapping(value="/register",method=RequestMethod.GET)
 		public String toRegist(HttpSession httpSession) {
@@ -85,6 +95,17 @@ public class UserController {
 			httpSession.removeAttribute("codeError");
 			return "register";
 		}
+		/**
+		 * 
+		 * @Title: regist   
+		 * @Description: 客户端输入的注册信息提交到这里进行处理   
+		 * @param: @param users
+		 * @param: @param request
+		 * @param: @param httpSession
+		 * @param: @return      
+		 * @return: String      
+		 * @throws
+		 */
 		//注册插入数据库用户信息
 		@RequestMapping(value="/register" ,method=RequestMethod.POST)
 		public String regist(Users users,HttpServletRequest request,HttpSession httpSession) {	
@@ -130,8 +151,16 @@ public class UserController {
 				return "register";
 			}
 		}
-		//注销用户
-		@RequestMapping("/user/cancel")
+		/**
+		 * 
+		 * @Title: cancel   
+		 * @Description: 注销用户   
+		 * @param: @param request
+		 * @param: @return      
+		 * @return: String      
+		 * @throws
+		 */
+		@RequestMapping("/cancel")
 		public String cancel(HttpServletRequest request) {
 			//根据session里面存取的用户的email判断，把该用户的session失效即可注销登录
 			HttpSession session=request.getSession();
@@ -141,14 +170,5 @@ public class UserController {
 			//注销之后跳转到首页
 			return "main";
 		}
-		@RequestMapping("cancel")
-		public String cancel2(HttpServletRequest request) {
-			//根据session里面存取的用户的email判断，把该用户的session失效即可注销登录
-			HttpSession session=request.getSession();
-			if(session.getAttribute("userEmail")!=null) {
-				session.invalidate();
-			}
-			//注销之后跳转到首页
-			return "main";
-		}
+		
 }

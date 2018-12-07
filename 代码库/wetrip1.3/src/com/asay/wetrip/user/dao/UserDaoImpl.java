@@ -1,15 +1,12 @@
 package com.asay.wetrip.user.dao;
 
 import java.sql.Timestamp;
-import java.util.List;
-
 import javax.annotation.Resource;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.entity.Users;
 /**
@@ -27,16 +24,16 @@ public class UserDaoImpl {
 		/**
 		 * 
 		 * @Title: findByEmail   
-		 * @Description: 根据邮箱地址查找得到一个用户列表  
+		 * @Description: 根据邮箱地址查找得到一个用户 
 		 * @param: @param email
 		 * @param: @return      
 		 * @return: Users      
 		 * @throws
 		 */
-		public  List<Users> findByEmail(String email) {
+		public  Users findByEmail(String email) {
 			Session session=this.sessionFactory.getCurrentSession();			
 			Query<Users> q=session.createQuery(" from Users u where u.email=:email ").setParameter("email", email);
-			return q.list();			
+			return q.uniqueResult();			
 			}
 
 	
@@ -49,7 +46,8 @@ public class UserDaoImpl {
 		 * @throws
 		 */
 		public void insertUser(Users users){
-			Session session=this.sessionFactory.getCurrentSession();			
+			Session session=this.sessionFactory.getCurrentSession();
+			users.setStatus("正常");
 			UserDetail userDetail=new UserDetail();									
 			//用户名
 			userDetail.setUsername(users.getEmail());
