@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.asay.wetrip.util.ConfigConsts;
 @Entity
 @Table(name="wt_travelnote")
 public class TravelNote {
@@ -157,6 +159,22 @@ public class TravelNote {
 	}
 	public void setTopic(Topic topic) {
 		this.topic = topic;
+	}
+	/**
+	 * 
+	 * @Title: setTopic   
+	 * @Description: TODO调用静态变量来设置topic的值   
+	 * @param: @param join      
+	 * @return: void      
+	 * @throws
+	 */
+	public void setTopic(boolean join) {
+		if(join) {
+			this.topic=ConfigConsts.TODAY_TOPIC;//有点疑问的是这能实现什么效果呢 觉得实现不了存入数据库  有待考证
+		}
+		else {
+			this.topic=null;
+		}	
 	}
 	@OneToMany(mappedBy="travelNote",targetEntity=Imgs.class)
 	public Set<Imgs> getImgs() {

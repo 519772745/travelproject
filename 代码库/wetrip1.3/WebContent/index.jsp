@@ -77,7 +77,7 @@
 					<c:forEach items="${tags }" var="t">
 					<li><span><a href="part.html">${t.tagName }</a></span></li>
 					</c:forEach>
-					<li><span><a href="part.html">周边商城</a></span></li>
+					<li><span><a href="producthot">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>
 				</ul>
 			</nav>
