@@ -34,6 +34,8 @@ public class UserController {
 		httpSession.removeAttribute("userError");
 		httpSession.removeAttribute("pwdError");
 		httpSession.removeAttribute("codeError");
+		httpSession.removeAttribute("tip");
+		httpSession.removeAttribute("codenull");
 		return "login";
 	}
 	/**
@@ -49,6 +51,13 @@ public class UserController {
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(Users users, HttpSession httpSession,HttpServletRequest request) {
+		String email=users.getEmail();
+		String password=users.getPassword();
+		String code=request.getParameter("codekey");
+		if(email==""&&password==""&&code=="") {
+			httpSession.setAttribute("tip",true);
+			return"login";
+		}else {
 		Users user=this.userServiceImpl.getUserDetailinfo(users);
 		boolean userVerfiy =this.userServiceImpl.getUser(users);											
 		if (userVerfiy) { // 若用户存在	
@@ -68,13 +77,17 @@ public class UserController {
 					return "main";
 				}
 			} else {//验证码不正确
+				if(code=="") httpSession.setAttribute("codenull",true);
+				else {
 				httpSession.removeAttribute("userError");
-				httpSession.setAttribute("codeError",true); // 验证码错误
+				httpSession.setAttribute("codeError",true); // 验证码错误				
+				}
 				return "login";
 			}
 		} else {
 			httpSession.setAttribute("userError",true); // 用户名不存在
 			return "login";
+		}
 		}
 }
 	/**

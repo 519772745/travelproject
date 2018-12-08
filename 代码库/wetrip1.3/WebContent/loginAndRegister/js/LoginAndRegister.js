@@ -100,7 +100,7 @@ function xiaoshiEmail(){
 
 }
 function xiaoshiCode(){	
-	document.getElementById("yanzheng").innerHTML="";
+	document.getElementById("yanzheng").innerHTML="";	
 }
 
 //该功能检查前后密码填写是否一致
@@ -116,6 +116,13 @@ function checkpassword(){
 function xiaoshi1(){
 	document.getElementById("pas2").innerHTML="";
 	document.getElementById("password").innerHTML="";
+}
+//验证码如果为空时，提示请输入验证码
+function codetip(){
+	var codespan=document.getElementById("text1").value;
+	if(codespan==""){
+		document.getElementById("yanzheng2").innerHTML="请输入验证码";
+	}
 }
 //改变验证码事件
          function changeImg(){

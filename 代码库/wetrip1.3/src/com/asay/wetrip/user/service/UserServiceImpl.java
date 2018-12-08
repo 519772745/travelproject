@@ -39,7 +39,7 @@ public class UserServiceImpl {
 	 */
 	public boolean getUser(Users users) {
 		String email=users.getEmail();
-		if(email!=null) {
+		if(email!=null&&email!="") {
 		Users user=this.userDaoImpl.findByEmail(email);		
 			if(null ==user)	{				
 				return false;
