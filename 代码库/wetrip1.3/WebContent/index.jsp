@@ -1,12 +1,11 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ch">
 <head>
-<!--< taglib prefix="s" uri="/struts-tags" %>-->
-	<meta charset="utf-8">
+<!--< taglib prefix="s" uri="/struts-tags" %>-->	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>微旅WeTrip</title>
@@ -26,17 +25,12 @@
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="${pageContext.request.contextPath }/index/css/custom.css" rel="stylesheet">
-	<script type="text/javascript">
-		
-	</script>
+	
 </head>
 
-<body>	
-		
-	<div id="page" class="theia-exception">
-		
+<body>		
+	<div id="page" class="theia-exception">		
 		<header class="header menu_fixed">
-
 			<div id="logo">
 				<a href="main.jsp">
 					<img src="${pageContext.request.contextPath }/index/img/logo_white.png" width="163" height="36" data-retina="true" alt="" class="logo_normal">
@@ -46,23 +40,23 @@
 			<ul id="top_menu">
 				<li><a href="editor.html"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
 				<c:if test="${not empty userEmail}">
-				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
 				<c:if test="${empty userEmail}">
-				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
 				</c:if>
 				<li><a href="cart.html"><img src="${pageContext.request.contextPath }/index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
 				<li><a href="personalinfo.html"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
 
 				<li><a href="editor.html"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
 				<c:if test="${not empty userEmail}">				
-				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
 				<c:if test="${empty userEmail}">				
-				<li><a href="user/login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal"></a></li>
 				</c:if>
 				<li><a href="cart.html"><img src="${pageContext.request.contextPath }/index/img/shopping_button1.png" width="24" height="24" class="logo_normal"></a></li>
-				<li><a href="personalinfo.html"><img src="${pageContext.request.contextPath }/index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
 			</ul>
 			<div id="User">
 				<a href="">${userEmail },已登录</a><br>
@@ -92,7 +86,7 @@
 		<!-- /header -->
 
 		<main>
-			<!--banner å¼å§-->
+			<!--banner 开始-->
 
 			<div class="banner">   
 				<div class="banner1">
@@ -104,21 +98,25 @@
 					</ul>    	
 				</div>
 				<div class="nav_right fr">
-					<div class="search fl clearfix">
-						<form>
-							<input type="text" class="search_box fl" value="城市查询" onclick="openDialog(event)" 
-							onblur="if(this.value==''){this.value='城市查询'}" onfocus="if(this.value=='城市查询'){this.value=''}"/>
-							<input type="submit" class="search_btn fr" value="">
-						</form>
-						<div id="dialog" style="display:none">	
+					
+						<div class="search fl clearfix" >
+						<form action="">
+						<!-- onclick="openDialog(event)" -->
+								<div>					
+								<input type="text" name="text" id="searchText" class="search_box fl" value="城市查询" 
+								onblur="if(this.value==''){this.value='城市查询'}" onfocus="if(this.value=='城市查询'){this.value=''}"/>
+								<input type="submit" class="search_btn fr" value="">
+								</div>	
+						</form>	
+								<div id="dialog" style="display: none;">	</div>						
 						</div>
-					</div>
+						
+					
 				</div>
 				<div class="bannerText">
 					<p class="bt1">省</p>
 					<p class="bt2">城市</p>
-					<i></i>
-					
+					<i></i>					
 				</div>   
 				<ul class="arrows">
 					<li class="prev"><img src="${pageContext.request.contextPath }/index/img/prev.png" alt=""></li>
@@ -229,9 +227,7 @@
 					<div class="shuo_right1">
 						<h1>热门</h1>
 						<h1>说说</h1>
-					</div>
-					
-					
+					</div>										
 				</div>
 				<c:forEach items="${shortMap}" var="shorti">
 				<div class="shuo_middle">
@@ -384,7 +380,7 @@
 				<!-- /row -->
 				<div class="container">
 					<br>
-					<p class="btn_home_align"><a href="producthot" class="btn_1 rounded">查看所有商品</a></p>
+					<p class="btn_home_align"><a href="part.html" class="btn_1 rounded">查看所有商品</a></p>
 				</div>
 			</section>
 		</div>
@@ -411,6 +407,82 @@
 
 <!-- DATEPICKER  -->
 <script>
+window.onload=function(){
+	document.onclick = function fun1(e){
+		e = e || window.event;
+		var dom =  e.srcElement|| e.target;
+		if(dom.id != "User" && document.getElementById("User").style.display == "block") {
+			document.getElementById("User").style.display = "none";				
+		}
+		/*var dom2 =  e.srcElement|| e.target;
+			if(dom2.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+			document.getElementById("dialog").style.display = "none";
+		}*/
+
+	};
+			//获取文本输入框
+			var textElment = document.getElementById("searchText");
+			//获取下拉提示框
+			var div = document.getElementById("dialog");
+			textElment.onkeyup=function(){
+				//获取用户输入的值
+				var text = textElment.value;
+				//如果文本框中没有值，则下拉框被隐藏，不显示
+				if(text==""){
+					div.style.display="none";
+					return;
+				}
+				//获取XMLHttpRequest对象
+				var xhr = new XMLHttpRequest();
+				//编写回调函数
+				xhr.onreadystatechange=function(){
+					//判断回调的条件是否准备齐全
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							//取的服务器端传回的数据
+							var str = xhr.responseText;
+							
+							//判断传回的数据是否为空,若是则直接返回，不显示
+							if(str==""){
+								return;
+							}
+							//我们将会在服务器端把数据用 , 隔开，当然这里也可以使用json
+							var result = str.split(",");
+							var childs = "";
+							//遍历结果集，将结果集中的每一条数据用一个div显示，把所有的div放入到childs中
+							for(var i=0; i<result.length;i++){
+								childs += "<div onclick='Write(this)' onmouseout='recoverColorwhenMouseout(this)' onmouseover='changeColorwhenMouseover(this)' >"+result[i]+"</div>";
+							}
+							//把childs 这div集合放入到下拉提示框的父div中，上面我们已经获取了
+							div.innerHTML=childs;
+							div.style.display="block";
+						
+						}
+					}
+				}
+			
+				//创建与服务器的连接
+				xhr.open("GET","${pageContext.request.contextPath}/test?text="+text);			 
+				//发送
+				xhr.send();
+			}
+		}
+		//鼠标悬停时改变div的颜色
+		function changeColorwhenMouseover(div){
+			div.style.backgroundColor="pink";
+		}
+		//鼠标移出时恢复div颜色
+		function recoverColorwhenMouseout(div){
+			div.style.backgroundColor="";
+		}
+		//当鼠标点击div时，将div的值赋给输入文本框
+		function Write(div){
+			//将div中的值赋给文本框
+			document.getElementById("text").value=div.innerHTML;			
+			//让下拉提示框消失			
+			div.parentNode.style.display="none";
+		}
+		
 	$(function() {
 		'use strict';
 		$('input[name="dates"]').daterangepicker({
@@ -438,15 +510,7 @@
 			}  
 		}
 		//ç¹å»åºç°divï¼ç§»å¼æ¶å¤±
-		window.onload = function(){
-			document.onclick = function(e){
-				e = e || window.event;
-				var dom =  e.srcElement|| e.target;
-				if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
-					document.getElementById("dialog").style.display = "none";
-				}
-			};
-		};
+	
 		function openDialog(e) {
 			document.getElementById("dialog").style.display = "block";
 			e = e||window.event;
@@ -462,16 +526,8 @@
 function over(obj){        
    document.getElementById("User").style.display = "block";
 
-            }
-window.onload = function(){
-			document.onclick = function(e){
-				e = e || window.event;
-				var dom =  e.srcElement|| e.target;
-				if(dom.id != "User" && document.getElementById("User").style.display == "block") {
-					document.getElementById("User").style.display = "none";
-				}
-			};
-		};
+            }			
+
 // function out(obj){
  
 //     document.getElementById("User").style.display = "none";     
@@ -481,7 +537,7 @@ window.onload = function(){
 	
 
 	<!-- INPUT QUANTITY  -->
-	<script src="index/js/input_qty.js"></script>
+	<script src="${pageContext.request.contextPath }/index/js/input_qty.js"></script>
 	
 </body>
 </html>
