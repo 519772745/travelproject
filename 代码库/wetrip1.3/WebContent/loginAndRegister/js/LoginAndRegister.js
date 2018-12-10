@@ -35,8 +35,10 @@ function xiaoshi3(){
 	document.getElementById("searchMsg").style.display = "none"; 
 }
 
-
-
+/**
+ * 关于密码的js
+ * @returns
+ */
 //检查密码是否填写
 function checkPassword(){
 	var name=document.getElementById("logPass").value;
@@ -49,24 +51,26 @@ function checkPassword(){
 		}else{
 			document.getElementById("pas").innerHTML="";
 		}
-	}
-	
+	}	
+}
+//按键事件看邮箱的字符串的个数是否超过了最大的
+function rangePassword(){
+	var l=document.getElementById("logPass").value.length;
+	if(l>14){
+		document.getElementById("pas").innerHTML="密码最多16个字符";
+	}else{
+		document.getElementById("pas").innerHTML="";
+	}	
 }
 //密码框再获得焦点的时候“请填写相关信息”的提示字样消失
 function xiaoshiPassword(){
 	document.getElementById("pas").innerHTML="";
 	document.getElementById("password").innerHTML="";
 }
-//按键事件看邮箱的字符串的个数是否超过了最大的
-function rangePassword(){
-	var l=document.getElementById("logPass").value.length;
-	if(l>20){
-		document.getElementById("pas").innerHTML="密码最多20个字符";
-	}else{
-		document.getElementById("pas").innerHTML="";
-	}	
-}
-
+/**
+ * 邮箱的js
+ * @returns
+ */
 
 
 //该功能检查用户是否填写email
@@ -76,24 +80,23 @@ function checkEmail(){
 	if(name==""){
 		document.getElementById("email").innerHTML="请填写相关信息";
 	}else{
-		if(l<8){
-			document.getElementById("email").innerHTML="邮箱格式最少8个字符";
+		if(l<10){
+			document.getElementById("email").innerHTML="邮箱格式最少10个字符";
 		}else{
 			document.getElementById("email").innerHTML="";
 		}
-	}
-	
+	}	
 }
 //按键事件看邮箱的字符串的个数是否超过了最大的
 function rangeEmail(){
 	var l=document.getElementById("userEmail").value.length;
-	if(l>20){
-		document.getElementById("email").innerHTML="邮箱格式最多20个字符";
+	if(l>30){
+		document.getElementById("email").innerHTML="邮箱格式最30个字符";
 	}else{
 		document.getElementById("email").innerHTML="";
 	}	
 }
-//密码框再获得焦点的时候“请填写相关信息”的提示字样消失
+//email再获得焦点的时候“请填写相关信息”的提示字样消失
 function xiaoshiEmail(){
 	document.getElementById("email").innerHTML="";
 	document.getElementById("email2").innerHTML="";

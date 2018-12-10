@@ -27,14 +27,14 @@
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()"/>														
+							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>														
 							<div id="email" ></div>
 							<c:if test="${userError}"><div id="email2" >用户名不存在！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()">
+							<input name="password" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()">
 							<div id="pas"></div>
 							<c:if test="${pwdError}"><div id="password" >用户名或密码错误！</div></c:if>	
 						</div>
