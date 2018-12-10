@@ -29,14 +29,16 @@
 							<span class="u_user1"></span>
 							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()"/>														
 							<div id="email" ></div>
-							<c:if test="${userError}"><div id="email2" >用户名不存在！</div></c:if>
+							
+							<c:if test="${tip==2}"><div id="email2" >请输入用户名！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
 							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()">
 							<div id="pas"></div>
-							<c:if test="${pwdError}"><div id="password" >用户名或密码错误！</div></c:if>	
+							
+							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
 						</div>
 
 						<div class="input_outer1">
@@ -50,9 +52,11 @@
 							</div>
 							</div>	
 							<div id="yanzheng2" ></div>						
-							<c:if test="${codeError}"><div id="yanzheng" >验证码不正确！</div></c:if>
-							<c:if test="${tip}"><div id="yanzheng" >请输入相关有效信息！</div></c:if>
-							<c:if test="${codenull}"><div id="yanzheng" >请输入验证码！</div></c:if>
+							<c:if test="${codeError}"><div id="yanzheng" >验证码错误！</div></c:if>
+							<c:if test="${tip==1}"><div id="yanzheng" >请输入相关有效信息！</div></c:if>													
+							<c:if test="${tip==4}"><div id="yanzheng" >请输入验证码！</div></c:if>
+							<c:if test="${userError}"><div id="yanzheng" >用户名或密码错误！</div></c:if>
+							<c:if test="${pwdError}"><div id="yanzheng" >用户名或密码错误！</div></c:if>								
 						</div>
 						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 						<div id="wei">

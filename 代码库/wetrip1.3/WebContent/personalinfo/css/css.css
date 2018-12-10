@@ -102,6 +102,29 @@ color: #808080;
 	cursor:pointer
 }
 
+#User{
+/*	background-color: #fff;*/
+	z-index: 2552;
+	display: none;
+	width:100px;
+	height: 65px;
+	
+	right: 0%;
+	top: 93px;
+	text-align: justify;
+	font-size: 16px;
+}
+#User a{
+	margin-top: -25px;
+	height:30px;
+	background-color: #fff;
+	border: 1px solid  #aaa;
+	padding-left: 7px;
+	padding-top: 2px;
+	opacity: 0.5;
+}
+
+
 #tab1 .menu ul {
 	margin: 0px;
 	padding: 0px;
@@ -245,7 +268,9 @@ td {
 	height:50px;
 	padding-left:0px;
 }
-
+#upbtn{
+	margin-top:10px;
+}
 /*-------------------------- Theme Footer ----------------------*/
 .theme-footer {
 	font-family: 微软雅黑;

@@ -78,7 +78,8 @@ function checkEmail(){
 	}else{
 		if(l<8){
 			document.getElementById("email").innerHTML="邮箱格式最少8个字符";
-		}else{
+		}		
+		else{
 			document.getElementById("email").innerHTML="";
 		}
 	}
@@ -117,13 +118,7 @@ function xiaoshi1(){
 	document.getElementById("pas2").innerHTML="";
 	document.getElementById("password").innerHTML="";
 }
-//验证码如果为空时，提示请输入验证码
-function codetip(){
-	var codespan=document.getElementById("text1").value;
-	if(codespan==""){
-		document.getElementById("yanzheng2").innerHTML="请输入验证码";
-	}
-}
+
 //改变验证码事件
          function changeImg(){
              var img = document.getElementById('yanzhengimg');
