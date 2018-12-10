@@ -1,6 +1,6 @@
 (function (factory) {
-    if (typeof window.define === 'function') {
-        if (window.define.amd) {
+    if (typeof window.define === 'function') {       
+    	if (window.define.amd) {
             // AMD模式
             window.define('wangEditor', ["jquery"], factory);
         } else if (window.define.cmd) {
@@ -5218,6 +5218,8 @@ _e(function (E, $) {
 
 });
 // location 菜单
+var lng;
+var lat;
 _e(function (E, $) {
 
     // 判断浏览器的 input 是否支持 keyup
@@ -5226,7 +5228,7 @@ _e(function (E, $) {
     })(document.createElement('input'));
 
     // 百度地图的key
-    E.baiduMapAk = 'TVhjYjq1ICT2qqL5LdS8mwas';
+    E.baiduMapAk = 'IlyOnGGEfr47YYPWsUrHqijvDodjH9h6';
 
     var index = 1;
 
@@ -5264,7 +5266,7 @@ _e(function (E, $) {
             //同时，清空marker数组
             mapData.markers = [];
         };
-
+        // 通过输入框来切换地图的显示功能
         mapData.searchMap = function () {
             var map = mapData.map;
             if (!map) {
@@ -5384,9 +5386,24 @@ _e(function (E, $) {
 
             //鼠标点击，创建位置
             map.addEventListener("click", function(e){
+            	//这是通过经纬度设置标记
                 var marker = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat)); 
+                //利用全局变量保存经纬度
+                lng=e.point.lng;
+                lat=e.point.lat;
+                /**
+                 * 在这通过经纬度获得与之匹配的省市并显示在jsp页面上
+                 */
+                
+                // 这是获得现在地图上的表红点的情况 删除功能
+                var map = mapData.map;
+                //把地图上的红点去掉
+                mapData.clearLocations();
+                //同时，清空marker数组
+                mapData.markers = [];                
+                // 清空之后在加上新标的红点 也就是加上图层
                 map.addOverlay(marker);  
-                marker.enableDragging();
+                marker.enableDragging(); //这是使红点能够拖拽
                 mapData.markers.push(marker);  //加入到数组中
             }, false);
         };
@@ -5519,7 +5536,22 @@ _e(function (E, $) {
                 position,
                 src,
                 iframe;
-
+            
+            /**
+             * 在点击确定按钮的时候根据经纬度获得那一个点point
+             * @Geocoder：地址解析，提供将地址信息转换为坐标点信息的服务。
+             * @addComp.province：省
+             * @addComp.city：市
+             */
+            var geoc = new BMap.Geocoder();    
+            var point = new BMap.Point(lng,lat);
+            geoc.getLocation(point, function(rs){
+    			var addComp = rs.addressComponents;
+    			var s=addComp.province;
+    			s+=addComp.city;
+    			s+=addComp.district;
+    			document.getElementById("cmbprovince").value = s; 
+    		}); 
             if(isDynamic){
                 //动态地址
                 src = 'http://ueditor.baidu.com/ueditor/dialogs/map/show.html#';
@@ -5532,7 +5564,10 @@ _e(function (E, $) {
             src = src +'center=' + centerLng + ',' + centerLat +
                 '&zoom=' + zoom +
                 '&width=' + sizeWidth +
-                '&height=' + sizeHeight;
+                '&height=' + sizeHeight+
+              //把经纬度的参数添加到src中   获取其src就相当于获取了静态的地图照片
+                '&lng=' + lng+
+                '&lat=' + lat;
             if(markers.length > 0){
                 src = src + '&markers=';
 
