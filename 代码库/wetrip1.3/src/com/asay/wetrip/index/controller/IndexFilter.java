@@ -14,9 +14,12 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * Servlet Filter implementation class IndexFilter
+ * 
+ * @ClassName:  IndexFilter   
+ * @Description:如果用户没有登录，点击别的地方不能跳转，会提示用户先登录   
+ * @author: 王慧
+ * @date:   2018年12月6日 下午7:32:21
  */
-
 @Component
 public class IndexFilter implements Filter {
 
@@ -46,6 +49,7 @@ public class IndexFilter implements Filter {
 			chain.doFilter(request, response);
 		}else {
 			((HttpServletRequest)request).getRequestDispatcher("main.jsp").forward(request, response);
+			//正则表达式过滤器
 			JOptionPane.showMessageDialog(null, "请先登录！", "alert", JOptionPane.ERROR_MESSAGE);
 //			int pd=JOptionPane.showConfirmDialog(null, "请先登录","提示",JOptionPane.YES_NO_OPTION);
 //			System.out.println(pd);

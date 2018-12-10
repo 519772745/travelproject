@@ -483,15 +483,15 @@
 			}  
 		}
 		//点击出现div，移开消失
-		window.onload = function(){
-			document.onclick = function(e){
-				e = e || window.event;
-				var dom =  e.srcElement|| e.target;
-				if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+		
+			document.onclick = function fun2(eve){
+				eve = eve || window.event;
+				var dom2 =  eve.srcElement|| eve.target;
+				if(dom2.id != "dialog" && document.getElementById("dialog").style.display == "block") {
 					document.getElementById("dialog").style.display = "none";
 				}
 			};
-		};
+		
 		function openDialog(e) {
 			document.getElementById("dialog").style.display = "block";
 			e = e||window.event;
@@ -509,13 +509,25 @@ function over(obj){
 
             }
 window.onload = function(){
-			document.onclick = function(e){
+			document.onclick = function fun1(e){
 				e = e || window.event;
 				var dom =  e.srcElement|| e.target;
 				if(dom.id != "User" && document.getElementById("User").style.display == "block") {
-					document.getElementById("User").style.display = "none";
+					document.getElementById("User").style.display = "none";				
 				}
+				var dom2 =  e.srcElement|| e.target;
+					if(dom2.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+					document.getElementById("dialog").style.display = "none";
+				}
+
 			};
+			// document.onclick = function fun2(eve){
+			// 	eve = eve || window.event;
+			// 	var dom2 =  eve.srcElement|| eve.target;
+			// 	if(dom2.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+			// 		document.getElementById("dialog").style.display = "none";
+			// 	}
+			// };
 		};
 // function out(obj){
  

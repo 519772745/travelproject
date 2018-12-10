@@ -34,22 +34,25 @@
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()">
+							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()">
 							<div id="pas"></div>
-							<c:if test="${pwdError}"><div id="password" >密码不正确！</div></c:if>	
+							<c:if test="${pwdError}"><div id="password" >用户名或密码错误！</div></c:if>	
 						</div>
 
 						<div class="input_outer1">
 							<div id="all">
 							<span class="us_uer2"></span>
 							<div class="yan" id="searchMsg" style="display:none" ></div>
-							<input name="codekey" id="text1" style="color: #FFFFFF !important; position:absolute; z-index:100;" type="text" placeholder="请输入验证码"  onfocus="xiaoshiCode()">
+							<input name="codekey" id="text1" style="color: #FFFFFF !important; position:absolute; z-index:100;" type="text" placeholder="请输入验证码"  onfocus="xiaoshiCode()" onblur="codetip()">
 							<div id="img1">
 								<div id="yanzhengimg"  onclick="changeImg()"><img src="${pageContext.request.contextPath}/createCode" /></div>							
 								<a href="" id="shuaxin" onclick="changeImg()" style="font-size:14px; color:#eaeaea">刷新验证码</a>
 							</div>
-							</div>							
+							</div>	
+							<div id="yanzheng2" ></div>						
 							<c:if test="${codeError}"><div id="yanzheng" >验证码不正确！</div></c:if>
+							<c:if test="${tip}"><div id="yanzheng" >请输入相关有效信息！</div></c:if>
+							<c:if test="${codenull}"><div id="yanzheng" >请输入验证码！</div></c:if>
 						</div>
 						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 						<div id="wei">
@@ -67,4 +70,5 @@
 	<script src="${pageContext.request.contextPath }/loginAndRegister/js/demo-1.js"></script>
 	<script src="${pageContext.request.contextPath }/loginAndRegister/js/LoginAndRegister.js"></script>
 </body>
+
 </html>
