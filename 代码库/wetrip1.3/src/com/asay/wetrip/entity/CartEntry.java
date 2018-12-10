@@ -44,11 +44,6 @@ public class CartEntry {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	@Id
-	@GeneratedValue(generator="foreign")
-	@GenericGenerator(name="foreign",strategy="foreign",parameters= {
-			@Parameter(name="property",value="products")
-	})
 	public int getProduct_id() {
 		return product_id;
 	}

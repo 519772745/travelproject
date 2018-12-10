@@ -29,7 +29,7 @@ public class Product {
 	private String how_use;
 	//产品表和订单表 一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);	
-	// 购物车表和产品表多对一
+	//购物车表和产品表多对一
 	private CartEntry cartEntry;
 	@Id
 	@Column(name="product_id")
