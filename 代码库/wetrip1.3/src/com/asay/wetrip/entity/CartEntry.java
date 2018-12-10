@@ -1,12 +1,10 @@
 package com.asay.wetrip.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,12 +16,11 @@ import org.hibernate.annotations.Parameter;
 public class CartEntry {
 	private String email;
 	private int quantity; // 总数量
-	private int product_id;
 
 	// 购物车表和用户表一对一
 	private Users user;
-	// 购物车表和产品表一对多
-	private Set<Product> products = new HashSet<Product>(0);
+	// 购物车表和产品表多对一
+	private Users product;
 	
 	
 	@Id
@@ -44,26 +41,22 @@ public class CartEntry {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getProduct_id() {
-		return product_id;
-	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
-	}
-	
-	@OneToOne(mappedBy="CartEntry")
+
+	@OneToOne(mappedBy="cartEntry")
 	public Users getUser() {
 		return user;
 	}
 	public void setUser(Users user) {
 		this.user = user;
 	}
-	@OneToMany(mappedBy="CartEntry",targetEntity=Product.class)
-	public Set<Product> getProduct() {
-		return products;
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	public Users getProduct() {
+		return product;
 	}
-	public void setProduct(Set<Product> products) {
-		this.products = products;
+	public void setProduct(Users product) {
+		this.product = product;
 	}
+
 
 }
