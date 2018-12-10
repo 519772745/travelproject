@@ -121,8 +121,8 @@
 -->
 <div class="container" style="margin-top: 130px;">
 	<div class="row">
-		<form action="mapController" method="post">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
+		<form action="mapController" method="post">
 				<!--富文本框的展示-->
 				<div style="width:750px;height:70px">
 					<input required='' type='text' name="title">
@@ -221,8 +221,8 @@
 				<!-- /.post-meta-box -->
 			</div>
 		<!--富文本框的展示-->
-		</div>
 		</form>
+		</div>
 		<!-- /.col- -->
 <!-- ======================== Theme Sidebar =============================== -->
 		<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">

@@ -21,9 +21,9 @@ public class CartEntry {
 	private int product_id;
 
 	// 购物车表和用户表一对一
-	private Users user;
+//	private Users user;
 	// 购物车表和产品表一对多
-	private Set<Product> products = new HashSet<Product>(0);
+//	private Set<Product> products = new HashSet<Product>(0);
 	
 	
 	@Id
@@ -51,19 +51,19 @@ public class CartEntry {
 		this.product_id = product_id;
 	}
 	
-	@OneToOne(mappedBy="CartEntry")
-	public Users getUser() {
-		return user;
-	}
-	public void setUser(Users user) {
-		this.user = user;
-	}
-	@OneToMany(mappedBy="CartEntry",targetEntity=Product.class)
-	public Set<Product> getProduct() {
-		return products;
-	}
-	public void setProduct(Set<Product> products) {
-		this.products = products;
-	}
+//	@OneToOne(mappedBy="CartEntry")
+//	public Users getUser() {
+//		return user;
+//	}
+//	public void setUser(Users user) {
+//		this.user = user;
+//	}
+//	@OneToMany(mappedBy="CartEntry",targetEntity=Product.class)
+//	public Set<Product> getProduct() {
+//		return products;
+//	}
+//	public void setProduct(Set<Product> products) {
+//		this.products = products;
+//	}
 
 }

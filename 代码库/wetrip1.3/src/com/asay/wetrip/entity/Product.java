@@ -30,7 +30,7 @@ public class Product {
 	//产品表和订单表 一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);	
 	//购物车表和产品表多对一
-	private CartEntry cartEntry;
+//	private CartEntry cartEntry;
 	@Id
 	@Column(name="product_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -89,13 +89,13 @@ public class Product {
 	public void setHow_use(String how_use) {
 		this.how_use = how_use;
 	}
-	@ManyToOne
-	@JoinColumn(name="product_id")
-	public CartEntry getCartEntry() {
-		return cartEntry;
-	}
-	public void setCartEntry(CartEntry cartEntry) {
-		this.cartEntry = cartEntry;
-	}
+//	@ManyToOne
+//	@JoinColumn(name="product_id")
+//	public CartEntry getCartEntry() {
+//		return cartEntry;
+//	}
+//	public void setCartEntry(CartEntry cartEntry) {
+//		this.cartEntry = cartEntry;
+//	}
 
 }
