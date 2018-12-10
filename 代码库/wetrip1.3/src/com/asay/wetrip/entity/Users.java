@@ -53,7 +53,14 @@ public class Users {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	@OneToOne(cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn(name="email")
+	public CartEntry getCartEntry() {
+		return cartEntry;
+	}
+	public void setCartEntry(CartEntry cartEntry) {
+		this.cartEntry = cartEntry;
+	}
 	@OneToOne(cascade=CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name="email")
 	public UserDetail getUserDetail() {
@@ -70,14 +77,7 @@ public class Users {
 		this.loginHistory = loginHistory;
 	}
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="email")
-	public CartEntry getCartEntry() {
-		return cartEntry;
-	}
-	public void setCartEntry(CartEntry cartEntry) {
-		this.cartEntry = cartEntry;
-	}
+	
 	
 	
 }
