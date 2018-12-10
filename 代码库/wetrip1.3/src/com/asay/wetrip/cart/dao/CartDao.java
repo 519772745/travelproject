@@ -1,4 +1,4 @@
-package com.asay.wetrip.product.dao;
+package com.asay.wetrip.cart.dao;
 
 import java.util.List;
 
@@ -11,22 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.asay.wetrip.entity.Product;
 
-
 @Repository
-public class GoodDao {
-
+public class CartDao {
 	@Resource
 	private SessionFactory sessionFactory;
-	
-	/**
-	 * 
-	 * @Title: findById   
-	 * @Description: 按照id查找的商品的列表
-	 * @param: @param id
-	 * @param: @return      
-	 * @return: Product      
-	 * @throws
-	 */
 	public List<Product> findById2(String id){
 		Session session=this.sessionFactory.getCurrentSession();
 		Query q=session.createQuery("from Product where id='"+id+"'");

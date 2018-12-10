@@ -26,7 +26,7 @@ public class Orders {
 	private String status;
 	//订单表和用户详情表  多对一
 	private UserDetail userDetail;
-	//订单表和产品表 一对多
+	//订单表和产品表 多对多
 	private Set<Product> products=new HashSet<Product>(0);	
 	@Id
 	@Column(name="order_id")

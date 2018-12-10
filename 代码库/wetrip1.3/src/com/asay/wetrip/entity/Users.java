@@ -26,6 +26,8 @@ public class Users {
 	private String status;
 	//用户表和用户详情表一对一
 	private UserDetail userDetail;
+	//用户表和购物车表一对一
+	private CartEntry cartEntry;
 	//用户表和登陆历史记录表 一对多
 	private Set<LoginHistory> loginHistory=new HashSet<LoginHistory>(0);
 	@Id
@@ -51,7 +53,7 @@ public class Users {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name="email")
 	public UserDetail getUserDetail() {
@@ -66,6 +68,15 @@ public class Users {
 	}
 	public void setLoginHistory(Set<LoginHistory> loginHistory) {
 		this.loginHistory = loginHistory;
+	}
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn(name="email")
+	public CartEntry getCartEntry() {
+		return cartEntry;
+	}
+	public void setCartEntry(CartEntry cartEntry) {
+		this.cartEntry = cartEntry;
 	}
 	
 	
