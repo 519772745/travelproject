@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +29,8 @@ public class Product {
 	private String how_use;
 	//产品表和订单表 一对多
 	private Set<Orders> orders=new HashSet<Orders>(0);	
+	//购物车表和产品表一对多
+	private Set<CartEntry> cartEntry=new HashSet<CartEntry>(0);	
 	@Id
 	@Column(name="product_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -86,5 +89,13 @@ public class Product {
 	public void setHow_use(String how_use) {
 		this.how_use = how_use;
 	}
+	@OneToMany(mappedBy="product",targetEntity=CartEntry.class)
+	public Set<CartEntry> getCartEntry() {
+		return cartEntry;
+	}
+	public void setCartEntry(Set<CartEntry> cartEntry) {
+		this.cartEntry = cartEntry;
+	}
 	
+
 }

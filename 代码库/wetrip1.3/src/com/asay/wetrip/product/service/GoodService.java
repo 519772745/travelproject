@@ -18,12 +18,6 @@ public class GoodService {
 	private GoodDao goodDao;
 	
 	
-	/*根据蛋糕的id得到此蛋糕的相关信息*/
-	public Product getCakeInfoByName(int cakesID) {
-		return goodDao.getCakeInformation(cakesID);
-	}
-	
-	
 	
 	public List<Product> list(String id){
 		return this.goodDao.findById2(id);

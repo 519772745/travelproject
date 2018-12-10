@@ -26,7 +26,7 @@
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>
+							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>
 							<div id="email"></div>
 							<c:if test="${userError}"><div id="email2" >用户已存在！</div></c:if>
 							<c:if test="${emailError}"><div id="email2" >邮箱格式不正确！</div></c:if>
@@ -35,15 +35,14 @@
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password1" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
+							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
 							<div id="pas"></div>
 							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password2" class="text" id="logPass2" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入密码 " 
-							onblur="checkpassword()"  onfocus="xiaoshi1()" />
+							<input name="password2" class="text" id="logPass2" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入密码 " onblur="checkpassword()"  onfocus="xiaoshi1()" />
 							<div id="pas2"></div>
 							<c:if test="${pwdError}"><div id="password" >密码不一致！</div></c:if>	
 							

@@ -69,6 +69,15 @@ Developed:      heloshape (http://heloshape.com/)
   cursor: pointer;
   border-radius: 3px;
 }
+/*接收地图地址的输入框的样式*/
+#mar {
+    height: 30px;
+    width: 350px;
+}
+#cmbprovince {
+    height: 30px;
+    width: 300px;
+}
 .scroll-top:after {
   position: absolute;
   z-index: -1;

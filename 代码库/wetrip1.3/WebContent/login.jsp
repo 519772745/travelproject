@@ -27,7 +27,7 @@
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()"/>														
+							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>														
 							<div id="email" ></div>
 							
 							<c:if test="${tip==2}"><div id="email2" >请输入用户名！</div></c:if>
@@ -35,7 +35,7 @@
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()">
+							<input name="password" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()">
 							<div id="pas"></div>
 							
 							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
