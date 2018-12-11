@@ -35,7 +35,7 @@
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
+							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码,区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
 							<div id="pas"></div>
 							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
 						</div>

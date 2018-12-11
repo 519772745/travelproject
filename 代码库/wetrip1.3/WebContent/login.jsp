@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="ch" class="no-js">
 <head>
@@ -28,8 +27,7 @@
 						<div class="input_outer">
 							<span class="u_user1"></span>
 							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>														
-							<div id="email" ></div>
-							
+							<div id="email" ></div>							
 							<c:if test="${tip==2}"><div id="email2" >请输入用户名！</div></c:if>
 						</div>
 
@@ -61,7 +59,7 @@
 						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 						<div id="wei">
 							<a href="register" style="color: white">注册</a>
-							<a href="##" style="color: white">|忘记密码？</a>
+							<a href="findpassword.jsp" style="color: white">|忘记密码？</a>
 						</div>
 					</form>
 				</div>
