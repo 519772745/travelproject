@@ -55,35 +55,46 @@ public class UserController {
 		String password=users.getPassword();
 		String code=request.getParameter("codekey");
 		if(email==""&&password==""&&code=="") {
-			httpSession.setAttribute("tip",true);
+			httpSession.setAttribute("tip",1);
 			return"login";
-		}else {
+		}
+		if(email=="") {
+			httpSession.setAttribute("tip",2);
+			return"login";
+		}
+		if(password=="") {
+			httpSession.setAttribute("tip",3);
+			return"login";
+		}
+		if(code=="") {
+			httpSession.setAttribute("tip",4);
+			return"login";
+		}
+		else {			
 		Users user=this.userServiceImpl.getUserDetailinfo(users);
 		boolean userVerfiy =this.userServiceImpl.getUser(users);											
 		if (userVerfiy) { // 若用户存在	
 			boolean codeVerfiy =this.userServiceImpl.verfiyCode(request);
-			if (codeVerfiy) {//验证码正确
-				request.getSession().removeAttribute("CODE");
-				boolean pwdVerfiy =this.userServiceImpl.verfiyPwd(users);
-				if (!pwdVerfiy) {//密码不正确
-					httpSession.removeAttribute("userError");
-					httpSession.removeAttribute("codeError");
-					httpSession.setAttribute("pwdError",true);// 密码错误
-					return "login";
-				} else {
+			boolean pwdVerfiy =this.userServiceImpl.verfiyPwd(users);
+			if (!pwdVerfiy) {//密码不正确
+				httpSession.removeAttribute("userError");				
+				httpSession.setAttribute("pwdError",true);// 密码错误
+				return "login";
+			} else {//密码正确
+				if (codeVerfiy) {//验证码正确
+					request.getSession().removeAttribute("CODE");
 					// 通过
 					httpSession.setAttribute("userEmail", users.getEmail()); // 保存用户账号信息获取user的信息					
-					httpSession.setAttribute("user", user);					
+					httpSession.setAttribute("user", user);
+					httpSession.setAttribute("userDetail", user.getUserDetail());
 					return "main";
-				}
-			} else {//验证码不正确
-				if(code=="") httpSession.setAttribute("codenull",true);
-				else {
-				httpSession.removeAttribute("userError");
-				httpSession.setAttribute("codeError",true); // 验证码错误				
-				}
-				return "login";
-			}
+				}else {//验证码不正确										
+					httpSession.removeAttribute("userError");
+					httpSession.removeAttribute("pwdError");
+					httpSession.setAttribute("codeError",true); // 验证码错误				
+					}
+					return "login";
+				}						
 		} else {
 			httpSession.setAttribute("userError",true); // 用户名不存在
 			return "login";
@@ -121,11 +132,33 @@ public class UserController {
 		 */
 		//注册插入数据库用户信息
 		@RequestMapping(value="/register" ,method=RequestMethod.POST)
-		public String regist(Users users,HttpServletRequest request,HttpSession httpSession) {	
+		public String regist(Users users,HttpServletRequest request,HttpSession httpSession) {
+			//如果邮箱没有输入，密码为空，验证码为空
+			String email=users.getEmail();
+			String password1=request.getParameter("password1");
+			String password2=request.getParameter("password2");
+			String code=request.getParameter("codekey");
+			if(email==""&&password1==""&&password2==""&&code=="") {
+				httpSession.setAttribute("tip",1);
+				return "register";
+			}
+			if(email=="") {
+				httpSession.setAttribute("tip",2);
+				return "register";
+			}
+			if(password1=="") {
+				httpSession.setAttribute("tip",3);
+				return "register";
+			}
+			if(code=="") {
+				httpSession.setAttribute("tip",4);
+				return "register";
+			}
+			else {
 			//根据用户输入邮箱判断是否存在该用户
 			boolean userVerfiy =this.userServiceImpl.getUser(users);											
 			if (!userVerfiy) { // 若用户不存在
-				String email=users.getEmail();
+				
 				boolean flag = false;
 				String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
 		        Pattern regex = Pattern.compile(check);
@@ -162,6 +195,7 @@ public class UserController {
 				
 				httpSession.setAttribute("userError",true); // 用户存在
 				return "register";
+			}
 			}
 		}
 		/**

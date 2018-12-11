@@ -22,6 +22,15 @@ import com.asay.wetrip.entity.Users;
 public class PersonalinfoDaoImpl {
 	@Resource
 	private SessionFactory sessionFactory;
+	/**
+	 * 
+	 * @Title: updateUserDetail   
+	 * @Description: 资料更改的个人详细数据在数据库中的修改  
+	 * @param: @param userDetail
+	 * @param: @return      
+	 * @return: int      
+	 * @throws
+	 */
 	public int updateUserDetail(UserDetail userDetail) {		
 		Session session=this.sessionFactory.getCurrentSession();
 		//判断是否修改，如果修改了就把 数据修改了，如果没有修改还是原来的值，然后把这个对象的所有信息展示在页面上
@@ -34,7 +43,16 @@ public class PersonalinfoDaoImpl {
 		int num=query.executeUpdate();
 		return num;		
 	}
-	public int updateUser(Users users) {
+	/**
+	 * 
+	 * @Title: updateUserPwd   
+	 * @Description:用户密码修改时，数据库中密码修改 
+	 * @param: @param users
+	 * @param: @return      
+	 * @return: int      
+	 * @throws
+	 */
+	public int updateUserPwd(Users users) {
 		Session session=this.sessionFactory.getCurrentSession();
 		Query query=session.createQuery("update Users set password=:password where email=:email");
 		query.setParameter("password", users.getPassword());

@@ -26,25 +26,26 @@
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>
+							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>
 							<div id="email"></div>
 							<c:if test="${userError}"><div id="email2" >用户已存在！</div></c:if>
 							<c:if test="${emailError}"><div id="email2" >邮箱格式不正确！</div></c:if>
+							<c:if test="${tip==2}"><div id="email2" >请输入用户名！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password1" id="logPass" class="text" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
+							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
 							<div id="pas"></div>
-							
+							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password2" class="text" id="logPass2" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入密码 " 
-							onblur="checkpassword()"  onfocus="xiaoshi1()" />
+							<input name="password2" class="text" id="logPass2" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入密码 " onblur="checkpassword()"  onfocus="xiaoshi1()" />
 							<div id="pas2"></div>
 							<c:if test="${pwdError}"><div id="password" >密码不一致！</div></c:if>	
+							
 						</div>
 
 						<div class="input_outer1">
@@ -57,7 +58,9 @@
 								<a href="" id="shuaxin" onclick="createCode()" style="font-size:14px; color:#eaeaea">刷新验证码</a>
 							</div>
 							</div>
-							<c:if test="${codeError}"><div id="yanzheng" >验证码不正确！</div></c:if>							
+							<c:if test="${codeError}"><div id="yanzheng" >验证码不正确！</div></c:if>
+							<c:if test="${tip==1}"><div id="yanzheng" >请输入相关有效信息！</div></c:if>	
+							<c:if test="${tip==4}"><div id="yanzheng" >请输入验证码！</div></c:if>						
 						</div>
 
 						<div class="mb2"><input type="submit" class="act-but submit" style="color: #FFFFFF" value="注册"></div>

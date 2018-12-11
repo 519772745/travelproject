@@ -50,22 +50,32 @@ public class PersonalinfoServiceImpl {
 		userDetail=this.userDaoImpl.findByEmail(email).getUserDetail();
 		return userDetail;
 	}
+	/**
+	 * 
+	 * @Title: updateUser   
+	 * @Description: 用户密码修改的判断，更改数据库 
+	 * @param: @param users
+	 * @param: @param request
+	 * @param: @return      
+	 * @return: Users      
+	 * @throws
+	 */
 	public Users updateUser(Users users,HttpServletRequest request) {
 		//用户输入的初始密码
 		String password=users.getPassword();
 		//用session获取当前用户的email
-		Users user=(Users) request.getSession().getAttribute("user");
-		String email=user.getEmail();
+		String email=(String) request.getSession().getAttribute("userEmail");		
 		users.setEmail(email);
 		//数据库中的密码
 		String passwordDB=this.userDaoImpl.findByEmail(email).getPassword();
+		//输入的密码
 		String password1=request.getParameter("password1");
 		String password2=request.getParameter("password2");
 		if(password.equals(passwordDB)) {
 			if(password1.equals(password2)) {
 				password=password1;
 				users.setPassword(password1);
-				int num=this.personalinfoDaoImpl.updateUser(users);
+				int num=this.personalinfoDaoImpl.updateUserPwd(users);
 				System.out.println(num);
 			}
 				
