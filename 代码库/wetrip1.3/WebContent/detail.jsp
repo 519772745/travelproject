@@ -189,7 +189,7 @@
 											<span class="comment-meta-date"><fmt:formatDate value="${commenti.commentTime}" pattern="yyyy年MM月dd日  HH:mm"/></span>
 										</div><!-- .comment-meta -->
 										<span class="comment-reply"  id="reply">
-											<span rel="nofollow" onclick="openDialog(event)">回复</span>
+											<span rel="nofollow" onclick="openDialog(event,${commenti.id})">回复</span>
 										</span>
 									</div>							
 								<div class="comment-main">
@@ -219,14 +219,22 @@
 							</c:if>	
 					    	</c:forEach>	
 							</ul><!-- .children -->
-												
+						<div class="nav_right fr" id="${commenti.id}" style="display:none">
+									<div class="search fl clearfix">
+										<form action="comment?travelid=${travel.id}&parentid=${commenti.id}" method="post">
+											<textarea rows="5"cols="100" placeholder="回复内容">	</textarea>
+											<input type="submit" class="search_btn fr" id="reply" value="发表回复"/>
+										</form>
+									</div>
+							</div>						
 						</li><!-- .comment -->
 						
 						
 					</c:if>		
 					</c:forEach>
+					
 					</ol>
-
+							
 					</div><!-- .white-wrap -->
 
 				</div><!-- #comments -->
@@ -240,7 +248,7 @@
 							<span class="section-heading-text">发表你的评论</span>
 						</div><!-- .section-heading -->
 
-						<form action="#" method="post">
+						<form action="comment?travelid=${travel.id}" method="post">
 
 							<div class="leave-comment-message">
 								<textarea name="comment" placeholder="评论内容" aria-required="true"></textarea>
@@ -370,8 +378,8 @@
 				}
 			};
 		};
-		function openDialog(e) {
-			document.getElementById("dialog").style.display = "block";
+		function openDialog(e,id) {
+			document.getElementById(id).style.display = "block";
 			e = e||window.event;
 			if(+'\v1') {
 				e.stopPropagation();
