@@ -18,7 +18,8 @@ import javax.persistence.Table;
 public class Comment {
 	
 	private int id;
-	private String email;
+	//评论表和用户详情表多对一
+	private UserDetail userDetail;
 	
 	private Timestamp commentTime;
 	
@@ -39,13 +40,14 @@ public class Comment {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getEmail() {
-		return email;
+	@ManyToOne
+	@JoinColumn(name="email")
+	public UserDetail getUserDetail() {
+		return userDetail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
-	
 	@Column(name="comment_time")
 	public Timestamp getCommentTime() {
 		return commentTime;
