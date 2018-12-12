@@ -7,7 +7,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>微旅Wetrip-注册</title>
+	<title>微旅Wetrip-找回密码</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/demo.css" />
 	<!--必要样式-->
@@ -21,8 +21,8 @@
 			<div id="large-header" class="large-header">
 				<canvas id="demo-canvas"></canvas>
 				<div class="logo_box">
-					<h3>注册</h3>
-					<form action="register" name="f" method="post">
+					<h3>重置密码</h3>
+					<form action="resetPwd" name="f" method="post">
 
 						<div class="input_outer">
 							<span class="u_user1"></span>
@@ -35,14 +35,14 @@
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码,区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
+							<input name="password1" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入新密码" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()" />
 							<div id="pas"></div>
 							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
 						</div>
 
 						<div class="input_outer">
 							<span class="us_uer"></span>
-							<input name="password2" class="text" id="logPass2" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入密码 " onblur="checkpassword()"  onfocus="xiaoshi1()" />
+							<input name="password2" class="text" id="logPass2" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请再次输入新密码 " onblur="checkpassword()"  onfocus="xiaoshi1()" />
 							<div id="pas2"></div>
 							<c:if test="${pwdError}"><div id="password" >密码不一致！</div></c:if>	
 							
@@ -63,8 +63,8 @@
 							<c:if test="${tip==4}"><div id="yanzheng" >请输入验证码！</div></c:if>						
 						</div>
 
-						<div class="mb2"><input type="submit" class="act-but submit" style="color: #FFFFFF" value="注册"></div>
-						<div id="wei"><a href="login" style="color: white">已有账号？登录</a></div>
+						<div class="mb2"><input type="submit" class="act-but submit" style="color: #FFFFFF" value="重置密码"></div>
+						<div id="wei"><a href="login" style="color: white">登录</a></div>
 					</form>
 				</div>
 			</div>

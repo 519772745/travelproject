@@ -7,38 +7,27 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>微旅Wetrip-登录</title>
+	<title>微旅Wetrip-找回密码</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/demo.css" />
 	<!--必要样式-->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/loginAndRegister/css/component.css" />
 	<link rel="shortcut icon" href="${pageContext.request.contextPath }/loginAndRegister/img/icon.ico" type="image/x-icon">	
 </head>
-<!-- onload="createCode()"一开始加载的时候就生成验证码的方法-->
 <body>
 	<div class="container demo-1">
 		<div class="content">
 			<div id="large-header" class="large-header">
 				<canvas id="demo-canvas"></canvas>
 				<div class="logo_box">
-					<h3>欢迎你</h3>
-					<form action="login" name="f" method="post">
-
+					<h3>找回密码</h3>
+					<form action="getpassword" name="f" method="post">
 						<div class="input_outer">
 							<span class="u_user1"></span>
-							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>														
+							<input name="email" class="text" id="userEmail" maxlength="30" style="color: #FFFFFF !important" type="text" placeholder="请输入注册时的邮箱" onblur="checkEmail()" onfocus="xiaoshiEmail()" onkeydown="rangeEmail()"/>														
 							<div id="email" ></div>							
 							<c:if test="${tip==2}"><div id="email2" >请输入用户名！</div></c:if>
 						</div>
-
-						<div class="input_outer">
-							<span class="us_uer"></span>
-							<input name="password" id="logPass" class="text" maxlength="16" style="color: #FFFFFF !important;" value="" type="password" placeholder="请输入密码，区分大小写" onblur="checkPassword()" onfocus="xiaoshiPassword()" onkeydown="rangePassword()">
-							<div id="pas"></div>
-							
-							<c:if test="${tip==3}"><div id="password" >请输入密码！</div></c:if>
-						</div>
-
 						<div class="input_outer1">
 							<div id="all">
 							<span class="us_uer2"></span>
@@ -56,11 +45,7 @@
 							<c:if test="${userError}"><div id="yanzheng" >用户名或密码错误！</div></c:if>
 							<c:if test="${pwdError}"><div id="yanzheng" >用户名或密码错误！</div></c:if>								
 						</div>
-						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
-						<div id="wei">
-							<a href="register" style="color: white">注册</a>
-							<a href="findpassword.jsp" style="color: white">|忘记密码？</a>
-						</div>
+						<div class="mb2"><input type="submit" value="找回密码" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 					</form>
 				</div>
 			</div>
