@@ -90,7 +90,7 @@ function checkEmail(){
 //按键事件看邮箱的字符串的个数是否超过了最大的
 function rangeEmail(){
 	var l=document.getElementById("userEmail").value.length;
-	if(l>30){
+	if(l>28){
 		document.getElementById("email").innerHTML="邮箱格式最多30个字符";
 	}else{
 		document.getElementById("email").innerHTML="";
@@ -120,13 +120,7 @@ function xiaoshi1(){
 	document.getElementById("pas2").innerHTML="";
 	document.getElementById("password").innerHTML="";
 }
-//验证码如果为空时，提示请输入验证码
-function codetip(){
-	var codespan=document.getElementById("text1").value;
-	if(codespan==""){
-		document.getElementById("yanzheng2").innerHTML="请输入验证码";
-	}
-}
+
 //改变验证码事件
          function changeImg(){
              var img = document.getElementById('yanzhengimg');

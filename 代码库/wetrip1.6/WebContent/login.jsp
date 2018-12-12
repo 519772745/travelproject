@@ -61,7 +61,7 @@
 						<div class="mb2"><input type="submit" value="登录" class="act-but submit" style="color: #FFFFFF" onclick="submit()"></div>
 						<div id="wei">
 							<a href="register" style="color: white">注册</a>
-							<a href="##" style="color: white">|忘记密码？</a>
+							<a href="findpassword.jsp" style="color: white">|忘记密码？</a>
 						</div>
 					</form>
 				</div>
