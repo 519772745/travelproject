@@ -1,0 +1,530 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>微旅WeTrip</title>
+
+	<link href="index/css/reset.css" rel="stylesheet">
+	<link href="index/css/index.css" rel="stylesheet">
+	<link href="index/css/iconfont.css" rel="stylesheet">
+	<script src="index/js/jquery-1.9.1.min.js"></script>
+	<script src="index/js/common.js"></script>
+	<script src="index/js/index.js"></script>
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="index/img/icon.ico" type="image/x-icon">
+	<!-- BASE CSS -->
+	<link href="index/css/bootstrap.min.css" rel="stylesheet">
+	<link href="index/css/style.css" rel="stylesheet">
+	<link href="index/css/vendors.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="index/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div id="page" class="theia-exception">
+		
+		<header class="header menu_fixed">
+
+			<div id="logo">
+				<a href="index.html">
+					<img src="index/img/logo_white.png" width="163" height="36" data-retina="true" alt="" class="logo_normal">
+					<img src="index/img/logo_black.png" width="163" height="36" data-retina="true" alt="" class="logo_sticky">
+				</a>
+			</div>
+			<ul id="top_menu">
+				<li><a href="editor.html"><img src="index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<li><a href="login.html"><img src="index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				<li><a href="cart.html"><img src="index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<li><a href="personalinfo.html"><img src="index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
+
+				<li><a href="editor.html"><img src="index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="login.html"><img src="index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
+				<li><a href="cart.html"><img src="index/img/shopping_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="personalinfo.html"><img src="index/img/config_button1.png" width="24" height="24" class="logo_normal"></a></li>
+			</ul>
+			<div id="User">
+				<a href="##">用户状态</a><br>
+				<a href="zone.html" >个人空间页</a><br>
+				<a href="##">注销</a>
+			</div>
+			<!-- /top_menu -->
+			<a href="#menu" class="btn_mobile">
+				<div class="hamburger hamburger--spin" id="hamburger">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</div>
+			</a>
+			<nav id="menu" class="main-menu">
+				<ul>
+					<li><span><a href="index.html">首页</a></span></li>
+					<li><span><a href="part.html">风景</a></span></li>
+					<li><span><a href="part.html">美食</a></span></li>
+					<li><span><a href="part.html">玩耍</a></span></li>
+					<li><span><a href="part.html">周边</a></span></li>
+					<li><span><a href="part.html">小贴士</a></span></li>
+					<li><span><a href="dailytopic.html">今日话题</a></span></li>
+				</ul>
+			</nav>
+
+		</header>	
+		<!-- /header -->
+
+		<main>
+			<!--banner 开始-->
+
+			<div class="banner">   
+				<div class="banner1">
+					<ul>
+						<li><img src="index/img/banner6.jpg" alt=""></li>
+						<li><img src="index/img/banner8.jpg" alt=""></li>
+						<li><img src="index/img/banner5.jpg" alt=""></li>
+						<li><img src="index/img/banner6.jpg" alt=""></li>
+					</ul>    	
+				</div>
+				<div class="nav_right fr">
+					<div class="search fl clearfix">
+						<form>
+							<input type="text" class="search_box fl" value="城市查询" onclick="openDialog(event)" 
+							onblur="if(this.value==''){this.value='城市查询'}" onfocus="if(this.value=='城市查询'){this.value=''}"/>
+							<input type="submit" class="search_btn fr" value="">
+						</form>
+						<div id="dialog" style="display:none">	
+						</div>
+					</div>
+				</div>
+				<div class="bannerText">
+					<p class="bt1">省</p>
+					<p class="bt2">城市</p>
+					<i></i>
+					
+				</div>   
+				<ul class="arrows">
+					<li class="prev"><img src="index/img/prev.png" alt=""></li>
+					<li class="next"><img src="index/img/next.png" alt=""></li>
+				</ul>
+			</div>
+
+			<!--banner 结束-->
+			<!-- 今日话题 -->
+			<div class="topic">
+				<div class="main_title_2">
+					<span><em></em></span>
+				</div>
+				<div class="topic_left">
+					<div class="topic_left1">
+						<h1>今日</h1>
+						<h1>话题</h1>
+					</div>
+					<div class="topic_left2">
+						<img src="index/img/line3.png" height="250px">
+					</div>
+				</div>
+				<div class="topic_middle">
+					<!-- 话题 -->
+					<div class="topic_middle_title">
+						<a href="dailytopic.html"><div class="topic_middle_title_1"><h3>今天你吃了吗？</h3></div></a>
+						<div class="topic_middle_title_2"><p>@官方嘤&nbsp;&nbsp;&nbsp;今日&nbsp;19:00</p></div>
+					</div>
+					<div class="topic_middle_content">
+						<!-- 头像 -->
+						<div class="topic_middle_content_1">
+							<a href="zone.html">
+								<img src="index/img/avatar2.png"> 
+							</a>
+						</div>
+						<div class="topic_middle_content_2">
+							<ul class="author-meta clearfix">
+								<li class="tag"><a href="zone.html">用户ID</a></li>
+								<li class="date"><a href="##">2018&nbsp;&nbsp;may 15&nbsp;&nbsp;23:33</a></li>
+							</ul>
+							<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>
+							<!--这是下面用来出现照片的部分-->
+							<div class="post-img">
+								<img src="index/img/img1.jpg">
+								<img src="index/img/img2.jpg">
+								<img src="index/img/img3.jpg">
+								<img src="index/img/img4.jpg">
+							</div>
+							<ul class="share-meta clearfix">
+								<!--标题下面的三个功能按键-->
+								<li><a href="##"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (04)</a></li>
+								<li><a href="##"><img src="index/img/like.png" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (02)</a></li>
+								<li><a href="##"><img src="index/img/star.png" id="star" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (12)</a></li>
+								<li><a href="##"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-1px">&nbsp;&nbsp;举报</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="topic_right"> 
+					<div class="topic_right_img">
+						<a href="dailytopic.html">
+							<div class="topic_right_readmore"></div>
+						</a>
+					</div>
+					<div class="page">
+						<a href="##" class="a1"><img src="index/img/left.png" onmouseover="this.src='index/img/left2.png'" onmouseout="this.src='index/img/left.png'"></a>
+						<a href="##" class="a2"><img src="index/img/right.png" onmouseover="this.src='index/img/right2.png'" onmouseout="this.src='index/img/right.png'"></a>
+					</div>
+				</div>
+			</div>
+			<!-- 今日话题结束 -->
+			<!-- 热门说说 -->
+			<div class="shuo">
+				<div class="main_title_2">
+					<span><em></em></span>
+				</div>
+				<div class="shuo_right">
+					<div class="shuo_right2">
+						<img src="index/img/line4.png" height="250px">
+					</div>
+					<div class="shuo_right1">
+						<h1>热门</h1>
+						<h1>说说</h1>
+					</div>
+					
+					
+				</div>
+				<div class="shuo_middle">
+					<!-- 话题 -->
+					<div class="shuo_middle_title">
+						<div class="shuo_middle_title_1"><a href="zone.html"><h3>用户ID</h3></a></div>
+						<!-- <div class="shuo_middle_title_2"><p>@来自员工的哀嚎&nbsp;&nbsp;&nbsp;今日&nbsp;23:33</p></div> -->
+					</div>
+					<div class="shuo_middle_content">
+						<!-- 头像 -->
+						<div class="shuo_middle_content_1">
+							<a href="zone.html">
+								<img src="index/img/avatar1.png" width="100px" height="100px"> 
+							</a>
+						</div>
+						<div class="shuo_middle_content_2">
+							<ul class="author-meta clearfix">
+								<li class="tag"><a href="part.html">标签</a></li>
+								<li class="date"><a href="##">2018&nbsp;&nbsp;June 16&nbsp;&nbsp;23:33</a></li>
+							</ul>
+							<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>
+							<!--这是下面用来出现照片的部分-->
+							<div class="post-img">
+								<img src="index/img/img1.jpg">
+								
+							</div>
+							<ul class="share-meta2 clearfix">
+								<!--标题下面的三个功能按键-->
+								<li><a href="detail.html"><img src="index/img/comment.png">&nbsp;&nbsp;评论 (04)</a></li>
+								<li><a href="##"><img src="index/img/like.png" style="margin-left:-2px" onmouseover="this.src='index/img/like2.png'" onmouseout="this.src='index/img/like.png'">&nbsp;&nbsp;点赞 (02)</a></li>
+								<li><a href="##"><img src="index/img/star.png" id="star" style="margin-left:-15px" onmouseover="this.src='index/img/star1.png'" onmouseout="this.src='index/img/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (12)</a></li>
+								<li><a href="##"><img src="index/img/report2.png" width="12px" height="12px" style="margin-left:-23px">举报</a></li>
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="shuo_left">
+				<div class="shuo_left_img">
+					<a href="detail.html">
+						<div class="shuo_left_readmore"></div>
+					</a>
+				</div>
+				<div class="page2">
+					<a href="##" class="a1"><img src="index/img/right.png" onmouseover="this.src='index/img/right3.png'" onmouseout="this.src='index/img/right.png'"></a>
+					<a href="##" class="a2"><img src="index/img/left.png" onmouseover="this.src='index/img/left3.png'" onmouseout="this.src='index/img/left.png'"></a>
+				</div>
+			</div>
+			
+		</div>
+		<!-- 热门说说结束 -->
+		<!-- 热点文章 -->
+		<div class="container-fluid margin_80_0">
+			<div class="main_title_2">
+				<span><em></em></span>
+				<h2>热点文章</h2>
+			</div>
+			<div id="reccomended" class="owl-carousel owl-theme">
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_6.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+				<!-- 单个文章推荐-->
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="star_bt"></a>
+							<a href="#0" class="wish_bt"></a>
+							<a href="detail.html"><img src="index/img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>阅读更多</span></div></a>
+							<small>标签</small>
+						</figure>
+						<div class="wrapper">
+							<h3><a href="detail.html">文章标题</a></h3>
+							<p>文章部分段落</p>
+							<span class="price">作者</span>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> 发表时间</li>
+							<li><div class="score"><span>评论<em>多少条评论</em></span></div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /carousel -->
+		</div>
+		<!-- 热点文章结束 -->
+		<br>
+		<!-- 商品推荐 -->
+		<div class="container-fluid margin_30_95 pl-lg-5 pr-lg-5">
+			<section>
+				<div class="main_title_3">
+					<span><em></em></span>
+					<h2>商品推荐</h2>
+				</div>
+				<div class="row">
+					<div class="col-xl-3 col-lg-6 col-md-6">
+						<a href="good.html" class="grid_item">
+							<figure>
+								<img src="index/img/restaurant_1.jpg" class="img-fluid" alt="">
+								<div class="info">
+									<h3>商品名称</h3>
+								</div>
+							</figure>
+						</a>
+					</div>
+					<!-- /grid_item -->
+					<div class="col-xl-3 col-lg-6 col-md-6">
+						<a href="good.html" class="grid_item">
+							<figure>
+								<img src="index/img/restaurant_2.jpg" class="img-fluid" alt="">
+								<div class="info">
+									<h3>商品名称</h3>
+								</div>
+							</figure>
+						</a>
+					</div>
+					<!-- /grid_item -->
+					<div class="col-xl-3 col-lg-6 col-md-6">
+						<a href="good.html" class="grid_item">
+							<figure>
+								<img src="index/img/restaurant_3.jpg" class="img-fluid" alt="">
+								<div class="info">
+									<h3>商品名称</h3>
+								</div>
+							</figure>
+						</a>
+					</div>
+					<!-- /grid_item -->
+					<div class="col-xl-3 col-lg-6 col-md-6">
+						<a href="good.html" class="grid_item">
+							<figure>
+								<img src="index/img/restaurant_4.jpg" class="img-fluid" alt="">
+								<div class="info">
+									<h3>商品名称</h3>
+								</div>
+							</figure>
+						</a>
+					</div>
+					<!-- /grid_item -->
+				</div>
+				<!-- /row -->
+				<div class="container">
+					<br>
+					<p class="btn_home_align"><a href="part.html" class="btn_1 rounded">查看所有商品</a></p>
+				</div>
+			</section>
+		</div>
+
+	</main>
+	<!-- /main -->
+	<!--footer-->
+	<footer class="theme-footer">
+		<div class="container">
+			<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
+			<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
+		</div> <!-- /.container -->
+	</footer> <!-- /.theme-footer -->
+	<!--/footer-->
+</div><!-- page -->
+
+<div id="toTop"></div><!-- 返回到顶端 -->
+
+<!-- 通用js -->
+<script src="index/js/jquery-2.2.4.min.js"></script>
+<script src="index/js/common_scripts.js"></script>
+<script src="index/js/main.js"></script>
+<script src="index/assets/validate.js"></script>
+
+<!-- DATEPICKER  -->
+<script>
+	$(function() {
+		'use strict';
+		$('input[name="dates"]').daterangepicker({
+			autoUpdateInput: false,
+			locale: {
+				cancelLabel: 'Clear'
+			}
+		});
+		$('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+			$(this).val(picker.startDate.format('MM-DD-YY') + ' > ' + picker.endDate.format('MM-DD-YY'));
+		});
+		$('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
+			$(this).val('');
+		});
+	});
+
+
+		//搜索
+		function display(id){  
+			var traget=document.getElementById(id);  
+			if(traget.style.display=="none"){  
+				traget.style.display="";  
+			}else{  
+				traget.style.display="none";  
+			}  
+		}
+		//点击出现div，移开消失
+		window.onload = function(){
+			document.onclick = function(e){
+				e = e || window.event;
+				var dom =  e.srcElement|| e.target;
+				if(dom.id != "dialog" && document.getElementById("dialog").style.display == "block") {
+					document.getElementById("dialog").style.display = "none";
+				}
+			};
+		};
+		function openDialog(e) {
+			document.getElementById("dialog").style.display = "block";
+			e = e||window.event;
+			if(+'\v1') {
+				e.stopPropagation();
+			} else  {
+				e.cancelBubble = true;
+			}
+			
+		}
+
+//用户登录后的状态注销等
+function over(obj){        
+   document.getElementById("User").style.display = "block";
+
+            }
+window.onload = function(){
+			document.onclick = function(e){
+				e = e || window.event;
+				var dom =  e.srcElement|| e.target;
+				if(dom.id != "User" && document.getElementById("User").style.display == "block") {
+					document.getElementById("User").style.display = "none";
+				}
+			};
+		};
+// function out(obj){
+ 
+//     document.getElementById("User").style.display = "none";     
+
+//             }
+	</script>
+	
+
+	<!-- INPUT QUANTITY  -->
+	<script src="index/js/input_qty.js"></script>
+	
+</body>
+</html>
