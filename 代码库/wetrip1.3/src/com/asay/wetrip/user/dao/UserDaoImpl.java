@@ -63,13 +63,5 @@ public class UserDaoImpl {
 			userDetail.setUser(users);
 			session.save(users);			
 		}
-		public int resetUserPwd(Users users) {
-			Session session=this.sessionFactory.getCurrentSession();
-			Query query=session.createQuery("update Users set password=:password where email=:email");
-			query.setParameter("password", users.getPassword());
-			query.setParameter("email", users.getEmail());
-			int num=query.executeUpdate();
-			return num;	
-		}
 
 }

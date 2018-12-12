@@ -79,7 +79,7 @@ public class PersonalinfoController {
 		String password2=request.getParameter("password2");
 		System.out.println(password1);
 		System.out.println(password2);
-			
+		this.pesonalinfoServiceImpl.updateUser(users, request);		
 		return "redirect:personalinfo";
 	}
 	/**

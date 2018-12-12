@@ -115,16 +115,5 @@ public class UserServiceImpl {
 		}		
 		return true;
 	}
-	public Users resetUser(Users users,HttpServletRequest request) {				
-		//输入的密码
-		String password1=request.getParameter("password1");
-		String password2=request.getParameter("password2");		
-			if(password1.equals(password2)) {
-				users.setPassword(password1);
-				int num=this.userDaoImpl.resetUserPwd(users);
-				System.out.println(num);
-			}						
-		return users;
-	}
 					
 }

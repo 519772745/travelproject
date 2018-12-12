@@ -1,30 +1,15 @@
 package com.asay.wetrip.user.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.Resource;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.asay.wetrip.entity.Users;
-import com.asay.wetrip.personalinfo.service.PersonalinfoServiceImpl;
 import com.asay.wetrip.user.service.UserServiceImpl;
 
 
@@ -34,6 +19,7 @@ import com.asay.wetrip.user.service.UserServiceImpl;
 public class UserController {	
 	@Resource	
 	private UserServiceImpl userServiceImpl;
+	
 	/**
 	 * 
 	 * @Title: toLogin   
@@ -230,72 +216,6 @@ public class UserController {
 			}
 			//注销之后跳转到首页
 			return "main";
-		}
-		/**
-		 * @throws MessagingException 
-		 * 
-		 * @Title: getPasswordByEmail   
-		 * @Description:发送邮件找回密码
-		 * @param: @param request
-		 * @param: @param response
-		 * @param: @param email      
-		 * @return: void      
-		 * @throws
-		 */
-		@RequestMapping(value="/getpassword")
-		public String getPasswordByEmail(HttpServletRequest request,HttpServletResponse response) throws MessagingException {
-			String sendtoemail = request.getParameter("email");	
-			System.out.println(sendtoemail);
-			
-			response.setCharacterEncoding("UTF-8");
-			try {
-				request.setCharacterEncoding("UTF-8");
-				Properties props = new Properties();  
-	            props.put("mail.smtp.host","smtp.163.com" );  
-	            // 发送邮件协议名称  
-	            props.put("mail.transport.protocol", "smtp");  
-	            // 是否认证  
-	            props.put("mail.smtp.auth", true);  
-	            Session mailSession = Session.getInstance(props,new Authenticator() {
-	           	 protected PasswordAuthentication getPasswordAuthentication(){
-	           		 return new PasswordAuthentication("hbsdxswh@163.com", "wanghui19971104");
-	           	 }
-	            });
-	            Message msg = new MimeMessage(mailSession); 
-	            //设置邮件的发件人
-	            msg.setFrom(new InternetAddress("hbsdxswh@163.com"));  
-	            //设置邮件的收件人
-	            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendtoemail));
-	            //设置邮件的标题
-	            msg.setSubject("找回密码");
-	            //设置邮件的发送日期
-	            msg.setSentDate(new Date());
-	            //设置邮件的内容
-	            MimeBodyPart mbp =  new MimeBodyPart();
-	            mbp.setContent("请点击如下链接重置密码：<a target='_blank' href='http://localhost:8080/wetrip1.0/getpassword.jsp'>重置密码</a>", "text/html;charset=UTF-8");
-	            MimeMultipart mm = new MimeMultipart();
-	            mm.addBodyPart(mbp);
-	            msg.setContent(mm);
-	            //发送邮件
-	          Transport.send(msg); 
-	         return "success";	    
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return "findpassword";
-			}	               			
-		}
-		@RequestMapping(value="/resetPwd")
-		public String resetPassword(HttpServletRequest request,HttpServletResponse response) {
-			String email=request.getParameter("email");
-			String password1=request.getParameter("password1");
-			String password2=request.getParameter("password2");
-			String code=request.getParameter("codekey");
-			boolean codeVerfiy =this.userServiceImpl.verfiyCode(request);
-			Users users=new Users();
-			users.setEmail(email);		
-			this.userServiceImpl.resetUser(users, request);
-			return "login";
 		}
 		
 }
