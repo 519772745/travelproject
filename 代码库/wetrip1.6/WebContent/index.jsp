@@ -75,7 +75,7 @@
 				<ul>
 					<li><span><a href="index.jsp">首页</a></span></li>
 					<c:forEach items="${tags }" var="t">
-					<li><span><a href="part.html">${t.tagName }</a></span></li>
+					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>
@@ -150,7 +150,7 @@
 					<div class="topic_middle_content">
 						<!-- 头像 -->
 						<div class="topic_middle_content_1">
-							<a href="zone.html">
+							<a href="zone?zonePageNum=1&collectPageNum=1&username=${t1.key.getUserDetail().getUsername()}&currentDate=2018-11">
 								<img src="${pageContext.request.contextPath }/${ud.userhead }"> 
 							</a>
 						</div>
