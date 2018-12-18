@@ -64,12 +64,4 @@
             });
         });
     });
-    // 鼠标跟随
- window.onload=function(){
-        var flow=document.getElementById("flow");
-        document.onmousemove=function(e){
-            e=e||window.event;
-            flow.style.top=0;
-            flow.style.left=e.clientX+"px";
-        }
-    }
+

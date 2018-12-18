@@ -108,45 +108,50 @@
 <div class="container" style="margin-top: 80px;" style="margin: 0 auto">
 	<!--上方标题-->
 	<div style="width: 1200px;height: 260px;margin: 0 auto;background-color: #f5f5f5;background-image: url(dailytopic/images/topic/background.png);background-repeat: no-repeat;background-position: 95% 70%">  
-		<h2 style="font-size: 36px;font-weight: 700;margin: 60px 0px 20px 50px;padding-top: 20px;">这是个标题啊标题</h2>
+		<h2 style="font-size: 36px;font-weight: 700;margin: 60px 0px 20px 50px;padding-top: 20px;">${topic.name}</h2>
 		<p style="line-height: 1.75;color: #333;font-size: 14px;margin-left: 50px;width: 700px">
-			这是段简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介……</p>
+			${topic.description}</p>
 			<div style="margin-left: 50px;height: 20px;line-height: 20px;margin-top: 10px;margin-bottom: 10px;font-size: 12px">
-				<span style="float: left;margin-right: 12px;color: #808080;line-height: 20px;font-size: 12px"><a href="##" style="color: #808080">官方嘤</a></span>
-				<span style="float: left;margin-right: 12px;color: #808080;line-height: 20px;font-size: 12px">今天 19:00</span>
+				<span style="float: left;margin-right: 12px;color: #808080;line-height: 20px;font-size: 12px"><a href="##" style="color: #808080">${topic.manager.userDetail.username}</a></span>
+				<span style="float: left;margin-right: 12px;color: #808080;line-height: 20px;font-size: 12px"><fmt:formatDate value="${topic.topictime}" pattern="yyyy年MM月dd日  "/></span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
 				<!--每篇日记的展示-->
-				<div class="single-blog-post" style="margin-bottom: 15px;">
+					<c:forEach items="${travelList}" var="traveli">
+					<div class="single-blog-post" style="margin-bottom: 15px;">
 					<div class="post-meta-box bg-box">
 						<!--图片位置-->
-						<div class="image-box"><img src="dailytopic/images/avatar/avatar4.png" alt=""></div>
+						<div class="image-box"><img src="${traveli.userDetail.userhead }" alt=""></div>
 						<!--文本位置-->
 						<div class="post-article">
 							<ul class="author-meta clearfix">
-								<li class="tag"><a href="zone.html">用户ID</a></li>
-								<li class="date"><a href="##">2018  may 15</a></li>
-							</ul><p style="text-indent:2em;text-align: justify">氹仔（氹，音 dang 第四声）是澳门的一个离岛，面积仅6平方公里，是组成澳门三部份之一，位于澳门半岛以南，路环岛以北， 位于澳门的中央， 岛上绿树成荫，花木扶疏，环境优美，与澳门半岛有三条跨海大桥连接（澳氹大桥、新大桥、西湾大桥)。澳门大学、澳门科技大学、官也街、赛马场、路氹金光大道都在此岛上，氹仔还有自己的轮渡码头。氹仔是澳门的新城区所在，高档酒店和赌场云集，如银河，威尼斯人，金沙等赌场和超级豪华酒店都在这里。氹仔有自己的轮渡码头，澳门国际机场就坐落在氹仔的东面海边。</p>
+								<li class="tag"><a href="zone.html">${traveli.userDetail.username}</a></li>
+								<li class="date"><a href="##"><fmt:formatDate value="${traveli.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
+							</ul><p style="text-indent:2em;text-align: justify">${traveli.content}</p>
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
-								<img src="dailytopic/images/other/img1.jpg">
-								<img src="dailytopic/images/other/img2.jpg">
-								<img src="dailytopic/images/other/img3.jpg">
-								<img src="dailytopic/images/other/img4.jpg">
+							<c:forEach items="${traveli.imgs}" var="imgi" varStatus="status">	
+							<c:if test="${status.index<4}">						
+								<img src="${imgi.getPath()}">
+							</c:if>
+							</c:forEach>							
 							</div>
 							<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="##"><i class="icon flaticon-comment"></i>评论(04)</a></li>
-								<li><a href="##"><i class="icon flaticon-like-heart"></i>点赞 (02)</a></li>
-								<li><a href="##"><img src="dailytopic/images/star.png" id="star" onmouseover="this.src='dailytopic/images/star1.png'" onmouseout="this.src='dailytopic/images/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (12)</a>
+								<li><a href="##"><i class="icon flaticon-comment"></i>评论(${traveli.commentNum})</a></li>
+								<li><a href="##"><i class="icon flaticon-like-heart"></i>点赞 (${traveli.praiseCount})</a></li>
+								<li><a href="##" class="collect" onload="页面加载方法"><img src="dailytopic/images/star.png" id="star" onmouseover="this.src='dailytopic/images/star1.png'" onmouseout="this.src='dailytopic/images/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${traveli.getCollectTravels().size()})</a>
 
 								</li>
 							</ul></div>
 							<div style="clear:both"></div>
 						</div> <!-- /.post-meta-box -->
-					</div> <!--每篇日记的展示-->
+					</div> 
+					</c:forEach>
+					
+					
 					<!--分页 -->
 				</div> <!-- /.col- -->
 				<!-- ======================== Theme Sidebar =============================== -->
@@ -154,12 +159,26 @@
 			<!--分页-->
 			<div class="theme-pagination text-center" >
 				<ul class="clearfix">
-					<li><a href="##"><i class="icon flaticon-left-arrow"></i></a></li>
+					<c:if test="${pageNum>1}">
+					<li><a href="dailytopic?pageNum=${pageNum-1 }&topicId=2"><i class="icon flaticon-left-arrow" title="上一页"></i></a></li>
+					</c:if>
 					<!--页码-->
-					<li class="active"><a href="##">1</a></li>
-					<li><a href="##">2</a></li>
-					<li><a href="##">3</a></li>
-					<li><a href="##"><i class="icon flaticon-right-arrow"></i></a></li>
+					<li >
+					<a href="##">
+					第
+					<select onchange="myfunction();" id="_pn">  
+						<c:forEach var="num" begin="1" end="${pageCount}">
+						<option value="${num}">${num}</option>
+						</c:forEach>
+					</select>
+					
+					页
+					</a>
+					</li>
+					<li style="padding:4px 12px">共${pageCount}页</li>
+					<c:if test="${pageNum<pageCount}">
+					<li><a href="dailytopic?pageNum=${pageNum+1}&topicId=2"><i class="icon flaticon-right-arrow" title="下一页"></i></a></li>
+					</c:if>
 					<!--页码-->
 				</ul>
 			</div> <!--分页 -->
@@ -167,12 +186,11 @@
 			<!--这些是超链接啊啊啊呜-->
 			<div class="links">
 				<span style="color: rgb(204, 51, 51);font-size: 14px;letter-spacing: 1px;">▼</span>
-				<p style="margin: 0px;padding: 0px;margin-bottom: 20px;margin-top: 20px;margin-left: -16px;width:343px;height:80px;background-repeat: no-repeat;background-size: 343px 80px;background-image: url(dailytopic/images/topic.png);font-size: 25px;line-height: 70px;">往期话题:</p><a href="##">这是第一个话题</a>
-				<a href="##">这是第二个哦！</a>
-				<a href="##">(눈_눈)哼唧为啥要凑字数啊</a>
-				<a href="##">嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤</a>
-				<a href="##">哼！就会欺负人家</a>
-				<a href="##">编不出来了告辞！！！</a>
+				<p style="margin: 0px;padding: 0px;margin-bottom: 20px;margin-top: 20px;margin-left: -16px;width:343px;height:80px;background-repeat: no-repeat;background-size: 343px 80px;background-image: url(dailytopic/images/topic.png);font-size: 25px;line-height: 70px;">往期话题:</p>
+
+				<c:forEach items="${topicList}" var="listi">
+				<a href="dailytopic?pageNum=1&topicId=${listi.id }">${listi.getName() }</a>
+				</c:forEach>
 			</div><!--这些是超链接啊啊啊呜-->
 		</div> <!-- /.container -->
 
@@ -211,6 +229,13 @@
 <!-- Map -->
 
 <!-- DATEPICKER  -->
+
+<script type="text/javascript">
+function myfunction(){
+	var select = document.getElementById("_pn").value;
+		document.location.href="dailytopic?pageNum="+select+"&topicId=2";
+}
+</script>
 <script>
 	$('input[name="dates"]').daterangepicker({
 		"singleDatePicker": true,

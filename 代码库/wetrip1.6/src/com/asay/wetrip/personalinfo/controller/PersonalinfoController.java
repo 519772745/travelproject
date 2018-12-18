@@ -37,13 +37,13 @@ public class PersonalinfoController {
 	 * @throws
 	 */
 	@RequestMapping(value="/personalinfo",method=RequestMethod.GET)
-	public String toPersoninfo() {
-		//根据session获取得到用户的详细信息，jsp页面展示即可
+	public String toPersoninfo(HttpServletRequest request) {
+		//根据session获取得到用户的详细信息，jsp页面展示即可	
 		return "personalinfo";
 	}
 	/**
 	 * 
-	 * @Title: personinfo   
+	 * @Title: personDetail   
 	 * @Description: 用户登录之后对自己的个人详细信息的设置之后，提交到这里进行处理，并修改数据库信息
 	 * @param: @param httpSession
 	 * @param: @param request
@@ -55,8 +55,10 @@ public class PersonalinfoController {
 	public String personDetail(Users users,UserDetail userDetails,HttpSession httpSession,HttpServletRequest request) {
 		//邮箱为主键，应该不能修改
 		//更新之后的该用户的详细信息
-		UserDetail userDetail=this.pesonalinfoServiceImpl.updateUserDetail(users, userDetails);	
+		UserDetail userDetail=(UserDetail) httpSession.getAttribute("userDetail");
+		userDetail=this.pesonalinfoServiceImpl.updateUserDetail(users, userDetails);	
 		System.out.println(userDetail.getUserhead());
+		httpSession.removeAttribute("userDetail");
 		httpSession.setAttribute("userDetail", userDetail);		
 		return "personalinfo";
 	}
@@ -80,7 +82,7 @@ public class PersonalinfoController {
 		System.out.println(password1);
 		System.out.println(password2);
 		this.pesonalinfoServiceImpl.updateUser(users, request);		
-		return "redirect:personalinfo";
+		return "personalinfo";
 	}
 	/**
 	 * 

@@ -12,7 +12,7 @@ import com.asay.wetrip.entity.Users;
 /**
  * 
  * @ClassName:  UserDaoImpl   
- * @Description:用户的增加、查询   
+ * @Description:用户的增加、查询、修改
  * @author: 王慧
  * @date:   2018年12月4日 下午5:13:30
  */
@@ -62,6 +62,23 @@ public class UserDaoImpl {
 			users.setUserDetail(userDetail);
 			userDetail.setUser(users);
 			session.save(users);			
+		}
+		/**
+		 * 
+		 * @Title: resetUserPwd   
+		 * @Description: 用户密码的修改  
+		 * @param: @param users
+		 * @param: @return      
+		 * @return: int      
+		 * @throws
+		 */
+		public int resetUserPwd(Users users) {
+			Session session=this.sessionFactory.getCurrentSession();
+			Query query=session.createQuery("update Users set password=:password where email=:email");
+			query.setParameter("password", users.getPassword());
+			query.setParameter("email", users.getEmail());
+			int num=query.executeUpdate();
+			return num;	
 		}
 
 }

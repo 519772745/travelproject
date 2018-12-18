@@ -11,7 +11,9 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.asay.wetrip.entity.Imgs;
+import com.asay.wetrip.entity.Tags;
 import com.asay.wetrip.entity.TravelNote;
+import com.asay.wetrip.util.ConfigConsts;
 /**
  * 
  * <b>EditorDaoImpl</b>
@@ -37,11 +39,7 @@ public class EditorDaoImpl {
 	 */
 	public void delAllPhotos(TravelNote travelNote) {
 		Session session =sessionFactory.getCurrentSession();
-		Transaction transaction=session.beginTransaction();
-		Query query=session.createQuery("delete Imgs where travelNote=:theTravelNote");
-		query.setParameter("theTravelNote", travelNote);
-		query.executeUpdate();
-		transaction.commit();
+		session.delete(travelNote);
 	}
 	
 	/**
@@ -54,9 +52,7 @@ public class EditorDaoImpl {
 	public void savePhotos(Set<Imgs> imgs) {
 		Session session =sessionFactory.getCurrentSession();
 		for (Imgs img : imgs) {
-			Transaction transaction=session.beginTransaction();
 			session.save(img);
-			transaction.commit();
 		}
 	}
 	
@@ -69,8 +65,65 @@ public class EditorDaoImpl {
 	 */
 	public void saveTravelNotes(TravelNote travelNote) {
 		Session session =sessionFactory.getCurrentSession();
-		Transaction transaction=session.beginTransaction();
 		session.save(travelNote);
-		transaction.commit();
 	}
+	/**
+	 * 
+	 * @Title: tagTraversing   
+	 * @Description: TODO 根据特定的tag遍历tag表查询标签
+	 * @param: @param tagName 获得的单个标签
+	 * @param: @return      
+	 * @return: boolean      
+	 * @throws
+	 */
+	public boolean tagTraversing(String tagName) {
+		Session session =sessionFactory.getCurrentSession();
+		String hql="select count(*) from Tags t where t.tagName =:tagName";
+		Query q=session.createQuery(hql);
+		q.setParameter("tagName", tagName);
+		Long count = (Long)q.uniqueResult();
+		System.out.println("dao层的判断count值："+count);
+		if(count==1) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	/**
+	 * 
+	 * @Title: updatetagCount   
+	 * @Description: TODO tag表中存在该标签获得tag_count使其加一
+	 * @param: @param tag tag对象    
+	 * @return: void      
+	 * @throws
+	 */
+	public void updateTagCount(Tags tag) {
+		Session session =sessionFactory.getCurrentSession();
+		String hql="from Tags t where t.tagName =:tagName";
+		Query q=session.createQuery(hql);
+		q.setParameter("tagName", tag.getTagName());
+		Tags oldtag= (Tags) q.uniqueResult();		
+		System.out.println("获得的旧数===="+oldtag.getTagCount());
+		tag.setTagCount(oldtag.getTagCount()+1);
+		System.out.println("获得的新的值："+tag.getTagCount());
+		String hql1="update Tags t set t.tagCount=:tagCount where t.tagName =:tagName";
+		Query queryupdate=session.createQuery(hql1);
+		queryupdate.setParameter("tagName", tag.getTagName());
+		queryupdate.setParameter("tagCount", tag.getTagCount());
+		session.clear();
+	}
+	/**
+	 * 
+	 * @Title: saveTag   
+	 * @Description: TODO tag表中不存在该标签 插入它
+	 * @param: @param tag  tag对象    
+	 * @return: void      
+	 * @throws
+	 */
+	public void saveTag(Tags tag) {
+		Session session =sessionFactory.getCurrentSession();
+		session.save(tag);
+	}
+	
 }

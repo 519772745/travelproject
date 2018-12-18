@@ -414,7 +414,7 @@ function over(obj){
       	          
 		<div id="con_one_3" style="display:none;">
 	        <div id="txgg">
-	        	<div id="tx01"><img src="${pageContext.request.contextPath }/${userDetail.userhead}"/></div>
+	        	<div id="tx01"><img src="${userDetail.userhead}"/></div>
 		        <div id="wzms">
 		        	<span>从电脑中选择你喜欢的图片</span> <br>  JPG、JPEG、GIF、或PNG等文件。
 			        	<div id="tpsc">
@@ -434,7 +434,7 @@ function over(obj){
 	<div id="rightContent">
 		<div class="sidebar-box bg-box about-me">
 					<h6 class="sidebar-title">关于我</h6>
-					<div style="text-align:center;"><img src="${pageContext.request.contextPath }/${userDetail.userhead}" alt=""  /></div>
+					<div style="text-align:center;"><img src="${userDetail.userhead}" alt=""  /></div>
 					<h5>${userDetail.username}
 					<c:if test="${userDetail.sex=='男' }">
 					<img src="${pageContext.request.contextPath }/personalinfo/img/icons8-男-16.png"/>

@@ -5599,6 +5599,7 @@ _e(function (E, $) {
                 //插入图片
                 document.getElementById("show").style.display = "block"; 
                 document.getElementById("imgshow").src=src;
+                document.getElementById("src1").value = src; 
                 editor.command(e, 'insertHtml', '<img style="max-width:100%;" src="' + src + '"/>', callback);
             }
         });

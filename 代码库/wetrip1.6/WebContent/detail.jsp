@@ -99,7 +99,7 @@
 				<div class="blog-post blog-post-single">
 
 					<div class="blog-post-thumb">
-						<img src="${travel.getImgs().iterator().next().getPath()}" alt="封面" title="封面"  />
+						<img src="index/img/caption.jpg" alt="封面" title="封面"  /><!-- 这里可以用来写封面哒 -->
 					</div><!-- .blog-post-thumb -->
 
 					<div class="blog-post-main clearfix">
@@ -222,7 +222,7 @@
 						<div class="nav_right fr" id="${commenti.id}" style="display:none">
 									<div class="search fl clearfix">
 										<form action="comment?travelid=${travel.id}&parentid=${commenti.id}" method="post">
-											<textarea rows="5"cols="100" placeholder="回复内容">	</textarea>
+											<textarea rows="5"cols="100" placeholder="回复内容" name="comment">	</textarea>
 											<input type="submit" class="search_btn fr" id="reply" value="发表回复"/>
 										</form>
 									</div>
@@ -314,10 +314,14 @@
 					<c:forEach items="${toptravel}" var="topi">
 								<div class="recent-posts-widget-post">
 									<div class="recent-posts-widget-thumb">
-										<a href="detail?travelid=${topi.id}"><img src="${topi.getImgs().iterator().next().getPath() }" alt="游记封面" title="封面"/></a>
+										<a href="detail?travelid=${topi.id }">
+										<c:if test="${topi.getImgs().toArray()[0]!=null}"><img src="${topi.getImgs().toArray()[0].getPath()}" alt="" /></c:if>
+										
+										<c:if test="${topi.getImgs().toArray()[0]==null}"><img src="detail/images/widget-recent-posts/post-3.jpg" alt="" /></c:if>
+										</a>
 									</div><!-- .recent-posts-widget-thumb -->
 									<div class="recent-posts-widget-main">
-										<div class="recent-posts-widget-date"><fmt:formatDate value="${topi.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></div>
+										<div class="recent-posts-widget-date"><fmt:formatDate value="${topi.publishtime}" pattern="yyyy年MM月dd日 "/></div>
 										<div class="recent-posts-widget-title"><a href="detail?travelid=${topi.id}">${topi.title}</a></div>
 									<c:forEach items="${topi.tagTravelNote}" var="tagi">
 										<c:if test="${tagi.tags.parentTag==null }">
@@ -327,8 +331,14 @@
 									</div><!-- .recent-posts-widget-main -->
 								</div><!-- .recent-posts-widget-post -->
 					</c:forEach>
+							<!--图片位置-->
+					
 							
-
+							
+							
+							
+							
+							
 							</div><!-- .recent-posts-widget -->
 						</div><!-- .widget-content -->
 					</div><!-- .widget -->

@@ -1236,29 +1236,13 @@ a.grid_item:hover figure img {
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
+  width:34px;
+  height:31.6px;
 }
-.box_grid a.star_bt:after {
-  font-family: 'ElegantIcons';
-  content: "\e031";
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+.box_grid a.star_bt img{
+	width:17px;
+	height: 17px;
 }
-.box_grid a.star_bt.collection:after {
-  content: "\e033";
-  color: #ff6666;
-}
-.box_grid a.star_bt:hover.collection:after {
-  color: #ff6666;
-}
-.box_grid a.star_bt:hover:after {
-  content: "\e033";
-  color: #ff6666;
-}
-
-
 
 .box_grid a.wish_bt {
   position: absolute;

@@ -39,10 +39,10 @@
 	<link href="editor/baidu/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
     <link href="editor/baidu/editor.css" type="text/css" rel="stylesheet">
 
-	<script type="text/javascript" src="editor/tag/js/jquery.min.js"></script>
+    <script type="text/javascript" src="editor/baidu/third-party/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/editor_api.js"></script>
-    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script>    
 <!-- tag -->
 	<script type="text/javascript" src="editor/tag/js/tag.js"></script>
 	<link rel="stylesheet" type="text/css" href="editor/tag/css/tag.css" />
@@ -122,23 +122,26 @@
 <div class="container" style="margin-top: 130px;">
 	<div class="row">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
-		<form action="mapController" method="post">
+		<form action="editor" method="post" name="aaa">
 				<!--富文本框的展示-->
 				<div style="width:750px;height:70px">
-					<input required='' type='text' name="title">
+					<input  type='text' name="title" id="title">
 					<label alt='输入微旅标题' placeholder='标题'></label>
 				</div>
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
 							<!--style给定宽度可以影响编辑器的最终宽度-->
 							<script type="text/plain" id="myEditor" style="width:750px;height:240px;"></script>			
-								<!--设置隐藏域-->
-								<div  style="display:none;" id="jkudgeconment" ></div>
 						    	<!--设置隐藏域-->
-								<div  style="display:none;">
-						    		<input type="textarea" name="content" id="content1">
+								<div  id="content3" style="display:none;">
+						    		<input type="text" name="content" id="content2">
 								</div>
-					<!-- 上传图片 -->
+						    	<!--设置隐藏域-->					    	
+								<div  style="display:none;">
+						    		<input type="text" name="content" id="content1">
+								</div>
+				<!-- 上传图片 -->
+				<div>
 					<div id="wrapper">
 						<div id="container">
 						<!--头部，相册选择和格式选择-->
@@ -161,6 +164,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
 					<!-- 上传图片 -->
 					<!-- 地图位置 -->
 					<div id="mapall">
@@ -170,7 +174,7 @@
 						<div id="prompt"><h6>请选择地址</h6></div>
 						<div id="show">
 							<img id="imgshow" src="">
-							<!--设置隐藏域-->
+							<!--设置隐藏域——获得地图的地址-->
 							<div  style="display:none;">
 								<input type="text" name="address" id="src1">
 							</div>
@@ -191,16 +195,18 @@
 								var tag = new Tag("tagValue");
 								tag.initView();			
 								//初始化已有标签
-								var tag1 = new Tag("tagValue1");
+								var tag1 = new Tag("tagValue1");	
 								tag1.tagValue = "风景,美食,玩耍,周边";
 								tag1.initView();				
 							</script>
+							<!--设置隐藏域——标签的值-->
+								<input type="hidden" name="tag1" id="tagtag">
 						</div>
 						<!-- 标签 -->
 						<!-- 权限 -->
 						<div class="si">
 							<h7 id="quanxian">权限:&nbsp&nbsp&nbsp&nbsp</h7>
-							<select id="city" class="select2">
+							<select id="city" class="select2" name="status">
 								<option value="1">自己看</option>
 								<option value="2">仅同城</option>
 								<option value="3">全世界</option>
@@ -209,7 +215,8 @@
 						<!-- 权限 -->
 						<!-- 参与话题及发表 -->
 						<div class="si">
-							<input id="shi" type="checkbox" name="是" value="" checked>参加每日话题推送
+							<!-- 后台默认是就是false 打对勾之后就是TRUE了 -->
+							<input name="topicId" type="checkbox" value="true" id="topicId">是否参加今日话题
 						</div>
 						<!--提交按钮-->
 						<div id="bg2">

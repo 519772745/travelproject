@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="detail?travelid=1"></jsp:forward>
+<jsp:forward page="detail?travelid=10"></jsp:forward>
+<!--  
+<jsp:forward page="dailytopic?pageNum=1&topicId=2"></jsp:forward>
+
+-->
 </body>
 </html>

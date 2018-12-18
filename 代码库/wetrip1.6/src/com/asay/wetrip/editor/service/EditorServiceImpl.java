@@ -8,9 +8,11 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.asay.wetrip.editor.dao.EditorDaoImpl;
 import com.asay.wetrip.entity.Imgs;
+import com.asay.wetrip.entity.Tags;
 import com.asay.wetrip.entity.TravelNote;
 import com.asay.wetrip.entity.UserDetail;
 
@@ -44,13 +46,13 @@ public class EditorServiceImpl {
 	 * @param imgPaths (所上传的图片的路径)
 	 * @return void 
 	 */
+	
 	public void saveTravelNotesAndImages(TravelNote travelNote, UserDetail user, List<String> imgPaths) {
 		/* 设置发表用户 */
 		travelNote.setUserDetail(user);
-		/* 初始化点赞数,评论数,举报数 */
+		/* 初始化点赞数,评论数 */
 		travelNote.setPraiseCount(0);
 		travelNote.setCommentNum(0);
-		travelNote.setReportcount(0);
 		travelNote.setPublishtime(new Timestamp(System.currentTimeMillis()));
 
 		/*
@@ -61,9 +63,11 @@ public class EditorServiceImpl {
 			travelNote.setIslong(0);
 		else
 			travelNote.setIslong(1);
+		editorDaoImpl.saveTravelNotes(travelNote);
 
 		/* 清除该篇文章内附带的照片，为下面重新插入照片做准备 */
 		editorDaoImpl.delAllPhotos(travelNote);
+		
 
 		/* 封装Imgs */
 		Set<Imgs> imgs = new HashSet();
@@ -82,6 +86,31 @@ public class EditorServiceImpl {
 			/* 传给dao */
 			editorDaoImpl.savePhotos(imgs);
 		}
-		editorDaoImpl.saveTravelNotes(travelNote);
+	}
+	/**
+	 * 
+	 * @Title: tag   
+	 * @Description: TODO  获得tag的单个标签 进行是否存在的判断  存在则使其count加1 不存在则插入（tag表）
+	 * @param: @param tagName  获得的单个标签    
+	 * @return: void      
+	 * @throws
+	 */
+	public void tag(String tagName,TravelNote travelNote) {
+		if(editorDaoImpl.tagTraversing(tagName)) {//存在的情况
+			Tags tag=new Tags();
+			Set noteset = new HashSet();
+			noteset.add(travelNote);
+			tag.setTagName(tagName);
+			tag.setTagTravelNote(noteset);
+			editorDaoImpl.updateTagCount(tag);
+		}else {
+			Tags tag=new Tags();
+			Set noteset = new HashSet();
+			noteset.add(travelNote);
+			tag.setTagTravelNote(noteset);
+			tag.setTagName(tagName);
+			tag.setTagCount(1);
+			editorDaoImpl.saveTag(tag);
+		}
 	}
 }

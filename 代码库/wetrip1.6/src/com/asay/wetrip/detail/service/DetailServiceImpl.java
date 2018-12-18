@@ -21,7 +21,7 @@ import com.asay.wetrip.entity.Users;
  * @date:   2018年12月10日 上午9:11:31
  */
 @Service
-@Transactional(readOnly=true)
+@Transactional
 public class DetailServiceImpl {
 @Resource
 private DetailDaoImpl detailDaoImpl;
@@ -71,7 +71,7 @@ public List<Comment> findComment(TravelNote travelNote){
  * @return: void      
  * @throws
  */
-public void addComment(String content,Users user,int travelid,String parentId) {
+public void addComment(String content,UserDetail userDetail,int travelid,String parentId) {
 
 //根据id查comment,根据id查travel		
 		Comment comment=new Comment();
@@ -82,7 +82,7 @@ public void addComment(String content,Users user,int travelid,String parentId) {
 	}
 		comment.setCommentContent(content);
 		comment.setTravelNote(this.findTravelById(travelid));
-		comment.setUserDetail(user.getUserDetail());
+		comment.setUserDetail(userDetail);
 		this.detailDaoImpl.addComment(comment);
 	
 	

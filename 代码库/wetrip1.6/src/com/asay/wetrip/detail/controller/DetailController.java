@@ -56,8 +56,10 @@ public String commentAdd(HttpServletRequest request) {
 	int id=Integer.parseInt(request.getParameter("travelid") );
 	String content=request.getParameter("comment");
 	Users user=(Users)request.getSession().getAttribute("user");
+	System.out.println(user.getUserDetail());
+	System.out.println(content);
 	 String parentId=request.getParameter("parentid") ;
-	this.detailServiceImpl.addComment(content, user,Integer.parseInt(request.getParameter("travelid") ), parentId);
+	this.detailServiceImpl.addComment(content,user.getUserDetail(),Integer.parseInt(request.getParameter("travelid") ), parentId);
 	return "redirect:/detail?travelid="+id;
 }
 
