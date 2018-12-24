@@ -36,9 +36,9 @@
       font-family: 微软雅黑;
       font-size: 16px;
       height: 20px;
-      width: 300px;
+      width: 750px;
       margin-top: 20px;
-      margin-left:10px;
+      padding-left:10px;
     }
     #imgshow{
       height: 320px;
@@ -68,7 +68,7 @@
     }
     #detail{
       margin-top:10px;
-      height:240px;
+      padding-bottom:10px;
       border: 1px solid;
       border-image: -webkit-linear-gradient( #cd96d6, #76a68d) 30 30;
       border-image: -moz-linear-gradient( #cd96d6, #76a68d) 30 30;

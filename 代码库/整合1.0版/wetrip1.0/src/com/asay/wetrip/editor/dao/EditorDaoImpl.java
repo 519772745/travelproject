@@ -1,5 +1,6 @@
 package com.asay.wetrip.editor.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -49,6 +50,7 @@ public class EditorDaoImpl {
 	 */
 	public void savePhotos(Set<Imgs> imgs) {
 		Session session =sessionFactory.getCurrentSession();
+		System.out.println("img的存入问题为什么没走呢==================="+imgs.toString());
 		for (Imgs img : imgs) {
 			session.save(img);
 		}
@@ -151,7 +153,106 @@ public class EditorDaoImpl {
 	public void saveTagTravelNote(TagTravelNote ttn) {
 		Session session =sessionFactory.getCurrentSession();
 		session.save(ttn);
-	} 
-	
+	}
+	/**
+	 * 
+	 * @Title: reduceCount   
+	 * @Description: TODO通过传过来的tag,使该标签tag_count使其减一   
+	 * @param: @param tag      
+	 * @return: void      
+	 * @throws
+	 */
+	public void reduceCount(TagTravelNote ttn) {
+		Session session =sessionFactory.getCurrentSession();
+		Query q=session.createQuery("update Tags set tagCount=:count where id=:id");
+		q.setParameter("id",ttn.getTags().getId());
+		q.setParameter("count",ttn.getTags().getTagCount()-1);
+		q.executeUpdate();		
+	}
+	/**
+	 * 
+	 * @Title: listTagTravelNote   
+	 * @Description: TODO根据再编辑游记对象查询到中间表对应的部分封装成TagTravelNote的list集合   
+	 * @param: @param travelNote
+	 * @param: @return      
+	 * @return: List<TagTravelNote>      
+	 * @throws
+	 */
+	public List<TagTravelNote> listTagTravelNote(TravelNote travelNote){
+		Session session =sessionFactory.getCurrentSession();
+		Query q=session.createQuery("from TagTravelNote ttn where ttn.travelNote=:travelNote");
+		q.setParameter("travelNote", travelNote);
+		return q.getResultList();
+	}
+	/**
+	 * 
+	 * @Title: delTagTravelNote   
+	 * @Description: TODO这是中间表的删除 使travelNote与Tag两个表之间没关联
+	 * @param: @param travelNote      
+	 * @return: void      
+	 * @throws
+	 */
+		public void delTagTravelNote(TravelNote travelNote) {
+			Session session =sessionFactory.getCurrentSession();
+			Query q=session.createQuery("delete TagTravelNote ttn where ttn.travelNote=:travelNote");
+			q.setParameter("travelNote", travelNote);
+			q.executeUpdate();
+		}
+	/**
+	 * 
+	 * @Title: updateTravelNotes   
+	 * @Description: TODO 再编辑游记的更新 根据id获取数据库中未修改的travelnote set它之后update
+	 * @param: @param travelNote      
+	 * @return: void      
+	 * @throws
+	 */
+	public void updateTravelNotes(TravelNote travelNote,int id) {
+		Session session =sessionFactory.getCurrentSession();
+		travelNote.setId(id);
+//		int id=oldTravelNote.getId();
+//		oldTravelNote=travelNote;
+//		oldTravelNote.setId(id);
+//		oldTravelNote.setPublishtime(travelNote.getPublishtime());
+//		oldTravelNote.setProvince(travelNote.getProvince());
+//		oldTravelNote.setCity(travelNote.getCity());
+//		oldTravelNote.setTitle(travelNote.getTitle());
+//		oldTravelNote.setContent(travelNote.getContent());
+//		oldTravelNote.setTopic(travelNote.getTopic());
+//		oldTravelNote.setIslong(travelNote.getIslong());
+//		oldTravelNote.setStatus(travelNote.getStatus());
+//		oldTravelNote.setCommentNum(travelNote.getCommentNum());
+//		oldTravelNote.setAddress(travelNote.getAddress());
+//		oldTravelNote.setAddressImgSrc(travelNote.getAddressImgSrc());
+		session.save(travelNote);
+	}
+	/**
+	 * 
+	 * @Title: delImgConnect   
+	 * @Description: TODO删除travelNote与img的关联
+	 * @param: @param travelNote      
+	 * @return: void      
+	 * @throws
+	 */
+	public void delImgConnect(TravelNote travelNote) {
+		Session session =sessionFactory.getCurrentSession();
+		Query q=session.createQuery("delete Imgs i where i.travelNote=:travelNote");
+		q.setParameter("travelNote", travelNote);
+		q.executeUpdate();
+	}
+	/**
+	 * 
+	 * @Title: findById   
+	 * @Description: TODO 通过ID查找已经存在的游记数据  这个id已经存在了要更新的游记数据里面了   
+	 * @param: @param travelNote
+	 * @param: @return      
+	 * @return: TravelNote      
+	 * @throws
+	 */
+	public TravelNote findById(int id) {
+		Session session =sessionFactory.getCurrentSession();
+		Query q=session.createQuery("from TravelNote tn where tn.id=:id");	
+		q.setParameter("id", id);
+		return (TravelNote) q.uniqueResult();
+	}
 	
 }

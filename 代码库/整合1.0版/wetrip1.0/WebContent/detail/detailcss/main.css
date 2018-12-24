@@ -215,8 +215,10 @@ h6 {
     text-align: center;
     text-transform: uppercase;
     position: relative;
+    width:602px;
+    height:404px;
 }
-
+#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 	.section-heading2-line {
 		height: 1px;
 		border-top: 1px solid #e5e5e5;

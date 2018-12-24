@@ -5290,8 +5290,7 @@ _e(function (E, $) {
                     myGeo.getPoint(locationName, function(point){
                         if (point) {
                             map.centerAndZoom(point, 13);
-                            marker = new BMap.Marker(point);
-                            map.addOverlay(marker);
+                            map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
                             marker.enableDragging();  //允许拖拽
                             mapData.markers.push(marker);  //将marker加入到数组中
                         }else{
@@ -5396,11 +5395,15 @@ _e(function (E, $) {
                  */
                 
                 // 这是获得现在地图上的表红点的情况 删除功能
-                var map = mapData.map;
+                if (!map) {
+                    return;
+                }
                 //把地图上的红点去掉
-                mapData.clearLocations();
-                //同时，清空marker数组
-                mapData.markers = [];                
+                if(mapData.markers != []){
+                    //同时，清空marker数组
+                	map.removeOverlay(mapData.markers[0]);//这是remove不是clear
+                    mapData.markers = [];
+                }
                 // 清空之后在加上新标的红点 也就是加上图层
                 map.addOverlay(marker);  
                 marker.enableDragging(); //这是使红点能够拖拽
@@ -5550,6 +5553,8 @@ _e(function (E, $) {
     			var s=addComp.province;
     			s+=addComp.city;
     			s+=addComp.district;
+    			s+=addComp.street;
+    			s+=addComp.streetNumber;
     			document.getElementById("cmbprovince").value = s; 
     		}); 
             if(isDynamic){

@@ -75,9 +75,54 @@ public class EditorServiceImpl {
 		
 	}
 	/**
+	 * <p>首先这是更新
+	 * <b>saveTravelNotesAndImages</b>
+	 * 
+	 * <p>存储游记和对应的图片的方法
+	 * <p>将游记和图片之间建立了联系
+	 * <p>之后将交给{@code EditorDaoImpl} 插入数据库
+	 *
+	 * @param travelNote   游记对象 
+	 * @param imgPaths (所上传的图片的路径)
+	 * @return void 
+	 */
+	
+	public void updateTravelNotesAndImages(TravelNote oldTravelNote,TravelNote travelNote, List<String> imgPaths,int id) {
+		
+		/* 清除该篇文章内附带的照片，为下面重新插入照片做准备 */
+		editorDaoImpl.delAllPhotos(oldTravelNote);		
+		/*进行travelNote的更新*/
+		/*1.把之前与图片关联的删掉*/
+		//现在执行的是删除原来的游记表之后 save相同id的游记表 效果是一样的
+		this.editorDaoImpl.delImgConnect(oldTravelNote);//这里有联级删除的问题  img为主控方 删除时会出现联级删除从表的数据  解决方案可以变一下主控方 或者就在基础上把联级关系去掉
+		/*2.话题之间的关系就在原先的基础上进行这次的更改*/
+		/*3.用户表不变*/
+		/*4.标签表 先找出原来的关系  父标签减一  子标签如果数量为1就直接删掉这一项否则直接减一*/
+		this.editorDaoImpl.updateTravelNotes(travelNote,id);
+		/* 封装Imgs */		
+		Set<Imgs> imgs = new HashSet();
+		if(imgPaths!=null) {
+		for (String imgPath : imgPaths) {
+			Imgs img = new Imgs();
+			img.setPath(imgPath);
+			img.setTravelNote(travelNote);
+			imgs.add(img);
+		}
+		}
+		/* 预防没有图片的情况 */
+		if (imgs != null) {
+			/* 将imgs和travelNote关联 */
+			travelNote.setImgs(imgs);
+
+			/* 传给dao */
+			editorDaoImpl.savePhotos(imgs);
+		}
+		
+	}
+	/**
 	 * 
 	 * @Title: tag   
-	 * @Description: TODO  获得tag的单个标签 进行是否存在的判断  存在则使其count加1 不存在则插入（tag表）
+	 * @Description: TODO  获得tag的单个标签 进行是否存在的判断  存在则使其count加1 不存在则插入（tag表）manyToMany实现的方法 现在用的manyToOne
 	 * @param: @param tagName  获得的单个标签    
 	 * @return: void      
 	 * @throws
@@ -115,6 +160,24 @@ public class EditorServiceImpl {
 	}
 	/**
 	 * 
+	 * @Title: delMorenTag   
+	 * @Description: TODO删除游记表和标签表之间的关联  并实现默认标签的减一
+	 * @param: @param travelNote
+	 * @param: @param morentag      
+	 * @return: void      
+	 * @throws
+	 */
+		public void delTagConnect(TravelNote travelNote) {
+			//根据travelNote得到TagTravelNote的list集合
+			List<TagTravelNote> listttn=this.editorDaoImpl.listTagTravelNote(travelNote);
+			for (int i = 0; i < listttn.size(); i++) {
+				this.editorDaoImpl.reduceCount(listttn.get(i));
+			}
+			//直接根据游记表的ID就可以删掉中间表的关联了
+			this.editorDaoImpl.delTagTravelNote(travelNote);
+		}
+	/**
+	 * 
 	 * @Title: addTagset   
 	 * @Description: 自定义的标签加入
 	 * @param: @param travelNote
@@ -125,7 +188,7 @@ public class EditorServiceImpl {
 	 */
 	public void addTagset(TravelNote travelNote,Set<String> tagset,String morentag) {
 		Tags morenTag = this.editorDaoImpl.findMorenTag(morentag);//分区标签实体
-		if(tagset != null) {
+		if(tagset.size()!=0) {
 		for (String tagi: tagset) {
 			System.out.println(tagi);
 			//判断这个自定义标签是否在该分区下已存在
@@ -165,13 +228,25 @@ public class EditorServiceImpl {
 	/**
 	 * 
 	 * @Title: saveTravelNote   
-	 * @Description:更新游记表  
+	 * @Description:保存到游记表  
 	 * @param: @param travelNote      
 	 * @return: void      
 	 * @throws
 	 */
 	public void saveTravelNote(TravelNote travelNote) {
 		this.editorDaoImpl.saveTravelNotes(travelNote);
+	}
+	/**
+	 * 
+	 * @Title: findById   
+	 * @Description: TODO找到老游记  
+	 * @param: @param travelNote
+	 * @param: @return      
+	 * @return: TravelNote      
+	 * @throws
+	 */
+	public TravelNote findById(int id) {
+		return editorDaoImpl.findById(id);
 	}
 	
 	

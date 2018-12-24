@@ -34,7 +34,6 @@
 	<link rel="stylesheet" href="detail/detailcss/plugins.css">
 	<link rel="stylesheet" href="detail/detailcss/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-
 	<!-- Main style sheet -->
 	<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
 	<!-- responsive style sheet -->
@@ -45,6 +44,8 @@
 	<!-- <link rel="stylesheet" type="text/css" href="dailytopic/css/style.css">
 	<link rel="stylesheet" type="text/css" href="dailytopic/css/bootstrap.min.css"> -->
 </head>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6"></script>
+
 <body>
 	<header class="header menu_fixed" >
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
@@ -168,7 +169,8 @@
 						<div class="section-heading2">
 							<span class="section-heading2-line"></span>
 							<span class="section-heading2-text">地图</span>
-							<img src="index/img/map.png" title="地图">
+							<input id="mapAddress" type="hidden" value="${travel.address }" > 
+							<div id="allmap"></div>
 						</div><!-- .section-heading -->
 					</div>
 
@@ -412,6 +414,8 @@
 	<script type="text/javascript" src="detail/javascript/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="detail/javascript/plugins.js"></script>
 	<script type="text/javascript" src="detail/javascript/main.js"></script>
+	<!-- 地图 -->
+	<script type="text/javascript" src="detail/js/show.js"></script>
 
 
 

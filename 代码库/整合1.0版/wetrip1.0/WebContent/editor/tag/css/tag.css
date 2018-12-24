@@ -1,5 +1,8 @@
 .tagsContaine .tagList,.tagsContaine .tagInput{
-	float: left;
+	float:left;
+	position:relative;
+	bottom:30px;
+	left:95px;
 }
 
 .tagsContaine .tagList .tagItem{
@@ -15,12 +18,16 @@
 	color: #FFFFFF;
 	font-size: 18px;
 	letter-spacing: 2px;
-		: pointer;
+	cursor: pointer;
 }
 #tag{
-	height: 40px;
-	width: 800px;
-	margin-top: 20px;
+	margin-top: 25px;
+	padding-left:10px;
+}
+#tagValue_tagcontaine{
+	position:relative;
+	bottom:78px;
+	left:7px;
 }
 .tagsContaine .tagList .tagItem:hover{
 	background-color: #0099FF;
@@ -61,6 +68,9 @@
 	margin: 5px;
 	padding: 0px 5px;
 	text-align: center;
+	position:relative;
+	bottom:30px;
+	left:90px;
 }
 .tagsContaine .tagInput:focus{
 	border-color: #66CCFF;

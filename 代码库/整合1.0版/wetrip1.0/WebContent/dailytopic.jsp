@@ -140,7 +140,7 @@
 							</div>
 							<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="##"><i class="icon flaticon-comment"></i>评论(${traveli.commentNum})</a></li>
+								<li><a href="detail?travelid=${traveli.id}"><i class="icon flaticon-comment"></i>评论(${traveli.commentNum})</a></li>
 								<li><a href="##"><i class="icon flaticon-like-heart"></i>点赞 (${traveli.praiseCount})</a></li>
 								<li><a href="##" class="collect" onload="页面加载方法"><img src="dailytopic/images/star.png" id="star" onmouseover="this.src='dailytopic/images/star1.png'" onmouseout="this.src='dailytopic/images/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${traveli.getCollectTravels().size()})</a>
 

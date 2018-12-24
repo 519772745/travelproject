@@ -168,7 +168,7 @@
 					<c:if test="${ud.username==loginUsername }">
 						<div style="clear:both" class="change" >
 							<a href="delete?travelId=${travel.id }&zonePageNum=${zonePageNum }&username=${ud.username }&collectPageNum=${collectPageNum }&correctDate=${correctDate}">删除</a>
-							<a href="##">修改</a>
+							<a href="reEditor?travelId=${travel.id }">修改</a>
 						</div>
 					</c:if>
 				</div> <!-- /.post-meta-box -->

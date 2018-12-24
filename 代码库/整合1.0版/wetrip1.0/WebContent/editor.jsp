@@ -1,5 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,65 +62,55 @@
 	============================================== 
 -->
 		<header class="header menu_fixed">
-			<div id="logo">
-				<a href="index.html"> <img src="editor/images/logo_white.png"
-					width="150" height="36" data-retina="true" alt=""
-					class="logo_normal"> <img src="editor/images//logo_black.png"
-					width="150" height="36" data-retina="true" alt=""
-					class="logo_sticky">
-				</a>
-			</div>
-			<!--这是旁边的三个按钮-->
-			<ul id="top_menu">
-				<li><a href="editor.html"><img
-						src="editor/images/add_button1.png" width="24" height="24"></a></li>
-				<li><a href="login.html"><img
-						src="editor/images/personal_button1.png" width="24" height="24"></a></li>
-				<li><a href="cart.html"><img
-						src="editor/images/shopping_button1.png" width="24" height="24"></a></li>
-				<li><a href="personalinfo.html"><img
-						src="editor/images/config_button1.png" width="24" height="24"></a></li>
-			</ul>
 
-			<ul id="top_menu2">
-				<li><a href="editor.html"><img
-						src="editor/images/add_button.png" width="24" height="24"></a></li>
-				<li><a href="login.html"><img
-						src="editor/images/personal_button.png" width="24" height="24"></a></li>
-				<li><a href="cart.html"><img
-						src="editor/images/shopping_button.png" width="24" height="24"></a></li>
-				<li><a href="personalinfo.html"><img
-						src="editor/images/config_button.png" width="24" height="24"></a></li>
+	<div id="logo">
+		<a href="index.html">
+			<img src="zone/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
+			<img src="zone/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
+		</a>
+	</div>
+	<!--这是旁边的三个按钮-->
+	<ul id="top_menu">
+		<li><a href="editor.html"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
+		<li><a href="login.html"><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
+		<li><a href="cart.html"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
+		<li><a href="personalinfo.html"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
 
+		<ul id="top_menu2">
+			<li><a href="editor.html"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="login"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart.html"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
+			<li><a href="personalinfo.html"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
+			
 
-			</ul>
-			<!-- /top_menu -->
-			<a href="#menu" class="btn_mobile">
-				<div class="hamburger hamburger--spin" id="hamburger">
-					<div class="hamburger-box">
-						<div class="hamburger-inner"></div>
-					</div>
+		</ul>			
+		<!-- /top_menu -->
+		<a href="#menu" class="btn_mobile">
+			<div class="hamburger hamburger--spin" id="hamburger">
+				<div class="hamburger-box">
+					<div class="hamburger-inner"></div>
 				</div>
-			</a>
-			<nav id="menu" class="main-menu">
-				<!--
+			</div>
+		</a>
+		<nav id="menu" class="main-menu">
+			<!--
 				------------------------------------------
 							这是banner上的分栏
 				------------------------------------------
 			-->
-				<ul>
-					<li><span><a href="index.html">首页</a></span></li>
-					<li><span><a href="part.html">风景</a></span></li>
-					<li><span><a href="part.html">美食</a></span></li>
-					<li><span><a href="part.html">玩耍</a></span></li>
-					<li><span><a href="part.html">周边</a></span></li>
-					<li><span><a href="part.html">小贴士</a></span></li>
+			
+			<ul>
+				<li><span><a href="main.jsp">首页</a></span></li>
+					<c:forEach items="${tags }" var="t">
+						<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
+					</c:forEach>
+					<li><span><a href="part.html">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>
-				</ul>
-			</nav>
-		</header>
-
-		<!-- 
+			</ul>
+			
+		</nav>
+	</header>
+<!-- 
 	=============================================
 					文章展示页
 	============================================== 
@@ -124,21 +118,17 @@
 <div class="container" style="margin-top: 130px;">
 	<div class="row">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
-		<form action="fabiao" method="post" name="aaa">
+		<form action="fabiao"  name="aaa">
 				<!--富文本框的展示-->
 				<div style="width:750px;height:70px">
-					<input required='' type='text' name="title" id="title">
+					<input  required='' type='text' name="title" id="title">
 					<label alt='请输微旅标题' placeholder='标题'></label>
 				</div>
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
 							<!--style给定宽度可以影响编辑器的最终宽度-->
 							<script type="text/plain" id="myEditor" style="width:750px;height:240px;"></script>			
-						    	<!--设置隐藏域-->
-								<div  id="content3" style="display:none;">
-						    		<input type="text" name="content" id="content2">
-								</div>
-						    	<!--设置隐藏域-->					    	
+						    	<!--设置隐藏域 这是存入数据库时接收数据时的隐藏域-->					    	
 								<div  style="display:none;">
 						    		<input type="text" name="content" id="content1">
 								</div>
@@ -177,8 +167,8 @@
 						<div id="show">
 							<img id="imgshow" src="">
 							<!--设置隐藏域——获得地图的地址-->
-							<div  style="display:none;">
-								<input type="text" name="address" id="src1">
+							<div  id="show" style="display:none;">
+								<input type="text" name="addressImgSrc" id="src1">
 							</div>
 						</div>
 					</div>
@@ -186,12 +176,14 @@
 					<div id="detail">
 						<!-- 通过地图获得地址的输入框 -->
 						<div id="mar" style="margin-top:10px;margin-left:10px;">
-							位置：<input type="text" name="province" id="cmbprovince" readonly="readonly">
+							位置：<input type="text" name="address" id="cmbprovince" readonly="readonly" >
 						</div>
 						<!-- 通过地图获得地址的输入框 -->
 						<!-- 标签 -->
 						<div id="tag">
 							<h7 id="quanxian">微旅小标签:&nbsp&nbsp</h7>
+							
+						
 							<select id="city" class="select2" name="tag">
 								<option value="风景">风景</option>
 								<option value="美食">美食</option>
@@ -201,14 +193,6 @@
 						</div>
 						<div class="si">
 							<h7 id="quanxian">创建小标签:&nbsp&nbsp</h7>
-							<input type="text" id="tagValue">
-							<script type="text/javascript">
-							//添加标签
-							var tag = new Tag("tagValue");
-							tag.initView();
-							</script>
-							<!--设置隐藏域——标签的值-->
-							<input type="hidden" name="tag1" id="tagtag">
 						</div>
 						<!-- 标签 -->
 						<!-- 权限 -->
@@ -223,8 +207,18 @@
 						<!-- 参与话题及发表 -->
 						<div class="si">
 							<!-- 后台默认是就是false 打对勾之后就是TRUE了 -->
-							<input name="topicId" type="checkbox" value="true" id="topicId">是否参加今日话题
+							<input name="topicId" type="checkbox" value="shi" id="topicId">是否参加今日话题
 						</div>
+						<!-- 自定义标签 -->
+							<input type="text" id="tagValue" >
+							<script type="text/javascript">
+							//添加标签
+							var tag = new Tag("tagValue");
+							tag.initView();
+							</script>
+							<!--设置隐藏域——标签的值-->
+							<input type="hidden" name="tag1" id="tagtag">
+						<!-- 自定义标签 -->
 						<!--提交按钮-->
 						<div id="bg2">
 							<input id="push" type="button" name="" value="发表"> 

@@ -89,7 +89,6 @@
     	if(document.getElementById("content1").value!=""&&document.getElementById("content1").value!=null){
     		content=1;
     	}
-    	alert("现在的值为"+topic+content+mapAddress);	
     	if(topic==1&&content==1&&mapAddress==1){
     		document.aaa.submit();
     	}else{
@@ -97,7 +96,6 @@
     		event.preventDefault();
     	}
     });
-
     function getContentTxt() {
         var arr = [];
         arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
