@@ -27,12 +27,13 @@ import com.asay.wetrip.index.service.IndexAjaxServiceImpl;
 import com.asay.wetrip.index.service.IndexServicelmpl;
 import com.asay.wetrip.report.service.ReportServiceImpl;
 import com.asay.wetrip.topic.service.TopicServiceImpl;
+import com.asay.wetrip.util.FlightTrainTask;
 import com.asay.wetrip.util.GetPlaceByIp;
 
 /**
  * 
  * @ClassName: IndexController
- * @Description:TODO(这里用一句话描述这个类的作用)
+ * @Description:首页的处理
  * @author: Administrator
  * @date: 2018年12月3日 上午10:42:25
  */
@@ -53,23 +54,28 @@ public class IndexController {
 
 	@RequestMapping("/indexs")
 	public String index(HttpServletRequest request,HttpSession httpSession) throws JSONException, IOException {
+		//获取今天的topicId
+		int topicId=FlightTrainTask.topicId;
+		request.setAttribute("topicId", topicId);
 		//获取ip地址
-				String ip=request.getParameter("ip");	
-				httpSession.setAttribute("ip", ip);
-				//将ip地址传入接口得到省和市
-				JSONObject json = GetPlaceByIp.readJsonFromUrl("http://api.map.baidu.com/location/ip?ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6&ip="+ip);		
-				String city=(String) ((JSONObject) ((JSONObject) json.get("content")).get("address_detail")).get("city");
-				String province=(String) ((JSONObject) ((JSONObject) json.get("content")).get("address_detail")).get("province");
-				//将省和市放入session里面
-				httpSession.setAttribute("city", city);
-				httpSession.setAttribute("province", province);
+		String ip=request.getParameter("ip");	
+		httpSession.setAttribute("ip", ip);
+		String city=null;
+		if(ip==null) {
+			city=request.getParameter("text");
+		}else {
+		//将ip地址传入接口得到省和市
+		JSONObject json = GetPlaceByIp.readJsonFromUrl("http://api.map.baidu.com/location/ip?ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6&ip="+ip);		
+		city=(String) ((JSONObject) ((JSONObject) json.get("content")).get("address_detail")).get("city");
+		String province=(String) ((JSONObject) ((JSONObject) json.get("content")).get("address_detail")).get("province");
+		//将省和市放入session里面
+		httpSession.setAttribute("city", city);
+		httpSession.setAttribute("province", province);
+		}
 
 		int pageNumshort = Integer.parseInt(request.getParameter("pageNumshort"));
 		int num = Integer.parseInt(request.getParameter("TopicpageNum"));
-		Users user = (Users) request.getSession().getAttribute("user");
-		
-
-		int topicId = 1;//TODO 过后改
+		Users user = (Users) request.getSession().getAttribute("user");		
 		// 导航栏
 		List<Tags> list = this.headerServiceImpl.list();
 		request.getServletContext().setAttribute("tags", list);
@@ -101,7 +107,7 @@ public class IndexController {
 			longMap = this.collectServiceImpl.isCollect(longList, null);
 		}
 
-		// TODO 点赞收藏相关的东西要改
+		
 		// 今日话题展示的文章是否已经被收藏
 		request.setAttribute("topicTravelNoteCollected", topicTravelNoteCollected);
 		// 统计这个主题下一共有多少个游记？
@@ -114,8 +120,7 @@ public class IndexController {
 		request.setAttribute("topicImg", topicImg);
 
 		// 说说查询(页数是从1开始的）
-		// TODO 图片的长度没有控制（能显示多少张）
-		System.out.println(shortNote);
+		// TODO 图片的长度没有控制（能显示多少张）空指针异常需要改改改		
 		Set<Imgs> shortImg = shortNote.getImgs();
 		// 存入说说展示的文章
 		request.setAttribute("shortNote", shortNote);
@@ -161,7 +166,7 @@ public class IndexController {
 	public Map<String, Object> changeTopic(int pagenum, HttpServletRequest request) {
 		// TODO
 		/* 今日话题的ID号，临时定的；真正整合的时候要进行改动 */
-		int topicId = 1;
+		int topicId = FlightTrainTask.topicId;;
 		TravelNote travelNote = topicServiceImpl.findTravelByTopic(pagenum, topicId);
 		if (request.getSession().getAttribute("user") != null) {
 			Users user = (Users) request.getSession().getAttribute("user");

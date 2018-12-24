@@ -41,10 +41,8 @@ public class IndexServlet extends HttpServlet {
 		System.out.println(text);				
 		List<String> list = new ArrayList<>();
 		try {
-			String path=this.getServletContext().getRealPath("map.txt");
-			System.out.println(path);
-			FileReader fr = new FileReader("C:\\Users\\Administrator\\Desktop\\map.txt");
-			//FileReader fr = new FileReader("map.txt");
+			String path=this.getServletContext().getRealPath("citylist.txt");			
+			FileReader fr = new FileReader(path);				
 			BufferedReader bf = new BufferedReader(fr);
 			String str;
 			// 按行读取字符串

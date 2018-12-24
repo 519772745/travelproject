@@ -1,17 +1,11 @@
 package com.asay.wetrip.personalinfo.controller;
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.personalinfo.service.PersonalinfoServiceImpl;
@@ -37,8 +31,10 @@ public class PersonalinfoController {
 	 * @throws
 	 */
 	@RequestMapping(value="/personalinfo",method=RequestMethod.GET)
-	public String toPersoninfo(HttpServletRequest request) {
+	public String toPersoninfo(HttpServletRequest request,HttpSession httpSession) {
 		//根据session获取得到用户的详细信息，jsp页面展示即可	
+		UserDetail userDetail=(UserDetail) httpSession.getAttribute("userDetail");				
+		request.setAttribute("userDetail", userDetail);
 		return "personalinfo";
 	}
 	/**
@@ -52,15 +48,20 @@ public class PersonalinfoController {
 	 * @throws
 	 */
 	@RequestMapping(value="/personalDetail",method=RequestMethod.POST)
-	public String personDetail(Users users,UserDetail userDetails,HttpSession httpSession,HttpServletRequest request) {
+	public String personDetail(Users users,HttpSession httpSession,HttpServletRequest request) {
 		//邮箱为主键，应该不能修改
 		//更新之后的该用户的详细信息
-		UserDetail userDetail=(UserDetail) httpSession.getAttribute("userDetail");
-		userDetail=this.pesonalinfoServiceImpl.updateUserDetail(users, userDetails);	
-		System.out.println(userDetail.getUserhead());
-		httpSession.removeAttribute("userDetail");
-		httpSession.setAttribute("userDetail", userDetail);		
-		return "personalinfo";
+		UserDetail userDetail=(UserDetail) httpSession.getAttribute("userDetail");		
+		userDetail.setUsername(request.getParameter("username"));
+		userDetail.setSex(request.getParameter("sex"));;
+		userDetail.setProvince(request.getParameter("province"));
+		userDetail.setCity(request.getParameter("city"));
+		userDetail.setDescription(request.getParameter("description"));		
+		this.pesonalinfoServiceImpl.updateUserDetail(userDetail);	
+//		System.out.println(userDetail.getUserhead());
+//		httpSession.removeAttribute("userDetail");		
+//		httpSession.setAttribute("userDetail", userDetail);			
+		return "redirect:/personalinfo";
 	}
 	/**
 	 * 

@@ -64,7 +64,7 @@
 		<header class="header menu_fixed">
 
 	<div id="logo">
-		<a href="index.html">
+		<a href="main.jsp">
 			<img src="zone/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 			<img src="zone/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 		</a>
@@ -267,8 +267,7 @@
 				<div class="logo">
 					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
 				</div>
-				<p class="copyright">Copyright &copy; 2018.公司名字 All rights
-					reserved.</p>
+				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 			</div>
 			<!-- /.container -->
 		</footer>

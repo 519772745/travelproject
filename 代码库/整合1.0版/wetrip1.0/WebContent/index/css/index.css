@@ -583,12 +583,14 @@
 	
 	
 	background-color: white;*/
+	margin-top:-20px;
 	position:relative;
-	top:38px;
+	overflow:auto;
+	top:-37px;
 	background-color:#fff;
 	width: 330px;
 	height: 152px;
-	opacity:0.5;
+	opacity:0.8;
 	z-index:999;
 }
 .topic_right_img{
@@ -647,4 +649,11 @@
 	padding-left: 7px;
 	padding-top: 2px;
 	opacity: 0.5;
+}
+#dialogdiv{
+	font-size: 21px;
+	margin-top:4px;
+	height:25px;
+	width:330px;
+	line-height:25px;
 }

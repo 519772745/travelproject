@@ -212,35 +212,25 @@ a {
 		</div>
 		<!-- /Page Preload -->
 		<div id="logo">
-			<a href="index.jsp"> <img src="detail/img/logo_white.png"
-				width="150" height="36" data-retina="true" alt=""
-				class="logo_normal"> <img src="detail/img/logo_black.png"
-				width="150" height="36" data-retina="true" alt=""
-				class="logo_sticky">
+			<a href="index.jsp"> 
+			<img src="detail/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal"> 
+			<img src="detail/img/logo_black.png"width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
-			<li><a href="editor.jsp"><img
-					src="detail/img/add_button.png" width="24" height="24"></a></li>
-			<li><a href="login.jsp"><img
-					src="detail/img/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img
-					src="detail/img/shopping_button.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo.jsp"><img
-					src="detail/img/config_button.png" width="24" height="24"></a></li>
-
+			<li><a href="toEditor"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
+			
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
-			<li><a href="editor.jsp"><img
-					src="detail/img/add_button1.png" width="24" height="24"></a></li>
-			<li><a href="login.jsp"><img
-					src="detail/img/personal_button1.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img
-					src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo.jsp"><img
-					src="detail/img/config_button1.png" width="24" height="24"></a></li>
-
+			<li><a href="toEditor"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
+			
 		</ul>
 
 		<!-- /top_menu -->
@@ -254,12 +244,12 @@ a {
 		<nav id="menu" class="main-menu" style="font-family: 'Roboto';">
 			<ul>
 				<li><span><a href="index.jsp">首页</a></span></li>
-				<li><span><a href="part.jsp">风景</a></span></li>
+				<li><span><a href="part">风景</a></span></li>
 				<li><span><a href="part.jsp">美食</a></span></li>
 				<li><span><a href="part.jsp">玩耍</a></span></li>
-				<li><span><a href="producthot">周边商城</a></span></li>
 				<li><span><a href="part.jsp">小贴士</a></span></li>
-				<li><span><a href="dailytopic.jsp">今日话题</a></span></li>
+				<li><span><a href="producthot">周边商城</a></span></li>				
+				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
 			</ul>
 		</nav>
 	</header>

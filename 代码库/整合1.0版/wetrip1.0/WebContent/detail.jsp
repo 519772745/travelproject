@@ -58,7 +58,7 @@
 		<ul id="top_menu" class="logo_normal">
 			<li><a href="editor.jsp"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
 			<li><a href="login"><img src="detail/img/personal_button.png" width="24" height="24" ></a></li>
-			<li><a href="cart.html"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
 			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>

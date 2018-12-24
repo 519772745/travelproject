@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>微旅</title>
+<title>微旅WeTrip</title>
 </head>
 <body>
 <script src="${pageContext.request.contextPath }/index/js/jquery-1.9.1.min.js"></script>

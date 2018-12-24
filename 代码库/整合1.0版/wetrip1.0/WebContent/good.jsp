@@ -84,7 +84,7 @@
 			<header class="header menu_fixed">
 
 				<div id="logo">
-					<a href="index.jsp"> <img src="good/images/logo_white.png"
+					<a href="main.jsp"> <img src="good/images/logo_white.png"
 						width="150" height="36" data-retina="true" alt=""
 						class="logo_normal"> <img src="good/images/logo_black.png"
 						width="150" height="36" data-retina="true" alt=""
@@ -122,7 +122,7 @@
 				</a>
 				<nav id="menu" class="main-menu">
 					<ul>
-						<li><span><a href="index.jsp">首页</a></span></li>
+						<li><span><a href="main.jsp">首页</a></span></li>
 						<li><span><a href="part.jsp">风景</a></span></li>
 						<li><span><a href="part.jsp">美食</a></span></li>
 						<li><span><a href="part.jsp">玩耍</a></span></li>
@@ -341,8 +341,7 @@
 			<div class="logo">
 				<a href="index.jsp"><img src="good/images/footer130.png" alt=""></a>
 			</div>
-			<p class="copyright">Copyright &copy; 2018.公司名字 All rights
-				reserved.</p>
+			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 		</div>
 		<!-- /.container -->
 	</footer>

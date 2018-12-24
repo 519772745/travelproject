@@ -33,22 +33,12 @@ public class PersonalinfoServiceImpl {
 	 * @return: Users      
 	 * @throws
 	 */
-	public UserDetail updateUserDetail(Users users,UserDetail userDetails) {	
-		//邮箱为主键，用户应该不可以修改邮箱
-		users.setUserDetail(userDetails);
-		//根据用户的邮箱查询现在数据库里面用户的信息
-		String email=users.getEmail();
-		Users user =this.userDaoImpl.findByEmail(email);//数据库中的原有信息
-		UserDetail userDetail=user.getUserDetail();
-		if(userDetail.getUsername().equals(userDetails.getUsername())==false||userDetail.getSex().equals(userDetails.getSex())==false||
-				userDetail.getProvince().equals(userDetails.getProvince())==false||userDetail.getCity().equals(userDetails.getCity())==false||
-				userDetail.getDescription().equals(userDetails.getDescription())==false) {	
-			
-		int num=this.personalinfoDaoImpl.updateUserDetail(userDetails);
-		System.out.println(num);
-		}
-		userDetail=this.userDaoImpl.findByEmail(email).getUserDetail();
-		return userDetail;
+	public boolean  updateUserDetail(UserDetail userDetail) {	
+		int num=this.personalinfoDaoImpl.updateUserDetail(userDetail);
+		if(num==1)
+		return true;
+		else
+		return false;
 	}
 	/**
 	 * 

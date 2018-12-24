@@ -222,24 +222,24 @@ function myfunction2(){
 	<header class="header menu_fixed" >
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
 		<div id="logo">
-			<a href="index.html">
+			<a href="main.jsp">
 				<img src="detail/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 				<img src="detail/img/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
-			<li><a href="editor.html"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="login.html"><img src="detail/img/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo.html"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
+			<li><a href="toEditor"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
-			<li><a href="editor.html"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
-			<li><a href="login.html"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo.html"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
+			<li><a href="toEditor"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
 			
 		</ul>
 
@@ -534,8 +534,8 @@ function myfunction2(){
 	</div>
 		<!-- footer -->
 		<footer class="theme-footer">
-										<div class="logo1"><a href="index.html"><img src="part/img/footer130.png" alt="" /></a></div>
-										<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
+										<div class="logo1"><a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a></div>
+										<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 									</footer> <!-- /.theme-footer -->
 </body>
 

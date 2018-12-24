@@ -36,7 +36,8 @@
 				</a>
 			</div>
 			<ul id="top_menu">
-				<li><a href="editor.jsp"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+			<!-- -划下来时 -->
+				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
 				<c:if test="${not empty userEmail}">
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
@@ -44,8 +45,14 @@
 				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
 				</c:if>
 				<li><a href="cart"><img src="${pageContext.request.contextPath }/index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
-				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
-
+				<c:if test="${not empty userEmail}">
+				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky" ></a></li>
+				</c:if>
+				<c:if test="${empty userEmail}">
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky" ></a></li>
+				</c:if>
+				
+				<!-- 正常的情况下 -->
 				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
 				<c:if test="${not empty userEmail}">				
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
@@ -540,7 +547,7 @@
 								var childs = "";
 								//遍历结果集，将结果集中的每一条数据用一个div显示，把所有的div放入到childs中
 								for(var i=0; i<result.length;i++){
-									childs += "<div onclick='Write(this)' onmouseout='recoverColorwhenMouseout(this)' onmouseover='changeColorwhenMouseover(this)' >"+result[i]+"</div>";
+									childs += "<div onclick='Write(this)' onmouseout='recoverColorwhenMouseout(this)' onmouseover='changeColorwhenMouseover(this)' id='dialogdiv'>"+result[i]+"</div>";
 								}
 								//把childs 这div集合放入到下拉提示框的父div中，上面我们已经获取了
 								div.innerHTML=childs;
@@ -555,10 +562,10 @@
 					xhr.send();
 				}
 			}
-			//鼠标悬停时改变div的颜色
-			function changeColorwhenMouseover(div){
-				div.style.backgroundColor="pink";
-			}
+	//鼠标悬停时改变div的颜色
+	function changeColorwhenMouseover(div){
+		div.style.backgroundColor="#76a68d";
+	}
 			//鼠标移出时恢复div颜色
 			function recoverColorwhenMouseout(div){
 				div.style.backgroundColor="";

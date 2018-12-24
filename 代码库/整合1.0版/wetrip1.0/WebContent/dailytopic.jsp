@@ -55,24 +55,24 @@
 <header class="header menu_fixed">
 
 	<div id="logo">
-		<a href="index.html">
+		<a href="main.jsp">
 			<img src="dailytopic/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 			<img src="dailytopic/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 		</a>
 	</div>
 	<!--这是旁边的三个按钮-->
 	<ul id="top_menu">
-		<li><a href="editor.html"><img src="dailytopic/images/add_button1.png" width="24" height="24"></a></li>
-		<li><a href="login.html"><img src="dailytopic/images/personal_button1.png" width="24" height="24"></a></li>
-		<li><a href="cart.html"><img src="dailytopic/images/shopping_button1.png" width="24" height="24"></a></li>
-		<li><a href="personalinfo.html"><img src="dailytopic/images/config_button1.png" width="24" height="24"></a></li>
+		<li><a href="toEditor"><img src="dailytopic/images/add_button1.png" width="24" height="24"></a></li>
+		<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="dailytopic/images/personal_button1.png" width="24" height="24"></a></li>
+		<li><a href="cart"><img src="dailytopic/images/shopping_button1.png" width="24" height="24"></a></li>
+		<li><a href="personalinfo"><img src="dailytopic/images/config_button1.png" width="24" height="24"></a></li>
 
 	</ul>
 	<ul id="top_menu2">
-		<li><a href="editor.html"><img src="dailytopic/images/add_button.png" width="24" height="24"></a></li>
-		<li><a href="login.html"><img src="dailytopic/images/personal_button.png" width="24" height="24" ></a></li>
-		<li><a href="cart.html"><img src="dailytopic/images/shopping_button.png" width="24" height="24"></a></li>
-		<li><a href="personalinfo.html"><img src="dailytopic/images/config_button.png" width="24" height="24"></a></li>
+		<li><a href="toEditor"><img src="dailytopic/images/add_button.png" width="24" height="24"></a></li>
+		<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="dailytopic/images/personal_button.png" width="24" height="24" ></a></li>
+		<li><a href="cart"><img src="dailytopic/images/shopping_button.png" width="24" height="24"></a></li>
+		<li><a href="personalinfo"><img src="dailytopic/images/config_button.png" width="24" height="24"></a></li>
 
 	</ul>
 	<!-- /top_menu -->
@@ -90,9 +90,9 @@
 				------------------------------------------
 			-->
 			<ul>
-					<li><span><a href="index.jsp">首页</a></span></li>
+					<li><span><a href="main.jsp">首页</a></span></li>
 					<c:forEach items="${tags }" var="t">
-					<li><span><a href="part.html">${t.tagName }</a></span></li>
+					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
 					<li><span><a href="dailytopic.html">今日话题</a></span></li>

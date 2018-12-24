@@ -242,27 +242,18 @@ function start_upload_userhead(){
 			</a>
 		</div>
 		<ul id="top_menu">
-			<li><a href="editor.html"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button1.png" width="24" height="24"/></a></li>
-			<c:if test="${not empty userDetail.email}">
-			<li><a href="login"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button1.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)"/></a></li>
-			</c:if>
-			
-			<li><a href="cart.html"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button1.png" width="24" height="24"/></a></li>
+			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button1.png" width="24" height="24"/></a></li>			
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button1.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)"/></a></li>										
+			<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button1.png" width="24" height="24"/></a></li>
 			<li><a href=""><img src="${pageContext.request.contextPath }/personalinfo/img/config_button1.png" width="24" height="24"/></a></li>			
 		</ul>
 		<ul id="top_menu2">
-			<li><a href="editor.html"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button.png" width="24" height="24" /></a></li>
-			<c:if test="${not empty userDetail.email}">
-			<li><a href="login"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"/></a></li>
-			</c:if>			
-			<li><a href="cart.html"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button.png" width="24" height="24" /></a></li>
+			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button.png" width="24" height="24" /></a></li>			
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"/></a></li>									
+			<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button.png" width="24" height="24" /></a></li>
 			<li><a href=""><img src="${pageContext.request.contextPath }/personalinfo/img/config_button.png" width="24" height="24" /></a></li>
 		</ul>
-		<div id="User" style="display:none;">
-				<a href="">${userDetail.email},已登录</a><br>
-				<a href="zone.html" >我的空间</a><br>
-				<a href="cancel">注销</a>
-			</div>		
+			
 		<!-- /top_menu -->
 		<a href="#menu" class="btn_mobile">
 			<div class="hamburger hamburger--spin" id="hamburger">
@@ -280,12 +271,12 @@ function start_upload_userhead(){
 				<li><span><a href="part.html">美食</a></span>					
 				</li>
 				<li><span><a href="part.html">玩耍</a></span>					
+				</li>				
+				<li><span><a href="part.html">小贴士</a></span>									
 				</li>
-				<li><span><a href="part.html">周边</a></span>				
+				<li><span><a href="producthot">周边商城</a></span>				
 				</li>
-				<li><span><a href="part.html">小贴士</a></span>					
-				</li>
-				<li><span><a href="dailytopic.html">今日话题</a></span></li>
+				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
 			</ul>
 		</nav>
 	</header>
@@ -306,35 +297,29 @@ function start_upload_userhead(){
 			<!-- 资料修改开始 -->
 			<div id="con_one_1">
 	        <div id="1">  
-	       	<form id="form1" name="form1" method="post" action="personalDetail">
+	       	<form id="form1" name="form1" >
 	        <table width="400" border="0" cellpadding="0" cellspacing="0" align="center" >
 			  <tr>
-				<td width="142" align="right">邮箱：</td><div id="msg1" align="center" style="color:red"></div>
-				<td width="352"><input type="text" style="width:200; height:40" value="${userDetail.email } " size="30" 
-				id="email"onblur="checkemail()" onfocus="xiaoshi1()" name="email"/></td>
+				<td width="142" align="right">邮箱：</td>
+				<td width="352">${userDetail.email } </td>
 			  </tr>
 			  <tr>
 				<td height="30" align="right">昵称：</td>
-				<td><input type="text" size="30" name="username"value="${userDetail.username }"/></td>
+				<td><input type="text" size="30" name="username" id="username"value="${userDetail.username }"/></td>
 		 	 </tr>
 		 	 <tr>
 	      		<td height="30" align="right">性别：</td>
-				<td height="28" id="RadioGroup">	
+				<td height="28" >	
 				<c:if test="${userDetail.sex=='男' }">  		    
 			      <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" checked="checked"/>男</label>
 			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" />女</label>
-			      <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" />秘密</label>
+			     
 			     </c:if>
 			     <c:if test="${userDetail.sex=='女' }">	
 			     <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" />男</label>
 			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" checked="checked"/>女</label>
-			      <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" />秘密</label>
-			      </c:if>
-			      <c:if test="${userDetail.sex=='秘密' }">
-			      <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" />男</label>
-			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" />女</label>
-			      <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" checked="checked"/>秘密</label>
-			      </c:if>
+			     
+			      </c:if>			      
 			      <br/>		    
 			   </td>
 		  	</tr>
@@ -378,10 +363,10 @@ function start_upload_userhead(){
 					</td>
 		    </tr>
 		    <tr>	
-	      	    <td height="30" width="30" >个人说明：</td><td><textarea rows="5" cols="35" name="description">${userDetail.description }</textarea></td>	             
+	      	    <td height="30" width="30" >个人说明：</td><td><textarea rows="5" cols="35" name="description" id="description">${userDetail.description }</textarea></td>	             
 		    </tr>
 	       </table>
-	        <div id="bc01"><tr><input type="submit" value="保存" class="button"/></tr></div>
+	        <div id="bc01"><tr><input type="button" value="保存" class="button" id="saveBtn"/></tr></div>
 		  </form>
 		  </div>       
 	      </div><!-- 资料修改结束 -->
@@ -449,20 +434,19 @@ function start_upload_userhead(){
 	<div id="rightContent">
 		<div class="sidebar-box bg-box about-me">
 					<h6 class="sidebar-title">关于我</h6>
-					<div style="text-align:center;"><img src="${userDetail.userhead}" alt=""  id="tx02"/></div>
-					<h5>${userDetail.username}
+					<div style="text-align:center;"><img src="${userDetail.userhead}" alt=""  id="tx02"/></div>									
+					<h5>
+					<span id="newname">${userDetail.username}</span>
 					<c:if test="${userDetail.sex=='男' }">
-					<img src="${pageContext.request.contextPath }/personalinfo/img/icons8-男-16.png"/>
+					<img src="${pageContext.request.contextPath }/personalinfo/img/icons8-男-16.png" id="newsex"/>
 					</c:if>
 					<c:if test="${userDetail.sex=='女' }">
-					<img src="${pageContext.request.contextPath }/personalinfo/img/icons8-女-16.png"/>
-					</c:if>
-					<c:if test="${userDetail.sex=='秘密' }">
-					<span>秘密</span>
-					</c:if>
-					</h5>
-					<h6>${userDetail.city }</h6>
-					<p>${userDetail.description }</p>					
+					<img src="${pageContext.request.contextPath }/personalinfo/img/icons8-女-16.png" id="newsex"/>
+					</c:if>	
+					<img  id="newsex"/>				
+					</h5>					
+					<h6><span id="newcity">${userDetail.city }</span></h6>
+					<p id="newdesp">${userDetail.description }</p>					
 				</div> <!-- /.about-me -->
 	</div>
 		</section>
@@ -471,8 +455,8 @@ function start_upload_userhead(){
 	<!--footer-->
 	<footer class="theme-footer">
 		<div class="container">
-			<div class="logo"><a href="index.html"><img src="${pageContext.request.contextPath }/personalinfo/img/footer130.png" alt=""/></a></div>		
-			<p class="copyright">Copyright &copy; 2018.公司名字 All rights reserved.</p>
+			<div class="logo"><a href="main.jsp"><img src="${pageContext.request.contextPath }/personalinfo/img/footer130.png" alt=""/></a></div>		
+			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 		</div> <!-- /.container -->
 	</footer> <!-- /.theme-footer -->
 	<!--/footer-->
@@ -482,6 +466,44 @@ function start_upload_userhead(){
 <!-- 头像上传界面调用的js，用于调用cropper.js和进行ajax的上传
 	 孙亦璇 v0.0.1(2018-12-19 09:28:03) -->
 <script src="personalinfo/js/userhead_uploader.js"></script>
+<!-- 资料修改 -->
+<script>
+$('#saveBtn').click(function () {
+	var username = document.getElementById('username').value; 
+	console.log(username);
+	var sex = $('input[name="sex"]:checked').val(); 
+	console.log(sex);
+	var province = document.getElementById('selProvince').value; 
+	console.log(province);
+	var city = document.getElementById('selCity').value; 
+	console.log(city);
+	var description = document.getElementById('description').value; 
+	console.log(description);		    
+    //调用ajax，将数据传到后台
+    $.ajax({
+        type: "POST",
+        url: "personalDetail?username="+username+"&sex="+sex+"&province="+province+"&city="+city+"&description="+description,              
+        success: function (data) {
+        	//上传成功后，对当前界面进行修改
+            alert("修改成功");  
+            $("#newname").text(username);
+            $("#newcity").text(city);
+            $("#newdesp").text(description);
+            if(sex=='男')
+            {
+            	$("#newsex").attr("src","${pageContext.request.contextPath }/personalinfo/img/icons8-男-16.png")
+            }
+            if(sex=='女')
+            {
+            	$("#newsex").attr("src","${pageContext.request.contextPath }/personalinfo/img/icons8-女-16.png")
+            }
+            
+            
+        }
+    })
+})
+</script>
+
 </body>
 
 </html>
