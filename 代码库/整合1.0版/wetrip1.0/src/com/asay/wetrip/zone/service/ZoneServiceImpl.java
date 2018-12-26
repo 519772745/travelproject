@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asay.wetrip.entity.CollectTravel;
 import com.asay.wetrip.entity.TravelNote;
+import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.zone.dao.ZoneDaoImpl;
 
 @Service
@@ -39,6 +40,8 @@ public class ZoneServiceImpl {
 	public void deleteTravel(int travelId){
 		this.zoneDaoImpl.deleteTravel(travelId);
 	}
-	
+	public UserDetail findUserDetailByUsername(String username){
+		return this.zoneDaoImpl.findUserDetailByUsername(username);
+	}
 	
 }

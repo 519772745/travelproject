@@ -129,7 +129,7 @@
 				<input type="hidden" name="idid" value="${reEditor.id }" > 
 				<div style="width:750px;height:70px">
 					<input required='' type='text' name="title" value="${reEditor.title }" id="title">
-					<label alt='请输微旅标题' placeholder='标题'></label>
+					<label alt='请输入微旅标题' placeholder='标题'></label>
 				</div>
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
@@ -283,11 +283,9 @@
 		<!--footer-->
 		<footer class="theme-footer">
 			<div class="container">
-				<div class="logo">
-					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
-				</div>
-				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
-			</div>
+			<div class="logo"><a href="main.jsp"><img src="${pageContext.request.contextPath }/index/img/footer130.png" alt=""></a></div>		
+			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
+		</div> <!-- /.container -->
 			<!-- /.container -->
 		</footer>
 		<!-- /.theme-footer -->

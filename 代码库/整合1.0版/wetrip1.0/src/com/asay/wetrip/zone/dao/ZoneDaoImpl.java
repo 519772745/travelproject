@@ -218,5 +218,20 @@ public class ZoneDaoImpl {
 		q.setParameter("id", travelId);
 		q.executeUpdate();
 	}
+	/**
+	 * 
+	 * @Title: findUserDetailByUsername   
+	 * @Description: TODO(通过用户名获取用户详情)   
+	 * @param: @param username
+	 * @param: @return      
+	 * @return: UserDetail      
+	 * @throws
+	 */
+	public UserDetail findUserDetailByUsername(String username){
+		Session session=this.sessionFactory.getCurrentSession();
+		Query q=session.createQuery("from UserDetail  where username=:username").setParameter("username",username);
+		return (UserDetail) q.uniqueResult();
+	}
+	
 	
 }

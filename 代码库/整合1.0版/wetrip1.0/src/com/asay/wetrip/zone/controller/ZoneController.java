@@ -1,6 +1,8 @@
 package com.asay.wetrip.zone.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.asay.wetrip.collect.service.CollectServiceImpl;
 import com.asay.wetrip.entity.CollectTravel;
 import com.asay.wetrip.entity.TravelNote;
+import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.zone.service.ZoneServiceImpl;
 
@@ -20,6 +24,8 @@ import com.asay.wetrip.zone.service.ZoneServiceImpl;
 public class ZoneController {
 	@Resource	
 	private ZoneServiceImpl zonerServiceImpl;
+	@Resource
+	private CollectServiceImpl collectServiceImpl;
 	@RequestMapping("/zone")
 	public String index(HttpServletRequest request) {
 //获取个人空间页游记页码
@@ -55,9 +61,18 @@ public class ZoneController {
 			count=count/3+1;
 		}
 
-		request.getServletContext().setAttribute("zoneTravelList",  zoneTravelList);
+		//将游记再次进行处理，以确认是否已经收藏
+		if (request.getSession().getAttribute("user") != null) {
+			UserDetail userDetail =user.getUserDetail();
+			Map travelMap=collectServiceImpl.isCollect(zoneTravelList, userDetail);
+			request.getServletContext().setAttribute("travelMap", travelMap);
+			}
+		else{
+			request.getServletContext().setAttribute("travelMap", new HashMap<>(0));
+		}
+
 		request.getServletContext().setAttribute("zonePageNum", zonePageNum);
-		request.getServletContext().setAttribute("ud", zoneTravelList.get(0).getUserDetail());
+		request.getServletContext().setAttribute("ud", zonerServiceImpl.findUserDetailByUsername(username));
 		request.getServletContext().setAttribute("count",count);
 		request.getServletContext().setAttribute("collectPageNum",collectpageNum);
 		request.getServletContext().setAttribute("collectList",collectList);

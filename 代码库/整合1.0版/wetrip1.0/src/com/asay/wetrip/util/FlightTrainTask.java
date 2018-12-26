@@ -9,7 +9,6 @@ public class FlightTrainTask {
     @Scheduled(cron = "* 30 * * * ? ") // 间隔30分钟执行
     public void taskCycle() {       
         topicId+=1;
-        //System.out.println(topicId);
-        
+        System.out.println(topicId);       
     }
 }

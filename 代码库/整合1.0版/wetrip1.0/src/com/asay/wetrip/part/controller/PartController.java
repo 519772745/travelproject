@@ -1,6 +1,8 @@
 package com.asay.wetrip.part.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.asay.wetrip.collect.service.CollectServiceImpl;
 import com.asay.wetrip.entity.Tags;
 import com.asay.wetrip.entity.TravelNote;
+import com.asay.wetrip.entity.UserDetail;
+import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.part.service.PartServiceImpl;
 
 /**
@@ -23,6 +28,8 @@ import com.asay.wetrip.part.service.PartServiceImpl;
 public class PartController {
 	@Resource
 	private PartServiceImpl partServiceImpl;
+	@Resource
+	private CollectServiceImpl collectServiceImpl;
 //设置flag标志，凭借flag的值判断应进入哪个controller
 	int flag=0;
 
@@ -100,8 +107,17 @@ public class PartController {
 		else {
 			count=count/6+1;
 		}
+		//将游记再次进行处理，以确认是否已经收藏
+		if (request.getSession().getAttribute("user") != null) {
+			Users user = (Users) request.getSession().getAttribute("user");
+			UserDetail userDetail =user.getUserDetail();
+			Map travelMap=collectServiceImpl.isCollect(travelList, userDetail);
+			request.getServletContext().setAttribute("travelMap", travelMap);
+			}
+		else{
+			request.getServletContext().setAttribute("travelMap", new HashMap<>(0));
+		}
 
-		request.getServletContext().setAttribute("travelList", travelList);
 		request.getServletContext().setAttribute("travelpageNum", num);
 		request.getServletContext().setAttribute("count", count );
 		request.getServletContext().setAttribute("tagCount", tagCount );
@@ -183,8 +199,17 @@ public class PartController {
 			else {
 				count=count/6+1;
 			}
+			//将游记再次进行处理，以确认是否已经收藏
+			if (request.getSession().getAttribute("user") != null) {
+				Users user = (Users) request.getSession().getAttribute("user");
+				UserDetail userDetail =user.getUserDetail();
+				Map travelMap=collectServiceImpl.isCollect(travelList, userDetail);
+				request.getServletContext().setAttribute("travelMap", travelMap);
+				}
+			else{
+				request.getServletContext().setAttribute("travelMap", new HashMap<>(0));
+			}
 
-			request.getServletContext().setAttribute("travelList", travelList);
 			request.getServletContext().setAttribute("travelpageNum", num);
 			request.getServletContext().setAttribute("count", count );
 			request.getServletContext().setAttribute("tagCount", tagCount );

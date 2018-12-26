@@ -36,8 +36,7 @@
 				</a>
 			</div>
 			<ul id="top_menu">
-			<!-- -划下来时 -->
-				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<li><a href="editor.jsp"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
 				<c:if test="${not empty userEmail}">
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
@@ -45,15 +44,9 @@
 				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
 				</c:if>
 				<li><a href="cart"><img src="${pageContext.request.contextPath }/index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
-				<c:if test="${not empty userEmail}">
-				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky" ></a></li>
-				</c:if>
-				<c:if test="${empty userEmail}">
-				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky" ></a></li>
-				</c:if>
-				
-				<!-- 正常的情况下 -->
-				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
+
+				<li><a href="editor.jsp"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
 				<c:if test="${not empty userEmail}">				
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
@@ -89,7 +82,7 @@
 					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
-					<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 					
 				</ul>
 			</nav>
@@ -161,23 +154,24 @@
 					<div class="topic_middle">
 				<!-- 话题 -->
 				<div class="topic_middle_title">
-					<a href="dailytopic?pageNum=1&topicId=2">
+					<a href="dailytopic?pageNum=1&topicId=${topicId}">
 					<div class="topic_middle_title_1">
-							<h3>${travelNote.getTopic().name}</h3>
+							<h3>${topic.name}</h3>
 						</div></a>
 					<div class="topic_middle_title_2">
 						<p>
-							@ ${ud.username}&nbsp;&nbsp;&nbsp;
-							<fmt:formatDate value="${travelNote.getTopic().topictime}"
+							@ ${topic.getManager().getUserDetail().getUsername()}&nbsp;&nbsp;&nbsp;
+							<fmt:formatDate value="${topic.topictime}"
 								pattern="yyyy年MM月dd日  HH:mm" />
 						</p>
 					</div>
+
 				</div>
 				<div class="topic_middle_content">
 					<!-- 头像 -->
 					<div class="topic_middle_content_1">
 						<a href="zone?zonePageNum=1&collectPageNum=1&username=${travelNote.getUserDetail().getUsername()}&correctDate=20"> <img
-							src="${travelNote.getUserDetail().getUserhead()}" style="border-radius: 10px;"
+							src="${travelNote.getUserDetail().getUserhead()}" style="border-radius: 10px;" style="border-radius: 10px;"
 							id="topic_userhead">
 						</a>
 					</div>
@@ -236,7 +230,7 @@
 			
 				<div class="topic_right"> 
 					<div class="topic_right_img">
-						<a href="dailytopic?pageNum=1&topicId=2">
+						<a href="dailytopic?pageNum=1&topicId=${topicId}">
 							<div class="topic_right_readmore"></div>
 						</a>
 					</div>
@@ -286,7 +280,8 @@
 					<!--头像-->
 					<div class="shuo_middle_content_1">
 						<a href="zone?zonePageNum=1&collectPageNum=1&username=${shortNote.getUserDetail().getUsername()}&correctDate=20"> <img
-							src="${shortNote.getUserDetail().getUserhead()}" width="100px"  
+							src="${shortNote.getUserDetail().getUserhead()}" width="100px"  style="border-radius: 10px;"
+							
 							height="100px" id="short_userhead" >
 						</a>
 					</div>
@@ -562,10 +557,10 @@
 					xhr.send();
 				}
 			}
-	//鼠标悬停时改变div的颜色
-	function changeColorwhenMouseover(div){
-		div.style.backgroundColor="#76a68d";
-	}
+			//鼠标悬停时改变div的颜色
+			function changeColorwhenMouseover(div){
+				div.style.backgroundColor="#76a68d";
+			}
 			//鼠标移出时恢复div颜色
 			function recoverColorwhenMouseout(div){
 				div.style.backgroundColor="";

@@ -50,40 +50,6 @@
     });
 
     /*----------------------------------------------------
-    4. Collection Activation
-    -----------------------------------------------------*/
-    $('.kiosk-collection').owlCarousel({
-        loop: false,
-        nav: true,
-        dots: false,
-        smartSpeed: 1000,
-
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1,
-                autoplay: true
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            },
-            1200: {
-                items: 4
-            }
-        }
-
-    })
-
-    
-
-    /*----------------------------------------------------
     6. Related Product Activation
     -----------------------------------------------------*/
     $('.kiosk-related-product').owlCarousel({
@@ -218,17 +184,7 @@
     /*----------------------------
     11. ScrollUp Activation
     -----------------------------*/
-    $.scrollUp({
-        scrollName: 'scrollUp', // Element ID
-        topDistance: '550', // Distance from top before showing element (px)
-        topSpeed: 1000, // Speed back to top (ms)
-        animation: 'fade', // Fade, slide, none
-        scrollSpeed: 900,
-        animationInSpeed: 1000, // Animation in speed (ms)
-        animationOutSpeed: 1000, // Animation out speed (ms)
-        scrollText: '<i class="fa fa-angle-up"></i>', // Text for element
-        activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-    });
+
 
     /*----------------------------
     12. Sticky-Menu Activation
@@ -239,22 +195,4 @@
         } else {
             $('.header-sticky').removeClass("sticky");
         }
-    });
-
-    /*----------------------------
-    13. Price Slider Activation
-    -----------------------------*/
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 80,
-        values: [20, 55],
-        slide: function (event, ui) {
-            $("#amount").val("$" + ui.values[0] + "  $" + ui.values[1]);
-        }
-    });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-        "  $" + $("#slider-range").slider("values", 1));
-
-
-})(jQuery);
+    })});

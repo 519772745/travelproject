@@ -95,7 +95,7 @@
 					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
-					<li><span><a href="dailytopic.html">今日话题</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topiId}">今日话题</a></span></li>
 				</ul>
 		</nav>
 	</header>
@@ -119,31 +119,51 @@
 		<div class="row">
 			<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
 				<!--每篇日记的展示-->
-					<c:forEach items="${travelList}" var="traveli">
+					<c:forEach items="${travelMap}" var="traveli">
 					<div class="single-blog-post" style="margin-bottom: 15px;">
 					<div class="post-meta-box bg-box">
 						<!--图片位置-->
-						<div class="image-box"><img src="${traveli.userDetail.userhead }" alt=""></div>
+						<div class="image-box"><img src="${traveli.key.userDetail.userhead }" alt=""></div>
 						<!--文本位置-->
 						<div class="post-article">
 							<ul class="author-meta clearfix">
-								<li class="tag"><a href="zone.html">${traveli.userDetail.username}</a></li>
-								<li class="date"><a href="##"><fmt:formatDate value="${traveli.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
-							</ul><p style="text-indent:2em;text-align: justify">${traveli.content}</p>
+								<li class="tag"><a href="zone.html">${traveli.key.userDetail.username}</a></li>
+								<li class="date"><a href="##"><fmt:formatDate value="${traveli.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
+							</ul><p style="text-indent:2em;text-align: justify">${traveli.key.content}</p>
 							<!--这是下面用来出现照片的部分-->
 							<div class="post-img">
-							<c:forEach items="${traveli.imgs}" var="imgi" varStatus="status">	
+							<c:forEach items="${traveli.key.imgs}" var="imgi" varStatus="status">	
 							<c:if test="${status.index<4}">						
 								<img src="${imgi.getPath()}">
 							</c:if>
 							</c:forEach>							
 							</div>
-							<ul class="share-meta clearfix">
+						<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="detail?travelid=${traveli.id}"><i class="icon flaticon-comment"></i>评论(${traveli.commentNum})</a></li>
-								<li><a href="##"><i class="icon flaticon-like-heart"></i>点赞 (${traveli.praiseCount})</a></li>
-								<li><a href="##" class="collect" onload="页面加载方法"><img src="dailytopic/images/star.png" id="star" onmouseover="this.src='dailytopic/images/star1.png'" onmouseout="this.src='dailytopic/images/star.png'"  width="16" height="16" title="收藏">&nbsp;&nbsp;收藏 (${traveli.getCollectTravels().size()})</a>
-
+								<li><a href="##"><i class="icon flaticon-comment"></i>评论(${traveli.key.commentNum})</a></li>
+								<li>
+									<a href="##" onclick="praise_col(${traveli.key.id},this)" 
+										onmouseover="praise_on(this)" onmouseout="praise_off(this)">
+										<img src="dailytopic/images/like.png" width="14px" height="14px"  id="like">点赞(${traveli.key.praiseCount})
+									</a>
+								</li>
+								<li>
+									<a href="##" class="collect" onclick="collected_col(${traveli.key.id},this)">
+									<c:if test="${traveli.value!=1}">
+										<img src="dailytopic/images/star.png" id="star" onmouseover="star_on(this)" onmouseout="star_off(this)"  width="16" height="16" title="收藏">								
+											收藏(${traveli.key.getCollectTravels().size()})
+									</c:if>
+									<c:if test="${traveli.value==1}">
+										<img src="dailytopic/images/star1.png" width="16" height="16" title="收藏" id="star">								
+											收藏(${traveli.key.getCollectTravels().size()})
+									</c:if>
+									</a>
+								</li>
+								<li>
+									<a href="##" onmouseover="report_on(this)" onmouseout="report_off(this)"
+									onclick="report_col(${traveli.key.id},this)">
+										<img src="${pageContext.request.contextPath }/index/img/report2.png" width="12px" height="12px" id="tip">举报
+									</a>
 								</li>
 							</ul></div>
 							<div style="clear:both"></div>
@@ -224,6 +244,7 @@
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!-- Font Awesome -->
+<script type="text/javascript" src="dailytopic/js/dailytopic_ajax.js"></script>
 <script src="dailytopic/fonts/font-awesome/fontawesome-all.min.js"></script>
 <!-- COMMON SCRIPTS -->
 <script src="dailytopic/js/jquery-2.2.4.min.js"></script>

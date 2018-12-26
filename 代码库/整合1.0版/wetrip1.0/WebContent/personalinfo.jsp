@@ -227,6 +227,26 @@ function start_upload_userhead(){
 	$("#upload_userhead_view").css("display","block");
 	$("#default_userhead_view").css("display","none");
 }
+function change_password(){
+	formData = new FormData();
+    formData.append("password",$("#origin_password").val());  //formData对象添加文件
+    formData.append("password1",$("#password1").val());  //formData对象添加文件
+    formData.append("password2",$("#password2").val());  //formData对象添加文件
+    //调用ajax，将图片传到后台
+    $.ajax({
+        type: "POST",
+        url: "personalPwd",
+        data: formData,
+        processData: false,  // 不处理数据
+        contentType: false,  // 不设置内容类型
+        success: function (data) {
+        	//上传成功后，对当前界面进行修改
+            alert("修改密码成功");
+        }
+    })
+	
+}
+
 </script>
 
 </head>
@@ -264,18 +284,12 @@ function start_upload_userhead(){
 		</a>
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="main.jsp">首页</a></span>					
-				</li>
-				<li><span><a href="part.html">风景</a></span>					
-				</li>
-				<li><span><a href="part.html">美食</a></span>					
-				</li>
-				<li><span><a href="part.html">玩耍</a></span>					
-				</li>				
-				<li><span><a href="part.html">小贴士</a></span>									
-				</li>
-				<li><span><a href="producthot">周边商城</a></span>				
-				</li>
+				<li><span><a href="main.jsp">首页</a></span></li>
+				<li><span><a href="part?tagName=风景">风景</a></span></li>
+				<li><span><a href="part?tagName=美食">美食</a></span></li>
+				<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
+				<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
+				<li><span><a href="producthot">周边商城</a></span></li>
 				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
 			</ul>
 		</nav>
@@ -372,12 +386,12 @@ function start_upload_userhead(){
 	      </div><!-- 资料修改结束 -->
 	      	<!-- 密码修改开始 -->
 			<div id="con_one_2" style="display:none;">
-			 <form action="personalPwd" method="post">
+			
 		     <div id="1">                         
 	          <table width="400" border="0" cellpadding="0" cellspacing="0" align="center" >
 		  <tr>
 			<td width="142" align="right">初始密码：</td>
-			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" /></td>
+			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" id="origin_"/></td>
 		  </tr>
 		  <tr>
 	      		<td height="30" align="right" >新密码：</td>
@@ -391,9 +405,10 @@ function start_upload_userhead(){
 		  </tr>	 
 	      	</table>
 	      	</div>
-	          <div id="bc02"><tr><input type="submit" value="保存" class="button" /></tr></div>
-	      </form>   
+	          <div id="bc02"><tr><input type="button" value="保存" class="button" id="password_change" onclick="change_password()"/></tr></div>  
+	     
 	      </div> <!-- 密码修改结束 -->
+
       	 
       	<!-- 头像修改开始 -->         
 		<div id="con_one_3" style="display:none;">

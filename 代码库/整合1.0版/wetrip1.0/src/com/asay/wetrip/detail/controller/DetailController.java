@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.asay.wetrip.collect.service.CollectServiceImpl;
 import com.asay.wetrip.detail.service.DetailServiceImpl;
 import com.asay.wetrip.entity.Tags;
 import com.asay.wetrip.entity.TravelNote;
+import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.index.service.HeaderServiceImpl;
 /**
@@ -26,6 +28,8 @@ public class DetailController {
 private HeaderServiceImpl headerServiceImpl;
 @Resource
 private  DetailServiceImpl  detailServiceImpl;
+@Resource
+private CollectServiceImpl collectServiceImpl;
 
 /**
  * 
@@ -48,7 +52,14 @@ public String detail(HttpServletRequest request) {
 //评论,时间排序	
 	request.getServletContext().setAttribute("comments", this.detailServiceImpl.findComment(travelnote));	
 //同作者的其他游记显示，热度排序
-	request.getServletContext().setAttribute("toptravel", this.detailServiceImpl.findTravelByWritter(travelnote.getUserDetail()));	
+	request.getServletContext().setAttribute("toptravel", this.detailServiceImpl.findTravelByWritter(travelnote.getUserDetail()));
+	
+//判断游记是否被用户收藏
+	boolean travelNoteCollected = false;
+	Users user = (Users) request.getSession().getAttribute("user");
+	UserDetail userDetail=user.getUserDetail();
+	travelNoteCollected = this.collectServiceImpl.isCollect(travelnote, userDetail);
+	request.setAttribute("travelNoteCollected", travelNoteCollected);
 	return "detail";	
 }
 @RequestMapping("/comment")

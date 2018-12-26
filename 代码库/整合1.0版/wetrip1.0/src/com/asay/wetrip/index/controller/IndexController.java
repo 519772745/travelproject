@@ -56,7 +56,8 @@ public class IndexController {
 	public String index(HttpServletRequest request,HttpSession httpSession) throws JSONException, IOException {
 		//获取今天的topicId
 		int topicId=FlightTrainTask.topicId;
-		request.setAttribute("topicId", topicId);
+		httpSession.setAttribute("topicId", topicId);
+		System.out.println(topicId);
 		//获取ip地址
 		String ip=request.getParameter("ip");	
 		httpSession.setAttribute("ip", ip);
@@ -82,8 +83,7 @@ public class IndexController {
 		// 今日话题
 		TravelNote travelNote = topicServiceImpl.findTravelByTopic(num, topicId);
 		// 短文章
-		System.out.println(city);
-		System.out.println(pageNumshort);
+		System.out.println(city);		
 		TravelNote shortNote = this.indexServicelmpl.findShort(city, pageNumshort);
 		// 长文章
 		List<TravelNote> longList = this.indexServicelmpl.findLong(city);
@@ -93,10 +93,6 @@ public class IndexController {
 		/* 该游记是否被收藏（用于短文章） */
 		boolean shortTravelNoteCollected = false;
 		Map longMap = new HashMap();
-
-		// 获取今日话题的的图片
-		Set<Imgs> topicImg = travelNote.getImgs();
-
 		// 这是处理Map用的
 		if (user != null) {
 			UserDetail userDetail=user.getUserDetail();
@@ -112,12 +108,11 @@ public class IndexController {
 		request.setAttribute("topicTravelNoteCollected", topicTravelNoteCollected);
 		// 统计这个主题下一共有多少个游记？
 		request.setAttribute("count", topicServiceImpl.countTravel(topicId));
-		// 得到今日话题的发布者的详情
-		request.setAttribute("ud", travelNote.getTopic().getManager().getUserDetail());
+		
 		// 存今日话题展示的文章
 		request.setAttribute("travelNote", travelNote);
-		// 存今日话题的图片
-		request.setAttribute("topicImg", topicImg);
+		//传今日话题详情
+		request.setAttribute("topic", topicServiceImpl.findTopicById(topicId));
 
 		// 说说查询(页数是从1开始的）
 		// TODO 图片的长度没有控制（能显示多少张）空指针异常需要改改改		

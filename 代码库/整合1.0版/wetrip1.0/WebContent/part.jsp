@@ -20,7 +20,7 @@
 	<link href="detail/headcss/vendors.css" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="detail/headcss/custom.css" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
 	<!-- responsive style sheet -->
 	<link rel="stylesheet" type="text/css" href="detail/footcss/responsive.css">
@@ -31,8 +31,7 @@
 	<link rel="stylesheet" href="part/css/meanmenu.min.css">
 	<!-- animate css -->
 	<link rel="stylesheet" href="part/css/animate.css">
-	<!-- nivo slider css -->
-	<link rel="stylesheet" href="part/css/nivo-slider.css">
+	
 	<!-- owl carousel css -->
 	<link rel="stylesheet" href="part/css/owl.carousel.min.css">
 	<!-- slick css -->
@@ -51,6 +50,69 @@
 	<link rel="stylesheet" href="part/style.css">
 	<!-- responsive css -->
 	<link rel="stylesheet" href="part/css/responsive.css">
+	
+	
+	<script type="text/javascript">
+function myfunction(){
+	var select = document.getElementById("s1");
+	var value = select.value;
+	var options = select.options;
+	var index = select.selectedIndex;
+	var selectedValue = options[index].value;
+	if(selectedValue=="Praise"){
+		document.location.href="partByPraise?tagName=${tagName}&childTagName=${childTagName}";}
+	else if(selectedValue=="Time"){
+		document.location.href="part?tagName=${tagName}&childTagName=${childTagName}";}
+
+}
+
+function myfunction1(){
+	var select = document.getElementById("_pn1").value;
+		document.location.href="part?tagName=${tagName}&travelpageNum="+select;
+	
+}
+function myfunction2(){
+	var select = document.getElementById("_pn2").value;
+		document.location.href="partByPraise?tagName=${tagName}&travelpageNum="+select;
+}
+
+
+
+</script>
+
+	<script src="part/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="part/headjs/jquery-2.2.4.min.js"></script>
+	<script src="part/headjs/common_scripts.js"></script>
+
+	<!-- mobile menu js  -->
+	<script src="part/js/jquery.meanmenu.min.js"></script>
+	
+	<!-- owl-carousel js -->
+	<script src="part/js/owl.carousel.min.js"></script>
+	<!-- slick js -->
+	<script src="part/js/slick.min.js"></script>
+	<!-- wow js -->
+	<script src="part/js/wow.min.js"></script>
+	<!-- price slider js -->
+	<script src="part/js/jquery-ui.min.js"></script>
+	<script src="part/js/jquery.countdown.min.js"></script>
+	<!-- nivo slider js -->
+	<script src="part/js/jquery.nivo.slider.js"></script>
+	<!-- fancybox js -->
+	<script src="part/js/jquery.fancybox.min.js"></script>
+	<!-- bootstrap -->
+	<script src="part/js/bootstrap.min.js"></script>
+	<!-- popper -->
+	<script src="part/js/popper.js"></script>
+	<!-- stellar -->
+	<script src="part/js/jquery.stellar.min.js"></script>
+	<script src="part/js/parallax.js"></script>
+	<!-- plugins -->
+	<script src="part/js/plugins.js"></script>
+	<!-- main js -->
+	<script src="part/js/main.js"></script>
+	<!-- 控制ajax的东西= = -->
+	<script src="part/js/part_ajax.js"></script>
 	<style>
 		*{
 			padding: 0;
@@ -138,11 +200,11 @@
 			margin-top: 12px;
 			margin-right: 8px;
 		}
-		#star{
+		.star{
 			margin-top: 10px;
 			margin-right: 10px;
 		}
-		#star2{
+		.star2{
 			margin-top: 3px;
 			margin-left: 10px;
 		}
@@ -154,69 +216,6 @@
 		}
 
 	</style>
-	
-	<script type="text/javascript">
-function myfunction(){
-	var select = document.getElementById("s1");
-	var value = select.value;
-	var options = select.options;
-	var index = select.selectedIndex;
-	var selectedValue = options[index].value;
-	if(selectedValue=="Praise"){
-		document.location.href="partByPraise?tagName=${tagName}&childTagName=${childTagName}";}
-	else if(selectedValue=="Time"){
-		document.location.href="part?tagName=${tagName}&childTagName=${childTagName}";}
-
-}
-
-function myfunction1(){
-	var select = document.getElementById("_pn1").value;
-		document.location.href="part?tagName=${tagName}&travelpageNum="+select;
-	
-}
-function myfunction2(){
-	var select = document.getElementById("_pn2").value;
-		document.location.href="partByPraise?tagName=${tagName}&travelpageNum="+select;
-	
-}
-
-</script>
-
-	<script src="part/js/vendor/modernizr-2.8.3.min.js"></script>
-	<script src="part/headjs/jquery-2.2.4.min.js"></script>
-	<script src="part/headjs/common_scripts.js"></script>
-	<script src="part/headjs/main.js"></script>
-	<script src="part/assets/validate.js"></script>
-	<!-- jquery 3.12.4 -->
-	<script src="part/js/vendor/jquery-1.12.4.min.js"></script>
-	<!-- mobile menu js  -->
-	<script src="part/js/jquery.meanmenu.min.js"></script>
-	<!-- scroll-up js -->
-	<script src="part/js/jquery.scrollUp.js"></script>
-	<!-- owl-carousel js -->
-	<script src="part/js/owl.carousel.min.js"></script>
-	<!-- slick js -->
-	<script src="part/js/slick.min.js"></script>
-	<!-- wow js -->
-	<script src="part/js/wow.min.js"></script>
-	<!-- price slider js -->
-	<script src="part/js/jquery-ui.min.js"></script>
-	<script src="part/js/jquery.countdown.min.js"></script>
-	<!-- nivo slider js -->
-	<script src="part/js/jquery.nivo.slider.js"></script>
-	<!-- fancybox js -->
-	<script src="part/js/jquery.fancybox.min.js"></script>
-	<!-- bootstrap -->
-	<script src="part/js/bootstrap.min.js"></script>
-	<!-- popper -->
-	<script src="part/js/popper.js"></script>
-	<!-- stellar -->
-	<script src="part/js/jquery.stellar.min.js"></script>
-	<script src="part/js/parallax.js"></script>
-	<!-- plugins -->
-	<script src="part/js/plugins.js"></script>
-	<!-- main js -->
-	<script src="part/js/main.js"></script>
 </head>
 <body>
 	<header class="header menu_fixed" >
@@ -236,10 +235,10 @@ function myfunction2(){
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
-			<li><a href="toEditor"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
-			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
+			<li><a href="editor.html"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
+			<li><a href="login.html"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
+			<li><a href="cart.html"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo.html"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
 			
 		</ul>
 
@@ -273,12 +272,12 @@ function myfunction2(){
 							<div class="search-box-view">
 								<form action="part" method="get">
 									<input type="hidden" name="tagName" value="${tagName }">
-									<input type="text" class="email" name="childTagName" placeholder="Search Tags">
+									<input type="text" class="email" name="childTagName" placeholder="搜索标签">
 									<button type="submit" class="submit"></button>
 								</form>
 							</div>
 							<div class="group-title">
-								<h2>Hot Tags</h2>
+								<h2>热门标签</h2>
 							</div>
 							<ul>
 								<c:forEach items="${tagList }" var="tag">
@@ -337,7 +336,7 @@ function myfunction2(){
 						</div>
 					</div>
 					<!-- Grid & List View End -->
-					<c:if test="${empty travelList}">
+					<c:if test="${empty travelMap}">
 						<div class="main-categorie product-area" >
 							<div class="tab-content fix">
 								<div id="grid-view" class="tab-pane active">
@@ -353,13 +352,14 @@ function myfunction2(){
 									<b>
 										您搜索的标签还没有发表游记哦，<br>
 										谁会是第一个发表的小可爱呢？
+										
 									</b>
 									</div>
 								</div>
 							</div>
 						</div>
 					</c:if>
-					<c:if test="${not empty travelList}">
+					<c:if test="${not empty travelMap}">
 					<div class="main-categorie product-area">
 						<div class="tab-content fix">
 							<div id="grid-view" class="tab-pane active">
@@ -368,29 +368,35 @@ function myfunction2(){
 									<div class="box">
 										<div class="right">
 											<ul>
-												<c:forEach items="${travelList}" var="t" varStatus="status">
-												<li>
-													<img src="part/img/star.png" id="star" onmouseover="this.src='part/img/star1.png'" onmouseout="this.src='part/img/star.png'"  width="16" height="16" align="right">
-													<img src="part/img/like.png" onmouseover="this.src='part/img/like2.png'" onmouseout="this.src='part/img/like.png'"  width="16" height="14" align="right" class="like">
-									
-													<c:if test="${t.getImgs().toArray()[0]!=null}">
-														<img class="img" src="${t.getImgs().toArray()[0].getPath() }" alt="" title="封面">
+												<c:forEach items="${travelMap}" var="t" varStatus="status">
+												<li class="${t.key.id}">
+								
+													<c:if test="${t.value!=1}">
+													<img src="part/img/star.png" class="star" onmouseover="star_on(this)" onmouseout="star_off(this)" width="16" height="16" align="right" onclick="part_collected_col(${t.key.id},this)">
 													</c:if>
-													<c:if test="${t.getImgs().toArray()[0]==null}">
+													<c:if test="${t.value==1}">
+													<img src="part/img/star1.png"  class="star"  width="16" height="16" align="right" onclick="part_collected_col(${t.key.id},this)">
+													</c:if>
+													<img src="part/img/like.png" onmouseover="praise_on(this)" onmouseout="praise_off(this)" onclick="part_praise_col(${t.key.id},this)" width="16" height="14" align="right" class="like">
+									
+													<c:if test="${t.key.getImgs().toArray()[0]!=null}">
+														<img class="img" src="${t.key.getImgs().toArray()[0].getPath() }" alt="" title="封面">
+													</c:if>
+													<c:if test="${t.key.getImgs().toArray()[0]==null}">
 														<img class="img" src="image/avatar/avatar1.png" alt="" title="封面">
 													</c:if>
 													
-													<p class="p1">${t.getUserDetail().getUsername()}</p>
-													<p class="p2"><fmt:formatDate value="${t.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></p>
+													<p class="p1">${t.key.getUserDetail().getUsername()}</p>
+													<p class="p2"><fmt:formatDate value="${t.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></p>
 													<p class="p3">
-														${t.title }
+														${t.key.title }
 													</p>
 													<div class="hide">
-													${fn:substring(t.content, 0, 60)}...
+													${fn:substring(t.key.content, 0, 60)}...
 													
 														
 														<div>
-															<a href="detail.html" style="color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a>
+															<a href="detail?travelid=${t.key.id}" style="color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a>
 														</div>
 													</div>
 												</li>
@@ -404,31 +410,53 @@ function myfunction2(){
 							</div>
 							<!-- #grid view End -->
 							<div id="list-view" class="tab-pane">
-								<c:forEach items="${travelList}" var="t" varStatus="status">
+								<c:forEach items="${travelMap}" var="t" varStatus="status">
 									<!-- Single Product Start -->
-										<div class="single-product" height="200px">
+										<div class="single-product"  height="200px">
 											<!-- Product Image Start -->
 											<div class="kiosk-product-img">
-												<c:if test="${t.getImgs().toArray()[0]!=null}">
-														<img class="img" src="${t.getImgs().toArray()[0].getPath() }" alt="" title="封面">
+												<c:if test="${t.key.getImgs().toArray()[0]!=null}">
+														<img class="img" src="${t.key.getImgs().toArray()[0].getPath() }" alt="" title="封面">
 													</c:if>
-													<c:if test="${t.getImgs().toArray()[0]==null}">
+													<c:if test="${t.key.getImgs().toArray()[0]==null}">
 														<img class="img" src="image/avatar/avatar1.png" alt="" title="封面">
 													</c:if>
 													
 											</div>
 											<!-- Product Image End -->
 											<!-- Product Content Start -->
-											<div class="kiosk-product-content">           
-												<h4><a href="detail?travelid=${t.id}">${t.title }</a></h4>
-												<p><span class="price">作者：${t.getUserDetail().getUsername()}</span></p>
-												<p><span class="price"><fmt:formatDate value="${t.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></span>
-												<p class="content2">
-													${fn:substring(t.content, 0, 100)}...
-													<a href="detail?travelid=${t.id}">更多>></a>
+											<div class="kiosk-product-content">
+												<h4>
+													<a href="detail?travelid=${t.key.id}">${t.key.title }</a>
+												</h4>
+												<p>
+													<span class="price">作者：${t.key.getUserDetail().getUsername()}</span>
 												</p>
-												<a href="detail?travelid=${t.id}"><img id="like2" src="part/img/like.png" onmouseover="this.src='part/img/like2.png'" onmouseout="this.src='part/img/like.png'"  width="16" height="13" align="left">  喜欢</a>
-												<a href="detail?travelid=${t.id}"><img src="part/img/star.png" id="star2" onmouseover="this.src='part/img/star1.png'" onmouseout="this.src='part/img/star.png'"  width="16" height="16" align="left" > 收藏</a>
+												<p>
+													<span class="price"><fmt:formatDate
+															value="${t.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm" /></span>
+												<p class="content2">
+													${fn:substring(t.key.content, 0, 100)}... <a
+														href="detail?travelid=${t.key.id}">更多>></a>
+												</p>
+												<a href="##" onclick="praise_col(${t.key.id},this)"><img
+													id="like2" src="part/img/like.png"
+													onmouseover="this.src='part/img/like2.png'"
+													onmouseout="this.src='part/img/like.png'" width="16"
+													height="13" align="left">点赞(${t.key.getPraiseCount()})</a>
+
+												<c:if test="${t.value!=1}">
+													<a href="##" onclick="collected_col(${t.key.id},this)"><img
+														src="part/img/star.png" id="star2" style="margin-top:3px"
+														onmouseover="star_on(this)" onmouseout="star_off(this)"
+														width="16" height="16" align="left">收藏(${t.key.getCollectTravels().size()})</a>
+												</c:if>
+												<c:if test="${t.value==1}">
+													<a href="##" onclick="collected_col(${t.key.id},this)"><img
+														src="part/img/star1.png" id="star2" style="margin-top:3px" width="16" height="16"
+														align="left">收藏(${t.key.getCollectTravels().size()})</a>
+												</c:if>
+
 												<!-- <a href="##"><img src="index/img/report.png" width="16px" height="16px"  align="left" style="margin-top:5px;margin-left:7px;">举报</a> -->
 											</div>
 											<!-- Product Content End -->
@@ -534,9 +562,25 @@ function myfunction2(){
 	</div>
 		<!-- footer -->
 		<footer class="theme-footer">
-										<div class="logo1"><a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a></div>
-										<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
-									</footer> <!-- /.theme-footer -->
+				<div class="logo1"><a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a></div>
+				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
+		</footer> <!-- /.theme-footer -->
 </body>
+<script type="text/javascript">
 
+
+function praise_on(obj){
+	$(obj).attr("src","part/img/like2.png");
+}
+function praise_off(obj){
+	$(obj).attr("src","part/img/like.png");
+}
+function star_on(obj){
+	$(obj).attr("src","part/img/star1.png");
+}
+function star_off(obj){
+	$(obj).attr("src","part/img/star.png");
+}
+
+</script>
 </html>

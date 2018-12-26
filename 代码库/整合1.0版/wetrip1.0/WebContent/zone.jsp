@@ -69,16 +69,16 @@
 	</div>
 	<!--这是旁边的三个按钮-->
 	<ul id="top_menu">
-		<li><a href="editor.html"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
-		<li><a href="login.html"><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
-		<li><a href="cart.html"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
-		<li><a href="personalinfo.html"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
+		<li><a href="toEditor"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
+		<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20""><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
+		<li><a href="cart"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
+		<li><a href="personalinfo"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
 
 		<ul id="top_menu2">
-			<li><a href="editor.html"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="login"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
-			<li><a href="personalinfo.html"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
+			<li><a href="toEditor"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20""><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
+			<li><a href="personalinfo"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
 			
 
 		</ul>			
@@ -102,8 +102,8 @@
 					<c:forEach items="${tags }" var="t">
 						<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
-					<li><span><a href="part.html">周边商城</a></span></li>
-					<li><span><a href="dailytopic.html">今日话题</a></span></li>
+					<li><span><a href="producthot">周边商城</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 			</ul>
 			
 		</nav>
@@ -116,15 +116,20 @@
 -->
 <div class="container" style="margin-top: 110px;">
 	<div class="row">
+	<c:if test="${empty zoneTravelList }">
+		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
+			这位小可爱还没有发表游记
+		</div>
+		</c:if>
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
 			<!--每篇日记的展示-->
-			<c:forEach items="${zoneTravelList }" var="travel"  >
+			<c:forEach items="${travelMap}" var="travel"  >
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="post-meta-box bg-box">
 					<ul class="author-meta clearfix">
 						
 						<li class="tag">
-						<c:forEach items="${travel.tagTravelNote}" var="tagi">
+						<c:forEach items="${travel.key.tagTravelNote}" var="tagi">
 								<div class="recent-posts-widget-category">
 										<c:if test="${tagi.tags.parentTag==null }">
 											<a href="archives.html">${tagi.tags.tagName}</a>
@@ -133,30 +138,40 @@
 						
 						</c:forEach>
 						</li>    
-						<li class="date"><a href="##"><fmt:formatDate value="${travel.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
+						<li class="date"><a href="##"><fmt:formatDate value="${travel.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 					</ul>
 					<!--文章标题-->
-					<h4 class="title"><a href="detail.html">${travel.title }</a></h4>
+					<h4 class="title"><a href="detail.html">${travel.key.title }</a></h4>
 					<ul class="share-meta clearfix">
 						<!--标题下面的三个功能按键-->
-						<li><a href="detail?travelid=${travel.id}"><i class="icon flaticon-comment"></i>评论 (${travel.praiseCount })</a></li>
-						<li><a href="##"><i class="icon flaticon-like-heart"></i>点赞 (${travel.commentNum })</a></li>							
-						<li><a href="##"><img src="zone/images/star.png" id="star" onmouseover="this.src='zone/images/  .png'" onmouseout="this.src='zone/images/star.png'"  width="16" height="16" title="收藏" >&nbsp;收藏</a>
+						<li><a href="##"><i class="icon flaticon-comment"></i>评论(${travel.key.praiseCount })</a></li>
+						<li>
+							<a href="##" onclick="praise_col(${travel.key.id},this)" 
+								onmouseover="praise_on(this)" onmouseout="praise_off(this)">
+								<img src="${pageContext.request.contextPath }/zone/images/like.png" id="like" width="14" height="14">点赞(${travel.key.commentNum })</a></li>						
+						<li>
+							<c:if test="${travel.value!=1}">
+								<a href="##" onclick="collected_col(${travel.key.id},this)"><img src="zone/images/star.png" id="star" onmouseover="star_on(this)" onmouseout="star_off(this)"  width="16" height="16" title="收藏" >
+								收藏(${travel.key.getCollectTravels().size()})</a>
+							</c:if>
+							<c:if test="${travel.value==1}">
+								<a href="##" onclick="collected_col(${travel.key.id},this)"><img src="zone/images/star1.png" id="star" width="16" height="16" title="收藏" >收藏(${travel.key.getCollectTravels().size()})</a>
+							</c:if>
 						</li> <!-- /.share-option -->
-						<li><a href="##"><img src="index/img/report.png" id="star" width="14" height="14" title="举报" >&nbsp;举报</a>
+						<li><a href="##" onclick="report_col(${travel.key.id},this)" onmouseover="report_on(this)" onmouseout="report_off(this)"><img src="zone/images/report.png" id="tip" width="14" height="14" title="举报" >举报</a>
 						</li>
 					</ul>
 					<!--图片位置-->
-					<c:if test="${travel.getImgs().toArray()[0]!=null}">
-					<div class="image-box"><img src="${travel.getImgs().toArray()[0].getPath() }" alt="" title="封面"></div>
+					<c:if test="${travel.key.getImgs().toArray()[0]!=null}">
+					<div class="image-box"><img src="${travel.key.getImgs().toArray()[0].getPath() }" alt="" title="封面"></div>
 					</c:if>
-					<c:if test="${travel.getImgs().toArray()[0]==null}">
+					<c:if test="${travel.key.getImgs().toArray()[0]==null}">
 					<div class="image-box"><img src="image/avatar/avatar1.png" alt="" title="封面"></div>
 					</c:if>
 					
 					<!--文本位置-->
 					<div class="post-article">
-						<p>${travel.content }</p>
+						<p>${travel.key.content }</p>
 					</div>
 					
 					<c:if test="${ud.username!=loginUsername }">
@@ -167,8 +182,8 @@
 					
 					<c:if test="${ud.username==loginUsername }">
 						<div style="clear:both" class="change" >
-							<a href="delete?travelId=${travel.id }&zonePageNum=${zonePageNum }&username=${ud.username }&collectPageNum=${collectPageNum }&correctDate=${correctDate}">删除</a>
-							<a href="reEditor?travelId=${travel.id }">修改</a>
+							<a href="delete?travelId=${travel.key.id }&zonePageNum=${zonePageNum }&username=${ud.username }&collectPageNum=${collectPageNum }&correctDate=${correctDate}">删除</a>
+							<a href="reEditor?travelId=${travel.key.id }">修改</a>
 						</div>
 					</c:if>
 				</div> <!-- /.post-meta-box -->
@@ -222,7 +237,7 @@
 		<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
 			<div class="sidebar-box bg-box about-me">
 				<h6 class="sidebar-title">关于我</h6>
-				<img src="${ud.userhead }" alt="" width="200px" height="200px">
+				<img src="${ud.userhead }" alt="" width="200px" height="200px" style="margin:0 auto">
 				<div class="userii">
 					<div  class="useri">
 						<h5 >${ud.username }</h5>
@@ -292,7 +307,7 @@
 <!--footer-->
 	<footer class="theme-footer">
 		<div class="container">
-			<div class="logo"><a href="index.html"><img src="index/img/footer130.png" alt=""></a></div>		
+			<div class="logo"><a href="main.jsp"><img src="${pageContext.request.contextPath }/index/img/footer130.png" alt=""></a></div>		
 			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 		</div> <!-- /.container -->
 	</footer> <!-- /.theme-footer -->
@@ -343,6 +358,7 @@
 
 
 <!-- INSTAGRAM FEED  -->
+<script type="text/javascript" src="zone/js/zone_ajax.js"></script>
 <script>
 	$(window).on('load', function() {
 		"use strict";

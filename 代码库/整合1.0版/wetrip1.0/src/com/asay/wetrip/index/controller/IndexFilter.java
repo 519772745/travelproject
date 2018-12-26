@@ -1,5 +1,7 @@
 package com.asay.wetrip.index.controller;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -10,6 +12,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.FontUIResource;
+
 import org.springframework.stereotype.Component;
 
 
@@ -40,23 +47,28 @@ public class IndexFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {		
 		HttpSession session=((HttpServletRequest) request).getSession();
 		String userEmail=(String) session.getAttribute("userEmail");
 		if(userEmail!=null) {
 			chain.doFilter(request, response);
 		}else {
-			((HttpServletRequest)request).getRequestDispatcher("main.jsp").forward(request, response);
-			//正则表达式过滤器
-			JOptionPane.showMessageDialog(null, "请先登录！", "alert", JOptionPane.ERROR_MESSAGE);
-//			int pd=JOptionPane.showConfirmDialog(null, "请先登录","提示",JOptionPane.YES_NO_OPTION);
-//			System.out.println(pd);
-//			System.out.println(JOptionPane.YES_OPTION);
-//			if(pd==JOptionPane.YES_OPTION) {
-//			((HttpServletRequest)request).getRequestDispatcher("login.jsp").forward(request, response);
-//			}
+			//提示框	
+			UIManager UI=new UIManager();
+			 UI.put("OptionPane.background", Color.white);
+			 UI.put("Panel.background", Color.white);
+			 //UI.put("Button.background",Color.blue);
+			 //UI.put("OptionPane.font", new FontUIResource(new Font()));
+			 JOptionPane jpane=new JOptionPane() ;
+				try {
+					//设置样式
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+					SwingUtilities.updateComponentTreeUI(jpane);
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}				
+			jpane.showMessageDialog(null, "请先登录！", "localhost:8080显示", JOptionPane.ERROR_MESSAGE);
+			((HttpServletRequest)request).getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		
 		

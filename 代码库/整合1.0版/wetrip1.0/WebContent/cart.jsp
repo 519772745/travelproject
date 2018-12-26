@@ -105,11 +105,11 @@ body {
 				<nav id="menu" class="main-menu">
 					<ul>
 						<li><span><a href="index.jsp">首页</a></span></li>
-						<li><span><a href="part.jsp">风景</a></span></li>
-						<li><span><a href="part.jsp">美食</a></span></li>
-						<li><span><a href="part.jsp">玩耍</a></span></li>
+						<li><span><a href="part?tagName=风景">风景</a></span></li>
+						<li><span><a href="part?tagName=美食">美食</a></span></li>
+						<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
+						<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
 						<li><span><a href="producthot">周边商城</a></span></li>
-						<li><span><a href="part.jsp">小贴士</a></span></li>
 						<li><span><a href="dailytopic.jsp">今日话题</a></span></li>
 					</ul>
 				</nav>
@@ -195,7 +195,7 @@ body {
 	<footer class="theme-footer">
 		<div class="container">
 			<div class="logo">
-				<a href="index.jsp"><img src="good/images/footer130.png" alt=""></a>
+				<a href="main.jsp"><img src="good/images/footer130.png" alt=""></a>
 			</div>
 			<p class="copyright">Copyright &copy; 2018.微旅Wetrip项目组 All rights
 				reserved.</p>

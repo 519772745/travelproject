@@ -1056,6 +1056,13 @@ input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webki
 }
 .share-meta #star{
   float: left;
-  margin-left: 4px;
-  margin-top: -0.5px;
+  margin-top: 0.5px;
+}
+.share-meta #like{
+float: left;
+  margin-top: 3px;
+}
+.share-meta #tip{
+float: left;
+  margin-top: 3px;
 }

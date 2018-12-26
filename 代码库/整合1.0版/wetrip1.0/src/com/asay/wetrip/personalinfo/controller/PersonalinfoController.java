@@ -6,6 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.asay.wetrip.entity.UserDetail;
 import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.personalinfo.service.PersonalinfoServiceImpl;
@@ -74,16 +77,22 @@ public class PersonalinfoController {
 	 * @return: String      
 	 * @throws
 	 */
+	@ResponseBody
 	@RequestMapping(value="/personalPwd",method=RequestMethod.POST)	
-	public String password(Users users,HttpSession httpSession,HttpServletRequest request) {
+	public String password(HttpSession httpSession,HttpServletRequest request,@RequestParam("password") String password,@RequestParam("password1") String password1,@RequestParam("password2") String password2) {
 		//密码修改时提交的信息
-		System.out.println(users.getPassword());
-		String password1=request.getParameter("password1");
-		String password2=request.getParameter("password2");
+		Users users=(Users) httpSession.getAttribute("user");
+		System.out.println(password);
 		System.out.println(password1);
 		System.out.println(password2);
-		this.pesonalinfoServiceImpl.updateUser(users, request);		
-		return "personalinfo";
+		users=this.pesonalinfoServiceImpl.updateUser(users,password,password1,password2);	
+		if(users!=null) {
+		httpSession.setAttribute("user", users);
+		return "修改成功了";
+		}else {
+			return "修改失败了";
+		}
 	}
+
 
 }

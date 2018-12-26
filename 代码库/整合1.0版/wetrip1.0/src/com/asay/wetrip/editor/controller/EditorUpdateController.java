@@ -95,7 +95,8 @@ public class EditorUpdateController {
 		str = sw.filterInfo(str);
 		travelNote.setContent(str);
 //地址解析成省和市
-		String province=editorServiceImpl.ARP(travelNote.getAddress());
+		System.out.println(travelNote.getAddress());
+		String province=editorServiceImpl.ARP(travelNote.getAddress());		
 		String city=editorServiceImpl.ARC(travelNote.getAddress());
 		travelNote.setProvince(province);
 		travelNote.setCity(city);		

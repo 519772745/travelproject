@@ -436,8 +436,10 @@ function topic_page_col(topic_page,count,obj){
 				console.log(data);
 				//修改头像
 				$("#topic_userhead").attr("src",data.userhead);
+				$("#topic_userhead").parent().attr("href","zone?zonePageNum=1&collectPageNum=1&username="+data.username+"&correctDate=20");
 				//修改用户名字
 				$("#topic_user_name").text(data.username);
+				$("#topic_user_name").attr("href","zone?zonePageNum=1&collectPageNum=1&username="+data.username+"&correctDate=20");
 				//修改时间
 				$("#topic_publish_time").text(data.publishtime);
 				//修改正文
@@ -546,8 +548,10 @@ function short_page_col(short_page,count,city,obj){
 			console.log(data);
 			//修改头像
 			$("#short_userhead").attr("src",data.userhead);
+			$("#short_userhead").parent().attr("href","zone?zonePageNum=1&collectPageNum=1&username="+data.username+"&correctDate=20");
 			//修改用户名字
 			$("#short_user_name").text(data.username);
+			$("#short_user_name").attr("href","zone?zonePageNum=1&collectPageNum=1&username="+data.username+"&correctDate=20");
 			//修改时间
 			$("#short_publish_time").text(data.publishtime);
 			//修改正文

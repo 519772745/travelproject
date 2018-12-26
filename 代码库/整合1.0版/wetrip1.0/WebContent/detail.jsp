@@ -34,6 +34,7 @@
 	<link rel="stylesheet" href="detail/detailcss/plugins.css">
 	<link rel="stylesheet" href="detail/detailcss/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900%7CMontserrat:400,700%7CLora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
 	<!-- Main style sheet -->
 	<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
 	<!-- responsive style sheet -->
@@ -44,8 +45,6 @@
 	<!-- <link rel="stylesheet" type="text/css" href="dailytopic/css/style.css">
 	<link rel="stylesheet" type="text/css" href="dailytopic/css/bootstrap.min.css"> -->
 </head>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6"></script>
-
 <body>
 	<header class="header menu_fixed" >
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
@@ -58,7 +57,7 @@
 		<ul id="top_menu" class="logo_normal">
 			<li><a href="editor.jsp"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
 			<li><a href="login"><img src="detail/img/personal_button.png" width="24" height="24" ></a></li>
-			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="cart.html"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
 			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>
@@ -124,12 +123,16 @@
 									${travel.content }
 									
 									</div><!-- .dslc-blog-post-content -->
-									<div float="right" class="ping">
-										<a href="##"><img src="detail/img/like.png"  id ="like"onmouseover="this.src='detail/img/like2.png'" onmouseout="this.src='detail/img/like.png'"  width="16" height="16" align="left">点赞(${travel.praiseCount })</a>
-										<a href="##" ><img src="detail/img/star.png" id="star" onmouseover="this.src='part/img/star1.png'" onmouseout="this.src='part/img/star.png'"  width="16" height="16" align="left">收藏(${travel.getCollectTravels().size()})</a>
-										<a href="##"><img src="index/img/report.png" width="16px" height="16px"  align="left" style="margin-top:7px;margin-left:7px;">举报</a>
+									<div class="ping">
+										<a href="##" onclick="praise_col(${travel.id},this)" onmouseover="praise_on(this)" onmouseout="praise_off(this)"><img src="detail/img/like.png"  id ="like" onmouseover="this.src='detail/img/like2.png'" onmouseout="this.src='detail/img/like.png'"  width="16" height="16" align="left">点赞(${travel.praiseCount })</a>
+										<c:if test="${travelNoteCollected}">
+										<a href="##"  onclick="collected_col(${travel.id},this)"><img src="detail/img/star1.png" id="star" width="16" height="16" align="left">收藏(${travel.getCollectTravels().size()})</a>
+										</c:if>
+										<c:if test="${!travelNoteCollected}">
+										<a href="##"  onclick="collected_col(${travel.id},this)"><img src="detail/img/star.png" id="star" onmouseover="star_on(this)" onmouseout="star_on(off)"  width="16" height="16" align="left">收藏(${travel.getCollectTravels().size()})</a>
+										</c:if>
+										<a href="##"  onclick="report_col(${travel.id},this)" onmouseover="report_on(this)" onmouseout="report_off(this)"><img src="detail/img/report.png" width="16px" height="16px"  align="left" style="margin-top:7px;margin-left:7px;">举报</a>
 									</div>
-
 								</div><!-- .blog-post-info-inner -->
 
 
@@ -411,13 +414,13 @@
 	<script src="detail/headjs/main.js"></script>
 	<script src="detail/assets/validate.js"></script>
 	<!-- JavaScript -->
-	<script type="text/javascript" src="detail/javascript/jquery-1.11.3.min.js"></script>
+
 	<script type="text/javascript" src="detail/javascript/plugins.js"></script>
 	<script type="text/javascript" src="detail/javascript/main.js"></script>
+	<script type="text/javascript" src="detail/javascript/detail_ajax.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6"></script>
 	<!-- 地图 -->
 	<script type="text/javascript" src="detail/js/show.js"></script>
-
-
-
+	
 </body>
 </html>

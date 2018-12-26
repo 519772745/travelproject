@@ -264,11 +264,9 @@
 		<!--footer-->
 		<footer class="theme-footer">
 			<div class="container">
-				<div class="logo">
-					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
-				</div>
-				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
-			</div>
+			<div class="logo"><a href="main.jsp"><img src="${pageContext.request.contextPath }/index/img/footer130.png" alt=""></a></div>		
+			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
+		</div> <!-- /.container -->
 			<!-- /.container -->
 		</footer>
 		<!-- /.theme-footer -->

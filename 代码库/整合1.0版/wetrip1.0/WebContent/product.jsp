@@ -243,11 +243,11 @@ a {
 		</a>
 		<nav id="menu" class="main-menu" style="font-family: 'Roboto';">
 			<ul>
-				<li><span><a href="index.jsp">首页</a></span></li>
-				<li><span><a href="part">风景</a></span></li>
-				<li><span><a href="part.jsp">美食</a></span></li>
-				<li><span><a href="part.jsp">玩耍</a></span></li>
-				<li><span><a href="part.jsp">小贴士</a></span></li>
+				<li><span><a href="main.jsp">首页</a></span></li>
+				<li><span><a href="part?tagName=风景">风景</a></span></li>
+				<li><span><a href="part?tagName=美食">美食</a></span></li>
+				<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
+				<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
 				<li><span><a href="producthot">周边商城</a></span></li>				
 				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
 			</ul>
@@ -264,12 +264,12 @@ a {
 						<div class="single-sidebar category-sidebar">
 							<div class="search-box-view">
 								<form action="#">
-									<input type="text" class="email" placeholder="Search Tags">
+									<input type="text" class="email" placeholder="搜索标签">
 									<button type="submit" class="submit"></button>
 								</form>
 							</div>
 							<div class="group-title">
-								<h2>Hot Tags</h2>
+								<h2>热门标签</h2>
 							</div>
 							<ul>
 								<li><a href="part.jsp">美食</a></li>
@@ -430,7 +430,7 @@ a {
 	<!-- footer -->
 	<footer class="theme-footer">
 		<div class="logo1">
-			<a href="index.jsp"><img src="part/img/footer130.png" alt="" /></a>
+			<a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a>
 		</div>
 		<p class="copyright">Copyright &copy; 2018.微旅Wetrip项目组 All rights
 			reserved.</p>
