@@ -162,17 +162,18 @@
 					<!-- 上传图片 -->
 					<!-- 地图位置 -->
 					<div id="serachMap">
-						位置搜索:<input type="text" id="suggestId" size="20" value="百度" style="width:200px;height: 25px;margin-top:7px;" />
+						<h7>位置搜索 :&nbsp&nbsp</h7> <input type="text" id="suggestId" size="20" value="百度" style="width:200px;height: 25px;margin-top:7px;" />
 						<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 					</div>
 					<div id="editorMap">
 						<div id="allmap"></div>						
 					</div>					
+					<input type="hidden" id="city" value="${city }">
 					<!-- 地图位置 -->
 					<div id="detail">
 						<!-- 通过地图获得地址的输入框 -->
 						<div id="mar" style="margin-top:10px;margin-left:10px;">
-							位置：<input type="text" name="address" id="cmbprovince" readonly="readonly" >
+							位置:&nbsp&nbsp<input type="text" name="address" id="cmbprovince" readonly="readonly">
 						</div>
 						<!-- 通过地图获得地址的输入框 -->
 						<!-- 标签 -->
@@ -215,7 +216,7 @@
 						<!-- 自定义标签 -->
 						<!--提交按钮-->
 						<div id="bg2">
-							<input id="push" type="button" name="" value="发表"> 
+							<input id="push" type="button" name="" value="发表" style="cursor:pointer;"> 
 							<img src="editor/images/bg4.png">
 						</div>
 					</div>
