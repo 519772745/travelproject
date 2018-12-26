@@ -233,15 +233,18 @@
 				<img src="${userDetail.userhead }" alt="" width="200px" height="200px" style="margin:0 auto"/>
 				<div class="userii">
 					<div class="useri">
-						<h5>${userDetail.username }</h5>
-					</div>
-					<div class="useri_img">
-					<c:if test="${userDetail.sex}=='女'">
-					<img src="editor/images/icons8-女-16.png">
+						<h5>${userDetail.username }						
+						<c:if test="${userDetail.sex}=='女'">
+					<span><img src="editor/images/icons8-女-16.png"></span>
 					</c:if>
 					<c:if test="${userDetail.sex}=='男'">
-					<img src="editor/images/icons8-男-16.png">
+					<span><img src="editor/images/icons8-男-16.png"></span>
 					</c:if>	
+						
+						</h5>
+					</div>
+					<div class="useri_img">
+					
 					</div>
 				</div>
 				<div style="clear: both;"></div>
@@ -264,10 +267,9 @@
 		<footer class="theme-footer">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
+					<a href="main.jsp"><img src="index/img/footer130.png" alt=""></a>
 				</div>
-				<p class="copyright">Copyright &copy; 2018.公司名字 All rights
-					reserved.</p>
+				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 			</div>
 			<!-- /.container -->
 		</footer>

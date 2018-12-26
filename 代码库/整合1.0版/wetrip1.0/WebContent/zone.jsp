@@ -115,12 +115,7 @@
 	============================================== 
 -->
 <div class="container" style="margin-top: 110px;">
-	<div class="row">
-	<c:if test="${empty zoneTravelList }">
-		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
-			这位小可爱还没有发表游记
-		</div>
-		</c:if>
+	<div class="row">	
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
 			<!--每篇日记的展示-->
 			<c:forEach items="${travelMap}" var="travel"  >

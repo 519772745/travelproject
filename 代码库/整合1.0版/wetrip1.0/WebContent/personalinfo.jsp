@@ -327,13 +327,19 @@ function change_password(){
 				<c:if test="${userDetail.sex=='男' }">  		    
 			      <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" checked="checked"/>男</label>
 			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" />女</label>
-			     
+			      <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" />秘密</label>
 			     </c:if>
 			     <c:if test="${userDetail.sex=='女' }">	
 			     <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" />男</label>
 			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" checked="checked"/>女</label>
-			     
-			      </c:if>			      
+			     <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" />秘密</label>
+			      </c:if>	
+			      <c:if test="${userDetail.sex=='秘密' }">	
+			     <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" />男</label>
+			      <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" />女</label>
+			     <label><input type="radio" name="sex" value="秘密" id="RadioGroup1_2" checked="checked"/>秘密</label>
+			      </c:if>
+			      		      
 			      <br/>		    
 			   </td>
 		  	</tr>
@@ -447,7 +453,7 @@ function change_password(){
 	</div>
 	</div><!-- 左边结束 -->
 	<div id="rightContent">
-		<div class="sidebar-box bg-box about-me">
+		<div class="sidebar-box bg-box about-me" >
 					<h6 class="sidebar-title">关于我</h6>
 					<div style="text-align:center;"><img src="${userDetail.userhead}" alt=""  id="tx02"/></div>									
 					<h5>
@@ -462,7 +468,7 @@ function change_password(){
 					</h5>					
 					<h6><span id="newcity">${userDetail.city }</span></h6>
 					<p id="newdesp">${userDetail.description }</p>					
-				</div> <!-- /.about-me -->
+		</div> <!-- /.about-me -->
 	</div>
 		</section>
 		<!--/hero_in-->				

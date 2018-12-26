@@ -202,6 +202,7 @@ body {
 		</div>
 		<!-- /.container -->
 	</footer>
+
 	<!-- /.theme-footer -->
 	<script src="good/js/updatecart.js"></script>
 	<script type="text/javascript"

@@ -34,7 +34,7 @@ public class OrderController {
 	 * @throws
 	 */
 	@RequestMapping("/addorder")
-	public String AddOrder(HttpServletRequest request) {
+	public String AddOrder(HttpServletRequest request) {		
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("userEmail");
 		UserDetail userDetail = new UserDetail();

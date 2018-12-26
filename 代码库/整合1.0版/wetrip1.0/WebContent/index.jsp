@@ -40,8 +40,13 @@
 					<img src="${pageContext.request.contextPath }/index/img/logo_black.png" width="163" height="36" data-retina="true" alt="" class="logo_sticky">
 				</a>
 			</div>
-			<ul id="top_menu">
-				<li><a href="editor.jsp"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+			<ul id="top_menu">				
+				<c:if test="${empty userEmail}">
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				</c:if>
+				<c:if test="${not empty userEmail}">
+				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				</c:if>
 				<c:if test="${not empty userEmail}">
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
@@ -49,9 +54,18 @@
 				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/personal_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
 				</c:if>
 				<li><a href="cart"><img src="${pageContext.request.contextPath }/index/img/shopping_button.png" width="24" height="24" class="logo_sticky"></a></li>
+				<c:if test="${empty userEmail}">
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"  onclick="openUser(event)"></a></li>
+				</c:if>
+				<c:if test="${not empty userEmail}">
 				<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/index/img/config_button.png" width="24" height="24" class="logo_sticky"></a></li>
-
-				<li><a href="editor.jsp"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				</c:if>
+				<c:if test="${empty userEmail}">
+				<li><a href="login"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				</c:if>
+				<c:if test="${not empty userEmail}">
+				<li><a href="toEditor"><img src="${pageContext.request.contextPath }/index/img/add_button1.png" width="24" height="24" class="logo_normal"></a></li>
+				</c:if>
 				<c:if test="${not empty userEmail}">				
 				<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/index/img/personal_button1.png" width="24" height="24" class="logo_normal" onmouseover="over(this)" onclick="openUser(event)"></a></li>
 				</c:if>
