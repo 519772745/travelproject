@@ -1,5 +1,5 @@
 /**
- * @file adapter.js
+* @file adapter.js
  * @desc adapt ui to editor
  * @import core/Editor.js, core/utils.js
  */

@@ -17,6 +17,7 @@ import com.asay.wetrip.editor.service.EditorServiceImpl;
 import com.asay.wetrip.entity.Topic;
 import com.asay.wetrip.entity.TravelNote;
 import com.asay.wetrip.entity.UserDetail;
+import com.asay.wetrip.entity.Users;
 import com.asay.wetrip.topic.service.TopicServiceImpl;
 import com.asay.wetrip.util.ConfigConsts;
 import com.asay.wetrip.util.SensitiveWord;
@@ -47,8 +48,12 @@ public class EditorUpdateController {
 	 * @throws
 	 */
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/gengxin")
+	@RequestMapping(value="/gengxin",method=RequestMethod.POST)
 	public String map(TravelNote travelNote,HttpSession session,HttpServletRequest request) {
+//通过会话session获得user对象	
+		Users user=(Users)request.getSession().getAttribute("user");
+		/* 设置发表用户 */
+		travelNote.setUserDetail(user.getUserDetail());
 //通过name属性来获取老游记的id 这样会话中就会有相同标识符的不同对象关联了 再编辑的travelNote对象就不会有ID的标识符了
 		String idid=request.getParameter("idid");
 		int id=Integer.parseInt(idid);
@@ -95,8 +100,7 @@ public class EditorUpdateController {
 		str = sw.filterInfo(str);
 		travelNote.setContent(str);
 //地址解析成省和市
-		System.out.println(travelNote.getAddress());
-		String province=editorServiceImpl.ARP(travelNote.getAddress());		
+		String province=editorServiceImpl.ARP(travelNote.getAddress());
 		String city=editorServiceImpl.ARC(travelNote.getAddress());
 		travelNote.setProvince(province);
 		travelNote.setCity(city);		

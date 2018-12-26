@@ -141,7 +141,7 @@
 						<li class="date"><a href="##"><fmt:formatDate value="${travel.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></a></li>
 					</ul>
 					<!--文章标题-->
-					<h4 class="title"><a href="detail.html">${travel.key.title }</a></h4>
+					<h4 class="title"><a href="detail?travelid=${travel.key.id }">${travel.key.title }</a></h4>
 					<ul class="share-meta clearfix">
 						<!--标题下面的三个功能按键-->
 						<li><a href="##"><i class="icon flaticon-comment"></i>评论(${travel.key.praiseCount })</a></li>

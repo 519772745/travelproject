@@ -56,7 +56,7 @@ public class EditorSaveController {
 	 * @throws
 	 */
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/fabiao")
+	@RequestMapping(value="/fabiao",method=RequestMethod.POST )
 	public String map(TravelNote travelNote,HttpSession session,HttpServletRequest request) {
 //通过会话session获得user对象	
 		Users user=(Users)request.getSession().getAttribute("user");

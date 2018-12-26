@@ -70,7 +70,7 @@
     	if(document.getElementById("title").value!=""&&document.getElementById("title").value!=null){
     		topic=1;
     	}
-    	if(document.getElementById("src1").value!=""){
+    	if(document.getElementById("cmbprovince").value!=""){
     		mapAddress=1;
     	}
     	var arr = [];
