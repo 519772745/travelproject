@@ -52,11 +52,7 @@
   <filter>
     <filter-name>IndexFilter</filter-name>
     <filter-class>com.asay.wetrip.index.controller.IndexFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>IndexFilter</filter-name>
-    <url-pattern>/part/*</url-pattern>
-  </filter-mapping> 
+  </filter> 
   <filter-mapping>
     <filter-name>IndexFilter</filter-name>
     <url-pattern>/detail/*</url-pattern>
@@ -68,6 +64,10 @@
   <filter-mapping>
     <filter-name>IndexFilter</filter-name>
     <url-pattern>/dailytopic/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>IndexFilter</filter-name>
+    <url-pattern>/cart/*</url-pattern>
   </filter-mapping>
   <servlet>
   	<servlet-name>IndexServlet</servlet-name>

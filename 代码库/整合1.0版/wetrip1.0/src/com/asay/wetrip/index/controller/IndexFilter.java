@@ -54,21 +54,23 @@ public class IndexFilter implements Filter {
 			chain.doFilter(request, response);
 		}else {
 			//提示框	
-			UIManager UI=new UIManager();
-			 UI.put("OptionPane.background", Color.white);
-			 UI.put("Panel.background", Color.white);
-			 //UI.put("Button.background",Color.blue);
-			 //UI.put("OptionPane.font", new FontUIResource(new Font()));
-			 JOptionPane jpane=new JOptionPane() ;
-				try {
-					//设置样式
-					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-					SwingUtilities.updateComponentTreeUI(jpane);
-				} catch (Throwable e) {
-					e.printStackTrace();
-				}				
-			jpane.showMessageDialog(null, "请先登录！", "localhost:8080显示", JOptionPane.ERROR_MESSAGE);
-			((HttpServletRequest)request).getRequestDispatcher("login.jsp").forward(request, response);
+//			UIManager UI=new UIManager();
+//			 UI.put("OptionPane.background", Color.white);
+//			 UI.put("Panel.background", Color.white);
+//			 //UI.put("Button.background",Color.blue);
+//			 //UI.put("OptionPane.font", new FontUIResource(new Font()));
+//			 JOptionPane jpane=new JOptionPane() ;
+//				try {
+//					//设置样式
+//					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+//					SwingUtilities.updateComponentTreeUI(jpane);
+//				} catch (Throwable e) {
+//					e.printStackTrace();
+//				}				
+//			jpane.showMessageDialog(null, "请先登录！", "localhost:8080显示", JOptionPane.ERROR_MESSAGE);
+			System.out.println("过滤器");
+			((HttpServletRequest)request).getSession().setAttribute("notLogin", true);
+			((HttpServletRequest)request).getRequestDispatcher("main.jsp").forward(request, response);
 		}
 		
 		

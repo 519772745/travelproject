@@ -18,11 +18,6 @@
 	//$.post('indexs', {pageNumshort:1,TopicpageNum:1,ip:ip  }, function () { console.log("ok"); });	
 </script>
 
-
-
-
-
-
 </body>
 
 </html>

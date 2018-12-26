@@ -236,18 +236,23 @@
 		<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
 			<div class="sidebar-box bg-box about-me">
 				<h6 style="font-size: 22px; margin-bottom: 15px; font-family: 幼圆;">关于我</h6>
-				<img src="editor/images/home/1.jpg" alt="">
+				<img src="${userDetail.userhead }" alt="" width="200px" height="200px" style="margin:0 auto"/>
 				<div class="userii">
 					<div class="useri">
-						<h5>用户名</h5>
+						<h5>${userDetail.username }</h5>
 					</div>
 					<div class="useri_img">
-						<img src="editor/images/sexy-woman.png">
+					<c:if test="${userDetail.sex}=='女'">
+					<img src="editor/images/icons8-女-16.png">
+					</c:if>
+					<c:if test="${userDetail.sex}=='男'">
+					<img src="editor/images/icons8-男-16.png">
+					</c:if>	
 					</div>
 				</div>
 				<div style="clear: both;"></div>
-				<h6>用户所在城市</h6>
-				<p>个人简介</p>
+				<h6>${userDetail.city }</h6>
+				<p>${userDetail.description }</p>
 			</div>
 			<!-- /.sidebar-categories -->
 		</div>

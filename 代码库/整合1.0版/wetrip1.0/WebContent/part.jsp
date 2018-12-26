@@ -9,23 +9,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>微旅WeTrip-${tagName}</title>
-	<link rel="shortcut icon" href="detail/img/icon.ico" type="image/x-icon">
-	<link rel="icon" href="detail/img/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="part/img/icon.ico" type="image/x-icon">
+	<link rel="icon" href="part/img/icon.ico" type="image/x-icon">
 
-	<link href="detail/headcss/style.css" rel="stylesheet">
+	<link href="part/headcss/style.css" rel="stylesheet">
 
 	<!-- BASE CSS -->
-	<link href="detail/headcss/bootstrap.min.css" rel="stylesheet">
-	<link href="detail/headcss/style.css" rel="stylesheet">
-	<link href="detail/headcss/vendors.css" rel="stylesheet">
+	<link href="part/headcss/bootstrap.min.css" rel="stylesheet">
+	<link href="part/headcss/style.css" rel="stylesheet">
+	<link href="part/headcss/vendors.css" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
 	
-	<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
+	<link rel="stylesheet" type="text/css" href="part/footcss/style.css">
 	<!-- responsive style sheet -->
-	<link rel="stylesheet" type="text/css" href="detail/footcss/responsive.css">
+	<link rel="stylesheet" type="text/css" href="part/footcss/responsive.css">
 	<!-- Theme-Color css -->
-	<link rel="stylesheet" id="jssDefault" href="detail/footcss/color.css">
+	<link rel="stylesheet" id="jssDefault" href="part/footcss/color.css">
 
 	<!-- mobile menu css -->
 	<link rel="stylesheet" href="part/css/meanmenu.min.css">
@@ -52,7 +52,7 @@
 	<link rel="stylesheet" href="part/css/responsive.css">
 	
 	
-	<script type="text/javascript">
+<script type="text/javascript">
 function myfunction(){
 	var select = document.getElementById("s1");
 	var value = select.value;
@@ -75,8 +75,6 @@ function myfunction2(){
 	var select = document.getElementById("_pn2").value;
 		document.location.href="partByPraise?tagName=${tagName}&travelpageNum="+select;
 }
-
-
 
 </script>
 
@@ -222,24 +220,33 @@ function myfunction2(){
 		<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
 		<div id="logo">
 			<a href="main.jsp">
-				<img src="detail/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
-				<img src="detail/img/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
+				<img src="part/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
+				<img src="part/img/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
-			<li><a href="toEditor"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
+			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
+			</c:if>
+			<li><a href="cart"><img src="${pageContext.request.contextPath }/part/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/part/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
-			<li><a href="editor.html"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
-			<li><a href="login.html"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo.html"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
-			
+			<li><a href="toEditor"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<li><a href="cart"><img src="part/img/shopping_button1.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="part/img/config_button1.png" width="24" height="24"></a></li>			
 		</ul>
 
 		<!-- /top_menu -->
@@ -362,15 +369,14 @@ function myfunction2(){
 					<c:if test="${not empty travelMap}">
 					<div class="main-categorie product-area">
 						<div class="tab-content fix">
-							<div id="grid-view" class="tab-pane active">
+						<div id="grid-view" class="tab-pane active">
 								<div class="row">
 									<!-- 主体-->                                  
 									<div class="box">
 										<div class="right">
 											<ul>
 												<c:forEach items="${travelMap}" var="t" varStatus="status">
-												<li class="${t.key.id}">
-								
+												<li class="${t.key.id}">								
 													<c:if test="${t.value!=1}">
 													<img src="part/img/star.png" class="star" onmouseover="star_on(this)" onmouseout="star_off(this)" width="16" height="16" align="right" onclick="part_collected_col(${t.key.id},this)">
 													</c:if>
@@ -436,7 +442,7 @@ function myfunction2(){
 													<span class="price"><fmt:formatDate
 															value="${t.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm" /></span>
 												<p class="content2">
-													${fn:substring(t.key.content, 0, 100)}... <a
+	  										     ${fn:substring(t.key.content, 0, 100)}... <a
 														href="detail?travelid=${t.key.id}">更多>></a>
 												</p>
 												<a href="##" onclick="praise_col(${t.key.id},this)"><img

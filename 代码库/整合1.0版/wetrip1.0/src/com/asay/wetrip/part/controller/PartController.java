@@ -115,7 +115,9 @@ public class PartController {
 			request.getServletContext().setAttribute("travelMap", travelMap);
 			}
 		else{
-			request.getServletContext().setAttribute("travelMap", new HashMap<>(0));
+			
+			Map travelMap = this.collectServiceImpl.isCollect(travelList, null);
+			request.getServletContext().setAttribute("travelMap",travelMap );
 		}
 
 		request.getServletContext().setAttribute("travelpageNum", num);

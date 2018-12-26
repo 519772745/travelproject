@@ -23,10 +23,15 @@
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="${pageContext.request.contextPath }/index/css/custom.css" rel="stylesheet">
+	<script type="text/javascript">
+	function tips(){
+		alert("请先登录！");
+	}
 	
+	</script>
 </head>
 
-<body>		
+<body>	
 	<div id="page" class="theia-exception">		
 		<header class="header menu_fixed">
 			<div id="logo">
@@ -598,5 +603,8 @@ function over(obj){
             }			
 
 	</script>
+	<c:if test="${notLogin }">
+<img src="index/img/logo_white.png" style="display:none;" onload="tips()"/> <% session.removeAttribute("notLogin"); %>
+</c:if>	
 </body>
 </html>

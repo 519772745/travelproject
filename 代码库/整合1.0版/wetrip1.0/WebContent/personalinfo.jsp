@@ -290,7 +290,7 @@ function change_password(){
 				<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
 				<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
 				<li><span><a href="producthot">周边商城</a></span></li>
-				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
+				<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 			</ul>
 		</nav>
 	</header>

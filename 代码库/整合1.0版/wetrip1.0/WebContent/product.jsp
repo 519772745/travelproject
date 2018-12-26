@@ -7,49 +7,49 @@
 <head>
 <meta charset="UTF-8">
 <title>微旅WeTrip-周边</title>
-<link rel="shortcut icon" href="detail/img/icon.ico" type="image/x-icon">
-<link rel="icon" href="detail/img/icon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/part/img/icon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath }/part/img/icon.ico" type="image/x-icon">
 
-<link href="detail/headcss/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/part/headcss/style.css" rel="stylesheet">
 
 <!-- BASE CSS -->
-<link href="detail/headcss/bootstrap.min.css" rel="stylesheet">
-<link href="detail/headcss/style.css" rel="stylesheet">
-<link href="detail/headcss/vendors.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/part/headcss/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/part/headcss/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/part/headcss/vendors.css" rel="stylesheet">
 
 <!-- YOUR CUSTOM CSS -->
-<link href="detail/headcss/custom.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
+<link href="${pageContext.request.contextPath }/part/headcss/custom.css" rel="stylesheet">
+<link rel="${pageContext.request.contextPath }/stylesheet" type="text/css" href="${pageContext.request.contextPath }/part/footcss/style.css">
 <!-- responsive style sheet -->
 <link rel="stylesheet" type="text/css"
-	href="detail/footcss/responsive.css">
+	href="${pageContext.request.contextPath }/part/footcss/responsive.css">
 <!-- Theme-Color css -->
-<link rel="stylesheet" id="jssDefault" href="detail/footcss/color.css">
+<link rel="stylesheet" id="jssDefault" href="${pageContext.request.contextPath }/part/footcss/color.css">
 
 <!-- mobile menu css -->
-<link rel="stylesheet" href="part/css/meanmenu.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/meanmenu.min.css">
 <!-- animate css -->
-<link rel="stylesheet" href="part/css/animate.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/animate.css">
 <!-- nivo slider css -->
-<link rel="stylesheet" href="part/css/nivo-slider.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/nivo-slider.css">
 <!-- owl carousel css -->
-<link rel="stylesheet" href="part/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/owl.carousel.min.css">
 <!-- slick css -->
-<link rel="stylesheet" href="part/css/slick.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/slick.css">
 <!-- price slider css -->
-<link rel="stylesheet" href="part/css/jquery-ui.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/jquery-ui.min.css">
 <!-- fontawesome css -->
-<link rel="stylesheet" href="part/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/font-awesome.min.css">
 <!-- fancybox css -->
-<link rel="stylesheet" href="part/css/jquery.fancybox.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/jquery.fancybox.css">
 <!-- bootstrap css -->
-<link rel="stylesheet" href="part/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/bootstrap.min.css">
 <!-- default css  -->
-<link rel="stylesheet" href="part/css/default.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/default.css">
 <!-- style css -->
-<link rel="stylesheet" href="part/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/style.css">
 <!-- responsive css -->
-<link rel="stylesheet" href="part/css/responsive.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/part/css/responsive.css">
 <style>
 * {
 	padding: 0;
@@ -169,41 +169,41 @@ a {
 }
 </style>
 
-<script src="part/js/vendor/modernizr-2.8.3.min.js"></script>
-<script src="part/headjs/jquery-2.2.4.min.js"></script>
-<script src="part/headjs/common_scripts.js"></script>
-<script src="part/headjs/main.js"></script>
-<script src="part/assets/validate.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/headjs/jquery-2.2.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/headjs/common_scripts.js"></script>
+<script src="${pageContext.request.contextPath }/part/headjs/main.js"></script>
+<script src="${pageContext.request.contextPath }/part/assets/validate.js"></script>
 <!-- jquery 3.12.4 -->
-<script src="part/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/vendor/jquery-1.12.4.min.js"></script>
 <!-- mobile menu js  -->
-<script src="part/js/jquery.meanmenu.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.meanmenu.min.js"></script>
 <!-- scroll-up js -->
-<script src="part/js/jquery.scrollUp.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.scrollUp.js"></script>
 <!-- owl-carousel js -->
-<script src="part/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/owl.carousel.min.js"></script>
 <!-- slick js -->
-<script src="part/js/slick.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/slick.min.js"></script>
 <!-- wow js -->
-<script src="part/js/wow.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/wow.min.js"></script>
 <!-- price slider js -->
-<script src="part/js/jquery-ui.min.js"></script>
-<script src="part/js/jquery.countdown.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery-ui.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.countdown.min.js"></script>
 <!-- nivo slider js -->
-<script src="part/js/jquery.nivo.slider.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.nivo.slider.js"></script>
 <!-- fancybox js -->
-<script src="part/js/jquery.fancybox.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.fancybox.min.js"></script>
 <!-- bootstrap -->
-<script src="part/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/bootstrap.min.js"></script>
 <!-- popper -->
-<script src="part/js/popper.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/popper.js"></script>
 <!-- stellar -->
-<script src="part/js/jquery.stellar.min.js"></script>
-<script src="part/js/parallax.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/parallax.js"></script>
 <!-- plugins -->
-<script src="part/js/plugins.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/plugins.js"></script>
 <!-- main js -->
-<script src="part/js/main.js"></script>
+<script src="${pageContext.request.contextPath }/part/js/main.js"></script>
 </head>
 <body>
 	<header class="header menu_fixed">
@@ -212,24 +212,34 @@ a {
 		</div>
 		<!-- /Page Preload -->
 		<div id="logo">
-			<a href="index.jsp"> 
-			<img src="detail/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal"> 
-			<img src="detail/img/logo_black.png"width="150" height="36" data-retina="true" alt="" class="logo_sticky">
+			<a href="main.jsp"> 
+			<img src="${pageContext.request.contextPath }/part/img/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal"> 
+			<img src="${pageContext.request.contextPath }/part/img/logo_black.png"width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
-			<li><a href="toEditor"><img src="detail/img/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img src="detail/img/shopping_button.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo"><img src="detail/img/config_button.png" width="24" height="24"></a></li>
+			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
+			</c:if>
+			<li><a href="cart"><img src="${pageContext.request.contextPath }/part/img/shopping_button.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/part/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
-			<li><a href="toEditor"><img src="detail/img/add_button1.png" width="24" height="24"></a></li>
-			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="detail/img/personal_button1.png" width="24" height="24"></a></li>
-			<li><a href="cart"><img src="detail/img/shopping_button1.png" width="24" height="24"></a></li>
-			<li><a href="personalinfo"><img src="detail/img/config_button1.png" width="24" height="24"></a></li>
+			<li><a href="toEditor"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<li><a href="cart"><img src="part/img/shopping_button1.png" width="24" height="24"></a></li>
+			<li><a href="personalinfo"><img src="part/img/config_button1.png" width="24" height="24"></a></li>
 			
 		</ul>
 
@@ -430,7 +440,7 @@ a {
 	<!-- footer -->
 	<footer class="theme-footer">
 		<div class="logo1">
-			<a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a>
+			<a href="main.jsp"><img src="${pageContext.request.contextPath }/part/img/footer130.png" alt="" /></a>
 		</div>
 		<p class="copyright">Copyright &copy; 2018.微旅Wetrip项目组 All rights
 			reserved.</p>
