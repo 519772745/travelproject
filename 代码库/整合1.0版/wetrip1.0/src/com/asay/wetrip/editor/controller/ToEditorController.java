@@ -37,6 +37,9 @@ public class ToEditorController {
 	 */
 	@RequestMapping("/toEditor")
 	public String toEditor(HttpServletRequest request,HttpSession session) {
+		//获得城市
+		String city=(String) session.getAttribute("city");
+		request.getServletContext().setAttribute("city", city);
 		//清理原照片的路径
 		session.removeAttribute("newImgPaths");
 		System.out.println(session.getAttribute("newImgPaths")+"===============看删除没有");
