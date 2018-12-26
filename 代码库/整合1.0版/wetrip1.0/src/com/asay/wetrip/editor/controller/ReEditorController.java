@@ -49,6 +49,7 @@ public class ReEditorController {
 		request.getServletContext().setAttribute("tags", list);
 		// 通过游记id获取游记的数据
 		int id=Integer.parseInt(request.getParameter("travelId"));
+//		int id=48;
 		TravelNote travelnote=detailServiceImpl.findTravelById(id);//自己先规定一个id
 		System.out.println("获得quanxianshi："+travelnote.getStatus());
 		request.getServletContext().setAttribute("reEditor", travelnote);

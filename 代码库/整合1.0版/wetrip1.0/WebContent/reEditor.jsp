@@ -28,14 +28,11 @@
 <link rel="stylesheet" type="text/css" href="editor/css/style.css">
 <!-- responsive style sheet -->
 <link rel="stylesheet" type="text/css" href="editor/css/responsive.css">
-<!-- Theme-Color css -->
-<link rel="stylesheet" id="jssDefault" href="editor/css/color.css">
 <!-- BASE CSS -->
 <link href="editor/css/bootstrap.min.css" rel="stylesheet">
 <link href="editor/css/banner-style.css" rel="stylesheet">
 <link href="editor/css/vendors.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="editor/css/upload-style.css" />
+<link rel="stylesheet" type="text/css" href="editor/css/upload-style.css" />
 <!--editor CSS-->
 	<link rel="stylesheet" type="text/css"	href="editor/css/wangEditor.min.css">
 	<link rel="stylesheet" type="text/css" href="editor/css/webuploader.css">
@@ -52,14 +49,13 @@
 <!-- tag -->
 	<script type="text/javascript" src="editor/tag/js/tag.js"></script>
 	<link rel="stylesheet" type="text/css" href="editor/tag/css/tag.css" />
-<!-- reEditor -->
-	<script type="text/javascript" charset="utf-8" src="editor/baidu/reEditor.js"></script>
+<!-- tag -->
+<link rel="stylesheet" type="text/css" href="editor1/css/map.css">
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6"></script>
 </head>
-<style type="text/css">
-#show{
-	display: block !important;
-}
-</style>
 <body>
 	<div class="main-page-wrapper">
 		<!-- 
@@ -70,7 +66,7 @@
 		<header class="header menu_fixed">
 
 	<div id="logo">
-		<a href="main.jsp">
+		<a href="index.html">
 			<img src="zone/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 			<img src="zone/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 		</a>
@@ -124,12 +120,12 @@
 <div class="container" style="margin-top: 130px;">
 	<div class="row">
 		<div class="col-lg-8 col-12 blog-grid-style hover-effect-one">
-		<form action="gengxin"  name="aaa">
+		<form action="gengxin"  name="aaa" method="post">
 				<!--富文本框的展示-->
 				<input type="hidden" name="idid" value="${reEditor.id }" > 
 				<div style="width:750px;height:70px">
 					<input required='' type='text' name="title" value="${reEditor.title }" id="title">
-					<label alt='请输入微旅标题' placeholder='标题'></label>
+					<label alt='请输微旅标题' placeholder='标题'></label>
 				</div>
 			<div class="single-blog-post" style="margin-bottom: 15px;">
 				<div class="container">
@@ -170,19 +166,13 @@
 				</div>
 					<!-- 上传图片 -->
 					<!-- 地图位置 -->
-					<div id="mapall">
-						<div id="map" >
-							<!-- 地址的按钮 -->
-						</div>
-						<div id="prompt"><h6>请选择地址</h6></div>
-						<div id="show"> 
-							<img id="imgshow">
-							<!--设置隐藏域——获得地图的地址-->
-							<div  style="display:none;">
-								<input type="text" name="address" id="src1" >
-							</div>
-						</div>
+					<div id="serachMap">
+						位置搜索:<input type="text" id="suggestId" size="20" value="百度" style="width:200px;height: 25px;margin-top:7px;" />
+						<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 					</div>
+					<div id="editorMap">
+						<div id="allmap"></div>
+					</div>					
 					<!-- 地图位置 -->
 					<div id="detail">
 						<!-- 通过地图获得地址的输入框 -->
@@ -283,9 +273,12 @@
 		<!--footer-->
 		<footer class="theme-footer">
 			<div class="container">
-			<div class="logo"><a href="main.jsp"><img src="${pageContext.request.contextPath }/index/img/footer130.png" alt=""></a></div>		
-			<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
-		</div> <!-- /.container -->
+				<div class="logo">
+					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
+				</div>
+				<p class="copyright">Copyright &copy; 2018.公司名字 All rights
+					reserved.</p>
+			</div>
 			<!-- /.container -->
 		</footer>
 		<!-- /.theme-footer -->
@@ -293,20 +286,6 @@
 
 <!-- 百度编辑框的js  -->
 	<script type="text/javascript" src="editor/baidu/editor.js"></script>
-<!-- Font Awesome -->
-	<script src="editor/fonts/font-awesome/fontawesome-all.min.js"></script>
-<!-- COMMON SCRIPTS -->
-	<script src="editor/js/jquery-2.2.4.min.js"></script>
-	<script src="editor/js/common_scripts.js"></script>
-	<script src="editor/js/main.js"></script>
-<!-- Map -->
-<!--editor script-->
-	<script type="text/javascript" src="editor/js/wangEditor.js"></script>
-	<script type="text/javascript">
-		var map = new wangEditor('map');
-		map.config.menus = [ 'location' ];
-		map.create();
-	</script>
 <!--收藏js-->
 
 <!--这个是图片上传的JS-->
@@ -314,17 +293,12 @@
 	<script type="text/javascript" src="editor/js/md5.js"></script>
 	<script type="text/javascript" src="editor/js/upload.js"></script>
 <!-- 这是上传图片的JS-->
-<!-- 地图编辑框隐藏的部分js -->
-	<script type="text/javascript">
-		// 一开始是都隐藏的，当点击提交时show模块变为black  img的src变为指定的路经
-		document.getElementById("map").style.display = "none";
-		document.getElementById("show").style.display = "none";
-		// document.getElementById("show").innerHTML=imgHtml;
-	</script>
-
+<!-- reEditor的js -->
+<script type="text/javascript" src="editor/baidu/reEditor.js"></script>
 <!-- Theme js -->
 	<script src="editor/js/theme.js"></script>
-</div>
 <!-- /.main-page-wrapper -->
+	<script type="text/javascript" src="editor1/js/map1.js"></script> <!--有些js就需要body中的标签加载完成才能加载  要有一个先后的顺序-->
+</div>
 </body>
 </html>
