@@ -197,17 +197,21 @@ function myfunction2(){
 		.like{
 			margin-top: 12px;
 			margin-right: 8px;
+			cursor:pointer;
 		}
 		.star{
 			margin-top: 10px;
 			margin-right: 10px;
+			cursor:pointer;
 		}
 		.star2{
 			margin-top: 3px;
 			margin-left: 10px;
+			cursor:pointer;
 		}
 		#like2{
 			margin-top: 5px;
+			cursor:pointer;
 		}
 		.fa-th{
 			margin-top: 1px;
@@ -264,7 +268,7 @@ function myfunction2(){
 					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
-					<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 				</ul>
 		</nav>		
 	</header><!-- #header -->
@@ -284,7 +288,8 @@ function myfunction2(){
 								</form>
 							</div>
 							<div class="group-title">
-								<h2>热门标签</h2>
+								<h2 style="cursor:default;">热门标签</h2>
+
 							</div>
 							<ul>
 								<c:forEach items="${tagList }" var="tag">

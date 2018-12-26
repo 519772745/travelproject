@@ -1,5 +1,8 @@
 package com.asay.wetrip.personalinfo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -79,18 +82,21 @@ public class PersonalinfoController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/personalPwd",method=RequestMethod.POST)	
-	public String password(HttpSession httpSession,HttpServletRequest request,@RequestParam("password") String password,@RequestParam("password1") String password1,@RequestParam("password2") String password2) {
+	public Map<String,String> password(HttpSession httpSession,HttpServletRequest request,@RequestParam("password") String password,@RequestParam("password1") String password1,@RequestParam("password2") String password2) {
 		//密码修改时提交的信息
 		Users users=(Users) httpSession.getAttribute("user");
 		System.out.println(password);
 		System.out.println(password1);
 		System.out.println(password2);
 		users=this.pesonalinfoServiceImpl.updateUser(users,password,password1,password2);	
+		HashMap<String,String> map=new HashMap<String,String>();
 		if(users!=null) {
 		httpSession.setAttribute("user", users);
-		return "修改成功了";
+		map.put("status", "1");
+		return map;
 		}else {
-			return "修改失败了";
+			map.put("status", "2");
+			return map;
 		}
 	}
 

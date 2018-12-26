@@ -95,7 +95,7 @@
 					<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
-					<li><span><a href="dailytopic?pageNum=1&topicId=${topiId}">今日话题</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 				</ul>
 		</nav>
 	</header>

@@ -256,7 +256,7 @@
 				<!--分页 -->
 					<div class="page">
 					<img src="index/img/left4.png" class="a2">
-					<c:if test="${count!=1}">
+					<c:if test="${count>1}">
 						<!-- 这里是鼠标移入移出的效果 -->
 						<img src="${pageContext.request.contextPath }/index/img/right.png"
 							onmouseover="arrow_color_blue_right(this)"
@@ -264,7 +264,7 @@
 							onclick="topic_page_col(1,${count},this)" class="a1">
 					</c:if>
 					<!-- 为1的情况，没有右边的箭头 -->
-					<c:if test="${count==1}">
+					<c:if test="${count<=1}">
 						<img src="index/img/right4.png" class="a1">
 					</c:if>
 				</div>
@@ -360,14 +360,14 @@
 				</div>
 				<div class="page2">
 					<!-- 说说的分页 -->
-					<c:if test="${shortCount!=1}">
+					<c:if test="${shortCount>1}">
 						<img src="index/img/right.png"
 							onmouseover="arrow_color_green_right(this)"
 							onmouseout="arrow_color_away_right(this)" class="a1"
 							onclick="short_page_col(1,${shortCount},'${city}',this)">
 					</c:if>
 					<!-- 为1的情况，没有右边的箭头 -->
-					<c:if test="${shortCount==1}">
+					<c:if test="${shortCount<=1}">
 						<img src="index/img/right4.png" class="a1">
 					</c:if>
 					<img src="index/img/left4.png" class="a2">

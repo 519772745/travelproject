@@ -221,7 +221,7 @@ function createInstructions() {
 
 	text = document.createElement( 'div' );
 	text.onSelectStart = null;
-	text.innerHTML = '<span style="color:' + theme[0] + ';font-size:40px;">We Trip</span><br /><br /><span style="font-size:15px;"><strong>This is our developer:</strong><br /><br />倪泽苒<br />&nbsp;靳若琪&nbsp;&nbsp;孙亦璇&nbsp;<br />户子超&nbsp;&nbsp;王慧&nbsp;&nbsp;孙立莹<br />赵旭</span>';
+	text.innerHTML = '<span style="color:' + theme[0] + ';font-size:40px;">We Trip</span><br /><br /><span style="font-size:15px;"><strong>Here are our developers:</strong><br /><br />倪泽苒<br />&nbsp;靳若琪&nbsp;&nbsp;孙亦璇&nbsp;<br />户子超&nbsp;&nbsp;王慧&nbsp;&nbsp;孙立莹<br />赵旭</span>';
 	text.style.color = theme[1];
 	text.style.position = 'absolute';
 	text.style.left = '0px';

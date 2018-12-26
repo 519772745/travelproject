@@ -39,11 +39,9 @@
 	<link rel="stylesheet" type="text/css" href="detail/footcss/style.css">
 	<!-- responsive style sheet -->
 	<link rel="stylesheet" type="text/css" href="detail/footcss/responsive.css">
-	<!-- ä¸»é¢é¢è² -->
-	<link rel="stylesheet" id="jssDefault" href="detail/footcss/color.css">
-	<!-- ä¸ä¸å¼ ï¼ä¸ä¸å¼  -->
-	<!-- <link rel="stylesheet" type="text/css" href="dailytopic/css/style.css">
-	<link rel="stylesheet" type="text/css" href="dailytopic/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet" id="jssDefault" href="detail/footcss/color.css">	
+	<script type="text/javascript" src="detail/js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 	<header class="header menu_fixed" >
@@ -148,25 +146,17 @@
 						<div class="section-heading">
 							<span class="section-heading-line"></span>
 							<span class="section-heading-text">游记照片</span>
-							<div>
-								<ul class="travelIMG">
-								<c:forEach items="${travel.getImgs()}" var="imgi">
-									<li><a href="#"><img src="${imgi.getPath()}" width="200" height="200" ></a></li>
-								</c:forEach>						
-								</ul>
-							</div>
-						<!--分页-->
-							<div class="theme-pagination text-center" >
-								<ul class="clearfix">
-									<li><a href="##"><i class="icon flaticon-left-arrow"></i></a></li>
-									<!--页码-->
-									<li><a href="##"><img src="index/img/point.png" onmouseover="this.src='index/img/point2.png'" onmouseout="this.src='index/img/point.png'"></a></li>
-									<li><a href="##"><img src="index/img/point.png" onmouseover="this.src='index/img/point2.png'" onmouseout="this.src='index/img/point.png'"></a></li>
-									<li><a href="##"><img src="index/img/point.png" onmouseover="this.src='index/img/point2.png'" onmouseout="this.src='index/img/point.png'"></a></li>
-									<li><a href="##"><i class="icon flaticon-right-arrow"></i></a></li>
-									<!--页码-->
-								</ul>
-							</div> <!--分页 -->
+							<div class="pic">
+       					 	<div class="content">
+           						 <c:forEach items="${travel.getImgs()}" var="imgi">
+									  <img class="ai" src="${imgi.getPath()}"/>
+								</c:forEach>
+        					</div>
+       				 
+      					  	<div class="right">》</div>
+       						<div class="left"> 《 </div>
+    						</div> 
+													
 							<div style="clear:both"></div>
 						</div><!-- .section-heading -->
 						<div class="section-heading2">
@@ -385,8 +375,55 @@
 			<p class="copyright2">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 		</footer> <!-- /.theme-footer -->
 		<div id="toTop"></div><!-- 返回到顶端 -->
+<script type="text/javascript">
+$(function(){
+    //每个固定的时间移动图片
+    var timer = setInterval(picLoop,1000);
+    var index = 0;
+    function picLoop(){
+        index++;
+        if (index==$(".ai").length) {index=0;}
+        $(".content").animate({"left":-650*index},340);
+        $("#ai1").eq(index).css("background-color","white")
+               .siblings().css("background-color","rgba(100,100,100,0.3)");
+    }
 
-		<script type="text/javascript">
+    //定时器的控制
+    $(".pic").hover(function(){
+        clearInterval(timer);
+        $(".left").show();
+        $(".right").show();
+    },function(){
+        timer = setInterval(picLoop,1000);
+        $(".left").hide();
+        $(".right").hide();
+    })
+
+    $("#ai1").mouseover(function(){
+        $(this).css("background-color","white")
+               .siblings().css("background-color","rgba(100,100,100,0.3)");
+        index = $(this).index();
+        $(".content").animate({"left":-650*index},340);
+
+    })
+
+    $(".left").click(function(){
+        index--;
+        if (index==-1) {index=$(".ai").length-1;}
+        $(".content").animate({"left":-650*index},340);
+        $("#ai1").eq(index).css("background-color","white")
+               .siblings().css("background-color","rgba(100,100,100,0.3)");
+    })
+    $(".right").click(function(){
+        index++;
+        if (index==$(".ai").length) {index=0}
+        $(".content").animate({"left":-650*index},340);
+        $("#ai1").eq(index).css("background-color","white")
+               .siblings().css("background-color","rgba(100,100,100,0.3)"); 
+    })
+
+
+})
 	//点击出现div，移开消失
 	window.onload = function(){
 		document.onclick = function(e){

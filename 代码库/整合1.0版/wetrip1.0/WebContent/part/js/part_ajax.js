@@ -91,12 +91,16 @@ function part_collected_col(travelNoteId,obj){
 			/*返回无效的json时，即用户没有登录，出现弹框提示*/
 			alert("登陆后才能收藏哟~");
 			},
-		success(data){	
+			success(data){	
 				if(data.status=="collected"){ 
 					$(obj).attr("src","part/img/star1.png"); //已收藏，将图片改为已收藏状态
+					$(obj).attr("onmouseover",""); 
+					$(obj).attr("onmouseout",""); 
 				}
 				if(data.status=="uncollected"){
 					$(obj).attr("src","part/img/star.png"); //未收藏，将图片改为未收藏状态
+					$(obj).attr("onmouseover","star_on(this)"); 
+					$(obj).attr("onmouseout","star_off(this)"); 
 				}
 			}	
 	});

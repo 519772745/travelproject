@@ -6,11 +6,12 @@
 
 #leftContent{
 float:left;
-margin-left: 260px;
+margin-left: 275px;
 }
 #rightContent{
 float:left;
 margin-top: 50px;
+margin-left: 25px;
 }
 .sidebar-box {
 	margin-left: 50px;

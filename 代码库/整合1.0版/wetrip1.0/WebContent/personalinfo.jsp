@@ -241,7 +241,15 @@ function change_password(){
         contentType: false,  // 不设置内容类型
         success: function (data) {
         	//上传成功后，对当前界面进行修改
-            alert("修改密码成功");
+        	if(data.status=="1"){
+        		alert("修改密码成功");
+            	$("#origin_password").val("");
+                $("#password1").val("");
+                $("#password2").val("");
+        	}else{
+        		alert("修改密码失败");
+        	}
+            
         }
     })
 	
@@ -386,7 +394,7 @@ function change_password(){
 	      	    <td height="30" width="30" >个人说明：</td><td><textarea rows="5" cols="35" name="description" id="description">${userDetail.description }</textarea></td>	             
 		    </tr>
 	       </table>
-	        <div id="bc01"><tr><input type="button" value="保存" class="button" id="saveBtn"/></tr></div>
+	        <div id="bc01"><tr><input type="button" value="保存资料" class="button" id="saveBtn"/></tr></div>
 		  </form>
 		  </div>       
 	      </div><!-- 资料修改结束 -->
@@ -397,7 +405,7 @@ function change_password(){
 	          <table width="400" border="0" cellpadding="0" cellspacing="0" align="center" >
 		  <tr>
 			<td width="142" align="right">初始密码：</td>
-			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" id="origin_"/></td>
+			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" id="origin_password"/></td>
 		  </tr>
 		  <tr>
 	      		<td height="30" align="right" >新密码：</td>
@@ -411,7 +419,7 @@ function change_password(){
 		  </tr>	 
 	      	</table>
 	      	</div>
-	          <div id="bc02"><tr><input type="button" value="保存" class="button" id="password_change" onclick="change_password()"/></tr></div>  
+	          <div id="bc02"><tr><input type="button" value="保存密码" class="button" id="password_change" onclick="change_password()"/></tr></div>  
 	     
 	      </div> <!-- 密码修改结束 -->
 
@@ -424,7 +432,7 @@ function change_password(){
 	        		<div id="tx01"><img src="${userDetail.userhead}"/></div>
 		        	<div id="wzms">
 			        	<span>从电脑中选择你喜欢的图片</span> <br>  
-			        	图片格式应为 JPG、JPEG、GIF、PNG、BMP。
+			        	图片格式应为 JPG、JPEG、GIF、PNG、BMP（图片大小不能超过2M）。
 				        <div id="tpsc">
 				        	<input type="button" value="更改头像" class="button" 
 				        			style="width:80px;height:40px;font-size:14px;margin-left:-25px;margin-top:-30px"
@@ -445,7 +453,7 @@ function change_password(){
 				 <a href="javascript:;" class="file">
 				 <input type="file"  name="upfile" id="userhead" accept="image/*">选择图片
 				 </a>
-				  <button class='button'>确认</button>
+				  <button class='button'>保存头像</button>
 			</div>
         </div><!-- 头像修改结束 -->
 		

@@ -40,7 +40,8 @@ public class DailytopicControllerImpl {
 	 * request @param: @return @return: String @throws
 	 */
 	@RequestMapping("/dailytopic")
-	public String dailyTopic(HttpServletRequest request) {		
+	public String dailyTopic(HttpServletRequest request) {	
+		
 		int topicId = Integer.parseInt(request.getParameter("topicId"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));// 当前页码
 		// 导航栏

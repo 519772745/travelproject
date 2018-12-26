@@ -431,10 +431,11 @@
 
 .categorie-list li:hover a {
   color: #333;
+ 
 }
-
 .blog-pagination {
-  text-align: center;
+	cursor:default;
+  	text-align: center;
 }
 
 .tag-list {

@@ -66,23 +66,23 @@
 		<header class="header menu_fixed">
 
 	<div id="logo">
-		<a href="index.html">
+		<a href="main.jsp">
 			<img src="zone/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 			<img src="zone/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 		</a>
 	</div>
 	<!--这是旁边的三个按钮-->
 	<ul id="top_menu">
-		<li><a href="editor.html"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
-		<li><a href="login.html"><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
-		<li><a href="cart.html"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
-		<li><a href="personalinfo.html"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
+		<li><a href="toEditor"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
+		<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20""><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
+		<li><a href="cart"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
+		<li><a href="personalinfo"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
 
 		<ul id="top_menu2">
-			<li><a href="editor.html"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="login"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
-			<li><a href="personalinfo.html"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
+			<li><a href="toEditor"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
+			<li><a href="personalinfo"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
 			
 
 		</ul>			
@@ -106,8 +106,8 @@
 					<c:forEach items="${tags }" var="t">
 						<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
-					<li><span><a href="part.html">周边商城</a></span></li>
-					<li><span><a href="dailytopic.html">今日话题</a></span></li>
+					<li><span><a href="producthot">周边商城</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 			</ul>
 			
 		</nav>
