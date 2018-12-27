@@ -110,6 +110,9 @@
     		if(topic==1&&content==0&&mapAddress==0){
     			alert("请填写正文及点击地图");
     		}
+    		if(topic==0&&content==0&&mapAddress==0){
+    			alert("请填写标题和正文及点击地图");
+    		}
     		event.preventDefault();
     	}
     });
