@@ -92,25 +92,16 @@
 					</a>
 				</div>
 				<ul id="top_menu">
-					<li><a href="editor.jsp"><img
-							src="good/images/add_button1.png" width="24" height="24"></a></li>
-					<li><a href="login.jsp"><img
-							src="good/images/personal_button1.png" width="24" height="24"></a></li>
-					<li><a href="cart"><img
-							src="good/images/shopping_button1.png" width="24" height="24"></a></li>
-					<li><a href="personalinfo.jsp"><img
-							src="good/images/config_button1.png" width="24" height="24"></a></li>
-
+					<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button1.png" width="24" height="24"/></a></li>			
+					<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button1.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)"/></a></li>										
+					<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button1.png" width="24" height="24"/></a></li>
+					<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/personalinfo/img/config_button1.png" width="24" height="24"/></a></li>			
 				</ul>
 				<ul id="top_menu2">
-					<li><a href="editor.jsp"><img
-							src="good/images/add_button.png" width="24" height="24"></a></li>
-					<li><a href="login.jsp"><img
-							src="good/images/personal_button.png" width="24" height="24"></a></li>
-					<li><a href="cart"><img
-							src="good/images/shopping_button.png" width="24" height="24"></a></li>
-					<li><a href="personalinfo.jsp"><img
-							src="good/images/config_button.png" width="24" height="24"></a></li>
+					<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button.png" width="24" height="24" /></a></li>			
+					<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"/></a></li>									
+					<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button.png" width="24" height="24" /></a></li>
+					<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/personalinfo/img/config_button.png" width="24" height="24" /></a></li>
 				</ul>
 				<!-- /top_menu -->
 				<a href="#menu" class="btn_mobile">
@@ -123,12 +114,12 @@
 				<nav id="menu" class="main-menu">
 					<ul>
 						<li><span><a href="main.jsp">首页</a></span></li>
-						<li><span><a href="part.jsp">风景</a></span></li>
-						<li><span><a href="part.jsp">美食</a></span></li>
-						<li><span><a href="part.jsp">玩耍</a></span></li>
-						<li><span><a href="productall">周边</a></span></li>
-						<li><span><a href="part.jsp">小贴士</a></span></li>
-						<li><span><a href="dailytopic.jsp">今日话题</a></span></li>
+						<li><span><a href="part?tagName=风景">风景</a></span></li>
+						<li><span><a href="part?tagName=美食">美食</a></span></li>
+						<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
+						<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
+						<li><span><a href="producthot">周边商城</a></span></li>
+						<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 					</ul>
 				</nav>
 			</header>
@@ -182,9 +173,10 @@
 
 										<div class="drop-downs-holder">
 											<div class="drop-selector capacity-selector"></div>
+											<span style="display:block;font-size: 10px;margin-top:-10px;margin-bottom:5px;color:#ababab">*购买数量不能大于100</span>
 											<div class="drop-selector">
 												<span>数量</span> <input min="1" type="number" id="quantity"
-													name="num" value="1" class="quantity_one">
+													name="num" value="1" max="100" min="1" class="quantity_one">
 											</div>
 										</div>
 										<hr>

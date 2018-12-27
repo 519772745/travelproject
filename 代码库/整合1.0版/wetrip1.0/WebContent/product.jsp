@@ -129,7 +129,7 @@ a {
 
 .hide {
 	width: 240px;
-	height: 100px;
+	height: 135px;
 	background: #a2bfa0;
 	position: absolute;
 	left: 0;
@@ -167,6 +167,7 @@ a {
 .fa-th {
 	margin-top: 1px;
 }
+
 </style>
 
 <script src="${pageContext.request.contextPath }/part/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -218,7 +219,12 @@ a {
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
+			<c:if test="${not empty userEmail}">
 			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			</c:if>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			</c:if>
 			<c:if test="${empty userEmail}">
 			<li><a href="login"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
 			</c:if>
@@ -231,7 +237,12 @@ a {
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
 			<li><a href="toEditor"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			</c:if>
 			<c:if test="${empty userEmail}">
 			<li><a href="login"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
 			</c:if>
@@ -259,7 +270,7 @@ a {
 				<li><span><a href="part?tagName=玩耍">玩耍</a></span></li>
 				<li><span><a href="part?tagName=小贴士">小贴士</a></span></li>
 				<li><span><a href="producthot">周边商城</a></span></li>				
-				<li><span><a href="dailytopic?pageNum=1&topicId=2">今日话题</a></span></li>
+				<li><span><a href="dailytopic?pageNum=1&topicId=${topicId }">今日话题</a></span></li>
 			</ul>
 		</nav>
 	</header>

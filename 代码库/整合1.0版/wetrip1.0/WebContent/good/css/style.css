@@ -1844,8 +1844,11 @@ h5,
   width: auto!important;
 }
 .drop-selector {
-  margin-left:-9px;
+  
   display: inline-block;
+}
+.drop-downs-holder{
+	margin-left: 5px;
 }
 .capacity-selector{
   margin-right: 14px;

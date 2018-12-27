@@ -45,7 +45,8 @@
     <script type="text/javascript" src="editor/baidu/third-party/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/editor_api.js"></script>
-    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script>    
+    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script> 
+    <script type="text/javascript" src="editor/js/main.js"></script>  
 <!-- tag -->
 	<script type="text/javascript" src="editor/tag/js/tag.js"></script>
 	<link rel="stylesheet" type="text/css" href="editor/tag/css/tag.css" />
@@ -66,23 +67,23 @@
 		<header class="header menu_fixed">
 
 	<div id="logo">
-		<a href="index.html">
+		<a href="main.jsp">
 			<img src="zone/images/logo_white.png" width="150" height="36" data-retina="true" alt="" class="logo_normal">
 			<img src="zone/images/logo_black.png" width="150" height="36" data-retina="true" alt="" class="logo_sticky">
 		</a>
 	</div>
 	<!--这是旁边的三个按钮-->
 	<ul id="top_menu">
-		<li><a href="editor.html"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
-		<li><a href="login.html"><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
-		<li><a href="cart.html"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
-		<li><a href="personalinfo.html"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
+		<li><a href="toEditor"><img src="zone/images/add_button1.png" width="24" height="24" ></a></li>
+		<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="zone/images/personal_button1.png" width="24" height="24"></a></li>
+		<li><a href="cart"><img src="zone/images/shopping_button1.png" width="24" height="24" ></a></li>
+		<li><a href="personalinfo"><img src="zone/images/config_button1.png" width="24" height="24" ></a></li></ul>
 
 		<ul id="top_menu2">
-			<li><a href="editor.html"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
-			<li><a href="login"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
-			<li><a href="cart.html"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
-			<li><a href="personalinfo.html"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
+			<li><a href="toEditor"><img src="zone/images/add_button.png" width="24" height="24" ></a></li>
+			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="zone/images/personal_button.png" width="24" height="24"></a></li>
+			<li><a href="cart"><img src="zone/images/shopping_button.png" width="24" height="24" ></a></li>
+			<li><a href="personalinfo"><img src="zone/images/config_button.png" width="24" height="24" ></a></li>
 			
 
 		</ul>			
@@ -106,8 +107,8 @@
 					<c:forEach items="${tags }" var="t">
 						<li><span><a href="part?tagName=${t.tagName}">${t.tagName }</a></span></li>
 					</c:forEach>
-					<li><span><a href="part.html">周边商城</a></span></li>
-					<li><span><a href="dailytopic.html">今日话题</a></span></li>
+					<li><span><a href="producthot">周边商城</a></span></li>
+					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
 			</ul>
 			
 		</nav>
@@ -245,18 +246,24 @@
 		<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
 			<div class="sidebar-box bg-box about-me">
 				<h6 style="font-size: 22px; margin-bottom: 15px; font-family: 幼圆;">关于我</h6>
-				<img src="editor/images/home/1.jpg" alt="">
+				<img src="${userDetail.userhead }" alt="" width="200px" height="200px" style="margin:0 auto"/>
 				<div class="userii">
 					<div class="useri">
-						<h5>用户名</h5>
+						<h5>${userDetail.username }																	
+						</h5>
 					</div>
 					<div class="useri_img">
-						<img src="editor/images/sexy-woman.png">
+					<c:if test="${userDetail.sex}=='女' ">
+					<span><img src="editor/images/icons8-女-16.png"></span>
+					</c:if>
+					<c:if test="${userDetail.sex}=='男' ">
+					<span><img src="editor/images/icons8-男-16.png"></span>
+					</c:if>	
 					</div>
 				</div>
 				<div style="clear: both;"></div>
-				<h6>用户所在城市</h6>
-				<p>个人简介</p>
+				<h6>${userDetail.city }</h6>
+				<p>${userDetail.description }</p>
 			</div>
 			<!-- /.sidebar-categories -->
 		</div>
@@ -274,10 +281,9 @@
 		<footer class="theme-footer">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html"><img src="index/img/footer130.png" alt=""></a>
+					<a href="main.jsp"><img src="index/img/footer130.png" alt=""></a>
 				</div>
-				<p class="copyright">Copyright &copy; 2018.公司名字 All rights
-					reserved.</p>
+				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
 			</div>
 			<!-- /.container -->
 		</footer>

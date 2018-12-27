@@ -45,7 +45,8 @@
     <script type="text/javascript" src="editor/baidu/third-party/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="editor/baidu/editor_api.js"></script>
-    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script>    
+    <script type="text/javascript" src="editor/baidu/lang/zh-cn/zh-cn.js"></script>  
+    <script type="text/javascript" src="editor/js/main.js"></script>   
 <!-- tag -->
 	<script type="text/javascript" src="editor/tag/js/tag.js"></script>
 	<link rel="stylesheet" type="text/css" href="editor/tag/css/tag.css" />
@@ -234,18 +235,16 @@
 				<img src="${userDetail.userhead }" alt="" width="200px" height="200px" style="margin:0 auto"/>
 				<div class="userii">
 					<div class="useri">
-						<h5>${userDetail.username }						
-						<c:if test="${userDetail.sex}=='女'">
-					<span><img src="editor/images/icons8-女-16.png"></span>
-					</c:if>
-					<c:if test="${userDetail.sex}=='男'">
-					<span><img src="editor/images/icons8-男-16.png"></span>
-					</c:if>	
-						
+						<h5>${userDetail.username }																	
 						</h5>
 					</div>
 					<div class="useri_img">
-					
+					<c:if test="${userDetail.sex=='女' }">
+					<span><img src="editor/images/icons8-女-16.png"></span>
+					</c:if>
+					<c:if test="${userDetail.sex=='男' }">
+					<span><img src="editor/images/icons8-男-16.png"></span>
+					</c:if>	
 					</div>
 				</div>
 				<div style="clear: both;"></div>

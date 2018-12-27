@@ -158,7 +158,7 @@ body {
 												<!-- 商品数量 -->
 												<td>
 													<div class="quantity">
-														<input min="1" type="number" id="quantity" name="quantity"
+														<input min="1" max="100" type="number" id="quantity" name="quantity"
 															value="${map.value.count}" class="quantity_one" onblur="update(this)">
 													</div>
 												</td>

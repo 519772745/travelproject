@@ -246,7 +246,7 @@
   padding: 25px;
   text-align: justify;
   padding: 0px 20px 5px;
-
+  margin-top:25px;
 }
   .main-categorie #list-view .kiosk-product-content p + p {
     margin: 15px 0;

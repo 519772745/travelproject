@@ -109,8 +109,9 @@ function myfunction2(){
 	<script src="part/js/plugins.js"></script>
 	<!-- main js -->
 	<script src="part/js/main.js"></script>
+	<script src="${pageContext.request.contextPath }/part/headjs/main.js"></script>
 	<!-- 控制ajax的东西= = -->
-	<script src="part/js/part_ajax.js"></script>
+	<script src="part/js/part_ajax.js"></script> 
 	<style>
 		*{
 			padding: 0;
@@ -156,7 +157,7 @@ function myfunction2(){
 			box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.04);
 		}
 		.img{
-			margin: 55px 0 30px;
+			margin: 37.5px 0 37.5px;
 			width: 240px;
    	 		height: 160px;
 		}
@@ -179,7 +180,7 @@ function myfunction2(){
 		}
 		.hide{
 			width: 240px;
-			height: 130px;
+			height: 135px;
 			background: #a2bfa0;
 			position: absolute;
 			left: 0;
@@ -229,20 +230,31 @@ function myfunction2(){
 			</a>
 		</div>
 		<ul id="top_menu" class="logo_normal">
+			<c:if test="${not empty userEmail}">
 			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			</c:if>
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="${pageContext.request.contextPath }/part/img/add_button.png" width="24" height="24" ></a></li>
+			</c:if>
 			<c:if test="${empty userEmail}">
 			<li><a href="login"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
 			</c:if>
 			<c:if test="${not empty userEmail}">
 			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="part/img/personal_button.png" width="24" height="24"></a></li>
 			</c:if>
+			
 			<li><a href="cart"><img src="${pageContext.request.contextPath }/part/img/shopping_button.png" width="24" height="24"></a></li>
 			<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/part/img/config_button.png" width="24" height="24"></a></li>
 			
 		</ul>
 
 		<ul id="top_menu" class="logo_sticky">
+			<c:if test="${empty userEmail}">
+			<li><a href="login"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			</c:if>
+			<c:if test="${not empty userEmail}">
 			<li><a href="toEditor"><img src="part/img/add_button1.png" width="24" height="24"></a></li>
+			</c:if>
 			<c:if test="${empty userEmail}">
 			<li><a href="login"><img src="part/img/personal_button1.png" width="24" height="24"></a></li>
 			</c:if>
@@ -269,7 +281,7 @@ function myfunction2(){
 					</c:forEach>
 					<li><span><a href="producthot">周边商城</a></span></li>
 					<li><span><a href="dailytopic?pageNum=1&topicId=${topicId}">今日话题</a></span></li>
-				</ul>
+			</ul>
 		</nav>		
 	</header><!-- #header -->
 	<div class="main-shop-page ptb-70">
@@ -334,8 +346,7 @@ function myfunction2(){
 								<select class="sorter" id="s1" name="sorter" onchange="myfunction();">
 									<option value="null" >请选择</option>
 									<option value="Time" >时间</option>
-									<option value="Praise">热度</option>
-								
+									<option value="Praise">热度</option>								
 								</select>
 							</div>
 						</div>
@@ -400,12 +411,12 @@ function myfunction2(){
 													<p class="p1">${t.key.getUserDetail().getUsername()}</p>
 													<p class="p2"><fmt:formatDate value="${t.key.publishtime}" pattern="yyyy年MM月dd日  HH:mm"/></p>
 													<p class="p3">
-														${t.key.title }
+															${fn:substring(t.key.title, 0, 20)}...
 													</p>
 													<div class="hide">
-													${fn:substring(t.key.content, 0, 60)}...
+													${fn:substring(t.key.content, 0, 55)}...
 													
-														
+													
 														<div>
 															<a href="detail?travelid=${t.key.id}" style="color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a>
 														</div>
@@ -486,7 +497,7 @@ function myfunction2(){
 										<c:if test="${travelpageNum>1}">
 											<li>
 												<a href="part?tagName=${tagName}&travelpageNum=${travelpageNum-1}">
-													<i class="icon flaticon-left-arrow" title="上一页"></i>
+													<
 												</a>
 											</li>
 											</c:if>
@@ -510,7 +521,7 @@ function myfunction2(){
 											<c:if test="${travelpageNum<count}">
 												<li>
 													<a href="part?tagName=${tagName}&travelpageNum=${travelpageNum+1}">
-														<i class="icon flaticon-right-arrow" title="下一页"></i>
+														>
 													</a>
 												</li>
 											</c:if>
@@ -525,7 +536,7 @@ function myfunction2(){
 										<c:if test="${travelpageNum>1}">
 											<li>
 												<a href="partByPraise?tagName=${tagName}&travelpageNum=${travelpageNum-1}">
-													<i class="icon flaticon-left-arrow" title="上一页"></i>
+													<
 												</a>
 											</li>
 										</c:if>
@@ -552,7 +563,7 @@ function myfunction2(){
 										<c:if test="${travelpageNum<count}">
 											<li>
 												<a href="partByPraise?tagName=${tagName}&travelpageNum=${travelpageNum+1}">
-													<i class="icon flaticon-right-arrow" title="下一页"></i>
+													>
 												</a>
 											</li>
 										</c:if>
