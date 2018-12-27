@@ -213,6 +213,18 @@ function checkpasswordLen(){
 		document.getElementById("msg2").innerHTML="密码最多16个字符";
 	}
 }
+function checkOriginPwdLen(){
+	//第一个密码框的长度
+	var l=document.getElementById("origin_password").value.length;
+	if(l<8){
+		document.getElementById("msg2").innerHTML="密码最少8个字符";
+	}
+	if(l>16){
+		document.getElementById("msg2").innerHTML="密码最多16个字符";
+	}
+}
+
+
 //划上小人出现一个框
 function over(obj){        
 		   document.getElementById("User").style.display = "block";
@@ -239,15 +251,19 @@ function change_password(){
         data: formData,
         processData: false,  // 不处理数据
         contentType: false,  // 不设置内容类型
-        success: function (data) {
+        success: function (data) {       	
         	//上传成功后，对当前界面进行修改
         	if(data.status=="1"){
         		alert("修改密码成功");
             	$("#origin_password").val("");
                 $("#password1").val("");
                 $("#password2").val("");
-        	}else{
+        	}
+        	if(data.status=="2"){       		        		
         		alert("修改密码失败");
+        	}
+        	if(data.status=="3"){       		        		
+        		alert("原有密码不正确");
         	}
             
         }
@@ -273,13 +289,13 @@ function change_password(){
 			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button1.png" width="24" height="24"/></a></li>			
 			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button1.png" width="24" height="24" onmouseover="over(this)" onclick="openUser(event)"/></a></li>										
 			<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button1.png" width="24" height="24"/></a></li>
-			<li><a href=""><img src="${pageContext.request.contextPath }/personalinfo/img/config_button1.png" width="24" height="24"/></a></li>			
+			<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/personalinfo/img/config_button1.png" width="24" height="24"/></a></li>			
 		</ul>
 		<ul id="top_menu2">
 			<li><a href="toEditor"><img src="${pageContext.request.contextPath }/personalinfo/img/add_button.png" width="24" height="24" /></a></li>			
 			<li><a href="zone?zonePageNum=1&collectPageNum=1&username=${userDetail.username}&correctDate=20"><img src="${pageContext.request.contextPath }/personalinfo/img/personal_button.png" width="24" height="24" class="logo_sticky" onmouseover="over(this)" onclick="openUser(event)"/></a></li>									
 			<li><a href="cart"><img src="${pageContext.request.contextPath }/personalinfo/img/shopping_button.png" width="24" height="24" /></a></li>
-			<li><a href=""><img src="${pageContext.request.contextPath }/personalinfo/img/config_button.png" width="24" height="24" /></a></li>
+			<li><a href="personalinfo"><img src="${pageContext.request.contextPath }/personalinfo/img/config_button.png" width="24" height="24" /></a></li>
 		</ul>
 			
 		<!-- /top_menu -->
@@ -405,7 +421,7 @@ function change_password(){
 	          <table width="400" border="0" cellpadding="0" cellspacing="0" align="center" >
 		  <tr>
 			<td width="142" align="right">初始密码：</td>
-			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" id="origin_password"/></td>
+			<td width="352"><input type="password" style="width:200;height:40" name="password" value="" size="30" id="origin_password" onfocus="xiaoshi2()"onblur="checkOriginPwdLen()"/></td>
 		  </tr>
 		  <tr>
 	      		<td height="30" align="right" >新密码：</td>

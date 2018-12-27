@@ -84,20 +84,23 @@ public class PersonalinfoController {
 	@RequestMapping(value="/personalPwd",method=RequestMethod.POST)	
 	public Map<String,String> password(HttpSession httpSession,HttpServletRequest request,@RequestParam("password") String password,@RequestParam("password1") String password1,@RequestParam("password2") String password2) {
 		//密码修改时提交的信息
-		Users users=(Users) httpSession.getAttribute("user");
-		System.out.println(password);
-		System.out.println(password1);
-		System.out.println(password2);
-		users=this.pesonalinfoServiceImpl.updateUser(users,password,password1,password2);	
+		//原来的user的信息
 		HashMap<String,String> map=new HashMap<String,String>();
-		if(users!=null) {
-		httpSession.setAttribute("user", users);
-		map.put("status", "1");
-		return map;
+		Users users=(Users) httpSession.getAttribute("user");
+		String dbPwd=users.getPassword();
+		if(dbPwd.equals(password)) {
+			if(users!=null) {
+				users=this.pesonalinfoServiceImpl.updateUser(users,password,password1,password2);	
+				httpSession.setAttribute("user", users);
+					map.put("status", "1");
+					return map;
+			}else {
+					map.put("status", "2");
+					return map;	}			
 		}else {
-			map.put("status", "2");
+			map.put("status", "3");
 			return map;
-		}
+		}														
 	}
 
 
