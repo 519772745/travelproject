@@ -1,6 +1,7 @@
 package com.asay.wetrip.collect.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,23 @@ public class CollectServiceImpl {
 		}
 		return travelMap;
 	}
-
+	public LinkedHashMap isCollectAsLinked(List<TravelNote> tnlist, UserDetail userDetail) {
+		LinkedHashMap travelMap = new LinkedHashMap();
+		if (userDetail != null) {
+			for (TravelNote tn : tnlist) {
+				if (this.collectDaoImpl.isCollect(tn, userDetail)) {
+					travelMap.put(tn, 1);
+				} else {
+					travelMap.put(tn, 0);
+				}
+			}
+		} else {
+			for (TravelNote tn : tnlist) {
+				travelMap.put(tn, 0);
+			}
+		}
+		return travelMap;
+	}
 	/**
 	 * <b>addCollect</b>   
 	 *

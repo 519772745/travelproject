@@ -1,8 +1,8 @@
 package com.asay.wetrip.zone.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +64,7 @@ public class ZoneController {
 		//将游记再次进行处理，以确认是否已经收藏
 		if (request.getSession().getAttribute("user") != null) {
 			UserDetail userDetail =user.getUserDetail();
-			Map travelMap=collectServiceImpl.isCollect(zoneTravelList, userDetail);
+			LinkedHashMap travelMap=collectServiceImpl.isCollectAsLinked(zoneTravelList, userDetail);
 			request.getServletContext().setAttribute("travelMap", travelMap);
 			}
 		else{

@@ -1,6 +1,7 @@
 package com.asay.wetrip.part.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +47,7 @@ public class PartController {
 	public String index(HttpServletRequest request) {
 		
 		flag=0;
-//分区页游记展示区域的页码
+		//分区页游记展示区域的页码
 		String travelpageNum=request.getParameter("travelpageNum");
 
 		int num=0;
@@ -76,8 +77,8 @@ public class PartController {
 		}
 		
 //获取分区页需要展示的游记列表
-		List<TravelNote> travelList=partServiceImpl.listTravelByTagSortByTime(num, 6, childTagName);
-//获取热门标签部分该分类标签下的标签列表
+		List<TravelNote> travelList=partServiceImpl.listTravelByTagSortByTime(num, 6, childTagName);		
+		//获取热门标签部分该分类标签下的标签列表
 		List<Tags> tagList=partServiceImpl.findTags(num, 10, tagName);
 //热门标签总页数
 		int tagCount=partServiceImpl.countTags(tagName);
@@ -87,8 +88,8 @@ public class PartController {
 		else {
 			 tagCount= tagCount/10+1;
 		}		
-		if(travelList.isEmpty()){
-			request.getServletContext().setAttribute("travelList", travelList);
+		if(travelList.isEmpty()){			
+			request.getServletContext().setAttribute("travelMap", new HashMap(0));
 			request.getServletContext().setAttribute("travelpageNum", num);
 			request.getServletContext().setAttribute("tagCount", tagCount );
 			request.getServletContext().setAttribute("tagName",tagName );
@@ -111,12 +112,11 @@ public class PartController {
 		if (request.getSession().getAttribute("user") != null) {
 			Users user = (Users) request.getSession().getAttribute("user");
 			UserDetail userDetail =user.getUserDetail();
-			Map travelMap=collectServiceImpl.isCollect(travelList, userDetail);
+			LinkedHashMap travelMap=collectServiceImpl.isCollectAsLinked(travelList, userDetail);
 			request.getServletContext().setAttribute("travelMap", travelMap);
 			}
 		else{
-			
-			Map travelMap = this.collectServiceImpl.isCollect(travelList, null);
+			LinkedHashMap travelMap = this.collectServiceImpl.isCollectAsLinked(travelList, null);
 			request.getServletContext().setAttribute("travelMap",travelMap );
 		}
 
@@ -180,7 +180,7 @@ public class PartController {
 			 tagCount= tagCount/10+1;
 		}
 		if(travelList.isEmpty()){
-			request.getServletContext().setAttribute("travelList", travelList);
+			request.getServletContext().setAttribute("travelMap", new HashMap(0));
 			request.getServletContext().setAttribute("travelpageNum", num);
 			request.getServletContext().setAttribute("tagCount", tagCount );
 			request.getServletContext().setAttribute("tagName",tagName );
@@ -192,8 +192,7 @@ public class PartController {
 		}
 		
 		else {
-			
-			
+
 			int count = partServiceImpl.countTravelByTag(childTagName);
 			if(count%6==0) {
 				count=count/6;
@@ -205,13 +204,13 @@ public class PartController {
 			if (request.getSession().getAttribute("user") != null) {
 				Users user = (Users) request.getSession().getAttribute("user");
 				UserDetail userDetail =user.getUserDetail();
-				Map travelMap=collectServiceImpl.isCollect(travelList, userDetail);
+				LinkedHashMap travelMap=collectServiceImpl.isCollectAsLinked(travelList, userDetail);
 				request.getServletContext().setAttribute("travelMap", travelMap);
 				}
 			else{
-				request.getServletContext().setAttribute("travelMap", new HashMap<>(0));
+				LinkedHashMap travelMap = this.collectServiceImpl.isCollectAsLinked(travelList, null);
+				request.getServletContext().setAttribute("travelMap",travelMap );
 			}
-
 			request.getServletContext().setAttribute("travelpageNum", num);
 			request.getServletContext().setAttribute("count", count );
 			request.getServletContext().setAttribute("tagCount", tagCount );
@@ -224,5 +223,10 @@ public class PartController {
 		return "part";
 		}
 		
+	}
+	@RequestMapping("/changeTag")
+	public String changeTag(HttpServletRequest request) {
+		
+		return "part";		
 	}
 }

@@ -16,6 +16,11 @@
 <link href="${pageContext.request.contextPath }/part/headcss/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/part/headcss/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/part/headcss/vendors.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="part/footcss/style.css">
+	<!-- responsive style sheet -->
+<link rel="stylesheet" type="text/css" href="part/footcss/responsive.css">
+	<!-- Theme-Color css -->
+<link rel="stylesheet" id="jssDefault" href="part/footcss/color.css">
 
 <!-- YOUR CUSTOM CSS -->
 <link href="${pageContext.request.contextPath }/part/headcss/custom.css" rel="stylesheet">
@@ -448,19 +453,13 @@ a {
 		</div>
 		<!-- Container End -->
 	</div>
-	<!-- footer -->
+
 	<footer class="theme-footer">
-		<div class="logo1">
-			<a href="main.jsp"><img src="${pageContext.request.contextPath }/part/img/footer130.png" alt="" /></a>
-		</div>
-		<p class="copyright">Copyright &copy; 2018.微旅Wetrip项目组 All rights
-			reserved.</p>
-	</footer>
-	<!-- /.theme-footer -->
+				<div class="logo1"><a href="main.jsp"><img src="part/img/footer130.png" alt="" /></a></div>
+				<p class="copyright">Copyright &copy; 2018.微旅wetrip项目组 All rights reserved.</p>
+	</footer> <!-- /.theme-footer -->
 
 
-
-</body>
 <script>
 	// 删除元素节点removeChild();
 	var list = document.getElementsByTagName('li');
@@ -482,5 +481,7 @@ a {
       });
  
 </script>
+</body>
+
 
 </html>
