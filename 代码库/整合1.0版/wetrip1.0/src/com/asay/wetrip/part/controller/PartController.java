@@ -79,7 +79,7 @@ public class PartController {
 //获取分区页需要展示的游记列表
 		List<TravelNote> travelList=partServiceImpl.listTravelByTagSortByTime(num, 6, childTagName);		
 		//获取热门标签部分该分类标签下的标签列表
-		List<Tags> tagList=partServiceImpl.findTags(num, 10, tagName);
+		List<Tags> tagList=partServiceImpl.findTags(tagPageNum, 10, tagName);
 //热门标签总页数
 		int tagCount=partServiceImpl.countTags(tagName);
 		if( tagCount%10==0) {
@@ -171,7 +171,7 @@ public class PartController {
 				tagPageNum=Integer.parseInt(tagPage);
 			}
 		List<TravelNote> travelList=partServiceImpl.listTravelByTagSortByPraise(num, 6, childTagName);
-		List<Tags> tagList=partServiceImpl.findTags(num, 10, tagName);
+		List<Tags> tagList=partServiceImpl.findTags(tagPageNum, 10, tagName);
 		int tagCount=partServiceImpl.countTags(tagName);
 		if( tagCount%10==0) {
 			 tagCount= tagCount/10;

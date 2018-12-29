@@ -108,6 +108,8 @@ a {
 
 .img {
 	margin: 55px 0 30px;
+	width:240px;
+	height:160px;
 }
 
 .right .p1 {
@@ -426,10 +428,10 @@ a {
 					<c:if test="${pagetype == 1}">
 						<div class="kiosk-pagination-box fix">
 							<ul class="blog-pagination ">
-								<li><a href="producthot?pageNum=${page.prePageNum }">首</a></li>
+								<li><a href="producthot?pageNum=1">首</a></li>
 								<li><a href="producthot?pageNum=${page.prePageNum }"><i class="fa fa-angle-left"></i></a></li>
 								<li><a href="producthot?pageNum=${page.nextPageNum }"><i class="fa fa-angle-right"></i></a></li>
-								<li><a href="producthot?pageNum=${page.totalPageNum-1 }">末</a></li>
+								<li><a href="producthot?pageNum=${page.totalPageNum}">末</a></li>
 							</ul>
 						</div>
 					</c:if>
@@ -438,10 +440,10 @@ a {
 					<c:if test="${pagetype == 2}">
 						<div class="kiosk-pagination-box fix">
 							<ul class="blog-pagination ">
-								<li><a href="productprice?pageNum=${page.prePageNum }">首</a></li>
+								<li><a href="productprice?pageNum=1">首</a></li>
 								<li><a href="productprice?pageNum=${page.prePageNum }"><i class="fa fa-angle-left"></i></a></li>
 								<li><a href="productprice?pageNum=${page.nextPageNum }"><i class="fa fa-angle-right"></i></a></li>
-								<li><a href="productprice?pageNum=${page.totalPageNum -1}">末</a></li>
+								<li><a href="productprice?pageNum=${page.totalPageNum}">末</a></li>
 							</ul>
 						</div>
 					</c:if>

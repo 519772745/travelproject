@@ -115,8 +115,9 @@ public class IndexController {
 		request.setAttribute("topic", topicServiceImpl.findTopicById(topicId));
 
 		// 说说查询(页数是从1开始的）
-		// TODO 图片的长度没有控制（能显示多少张）空指针异常需要改改改		
-		Set<Imgs> shortImg = shortNote.getImgs();
+		// TODO 图片的长度没有控制（能显示多少张）空指针异常需要改改改	
+		
+		Set<Imgs> shortImg = shortNote.getImgs();		
 		// 存入说说展示的文章
 		request.setAttribute("shortNote", shortNote);
 		// 说说展示的文章是否已经被收藏

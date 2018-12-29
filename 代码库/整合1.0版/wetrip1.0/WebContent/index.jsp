@@ -439,9 +439,9 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="producthot" class="grid_item">
 							<figure>
-								<img src="${pageContext.request.contextPath }/index/img/restaurant_1.jpg" class="img-fluid" alt="">
+								<a href="good?id=39"><img src="image\goods\tent3.png" class="img-fluid" alt=""></a>
 								<div class="info">
-									<h3>商品名称</h3>
+									<h4>碎花帐篷</h4>
 								</div>
 							</figure>
 						</a>
@@ -450,9 +450,9 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="producthot" class="grid_item">
 							<figure>
-								<img src="${pageContext.request.contextPath }/index/img/restaurant_2.jpg" class="img-fluid" alt="">
+								<a href="good?id=38"><img src="image\goods\tent2.png" class="img-fluid" alt=""></a>
 								<div class="info">
-									<h3>商品名称</h3>
+									<h4>树洞帐篷</h4>
 								</div>
 							</figure>
 						</a>
@@ -461,9 +461,9 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="producthot" class="grid_item">
 							<figure>
-								<img src="${pageContext.request.contextPath }/index/img/restaurant_3.jpg" class="img-fluid" alt="">
+								<a href="good?id=41"><img src="image\goods\tent5.png" class="img-fluid" alt=""></a>
 								<div class="info">
-									<h3>商品名称</h3>
+									<h4>气泡帐篷</h4>
 								</div>
 							</figure>
 						</a>
@@ -472,9 +472,9 @@
 					<div class="col-xl-3 col-lg-6 col-md-6">
 						<a href="producthot" class="grid_item">
 							<figure>
-								<img src="${pageContext.request.contextPath }/index/img/restaurant_4.jpg" class="img-fluid" alt="">
+								<a href="good?id=44"><img src="image\goods\tent8.png" class="img-fluid" alt=""/></a>
 								<div class="info">
-									<h3>商品名称</h3>
+									<h4>常用帐篷</h4>
 								</div>
 							</figure>
 						</a>

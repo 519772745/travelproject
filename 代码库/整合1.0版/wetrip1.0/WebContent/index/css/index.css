@@ -668,3 +668,8 @@
 #short_content{
 	height: 90px;
 }
+
+.img-fluid{
+	width:280px;
+	height:200px;
+}
