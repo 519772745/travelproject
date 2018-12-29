@@ -50,10 +50,14 @@
 <!-- tag -->
 	<script type="text/javascript" src="editor/tag/js/tag.js"></script>
 	<link rel="stylesheet" type="text/css" href="editor/tag/css/tag.css" />
-<!-- tag -->
-<link rel="stylesheet" type="text/css" href="editor1/css/map.css">
+<!-- map -->
+    <link rel="stylesheet" type="text/css" href="editor1/css/map.css">
 	<style type="text/css">
 	body, html,#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+	.tangram-suggestion-main {
+			position: relative !important;
+			top: -110px !important;
+		}
 	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IlyOnGGEfr47YYPWsUrHqijvDodjH9h6"></script>
 </head>
