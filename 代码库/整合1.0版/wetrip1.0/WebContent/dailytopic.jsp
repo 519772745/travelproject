@@ -140,7 +140,7 @@
 							</div>
 						<ul class="share-meta clearfix">
 								<!--标题下面的三个功能按键-->
-								<li><a href="##"><i class="icon flaticon-comment"></i>评论(${traveli.key.commentNum})</a></li>
+								<li><a href="detail?travelid=${traveli.key.id}"><i class="icon flaticon-comment"></i>评论(${traveli.key.commentNum})</a></li>
 								<li>
 									<a href="##" onclick="praise_col(${traveli.key.id},this)" 
 										onmouseover="praise_on(this)" onmouseout="praise_off(this)">

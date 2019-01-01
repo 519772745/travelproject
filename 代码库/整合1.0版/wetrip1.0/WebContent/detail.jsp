@@ -275,7 +275,7 @@
 						</div>
 
 						<div class="about-author-widget-avatar" align="center">
-							<img src="${travel.userDetail.userhead }" alt="头像" width="82px" height="82px" title="头像"  />
+							<a href="zone?zonePageNum=1&collectPageNum=1&username=${travel.userDetail.username}&correctDate=20"><img src="${travel.userDetail.userhead }" alt="头像" width="82px" height="82px" title="头像"  /></a>
 						</div>
 
 						<div align="center">
